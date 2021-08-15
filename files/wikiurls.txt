@@ -207,7 +207,6 @@ DHL Supply Chain|https://en.wikipedia.org/wiki/DHL_Supply_Chain
 CNET|https://en.wikipedia.org/wiki/CNET
 MIT Technology Review|https://en.wikipedia.org/wiki/MIT_Technology_Review
 Accor|https://en.wikipedia.org/wiki/Accor
-Bill & Melinda Gates Foundation|https://en.wikipedia.org/wiki/Bill_%26_Melinda_Gates_Foundation
 Red Hat|https://en.wikipedia.org/wiki/Red_Hat
 Black Rock|https://en.wikipedia.org/wiki/Black_Rock
 Mayo Clinic|https://en.wikipedia.org/wiki/Mayo_Clinic
@@ -1239,7 +1238,6 @@ Westin Hotels & Resorts|https://en.wikipedia.org/wiki/Westin_Hotels_%26_Resorts
 Mitchell Mariners|https://en.wikipedia.org/wiki/Mitchell_Mariners
 Ingersoll Rand|https://en.wikipedia.org/wiki/Ingersoll_Rand
 Conagra Brands|https://en.wikipedia.org/wiki/Conagra_Brands
-Guess Who's Coming to Dinner|https://en.wikipedia.org/wiki/Guess_Who%27s_Coming_to_Dinner
 The Link (retailer)|https://en.wikipedia.org/wiki/The_Link_(retailer)
 Fresenius Medical Care|https://en.wikipedia.org/wiki/Fresenius_Medical_Care
 Nyse|https://en.wikipedia.org/wiki/Nyse
@@ -1267,7 +1265,6 @@ Oktaine|https://en.wikipedia.org/wiki/Oktaine
 Swatch Group|https://en.wikipedia.org/wiki/Swatch_Group
 Perficient|https://en.wikipedia.org/wiki/Perficient
 Razer|https://en.wikipedia.org/wiki/Razer
-Camargo Correa Desenvolvimento Imobiliario|https://en.wikipedia.org/wiki/Camargo_Correa_Desenvolvimento_Imobiliario
 CVC|https://en.wikipedia.org/wiki/CVC
 V-Ships|https://en.wikipedia.org/wiki/V-Ships
 Van Cleef & Arpels|https://en.wikipedia.org/wiki/Van_Cleef_%26_Arpels
@@ -1281,7 +1278,6 @@ BCD Travel|https://en.wikipedia.org/wiki/BCD_Travel
 Mentor Graphics|https://en.wikipedia.org/wiki/Mentor_Graphics
 Siemensdamm (Berlin U-Bahn)|https://en.wikipedia.org/wiki/Siemensdamm_(Berlin_U-Bahn)
 BM&FBOVESPA|https://en.wikipedia.org/wiki/BM%26FBOVESPA
-SIAC Construction Ltd v The County Council of the County of Mayo|https://en.wikipedia.org/wiki/SIAC_Construction_Ltd_v_The_County_Council_of_the_County_of_Mayo
 Univar Solutions|https://en.wikipedia.org/wiki/Univar_Solutions
 Anthropologie|https://en.wikipedia.org/wiki/Anthropologie
 Christie's|https://en.wikipedia.org/wiki/Christie%27s
@@ -1350,7 +1346,6 @@ The Phillips 66 Company|https://en.wikipedia.org/wiki/The_Phillips_66_Company
 RTI International|https://en.wikipedia.org/wiki/RTI_International
 Tadawul|https://en.wikipedia.org/wiki/Tadawul
 BearingPoint|https://en.wikipedia.org/wiki/BearingPoint
-Apotex Inc v Sanofi-Synthelabo Canada Inc|https://en.wikipedia.org/wiki/Apotex_Inc_v_Sanofi-Synthelabo_Canada_Inc
 Hogan Lovells|https://en.wikipedia.org/wiki/Hogan_Lovells
 Santander Bank, N. A.|https://en.wikipedia.org/wiki/Santander_Bank,_N._A.
 A Cloud Guru|https://en.wikipedia.org/wiki/A_Cloud_Guru
