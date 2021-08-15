@@ -120,7 +120,6 @@ Colgate-Palmolive|https://en.wikipedia.org/wiki/Colgate-Palmolive
 BASF|https://en.wikipedia.org/wiki/BASF
 Louis Vuitton|https://en.wikipedia.org/wiki/Louis_Vuitton
 Lockheed Martin|https://en.wikipedia.org/wiki/Lockheed_Martin
-ARAMCO|https://en.wikipedia.org/wiki/ARAMCO
 BakerHughesDirect|https://en.wikipedia.org/wiki/BakerHughesDirect
 Cargill|https://en.wikipedia.org/wiki/Cargill
 JBS|https://en.wikipedia.org/wiki/JBS
@@ -975,7 +974,6 @@ Centurylink|https://en.wikipedia.org/wiki/Centurylink
 IHS Markit|https://en.wikipedia.org/wiki/IHS_Markit
 EXL Service|https://en.wikipedia.org/wiki/EXL_Service
 Bolloré Logistics|https://en.wikipedia.org/wiki/Bollor%C3%A9_Logistics
-R Gandhi|https://en.wikipedia.org/wiki/R_Gandhi
 Tech Data|https://en.wikipedia.org/wiki/Tech_Data
 Sonatrach|https://en.wikipedia.org/wiki/Sonatrach
 Bayut.com|https://en.wikipedia.org/wiki/Bayut.com
@@ -995,7 +993,6 @@ Nagarhole National Park|https://en.wikipedia.org/wiki/Nagarhole_National_Park
 Zanca-Sant'Andrea|https://en.wikipedia.org/wiki/Zanca-Sant%27Andrea
 HelloFresh|https://en.wikipedia.org/wiki/HelloFresh
 Aramark|https://en.wikipedia.org/wiki/Aramark
-Qiddiya|https://en.wikipedia.org/wiki/Qiddiya
 Subway|https://en.wikipedia.org/wiki/Subway
 Air Products & Chemicals|https://en.wikipedia.org/wiki/Air_Products_%26_Chemicals
 Black and Veatch|https://en.wikipedia.org/wiki/Black_and_Veatch
