@@ -1,9 +1,11 @@
 import json
 import os
 from pathlib import Path
-
+import logging
 import scrapy
 from scrapy.shell import inspect_response
+
+logger = logging.getLogger(__name__)
 
 
 class WikipediaSpider(scrapy.Spider):
@@ -32,7 +34,7 @@ class WikipediaSpider(scrapy.Spider):
     def parse(self, response):
         page = response.url.split("/")[-2]
         #inspect_response(response, self)
-        #self.log()
+        logger.debug('Assigned User-Agent %s', (response.request.headers['User-Agent']).decode('UTF-8'))
 
         json_data = json.loads(response.text)
 

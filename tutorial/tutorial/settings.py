@@ -18,14 +18,27 @@ HTTP_PROXY = 'http://127.0.0.1:8118'
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'tutorial (+http://www.yourdomain.com)'
 
-RANDOM_UA_TYPE = 'desktop.random'
-RANDOM_UA_PER_PROXY = True
+RANDOM_UA_PER_PROXY = False
+
+FAKEUSERAGENT_PROVIDERS = [
+    'scrapy_fake_useragent.providers.FakeUserAgentProvider',  # this is the first provider we'll try
+    'scrapy_fake_useragent.providers.FakerProvider',  # if FakeUserAgentProvider fails, we'll use faker to generate a
+                                                      # user-agent string for us
+    'scrapy_fake_useragent.providers.FixedUserAgentProvider',  # fall back to USER_AGENT value
+]
+
+#USER_AGENT = 'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1)'
+
+FAKEUSERAGENT_FALLBACK = 'Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.1; WOW64; Trident/7.0; SLCC2; .NET CLR 2.0.50727;' \
+                         ' .NET CLR 3.5.30729; .NET CLR 3.0.30729; InfoPath.2; .NET4.0C; .NET4.0E)'
 
 DOWNLOADER_MIDDLEWARES = {
-    'scrapy_user_agents.middlewares.RandomUserAgentMiddleware': 100,
+    'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware': None,
+    'scrapy.downloadermiddlewares.retry.RetryMiddleware': None,
+    'scrapy_fake_useragent.middleware.RandomUserAgentMiddleware': 400,
+    'scrapy_fake_useragent.middleware.RetryUserAgentMiddleware': 401,
     'scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware': 410,
-    'tutorial.middlewares.ProxyMiddleware': 420,
-    'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware': None
+    'tutorial.middlewares.ProxyMiddleware': 420
 }
 
 # Obey robots.txt rules
