@@ -18,7 +18,7 @@ HTTP_PROXY = 'http://127.0.0.1:8118'
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'tutorial (+http://www.yourdomain.com)'
 
-RANDOM_UA_TYPE = 'desktop.chrome'
+RANDOM_UA_TYPE = 'desktop.random'
 
 DOWNLOADER_MIDDLEWARES = {
     'scrapy_user_agents.middlewares.RandomUserAgentMiddleware': 100,
@@ -27,7 +27,7 @@ DOWNLOADER_MIDDLEWARES = {
 }
 
 # Obey robots.txt rules
-ROBOTSTXT_OBEY = True
+ROBOTSTXT_OBEY = False
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32
