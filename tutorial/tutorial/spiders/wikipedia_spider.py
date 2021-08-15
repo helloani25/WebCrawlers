@@ -21,7 +21,7 @@ class WikipediaSpider(scrapy.Spider):
         count = 0
         self.readUrls()
         for url in self.start_urls:
-            if count >= 1:
+            if count > 200:
                 break
             count += 1
             request = scrapy.Request(url=url, callback=self.parse)
