@@ -1,7 +1,6 @@
 Google|https://en.wikipedia.org/wiki/Google
 Amazon|https://en.wikipedia.org/wiki/Amazon
 LinkedIn|https://en.wikipedia.org/wiki/LinkedIn
-Forbes Magazine's List of America's Best Colleges|https://en.wikipedia.org/wiki/Forbes_Magazine%27s_List_of_America%27s_Best_Colleges
 Unilever|https://en.wikipedia.org/wiki/Unilever
 Microsoft|https://en.wikipedia.org/wiki/Microsoft
 Apple|https://en.wikipedia.org/wiki/Apple
@@ -37,7 +36,6 @@ Wipro|https://en.wikipedia.org/wiki/Wipro
 Pfizer|https://en.wikipedia.org/wiki/Pfizer
 Ge|https://en.wikipedia.org/wiki/Ge
 Huawei|https://en.wikipedia.org/wiki/Huawei
-World Health Organization|https://en.wikipedia.org/wiki/World_Health_Organization
 McKinsey & Company|https://en.wikipedia.org/wiki/McKinsey_%26_Company
 Cognizant|https://en.wikipedia.org/wiki/Cognizant
 Bayer|https://en.wikipedia.org/wiki/Bayer
@@ -49,7 +47,6 @@ Pwc|https://en.wikipedia.org/wiki/Pwc
 Walmart|https://en.wikipedia.org/wiki/Walmart
 Nubank|https://en.wikipedia.org/wiki/Nubank
 Capgemini|https://en.wikipedia.org/wiki/Capgemini
-World Economic Forum|https://en.wikipedia.org/wiki/World_Economic_Forum
 Hewlett Packard Enterprise|https://en.wikipedia.org/wiki/Hewlett_Packard_Enterprise
 Chevron|https://en.wikipedia.org/wiki/Chevron
 Samsung Electronics|https://en.wikipedia.org/wiki/Samsung_Electronics
@@ -80,14 +77,11 @@ General Motors LS-based small-block engine|https://en.wikipedia.org/wiki/General
 Michael Page|https://en.wikipedia.org/wiki/Michael_Page
 JPMorgan Chase|https://en.wikipedia.org/wiki/JPMorgan_Chase
 Exame.com|https://en.wikipedia.org/wiki/Exame.com
-Intel Corporation v. CPM United Kingdom Ltd.|https://en.wikipedia.org/wiki/Intel_Corporation_v._CPM_United_Kingdom_Ltd.
 Sap|https://en.wikipedia.org/wiki/Sap
-Itaú Unibanco|https://en.wikipedia.org/wiki/Ita%C3%BA_Unibanco
 Petrobras|https://en.wikipedia.org/wiki/Petrobras
 Danone|https://en.wikipedia.org/wiki/Danone
 Adidas|https://en.wikipedia.org/wiki/Adidas
 Abbott Laboratories|https://en.wikipedia.org/wiki/Abbott_Laboratories
-Boeing B-52 Stratofortress|https://en.wikipedia.org/wiki/Boeing_B-52_Stratofortress
 ExxonMobil|https://en.wikipedia.org/wiki/ExxonMobil
 Vale|https://en.wikipedia.org/wiki/Vale
 Roche|https://en.wikipedia.org/wiki/Roche
@@ -116,7 +110,6 @@ Merck|https://en.wikipedia.org/wiki/Merck
 Wired|https://en.wikipedia.org/wiki/Wired
 3M|https://en.wikipedia.org/wiki/3M
 BRF S.A.|https://en.wikipedia.org/wiki/BRF_S.A.
-Folha de S.Paulo|https://en.wikipedia.org/wiki/Folha_de_S.Paulo
 Halliburton|https://en.wikipedia.org/wiki/Halliburton
 The Atlantic|https://en.wikipedia.org/wiki/The_Atlantic
 Ericsson|https://en.wikipedia.org/wiki/Ericsson
@@ -130,9 +123,7 @@ Louis Vuitton|https://en.wikipedia.org/wiki/Louis_Vuitton
 Lockheed Martin|https://en.wikipedia.org/wiki/Lockheed_Martin
 ARAMCO|https://en.wikipedia.org/wiki/ARAMCO
 BakerHughesDirect|https://en.wikipedia.org/wiki/BakerHughesDirect
-The World Bank Economic Review|https://en.wikipedia.org/wiki/The_World_Bank_Economic_Review
 Cargill|https://en.wikipedia.org/wiki/Cargill
-Centers for Disease Control and Prevention|https://en.wikipedia.org/wiki/Centers_for_Disease_Control_and_Prevention
 JBS|https://en.wikipedia.org/wiki/JBS
 Wells Fargo|https://en.wikipedia.org/wiki/Wells_Fargo
 Cheddar Inc.|https://en.wikipedia.org/wiki/Cheddar_Inc.
@@ -150,8 +141,6 @@ American Express|https://en.wikipedia.org/wiki/American_Express
 Att|https://en.wikipedia.org/wiki/Att
 Hilton|https://en.wikipedia.org/wiki/Hilton
 Heineken|https://en.wikipedia.org/wiki/Heineken
-Qatar Airways|https://en.wikipedia.org/wiki/Qatar_Airways
-Banco do Brasil|https://en.wikipedia.org/wiki/Banco_do_Brasil
 Robert Half International|https://en.wikipedia.org/wiki/Robert_Half_International
 Gol|https://en.wikipedia.org/wiki/Gol
 Banco Santander|https://en.wikipedia.org/wiki/Banco_Santander
@@ -172,7 +161,6 @@ Boehringer Ingelheim|https://en.wikipedia.org/wiki/Boehringer_Ingelheim
 YouTube|https://en.wikipedia.org/wiki/YouTube
 Nokia|https://en.wikipedia.org/wiki/Nokia
 Verizon Communications|https://en.wikipedia.org/wiki/Verizon_Communications
-Al-Futtaim Group|https://en.wikipedia.org/wiki/Al-Futtaim_Group
 Magazine Luiza|https://en.wikipedia.org/wiki/Magazine_Luiza
 Bain and Company|https://en.wikipedia.org/wiki/Bain_and_Company
 AECOM|https://en.wikipedia.org/wiki/AECOM
@@ -185,14 +173,11 @@ UOL|https://en.wikipedia.org/wiki/UOL
 USAID|https://en.wikipedia.org/wiki/USAID
 Dell EMC|https://en.wikipedia.org/wiki/Dell_EMC
 Gartner|https://en.wikipedia.org/wiki/Gartner
-British American Tobacco|https://en.wikipedia.org/wiki/British_American_Tobacco
-US Army Ranger (horse)|https://en.wikipedia.org/wiki/US_Army_Ranger_(horse)
 Kellogg Company|https://en.wikipedia.org/wiki/Kellogg_Company
 Visa|https://en.wikipedia.org/wiki/Visa
 Ogilvy|https://en.wikipedia.org/wiki/Ogilvy
 L&T Infotech|https://en.wikipedia.org/wiki/L%26T_Infotech
 Diageo|https://en.wikipedia.org/wiki/Diageo
-Majid Al Futtaim Group|https://en.wikipedia.org/wiki/Majid_Al_Futtaim_Group
 Cacau Show|https://en.wikipedia.org/wiki/Cacau_Show
 Novo Nordisk|https://en.wikipedia.org/wiki/Novo_Nordisk
 The Kraft Heinz Company|https://en.wikipedia.org/wiki/The_Kraft_Heinz_Company
@@ -207,11 +192,9 @@ Eaton|https://en.wikipedia.org/wiki/Eaton
 Sony Pictures Entertainment Japan|https://en.wikipedia.org/wiki/Sony_Pictures_Entertainment_Japan
 Modis|https://en.wikipedia.org/wiki/Modis
 Globo|https://en.wikipedia.org/wiki/Globo
-Joking Apart|https://en.wikipedia.org/wiki/Joking_Apart
 Weatherford|https://en.wikipedia.org/wiki/Weatherford
 Estadao|https://en.wikipedia.org/wiki/Estadao
 Ad Age|https://en.wikipedia.org/wiki/Ad_Age
-Department of Veterans' Affairs (Australia)|https://en.wikipedia.org/wiki/Department_of_Veterans%27_Affairs_(Australia)
 Johnson Controls|https://en.wikipedia.org/wiki/Johnson_Controls
 Computerworld|https://en.wikipedia.org/wiki/Computerworld
 Credit Suisse|https://en.wikipedia.org/wiki/Credit_Suisse
@@ -234,10 +217,8 @@ Mayo Clinic|https://en.wikipedia.org/wiki/Mayo_Clinic
 Kimberly-Clark|https://en.wikipedia.org/wiki/Kimberly-Clark
 Mars|https://en.wikipedia.org/wiki/Mars
 John Deere|https://en.wikipedia.org/wiki/John_Deere
-KPMG Singapore|https://en.wikipedia.org/wiki/KPMG_Singapore
 Bristol Myers Squibb|https://en.wikipedia.org/wiki/Bristol_Myers_Squibb
 Reckitt|https://en.wikipedia.org/wiki/Reckitt
-American Assassin|https://en.wikipedia.org/wiki/American_Assassin
 Adp|https://en.wikipedia.org/wiki/Adp
 Mashable|https://en.wikipedia.org/wiki/Mashable
 CBRE|https://en.wikipedia.org/wiki/CBRE
@@ -249,7 +230,6 @@ Mastercard|https://en.wikipedia.org/wiki/Mastercard
 Inside Pixar|https://en.wikipedia.org/wiki/Inside_Pixar
 HackerRank|https://en.wikipedia.org/wiki/HackerRank
 Henkel|https://en.wikipedia.org/wiki/Henkel
-Qatar Petroleum|https://en.wikipedia.org/wiki/Qatar_Petroleum
 Hyatt|https://en.wikipedia.org/wiki/Hyatt
 Modern Healthcare|https://en.wikipedia.org/wiki/Modern_Healthcare
 Takeda Pharmaceuticals|https://en.wikipedia.org/wiki/Takeda_Pharmaceuticals
@@ -300,7 +280,6 @@ Siemens Energy Sector|https://en.wikipedia.org/wiki/Siemens_Energy_Sector
 LG Electronics|https://en.wikipedia.org/wiki/LG_Electronics
 AbbVie|https://en.wikipedia.org/wiki/AbbVie
 G. P. Abraham|https://en.wikipedia.org/wiki/G._P._Abraham
-Anglo-Americans|https://en.wikipedia.org/wiki/Anglo-Americans
 Stack Overflow|https://en.wikipedia.org/wiki/Stack_Overflow
 Red Bull Racing|https://en.wikipedia.org/wiki/Red_Bull_Racing
 Ralph Lauren|https://en.wikipedia.org/wiki/Ralph_Lauren
@@ -329,7 +308,6 @@ Lazada Group|https://en.wikipedia.org/wiki/Lazada_Group
 Amd|https://en.wikipedia.org/wiki/Amd
 Luxottica|https://en.wikipedia.org/wiki/Luxottica
 Z-group|https://en.wikipedia.org/wiki/Z-group
-SABIC (Saudia)|https://en.wikipedia.org/wiki/SABIC_(Saudia)
 CyberCoders|https://en.wikipedia.org/wiki/CyberCoders
 Lenovo|https://en.wikipedia.org/wiki/Lenovo
 Everistia|https://en.wikipedia.org/wiki/Everistia
@@ -346,7 +324,6 @@ Under Armour|https://en.wikipedia.org/wiki/Under_Armour
 Tableau Software|https://en.wikipedia.org/wiki/Tableau_Software
 Lear Corporation|https://en.wikipedia.org/wiki/Lear_Corporation
 Azul Airlines|https://en.wikipedia.org/wiki/Azul_Airlines
-Mercadolivre.com.br|https://en.wikipedia.org/wiki/Mercadolivre.com.br
 Rio Tinto (corporation)|https://en.wikipedia.org/wiki/Rio_Tinto_(corporation)
 Equinor|https://en.wikipedia.org/wiki/Equinor
 TransPerfect|https://en.wikipedia.org/wiki/TransPerfect
@@ -355,13 +332,11 @@ Mcdermott International Inc|https://en.wikipedia.org/wiki/Mcdermott_Internationa
 TOTVS|https://en.wikipedia.org/wiki/TOTVS
 MetLife|https://en.wikipedia.org/wiki/MetLife
 XP Investimentos|https://en.wikipedia.org/wiki/XP_Investimentos
-American Psychological Association|https://en.wikipedia.org/wiki/American_Psychological_Association
 Weg|https://en.wikipedia.org/wiki/Weg
 Rockwell Automation|https://en.wikipedia.org/wiki/Rockwell_Automation
 Engadget|https://en.wikipedia.org/wiki/Engadget
 Infor|https://en.wikipedia.org/wiki/Infor
 Sicradiscus mansuyi|https://en.wikipedia.org/wiki/Sicradiscus_mansuyi
-Independent Contractors Australia|https://en.wikipedia.org/wiki/Independent_Contractors_Australia
 Sandoz|https://en.wikipedia.org/wiki/Sandoz
 Hitachi|https://en.wikipedia.org/wiki/Hitachi
 NPR|https://en.wikipedia.org/wiki/NPR
@@ -377,18 +352,15 @@ HubSpot|https://en.wikipedia.org/wiki/HubSpot
 Fbi|https://en.wikipedia.org/wiki/Fbi
 Boston Scientific|https://en.wikipedia.org/wiki/Boston_Scientific
 Repsol|https://en.wikipedia.org/wiki/Repsol
-United States Air Force|https://en.wikipedia.org/wiki/United_States_Air_Force
 Embraer|https://en.wikipedia.org/wiki/Embraer
 Vestas|https://en.wikipedia.org/wiki/Vestas
 Atkins|https://en.wikipedia.org/wiki/Atkins
 Emerson|https://en.wikipedia.org/wiki/Emerson
-Odebrecht–Car Wash leniency agreement|https://en.wikipedia.org/wiki/Odebrecht%E2%80%93Car_Wash_leniency_agreement
 British Council|https://en.wikipedia.org/wiki/British_Council
 Atlas Copco|https://en.wikipedia.org/wiki/Atlas_Copco
 Landmark Group|https://en.wikipedia.org/wiki/Landmark_Group
 Cnut the Great|https://en.wikipedia.org/wiki/Cnut_the_Great
 Tetra Pak|https://en.wikipedia.org/wiki/Tetra_Pak
-US Navy airships during World War II|https://en.wikipedia.org/wiki/US_Navy_airships_during_World_War_II
 Aviation Week & Space Technology|https://en.wikipedia.org/wiki/Aviation_Week_%26_Space_Technology
 Hospital Sírio-Libanês|https://en.wikipedia.org/wiki/Hospital_S%C3%ADrio-Liban%C3%AAs
 Psychology Today|https://en.wikipedia.org/wiki/Psychology_Today
@@ -441,7 +413,6 @@ Michael Kors|https://en.wikipedia.org/wiki/Michael_Kors
 Kotak Mahindra Bank|https://en.wikipedia.org/wiki/Kotak_Mahindra_Bank
 Genentech|https://en.wikipedia.org/wiki/Genentech
 Lowe's Home Improvement|https://en.wikipedia.org/wiki/Lowe%27s_Home_Improvement
-Inter-American Development Bank|https://en.wikipedia.org/wiki/Inter-American_Development_Bank
 Leo Burnett|https://en.wikipedia.org/wiki/Leo_Burnett
 Vice Media|https://en.wikipedia.org/wiki/Vice_Media
 Grab (application)|https://en.wikipedia.org/wiki/Grab_(application)
@@ -470,14 +441,12 @@ Aerotek|https://en.wikipedia.org/wiki/Aerotek
 General Mills|https://en.wikipedia.org/wiki/General_Mills
 ASOS.com|https://en.wikipedia.org/wiki/ASOS.com
 Cleveland Clinic|https://en.wikipedia.org/wiki/Cleveland_Clinic
-American Heart Association|https://en.wikipedia.org/wiki/American_Heart_Association
 Andrade Gutierrez|https://en.wikipedia.org/wiki/Andrade_Gutierrez
 RBC Canadian Painting Competition|https://en.wikipedia.org/wiki/RBC_Canadian_Painting_Competition
 Starwood|https://en.wikipedia.org/wiki/Starwood
 Dassault Systèmes|https://en.wikipedia.org/wiki/Dassault_Syst%C3%A8mes
 ABA Journal|https://en.wikipedia.org/wiki/ABA_Journal
 IDEO|https://en.wikipedia.org/wiki/IDEO
-CNN Brazil|https://en.wikipedia.org/wiki/CNN_Brazil
 CB Bank|https://en.wikipedia.org/wiki/CB_Bank
 ThyssenKrupp|https://en.wikipedia.org/wiki/ThyssenKrupp
 TEKsystems|https://en.wikipedia.org/wiki/TEKsystems
@@ -499,7 +468,6 @@ Orange Business Services|https://en.wikipedia.org/wiki/Orange_Business_Services
 EPAM Systems|https://en.wikipedia.org/wiki/EPAM_Systems
 The Blackstone Group|https://en.wikipedia.org/wiki/The_Blackstone_Group
 Consolidated Contractors International Company|https://en.wikipedia.org/wiki/Consolidated_Contractors_International_Company
-Claro Brasil|https://en.wikipedia.org/wiki/Claro_Brasil
 Skift|https://en.wikipedia.org/wiki/Skift
 Usiminas|https://en.wikipedia.org/wiki/Usiminas
 HCA|https://en.wikipedia.org/wiki/HCA
@@ -510,7 +478,6 @@ Comcast|https://en.wikipedia.org/wiki/Comcast
 Statoil|https://en.wikipedia.org/wiki/Statoil
 Ajilon Prime|https://en.wikipedia.org/wiki/Ajilon_Prime
 Fujitsu|https://en.wikipedia.org/wiki/Fujitsu
-Pratt & Whitney Canada PT6|https://en.wikipedia.org/wiki/Pratt_%26_Whitney_Canada_PT6
 Goodyear|https://en.wikipedia.org/wiki/Goodyear
 Pinterest|https://en.wikipedia.org/wiki/Pinterest
 The Business of Fashion|https://en.wikipedia.org/wiki/The_Business_of_Fashion
@@ -522,7 +489,6 @@ Nordstrom|https://en.wikipedia.org/wiki/Nordstrom
 DreamWorks Animation|https://en.wikipedia.org/wiki/DreamWorks_Animation
 Disney General Entertainment Content|https://en.wikipedia.org/wiki/Disney_General_Entertainment_Content
 Magna International|https://en.wikipedia.org/wiki/Magna_International
-Volkswagen do Brasil|https://en.wikipedia.org/wiki/Volkswagen_do_Brasil
 Live Nation Entertainment|https://en.wikipedia.org/wiki/Live_Nation_Entertainment
 Indeed.com|https://en.wikipedia.org/wiki/Indeed.com
 XPO Logistics|https://en.wikipedia.org/wiki/XPO_Logistics
@@ -532,10 +498,8 @@ ServiceNow|https://en.wikipedia.org/wiki/ServiceNow
 Fiverr.com|https://en.wikipedia.org/wiki/Fiverr.com
 Turner Construction Company|https://en.wikipedia.org/wiki/Turner_Construction_Company
 Online tutorials|https://en.wikipedia.org/wiki/Online_tutorials
-Africa Confidential|https://en.wikipedia.org/wiki/Africa_Confidential
 T-Mobile|https://en.wikipedia.org/wiki/T-Mobile
 Meliá Hotels International|https://en.wikipedia.org/wiki/Meli%C3%A1_Hotels_International
-US Department of Homeland Security|https://en.wikipedia.org/wiki/US_Department_of_Homeland_Security
 Saatchi & Saatchi|https://en.wikipedia.org/wiki/Saatchi_%26_Saatchi
 Paramount Pictures|https://en.wikipedia.org/wiki/Paramount_Pictures
 Motorola Mobility|https://en.wikipedia.org/wiki/Motorola_Mobility
@@ -544,7 +508,6 @@ Duratex|https://en.wikipedia.org/wiki/Duratex
 Walt Disney Animation Studios|https://en.wikipedia.org/wiki/Walt_Disney_Animation_Studios
 Walgreens|https://en.wikipedia.org/wiki/Walgreens
 Creative Circle|https://en.wikipedia.org/wiki/Creative_Circle
-National Association of Realtors|https://en.wikipedia.org/wiki/National_Association_of_Realtors
 Bacardi|https://en.wikipedia.org/wiki/Bacardi
 Alcon|https://en.wikipedia.org/wiki/Alcon
 Tata Communications|https://en.wikipedia.org/wiki/Tata_Communications
@@ -577,9 +540,7 @@ Kantar|https://en.wikipedia.org/wiki/Kantar
 Intumescent|https://en.wikipedia.org/wiki/Intumescent
 Dasa|https://en.wikipedia.org/wiki/Dasa
 Faa|https://en.wikipedia.org/wiki/Faa
-Caixa Econômica Federal|https://en.wikipedia.org/wiki/Caixa_Econ%C3%B4mica_Federal
 Costco Wholesale Corp. v. Omega, S. A.|https://en.wikipedia.org/wiki/Costco_Wholesale_Corp._v._Omega,_S._A.
-Non-commissioned officer|https://en.wikipedia.org/wiki/Non-commissioned_officer
 Stellantis|https://en.wikipedia.org/wiki/Stellantis
 Tata Technologies|https://en.wikipedia.org/wiki/Tata_Technologies
 Pearson|https://en.wikipedia.org/wiki/Pearson
@@ -587,11 +548,9 @@ Globant|https://en.wikipedia.org/wiki/Globant
 Parsons|https://en.wikipedia.org/wiki/Parsons
 Aquent|https://en.wikipedia.org/wiki/Aquent
 Luxoft|https://en.wikipedia.org/wiki/Luxoft
-Yves Saint Laurent (designer)|https://en.wikipedia.org/wiki/Yves_Saint_Laurent_(designer)
 Calvin Klein (fashion house)|https://en.wikipedia.org/wiki/Calvin_Klein_(fashion_house)
 Grant Thornton LLP|https://en.wikipedia.org/wiki/Grant_Thornton_LLP
 Mylan|https://en.wikipedia.org/wiki/Mylan
-The Chronicle of Higher Education|https://en.wikipedia.org/wiki/The_Chronicle_of_Higher_Education
 CH2M|https://en.wikipedia.org/wiki/CH2M
 Electrolux|https://en.wikipedia.org/wiki/Electrolux
 NXP Semiconductors|https://en.wikipedia.org/wiki/NXP_Semiconductors
@@ -602,9 +561,7 @@ Macquarie Group|https://en.wikipedia.org/wiki/Macquarie_Group
 Barilla Group|https://en.wikipedia.org/wiki/Barilla_Group
 Forever 21|https://en.wikipedia.org/wiki/Forever_21
 Elsevier|https://en.wikipedia.org/wiki/Elsevier
-The Nature Conservancy|https://en.wikipedia.org/wiki/The_Nature_Conservancy
 VF Corporation|https://en.wikipedia.org/wiki/VF_Corporation
-Conscience clause in medicine in the United States|https://en.wikipedia.org/wiki/Conscience_clause_in_medicine_in_the_United_States
 Votorantim|https://en.wikipedia.org/wiki/Votorantim
 Business insurance|https://en.wikipedia.org/wiki/Business_insurance
 Fiserv|https://en.wikipedia.org/wiki/Fiserv
@@ -612,7 +569,6 @@ The We Company|https://en.wikipedia.org/wiki/The_We_Company
 Fis|https://en.wikipedia.org/wiki/Fis
 Pantone|https://en.wikipedia.org/wiki/Pantone
 Shiseido|https://en.wikipedia.org/wiki/Shiseido
-TIM Brasil|https://en.wikipedia.org/wiki/TIM_Brasil
 Gap Inc.|https://en.wikipedia.org/wiki/Gap_Inc.
 Ecolab|https://en.wikipedia.org/wiki/Ecolab
 Alpargatas|https://en.wikipedia.org/wiki/Alpargatas
@@ -621,7 +577,6 @@ Ems|https://en.wikipedia.org/wiki/Ems
 State farm|https://en.wikipedia.org/wiki/State_farm
 DoorDash|https://en.wikipedia.org/wiki/DoorDash
 Yara|https://en.wikipedia.org/wiki/Yara
-TASC Outsourcing|https://en.wikipedia.org/wiki/TASC_Outsourcing
 Biosensor|https://en.wikipedia.org/wiki/Biosensor
 Sonda|https://en.wikipedia.org/wiki/Sonda
 Tommy Hilfiger|https://en.wikipedia.org/wiki/Tommy_Hilfiger
@@ -641,21 +596,16 @@ Splunk|https://en.wikipedia.org/wiki/Splunk
 Kiewit|https://en.wikipedia.org/wiki/Kiewit
 GE Capital|https://en.wikipedia.org/wiki/GE_Capital
 HackerEarth|https://en.wikipedia.org/wiki/HackerEarth
-Inman News|https://en.wikipedia.org/wiki/Inman_News
 BNY Mellon|https://en.wikipedia.org/wiki/BNY_Mellon
-Qatar Foundation|https://en.wikipedia.org/wiki/Qatar_Foundation
 Nintendo|https://en.wikipedia.org/wiki/Nintendo
 BBC Studios|https://en.wikipedia.org/wiki/BBC_Studios
 The Verge|https://en.wikipedia.org/wiki/The_Verge
 Foster & Partners|https://en.wikipedia.org/wiki/Foster_%26_Partners
 Cia. Hering|https://en.wikipedia.org/wiki/Cia._Hering
-Victoria's Secret|https://en.wikipedia.org/wiki/Victoria%27s_Secret
 State Street Corporation|https://en.wikipedia.org/wiki/State_Street_Corporation
-Centers for Medicare & Medicaid Services|https://en.wikipedia.org/wiki/Centers_for_Medicare_%26_Medicaid_Services
 Publicis Sapient|https://en.wikipedia.org/wiki/Publicis_Sapient
 Hill International|https://en.wikipedia.org/wiki/Hill_International
 Intuit|https://en.wikipedia.org/wiki/Intuit
-Petroleum Development Oman|https://en.wikipedia.org/wiki/Petroleum_Development_Oman
 Coca-Cola HBC|https://en.wikipedia.org/wiki/Coca-Cola_HBC
 Aetna|https://en.wikipedia.org/wiki/Aetna
 Lucasfilm|https://en.wikipedia.org/wiki/Lucasfilm
@@ -665,7 +615,6 @@ Rockstar Games|https://en.wikipedia.org/wiki/Rockstar_Games
 21st Century Fox|https://en.wikipedia.org/wiki/21st_Century_Fox
 McKesson Corporation|https://en.wikipedia.org/wiki/McKesson_Corporation
 Huxley family|https://en.wikipedia.org/wiki/Huxley_family
-Human Rights Watch|https://en.wikipedia.org/wiki/Human_Rights_Watch
 Collins Aerospace|https://en.wikipedia.org/wiki/Collins_Aerospace
 Aurora (singer)|https://en.wikipedia.org/wiki/Aurora_(singer)
 BRMalls|https://en.wikipedia.org/wiki/BRMalls
@@ -679,7 +628,6 @@ Women's Wear Daily|https://en.wikipedia.org/wiki/Women%27s_Wear_Daily
 Egy-Tech Engineering|https://en.wikipedia.org/wiki/Egy-Tech_Engineering
 Blue Lives Matter|https://en.wikipedia.org/wiki/Blue_Lives_Matter
 Sequoiadendron giganteum|https://en.wikipedia.org/wiki/Sequoiadendron_giganteum
-American Nurses Association|https://en.wikipedia.org/wiki/American_Nurses_Association
 Elm|https://en.wikipedia.org/wiki/Elm
 Care|https://en.wikipedia.org/wiki/Care
 Sprint|https://en.wikipedia.org/wiki/Sprint
@@ -699,12 +647,10 @@ Banco Pan|https://en.wikipedia.org/wiki/Banco_Pan
 Dropbox|https://en.wikipedia.org/wiki/Dropbox
 Envy (group)|https://en.wikipedia.org/wiki/Envy_(group)
 Epsilon|https://en.wikipedia.org/wiki/Epsilon
-UNFPA Goodwill Ambassador|https://en.wikipedia.org/wiki/UNFPA_Goodwill_Ambassador
 Vans|https://en.wikipedia.org/wiki/Vans
 MongoDB Inc.|https://en.wikipedia.org/wiki/MongoDB_Inc.
 Hitachi Vantara|https://en.wikipedia.org/wiki/Hitachi_Vantara
 Smile|https://en.wikipedia.org/wiki/Smile
-Gupta Empire|https://en.wikipedia.org/wiki/Gupta_Empire
 Rabobank|https://en.wikipedia.org/wiki/Rabobank
 Mattel|https://en.wikipedia.org/wiki/Mattel
 Verizon Business|https://en.wikipedia.org/wiki/Verizon_Business
@@ -744,7 +690,6 @@ Mobily|https://en.wikipedia.org/wiki/Mobily
 US Bank Centre – Cleveland|https://en.wikipedia.org/wiki/US_Bank_Centre_%E2%80%93_Cleveland
 Appen|https://en.wikipedia.org/wiki/Appen
 Di-Syston|https://en.wikipedia.org/wiki/Di-Syston
-Picayune, Mississippi|https://en.wikipedia.org/wiki/Picayune,_Mississippi
 Tripadvisor|https://en.wikipedia.org/wiki/Tripadvisor
 Zoom Video Communications|https://en.wikipedia.org/wiki/Zoom_Video_Communications
 Ieee|https://en.wikipedia.org/wiki/Ieee
@@ -760,13 +705,11 @@ CA Technologies|https://en.wikipedia.org/wiki/CA_Technologies
 Boschusacea|https://en.wikipedia.org/wiki/Boschusacea
 Zdnet.com|https://en.wikipedia.org/wiki/Zdnet.com
 Chase|https://en.wikipedia.org/wiki/Chase
-JWT Jakarta|https://en.wikipedia.org/wiki/JWT_Jakarta
 Stripe|https://en.wikipedia.org/wiki/Stripe
 Fractal Analytics|https://en.wikipedia.org/wiki/Fractal_Analytics
 S. C. Johnson & Son|https://en.wikipedia.org/wiki/S._C._Johnson_%26_Son
 Synechron Inc|https://en.wikipedia.org/wiki/Synechron_Inc
 Cigna|https://en.wikipedia.org/wiki/Cigna
-National Football League|https://en.wikipedia.org/wiki/National_Football_League
 Kroger|https://en.wikipedia.org/wiki/Kroger
 PPG Industries|https://en.wikipedia.org/wiki/PPG_Industries
 Linde|https://en.wikipedia.org/wiki/Linde
@@ -779,7 +722,6 @@ Daraz|https://en.wikipedia.org/wiki/Daraz
 Mahle|https://en.wikipedia.org/wiki/Mahle
 PVH (company)|https://en.wikipedia.org/wiki/PVH_(company)
 Conduent|https://en.wikipedia.org/wiki/Conduent
-American Red Cross|https://en.wikipedia.org/wiki/American_Red_Cross
 Kempinski Hotels|https://en.wikipedia.org/wiki/Kempinski_Hotels
 Delphi|https://en.wikipedia.org/wiki/Delphi
 Nomura|https://en.wikipedia.org/wiki/Nomura
@@ -790,16 +732,12 @@ Tivit|https://en.wikipedia.org/wiki/Tivit
 Cameron|https://en.wikipedia.org/wiki/Cameron
 Epic Games|https://en.wikipedia.org/wiki/Epic_Games
 Motorolasolutions.com|https://en.wikipedia.org/wiki/Motorolasolutions.com
-Al-Rajhi Bank|https://en.wikipedia.org/wiki/Al-Rajhi_Bank
-Bank of Alexandria (Alexandria, Virginia)|https://en.wikipedia.org/wiki/Bank_of_Alexandria_(Alexandria,_Virginia)
 Synopsys|https://en.wikipedia.org/wiki/Synopsys
 Zydus Wellness|https://en.wikipedia.org/wiki/Zydus_Wellness
 Snowflake Computing|https://en.wikipedia.org/wiki/Snowflake_Computing
 UNOPS|https://en.wikipedia.org/wiki/UNOPS
 Hudson Potts|https://en.wikipedia.org/wiki/Hudson_Potts
-US Department of Health and Human Services|https://en.wikipedia.org/wiki/US_Department_of_Health_and_Human_Services
 Duolingo|https://en.wikipedia.org/wiki/Duolingo
-National Basketball Association|https://en.wikipedia.org/wiki/National_Basketball_Association
 Adm|https://en.wikipedia.org/wiki/Adm
 International Paper|https://en.wikipedia.org/wiki/International_Paper
 Kaggle|https://en.wikipedia.org/wiki/Kaggle
@@ -808,13 +746,11 @@ NetSuite|https://en.wikipedia.org/wiki/NetSuite
 Zimmer Biomet|https://en.wikipedia.org/wiki/Zimmer_Biomet
 Humana|https://en.wikipedia.org/wiki/Humana
 USAA|https://en.wikipedia.org/wiki/USAA
-Hyundai Motor Brasil|https://en.wikipedia.org/wiki/Hyundai_Motor_Brasil
 Activision|https://en.wikipedia.org/wiki/Activision
 M. Dias Branco|https://en.wikipedia.org/wiki/M._Dias_Branco
 Planetizen|https://en.wikipedia.org/wiki/Planetizen
 Serco|https://en.wikipedia.org/wiki/Serco
 Delhivery|https://en.wikipedia.org/wiki/Delhivery
-Banco Central do Brasil|https://en.wikipedia.org/wiki/Banco_Central_do_Brasil
 Avanade|https://en.wikipedia.org/wiki/Avanade
 Alcoa|https://en.wikipedia.org/wiki/Alcoa
 Revlon, Inc. v. MacAndrews & Forbes Holdings, Inc.|https://en.wikipedia.org/wiki/Revlon,_Inc._v._MacAndrews_%26_Forbes_Holdings,_Inc.
@@ -827,20 +763,16 @@ Toyota North America|https://en.wikipedia.org/wiki/Toyota_North_America
 Kerry|https://en.wikipedia.org/wiki/Kerry
 ICAO|https://en.wikipedia.org/wiki/ICAO
 PCL Construction|https://en.wikipedia.org/wiki/PCL_Construction
-USAJobs|https://en.wikipedia.org/wiki/USAJobs
 Christian Louboutin|https://en.wikipedia.org/wiki/Christian_Louboutin
-African Development Bank|https://en.wikipedia.org/wiki/African_Development_Bank
 BBDO|https://en.wikipedia.org/wiki/BBDO
 Bose Corporation|https://en.wikipedia.org/wiki/Bose_Corporation
 Brac|https://en.wikipedia.org/wiki/Brac
 Stanley Black & Decker Inc|https://en.wikipedia.org/wiki/Stanley_Black_%26_Decker_Inc
 Newell Brands|https://en.wikipedia.org/wiki/Newell_Brands
-Dar Al-Handasah|https://en.wikipedia.org/wiki/Dar_Al-Handasah
 Havas Media|https://en.wikipedia.org/wiki/Havas_Media
 Fico|https://en.wikipedia.org/wiki/Fico
 Realtor.com|https://en.wikipedia.org/wiki/Realtor.com
 Leonardo (company)|https://en.wikipedia.org/wiki/Leonardo_(company)
-Fema|https://en.wikipedia.org/wiki/Fema
 Wartsila|https://en.wikipedia.org/wiki/Wartsila
 Havas|https://en.wikipedia.org/wiki/Havas
 Jobs for a Change|https://en.wikipedia.org/wiki/Jobs_for_a_Change
@@ -850,7 +782,645 @@ Gameloft|https://en.wikipedia.org/wiki/Gameloft
 XP Inc.|https://en.wikipedia.org/wiki/XP_Inc.
 Jabil|https://en.wikipedia.org/wiki/Jabil
 Virtusa|https://en.wikipedia.org/wiki/Virtusa
-Banco Bilbao Vizcaya Argentaria|https://en.wikipedia.org/wiki/Banco_Bilbao_Vizcaya_Argentaria
 Senac|https://en.wikipedia.org/wiki/Senac
 Firmenich|https://en.wikipedia.org/wiki/Firmenich
 Unisys|https://en.wikipedia.org/wiki/Unisys
+Arm|https://en.wikipedia.org/wiki/Arm
+Itaúba|https://en.wikipedia.org/wiki/Ita%C3%BAba
+Olam International|https://en.wikipedia.org/wiki/Olam_International
+Mind share|https://en.wikipedia.org/wiki/Mind_share
+New Balance|https://en.wikipedia.org/wiki/New_Balance
+Intertek|https://en.wikipedia.org/wiki/Intertek
+Twitch TV|https://en.wikipedia.org/wiki/Twitch_TV
+Philips Lighting|https://en.wikipedia.org/wiki/Philips_Lighting
+Turner Broadcasting System|https://en.wikipedia.org/wiki/Turner_Broadcasting_System
+Coach|https://en.wikipedia.org/wiki/Coach
+Companhia Siderúrgica Nacional|https://en.wikipedia.org/wiki/Companhia_Sider%C3%BArgica_Nacional
+CompTIA|https://en.wikipedia.org/wiki/CompTIA
+Regeneron Pharmaceuticals|https://en.wikipedia.org/wiki/Regeneron_Pharmaceuticals
+Arezzo Cathedral|https://en.wikipedia.org/wiki/Arezzo_Cathedral
+Eskom|https://en.wikipedia.org/wiki/Eskom
+Tenaris|https://en.wikipedia.org/wiki/Tenaris
+Allstate|https://en.wikipedia.org/wiki/Allstate
+Kroton Educacional SA|https://en.wikipedia.org/wiki/Kroton_Educacional_SA
+Mozilla Corporation|https://en.wikipedia.org/wiki/Mozilla_Corporation
+Hyatt Regency walkway collapse|https://en.wikipedia.org/wiki/Hyatt_Regency_walkway_collapse
+Celgene|https://en.wikipedia.org/wiki/Celgene
+Infineon Technologies|https://en.wikipedia.org/wiki/Infineon_Technologies
+Lupinus|https://en.wikipedia.org/wiki/Lupinus
+Korsakoff syndrome|https://en.wikipedia.org/wiki/Korsakoff_syndrome
+US EPA|https://en.wikipedia.org/wiki/US_EPA
+ASML Holding|https://en.wikipedia.org/wiki/ASML_Holding
+Fox News Channel|https://en.wikipedia.org/wiki/Fox_News_Channel
+Heidrick & Struggles|https://en.wikipedia.org/wiki/Heidrick_%26_Struggles
+Zensar Technologies|https://en.wikipedia.org/wiki/Zensar_Technologies
+DDB|https://en.wikipedia.org/wiki/DDB
+Salvatore Ferragamo|https://en.wikipedia.org/wiki/Salvatore_Ferragamo
+Equinix|https://en.wikipedia.org/wiki/Equinix
+Coinbase|https://en.wikipedia.org/wiki/Coinbase
+Lionsgate|https://en.wikipedia.org/wiki/Lionsgate
+Talabat.com|https://en.wikipedia.org/wiki/Talabat.com
+Boston Dynamics|https://en.wikipedia.org/wiki/Boston_Dynamics
+Snap-On Incorporated|https://en.wikipedia.org/wiki/Snap-On_Incorporated
+Leidos|https://en.wikipedia.org/wiki/Leidos
+De Vere Group|https://en.wikipedia.org/wiki/De_Vere_Group
+Agoda|https://en.wikipedia.org/wiki/Agoda
+Illumina|https://en.wikipedia.org/wiki/Illumina
+Hess Corporation|https://en.wikipedia.org/wiki/Hess_Corporation
+Privalino|https://en.wikipedia.org/wiki/Privalino
+Avery Dennison|https://en.wikipedia.org/wiki/Avery_Dennison
+Sophos|https://en.wikipedia.org/wiki/Sophos
+The Hershey Company|https://en.wikipedia.org/wiki/The_Hershey_Company
+Lumen Technologies|https://en.wikipedia.org/wiki/Lumen_Technologies
+J. P. Morgan Asset Management|https://en.wikipedia.org/wiki/J._P._Morgan_Asset_Management
+Rappi|https://en.wikipedia.org/wiki/Rappi
+Even|https://en.wikipedia.org/wiki/Even
+Essilor|https://en.wikipedia.org/wiki/Essilor
+AngloGold Ashanti|https://en.wikipedia.org/wiki/AngloGold_Ashanti
+Parker Hannifin|https://en.wikipedia.org/wiki/Parker_Hannifin
+Reed|https://en.wikipedia.org/wiki/Reed
+SulAmérica Seguros|https://en.wikipedia.org/wiki/SulAm%C3%A9rica_Seguros
+USPS|https://en.wikipedia.org/wiki/USPS
+Orsted|https://en.wikipedia.org/wiki/Orsted
+Applied Materials|https://en.wikipedia.org/wiki/Applied_Materials
+Anheuser-Busch brands|https://en.wikipedia.org/wiki/Anheuser-Busch_brands
+Teradata|https://en.wikipedia.org/wiki/Teradata
+Progressive recruitment|https://en.wikipedia.org/wiki/Progressive_recruitment
+YouGov|https://en.wikipedia.org/wiki/YouGov
+Hydrogen group|https://en.wikipedia.org/wiki/Hydrogen_group
+Investec|https://en.wikipedia.org/wiki/Investec
+Asian Paints|https://en.wikipedia.org/wiki/Asian_Paints
+Dyson|https://en.wikipedia.org/wiki/Dyson
+B. Braun Group|https://en.wikipedia.org/wiki/B._Braun_Group
+J Crew|https://en.wikipedia.org/wiki/J_Crew
+NBC News|https://en.wikipedia.org/wiki/NBC_News
+PTC, Inc.|https://en.wikipedia.org/wiki/PTC,_Inc.
+McAfee|https://en.wikipedia.org/wiki/McAfee
+Cerner Corporation|https://en.wikipedia.org/wiki/Cerner_Corporation
+Danfoss|https://en.wikipedia.org/wiki/Danfoss
+Marsh McLennan|https://en.wikipedia.org/wiki/Marsh_McLennan
+Veeam Software|https://en.wikipedia.org/wiki/Veeam_Software
+Carnival Cruise Line|https://en.wikipedia.org/wiki/Carnival_Cruise_Line
+Kopenhagen|https://en.wikipedia.org/wiki/Kopenhagen
+MediaMonks|https://en.wikipedia.org/wiki/MediaMonks
+Rizoneide Vanderlei|https://en.wikipedia.org/wiki/Rizoneide_Vanderlei
+Herbalife Nutrition|https://en.wikipedia.org/wiki/Herbalife_Nutrition
+Northwestern Mutual|https://en.wikipedia.org/wiki/Northwestern_Mutual
+Sogeti|https://en.wikipedia.org/wiki/Sogeti
+Etisalat misr|https://en.wikipedia.org/wiki/Etisalat_misr
+Zoetis|https://en.wikipedia.org/wiki/Zoetis
+Prudential Financial|https://en.wikipedia.org/wiki/Prudential_Financial
+Vanguard|https://en.wikipedia.org/wiki/Vanguard
+UiPath|https://en.wikipedia.org/wiki/UiPath
+Gold Fields|https://en.wikipedia.org/wiki/Gold_Fields
+Pegasystems|https://en.wikipedia.org/wiki/Pegasystems
+Universal Pictures|https://en.wikipedia.org/wiki/Universal_Pictures
+AGCO Corporation|https://en.wikipedia.org/wiki/AGCO_Corporation
+Banque Misr|https://en.wikipedia.org/wiki/Banque_Misr
+Amil|https://en.wikipedia.org/wiki/Amil
+Nasdaq|https://en.wikipedia.org/wiki/Nasdaq
+Construtora Tenda|https://en.wikipedia.org/wiki/Construtora_Tenda
+Bank of Montreal|https://en.wikipedia.org/wiki/Bank_of_Montreal
+CPFL Energia|https://en.wikipedia.org/wiki/CPFL_Energia
+Petz|https://en.wikipedia.org/wiki/Petz
+PIMCO|https://en.wikipedia.org/wiki/PIMCO
+F5|https://en.wikipedia.org/wiki/F5
+Smurfit Kappa Group|https://en.wikipedia.org/wiki/Smurfit_Kappa_Group
+Lyft|https://en.wikipedia.org/wiki/Lyft
+Simple learning design 2.0|https://en.wikipedia.org/wiki/Simple_learning_design_2.0
+Jimmy Choo|https://en.wikipedia.org/wiki/Jimmy_Choo
+Agility|https://en.wikipedia.org/wiki/Agility
+Calzedonia|https://en.wikipedia.org/wiki/Calzedonia
+Aurecon|https://en.wikipedia.org/wiki/Aurecon
+Global National|https://en.wikipedia.org/wiki/Global_National
+Regus|https://en.wikipedia.org/wiki/Regus
+United Technologies|https://en.wikipedia.org/wiki/United_Technologies
+Toptal|https://en.wikipedia.org/wiki/Toptal
+TSMC|https://en.wikipedia.org/wiki/TSMC
+Norwegian Cruise Line Holdings|https://en.wikipedia.org/wiki/Norwegian_Cruise_Line_Holdings
+Esri|https://en.wikipedia.org/wiki/Esri
+GHD|https://en.wikipedia.org/wiki/GHD
+Duke Energy Corporation|https://en.wikipedia.org/wiki/Duke_Energy_Corporation
+DeepMind|https://en.wikipedia.org/wiki/DeepMind
+Prysmian Group|https://en.wikipedia.org/wiki/Prysmian_Group
+Kaspersky Lab|https://en.wikipedia.org/wiki/Kaspersky_Lab
+Mediacom|https://en.wikipedia.org/wiki/Mediacom
+Apple One (service)|https://en.wikipedia.org/wiki/Apple_One_(service)
+Gulfstream Aerospace|https://en.wikipedia.org/wiki/Gulfstream_Aerospace
+Hasbro|https://en.wikipedia.org/wiki/Hasbro
+Northern Trust|https://en.wikipedia.org/wiki/Northern_Trust
+Databricks|https://en.wikipedia.org/wiki/Databricks
+Volt|https://en.wikipedia.org/wiki/Volt
+Syneos Health|https://en.wikipedia.org/wiki/Syneos_Health
+Chloe|https://en.wikipedia.org/wiki/Chloe
+Sprinklr|https://en.wikipedia.org/wiki/Sprinklr
+US Foods|https://en.wikipedia.org/wiki/US_Foods
+American Honda Motor Company, Inc.|https://en.wikipedia.org/wiki/American_Honda_Motor_Company,_Inc.
+NPO Energia|https://en.wikipedia.org/wiki/NPO_Energia
+Foodpanda|https://en.wikipedia.org/wiki/Foodpanda
+Esko|https://en.wikipedia.org/wiki/Esko
+Urban Outfitters|https://en.wikipedia.org/wiki/Urban_Outfitters
+Dunnhumby|https://en.wikipedia.org/wiki/Dunnhumby
+Atento|https://en.wikipedia.org/wiki/Atento
+Hrithik Roshan|https://en.wikipedia.org/wiki/Hrithik_Roshan
+Arla Foods|https://en.wikipedia.org/wiki/Arla_Foods
+JSL S.A.|https://en.wikipedia.org/wiki/JSL_S.A.
+Bio-Rad Laboratories|https://en.wikipedia.org/wiki/Bio-Rad_Laboratories
+Oupa Gqozo|https://en.wikipedia.org/wiki/Oupa_Gqozo
+Joe (coffee)|https://en.wikipedia.org/wiki/Joe_(coffee)
+Abril|https://en.wikipedia.org/wiki/Abril
+Orange Egypt|https://en.wikipedia.org/wiki/Orange_Egypt
+Careem|https://en.wikipedia.org/wiki/Careem
+International SOS|https://en.wikipedia.org/wiki/International_SOS
+Nielsenichthys pullus|https://en.wikipedia.org/wiki/Nielsenichthys_pullus
+Wieden+Kennedy|https://en.wikipedia.org/wiki/Wieden%2BKennedy
+Club Med|https://en.wikipedia.org/wiki/Club_Med
+General Dynamics F-16 Fighting Falcon|https://en.wikipedia.org/wiki/General_Dynamics_F-16_Fighting_Falcon
+Devon Energy|https://en.wikipedia.org/wiki/Devon_Energy
+Harnham|https://en.wikipedia.org/wiki/Harnham
+Borg Bryggerier|https://en.wikipedia.org/wiki/Borg_Bryggerier
+Interior design magazine|https://en.wikipedia.org/wiki/Interior_design_magazine
+World Wildlife Fund|https://en.wikipedia.org/wiki/World_Wildlife_Fund
+CCA Global Partners|https://en.wikipedia.org/wiki/CCA_Global_Partners
+Elsewedy Electric|https://en.wikipedia.org/wiki/Elsewedy_Electric
+Newmont|https://en.wikipedia.org/wiki/Newmont
+Swarovski|https://en.wikipedia.org/wiki/Swarovski
+Binance|https://en.wikipedia.org/wiki/Binance
+Chep|https://en.wikipedia.org/wiki/Chep
+Hassan Allam Holding|https://en.wikipedia.org/wiki/Hassan_Allam_Holding
+Ulysses S. Grant|https://en.wikipedia.org/wiki/Ulysses_S._Grant
+Bridgestone|https://en.wikipedia.org/wiki/Bridgestone
+Brookfield Asset Management|https://en.wikipedia.org/wiki/Brookfield_Asset_Management
+Arab Bank|https://en.wikipedia.org/wiki/Arab_Bank
+Zendesk|https://en.wikipedia.org/wiki/Zendesk
+Riyad Bank|https://en.wikipedia.org/wiki/Riyad_Bank
+Danish Refugee Council|https://en.wikipedia.org/wiki/Danish_Refugee_Council
+TJX Companies|https://en.wikipedia.org/wiki/TJX_Companies
+DocuSign|https://en.wikipedia.org/wiki/DocuSign
+Celine|https://en.wikipedia.org/wiki/Celine
+Major League Baseball|https://en.wikipedia.org/wiki/Major_League_Baseball
+Forrester Research|https://en.wikipedia.org/wiki/Forrester_Research
+Hok|https://en.wikipedia.org/wiki/Hok
+Repubblica|https://en.wikipedia.org/wiki/Repubblica
+Vivara|https://en.wikipedia.org/wiki/Vivara
+New York Life Building|https://en.wikipedia.org/wiki/New_York_Life_Building
+Sysco|https://en.wikipedia.org/wiki/Sysco
+Facebook|https://en.wikipedia.org/wiki/Facebook
+Sbt (software)|https://en.wikipedia.org/wiki/Sbt_(software)
+Protacanthopterygii|https://en.wikipedia.org/wiki/Protacanthopterygii
+CB&I|https://en.wikipedia.org/wiki/CB%26I
+Uniqlo|https://en.wikipedia.org/wiki/Uniqlo
+Grupo Petrópolis|https://en.wikipedia.org/wiki/Grupo_Petr%C3%B3polis
+Embratel|https://en.wikipedia.org/wiki/Embratel
+Liebherr|https://en.wikipedia.org/wiki/Liebherr
+KKRZ|https://en.wikipedia.org/wiki/KKRZ
+Lionbridge|https://en.wikipedia.org/wiki/Lionbridge
+Expeditors International|https://en.wikipedia.org/wiki/Expeditors_International
+Pierre Fabre (businessman)|https://en.wikipedia.org/wiki/Pierre_Fabre_(businessman)
+Johns Hopkins Medicine International|https://en.wikipedia.org/wiki/Johns_Hopkins_Medicine_International
+Technicolor|https://en.wikipedia.org/wiki/Technicolor
+GFK|https://en.wikipedia.org/wiki/GFK
+Otis elevators|https://en.wikipedia.org/wiki/Otis_elevators
+World Wide Technology|https://en.wikipedia.org/wiki/World_Wide_Technology
+RDX Technology|https://en.wikipedia.org/wiki/RDX_Technology
+Abercrombie & Fitch|https://en.wikipedia.org/wiki/Abercrombie_%26_Fitch
+JCPenney|https://en.wikipedia.org/wiki/JCPenney
+GE Digital|https://en.wikipedia.org/wiki/GE_Digital
+Young & Rubicam|https://en.wikipedia.org/wiki/Young_%26_Rubicam
+Bestseller|https://en.wikipedia.org/wiki/Bestseller
+Euromonitor International|https://en.wikipedia.org/wiki/Euromonitor_International
+MSC Cruises|https://en.wikipedia.org/wiki/MSC_Cruises
+Weber Shandwick|https://en.wikipedia.org/wiki/Weber_Shandwick
+Centurylink|https://en.wikipedia.org/wiki/Centurylink
+IHS Markit|https://en.wikipedia.org/wiki/IHS_Markit
+EXL Service|https://en.wikipedia.org/wiki/EXL_Service
+Bolloré Logistics|https://en.wikipedia.org/wiki/Bollor%C3%A9_Logistics
+R Gandhi|https://en.wikipedia.org/wiki/R_Gandhi
+Tech Data|https://en.wikipedia.org/wiki/Tech_Data
+Sonatrach|https://en.wikipedia.org/wiki/Sonatrach
+Bayut.com|https://en.wikipedia.org/wiki/Bayut.com
+SIRUM (organization)|https://en.wikipedia.org/wiki/SIRUM_(organization)
+Harley-Davidson Motor Company|https://en.wikipedia.org/wiki/Harley-Davidson_Motor_Company
+Sun Life Financial|https://en.wikipedia.org/wiki/Sun_Life_Financial
+Guerlain|https://en.wikipedia.org/wiki/Guerlain
+Danaher|https://en.wikipedia.org/wiki/Danaher
+Rivian|https://en.wikipedia.org/wiki/Rivian
+Metso|https://en.wikipedia.org/wiki/Metso
+Banglalink|https://en.wikipedia.org/wiki/Banglalink
+RGP (duo)|https://en.wikipedia.org/wiki/RGP_(duo)
+Tegra Incorporadora|https://en.wikipedia.org/wiki/Tegra_Incorporadora
+Credit Agricole CIB|https://en.wikipedia.org/wiki/Credit_Agricole_CIB
+Rei|https://en.wikipedia.org/wiki/Rei
+Pentagram|https://en.wikipedia.org/wiki/Pentagram
+Nagarhole National Park|https://en.wikipedia.org/wiki/Nagarhole_National_Park
+Zanca-Sant'Andrea|https://en.wikipedia.org/wiki/Zanca-Sant%27Andrea
+HelloFresh|https://en.wikipedia.org/wiki/HelloFresh
+Aramark|https://en.wikipedia.org/wiki/Aramark
+Qiddiya|https://en.wikipedia.org/wiki/Qiddiya
+Subway|https://en.wikipedia.org/wiki/Subway
+Air Products & Chemicals|https://en.wikipedia.org/wiki/Air_Products_%26_Chemicals
+Black and Veatch|https://en.wikipedia.org/wiki/Black_and_Veatch
+SolarCity|https://en.wikipedia.org/wiki/SolarCity
+Microchip Technology|https://en.wikipedia.org/wiki/Microchip_Technology
+Deloitte Digital|https://en.wikipedia.org/wiki/Deloitte_Digital
+Zain|https://en.wikipedia.org/wiki/Zain
+Associated Press|https://en.wikipedia.org/wiki/Associated_Press
+CrowdStrike|https://en.wikipedia.org/wiki/CrowdStrike
+Publicis|https://en.wikipedia.org/wiki/Publicis
+K Force (Bangladesh)|https://en.wikipedia.org/wiki/K_Force_(Bangladesh)
+Quest Diagnostics|https://en.wikipedia.org/wiki/Quest_Diagnostics
+Protiviti|https://en.wikipedia.org/wiki/Protiviti
+Apache Corporation|https://en.wikipedia.org/wiki/Apache_Corporation
+AFRY|https://en.wikipedia.org/wiki/AFRY
+HC Oranje-Rood|https://en.wikipedia.org/wiki/HC_Oranje-Rood
+BorgWarner|https://en.wikipedia.org/wiki/BorgWarner
+MUFG Bank|https://en.wikipedia.org/wiki/MUFG_Bank
+Sears|https://en.wikipedia.org/wiki/Sears
+Alfa Laval|https://en.wikipedia.org/wiki/Alfa_Laval
+Iff|https://en.wikipedia.org/wiki/Iff
+Raytheon Technologies|https://en.wikipedia.org/wiki/Raytheon_Technologies
+Oma|https://en.wikipedia.org/wiki/Oma
+Insight|https://en.wikipedia.org/wiki/Insight
+Huda Beauty|https://en.wikipedia.org/wiki/Huda_Beauty
+Blue Origin|https://en.wikipedia.org/wiki/Blue_Origin
+Launch capsule|https://en.wikipedia.org/wiki/Launch_capsule
+Modern attempts to revive the Sanhedrin|https://en.wikipedia.org/wiki/Modern_attempts_to_revive_the_Sanhedrin
+Wayfair|https://en.wikipedia.org/wiki/Wayfair
+Nestlé Waters|https://en.wikipedia.org/wiki/Nestl%C3%A9_Waters
+BMC Software|https://en.wikipedia.org/wiki/BMC_Software
+Cloudflare|https://en.wikipedia.org/wiki/Cloudflare
+MAC Cosmetics|https://en.wikipedia.org/wiki/MAC_Cosmetics
+Mccormick|https://en.wikipedia.org/wiki/Mccormick
+Charles Schwab Corporation|https://en.wikipedia.org/wiki/Charles_Schwab_Corporation
+LexisNexis|https://en.wikipedia.org/wiki/LexisNexis
+Banco BMG|https://en.wikipedia.org/wiki/Banco_BMG
+Astellas Pharma US|https://en.wikipedia.org/wiki/Astellas_Pharma_US
+Spencer Stuart|https://en.wikipedia.org/wiki/Spencer_Stuart
+Converse|https://en.wikipedia.org/wiki/Converse
+Tiroler Tageszeitung|https://en.wikipedia.org/wiki/Tiroler_Tageszeitung
+Enterprise Rent-A-Car|https://en.wikipedia.org/wiki/Enterprise_Rent-A-Car
+Img|https://en.wikipedia.org/wiki/Img
+Apsenth|https://en.wikipedia.org/wiki/Apsenth
+Health Protection Agency|https://en.wikipedia.org/wiki/Health_Protection_Agency
+Convergys|https://en.wikipedia.org/wiki/Convergys
+Flowserve|https://en.wikipedia.org/wiki/Flowserve
+Grupo DPSP|https://en.wikipedia.org/wiki/Grupo_DPSP
+Xilinx|https://en.wikipedia.org/wiki/Xilinx
+WGSN (trend forecasting)|https://en.wikipedia.org/wiki/WGSN_(trend_forecasting)
+Marvel Entertainment|https://en.wikipedia.org/wiki/Marvel_Entertainment
+Naughty Dog|https://en.wikipedia.org/wiki/Naughty_Dog
+WhiteHat Jr.|https://en.wikipedia.org/wiki/WhiteHat_Jr.
+Grundfos|https://en.wikipedia.org/wiki/Grundfos
+Frogdesign|https://en.wikipedia.org/wiki/Frogdesign
+JetBrains|https://en.wikipedia.org/wiki/JetBrains
+Analog Devices|https://en.wikipedia.org/wiki/Analog_Devices
+Cvent|https://en.wikipedia.org/wiki/Cvent
+Linda Combs|https://en.wikipedia.org/wiki/Linda_Combs
+RICS (gene)|https://en.wikipedia.org/wiki/RICS_(gene)
+Zebra Technologies|https://en.wikipedia.org/wiki/Zebra_Technologies
+Canadian Solar, Inc|https://en.wikipedia.org/wiki/Canadian_Solar,_Inc
+Figma|https://en.wikipedia.org/wiki/Figma
+Vaco|https://en.wikipedia.org/wiki/Vaco
+Deloitte Consulting|https://en.wikipedia.org/wiki/Deloitte_Consulting
+YPEL3|https://en.wikipedia.org/wiki/YPEL3
+Grey group|https://en.wikipedia.org/wiki/Grey_group
+Cosan|https://en.wikipedia.org/wiki/Cosan
+Remax|https://en.wikipedia.org/wiki/Remax
+Cadence Design Systems|https://en.wikipedia.org/wiki/Cadence_Design_Systems
+Jefferies|https://en.wikipedia.org/wiki/Jefferies
+Pure Storage|https://en.wikipedia.org/wiki/Pure_Storage
+Saks Fifth Avenue|https://en.wikipedia.org/wiki/Saks_Fifth_Avenue
+Newcrest Mining|https://en.wikipedia.org/wiki/Newcrest_Mining
+RCS MediaGroup|https://en.wikipedia.org/wiki/RCS_MediaGroup
+Schaeffler Group|https://en.wikipedia.org/wiki/Schaeffler_Group
+StarCom Racing|https://en.wikipedia.org/wiki/StarCom_Racing
+Western Union|https://en.wikipedia.org/wiki/Western_Union
+BioMérieux|https://en.wikipedia.org/wiki/BioM%C3%A9rieux
+Pizza Hut|https://en.wikipedia.org/wiki/Pizza_Hut
+Sweco|https://en.wikipedia.org/wiki/Sweco
+FLSmidth|https://en.wikipedia.org/wiki/FLSmidth
+First Data Corporation|https://en.wikipedia.org/wiki/First_Data_Corporation
+Munich Residenz|https://en.wikipedia.org/wiki/Munich_Residenz
+Limited Brands|https://en.wikipedia.org/wiki/Limited_Brands
+Eataly|https://en.wikipedia.org/wiki/Eataly
+Council on Foreign Relations|https://en.wikipedia.org/wiki/Council_on_Foreign_Relations
+Xero|https://en.wikipedia.org/wiki/Xero
+Minerva Sanders|https://en.wikipedia.org/wiki/Minerva_Sanders
+Peloton Interactive|https://en.wikipedia.org/wiki/Peloton_Interactive
+Clifford Chance LLP|https://en.wikipedia.org/wiki/Clifford_Chance_LLP
+Algar Telecom|https://en.wikipedia.org/wiki/Algar_Telecom
+Temenos|https://en.wikipedia.org/wiki/Temenos
+Alexion Pharmaceuticals|https://en.wikipedia.org/wiki/Alexion_Pharmaceuticals
+Algarve Churro|https://en.wikipedia.org/wiki/Algarve_Churro
+DLA Piper|https://en.wikipedia.org/wiki/DLA_Piper
+Yankalilla, South Australia|https://en.wikipedia.org/wiki/Yankalilla,_South_Australia
+C H Robinson|https://en.wikipedia.org/wiki/C_H_Robinson
+Waste management|https://en.wikipedia.org/wiki/Waste_management
+Akamai Technologies|https://en.wikipedia.org/wiki/Akamai_Technologies
+Schindler Group|https://en.wikipedia.org/wiki/Schindler_Group
+Unam|https://en.wikipedia.org/wiki/Unam
+Kohl's Department Stores|https://en.wikipedia.org/wiki/Kohl%27s_Department_Stores
+McCain Foods|https://en.wikipedia.org/wiki/McCain_Foods
+Virgin Galactic|https://en.wikipedia.org/wiki/Virgin_Galactic
+Beckman Coulter|https://en.wikipedia.org/wiki/Beckman_Coulter
+ICON plc|https://en.wikipedia.org/wiki/ICON_plc
+AICPA Code of Professional Conduct|https://en.wikipedia.org/wiki/AICPA_Code_of_Professional_Conduct
+Elastic collision|https://en.wikipedia.org/wiki/Elastic_collision
+Foxconn|https://en.wikipedia.org/wiki/Foxconn
+Tarte Cosmetics|https://en.wikipedia.org/wiki/Tarte_Cosmetics
+Gafisa|https://en.wikipedia.org/wiki/Gafisa
+The Neiman Marcus Group|https://en.wikipedia.org/wiki/The_Neiman_Marcus_Group
+500 Startups|https://en.wikipedia.org/wiki/500_Startups
+Domino's Pizza|https://en.wikipedia.org/wiki/Domino%27s_Pizza
+Fugro|https://en.wikipedia.org/wiki/Fugro
+Informatica|https://en.wikipedia.org/wiki/Informatica
+Administradoras de Fondos para el Retiro|https://en.wikipedia.org/wiki/Administradoras_de_Fondos_para_el_Retiro
+Spectrum|https://en.wikipedia.org/wiki/Spectrum
+Seagate Technology|https://en.wikipedia.org/wiki/Seagate_Technology
+Cloudera|https://en.wikipedia.org/wiki/Cloudera
+Valero Energy Corporation|https://en.wikipedia.org/wiki/Valero_Energy_Corporation
+Franklin Templeton Investments|https://en.wikipedia.org/wiki/Franklin_Templeton_Investments
+Tyson Foods|https://en.wikipedia.org/wiki/Tyson_Foods
+The Carlyle Group|https://en.wikipedia.org/wiki/The_Carlyle_Group
+Covidien Group|https://en.wikipedia.org/wiki/Covidien_Group
+Automation Anywhere|https://en.wikipedia.org/wiki/Automation_Anywhere
+Sabre Corporation|https://en.wikipedia.org/wiki/Sabre_Corporation
+DirecTV Latin America|https://en.wikipedia.org/wiki/DirecTV_Latin_America
+ITC Hotels|https://en.wikipedia.org/wiki/ITC_Hotels
+The Motley Fool|https://en.wikipedia.org/wiki/The_Motley_Fool
+The Clorox Company|https://en.wikipedia.org/wiki/The_Clorox_Company
+Lonza|https://en.wikipedia.org/wiki/Lonza
+S&P Global Ratings|https://en.wikipedia.org/wiki/S%26P_Global_Ratings
+Draeger|https://en.wikipedia.org/wiki/Draeger
+Yokogawa Electric|https://en.wikipedia.org/wiki/Yokogawa_Electric
+Mycosis|https://en.wikipedia.org/wiki/Mycosis
+The World Bank Group|https://en.wikipedia.org/wiki/The_World_Bank_Group
+Toastmasters International|https://en.wikipedia.org/wiki/Toastmasters_International
+S&P Global Market Intelligence|https://en.wikipedia.org/wiki/S%26P_Global_Market_Intelligence
+Canon Emani Sambayya|https://en.wikipedia.org/wiki/Canon_Emani_Sambayya
+Manchester United F.C.|https://en.wikipedia.org/wiki/Manchester_United_F.C.
+Diebold Nixdorf|https://en.wikipedia.org/wiki/Diebold_Nixdorf
+Porsche|https://en.wikipedia.org/wiki/Porsche
+Allen & Overy|https://en.wikipedia.org/wiki/Allen_%26_Overy
+Arrow Electronics|https://en.wikipedia.org/wiki/Arrow_Electronics
+Perkins, William|https://en.wikipedia.org/wiki/Perkins,_William
+IDC|https://en.wikipedia.org/wiki/IDC
+Caf|https://en.wikipedia.org/wiki/Caf
+Nationwide|https://en.wikipedia.org/wiki/Nationwide
+Energia (corporation)|https://en.wikipedia.org/wiki/Energia_(corporation)
+Canva|https://en.wikipedia.org/wiki/Canva
+Bic|https://en.wikipedia.org/wiki/Bic
+NPK (group)|https://en.wikipedia.org/wiki/NPK_(group)
+Wounded Warrior Project|https://en.wikipedia.org/wiki/Wounded_Warrior_Project
+Bupa|https://en.wikipedia.org/wiki/Bupa
+Varian Medical Systems|https://en.wikipedia.org/wiki/Varian_Medical_Systems
+Edward Jones Investments|https://en.wikipedia.org/wiki/Edward_Jones_Investments
+Brown Forman|https://en.wikipedia.org/wiki/Brown_Forman
+Mercy Corps|https://en.wikipedia.org/wiki/Mercy_Corps
+TheWrap.com|https://en.wikipedia.org/wiki/TheWrap.com
+Marc Jacobs|https://en.wikipedia.org/wiki/Marc_Jacobs
+Beam Suntory|https://en.wikipedia.org/wiki/Beam_Suntory
+American Psychiatric Association|https://en.wikipedia.org/wiki/American_Psychiatric_Association
+ONSemi|https://en.wikipedia.org/wiki/ONSemi
+Hiring|https://en.wikipedia.org/wiki/Hiring
+NB Global|https://en.wikipedia.org/wiki/NB_Global
+Defense Intelligence Agency|https://en.wikipedia.org/wiki/Defense_Intelligence_Agency
+Nordea|https://en.wikipedia.org/wiki/Nordea
+Atlas Professionals|https://en.wikipedia.org/wiki/Atlas_Professionals
+JCB (company)|https://en.wikipedia.org/wiki/JCB_(company)
+Disney Cruise Line|https://en.wikipedia.org/wiki/Disney_Cruise_Line
+Marvell|https://en.wikipedia.org/wiki/Marvell
+Sam's Club|https://en.wikipedia.org/wiki/Sam%27s_Club
+Pentair|https://en.wikipedia.org/wiki/Pentair
+White martins|https://en.wikipedia.org/wiki/White_martins
+Razorfish|https://en.wikipedia.org/wiki/Razorfish
+DynCorp International|https://en.wikipedia.org/wiki/DynCorp_International
+Valve Corporation|https://en.wikipedia.org/wiki/Valve_Corporation
+Hella|https://en.wikipedia.org/wiki/Hella
+Yext|https://en.wikipedia.org/wiki/Yext
+SANS Institute|https://en.wikipedia.org/wiki/SANS_Institute
+Noble Drilling|https://en.wikipedia.org/wiki/Noble_Drilling
+Galderma|https://en.wikipedia.org/wiki/Galderma
+Bath & Body Works, Inc.|https://en.wikipedia.org/wiki/Bath_%26_Body_Works,_Inc.
+Skidmore, Owings & Merrill|https://en.wikipedia.org/wiki/Skidmore,_Owings_%26_Merrill
+MediaTek|https://en.wikipedia.org/wiki/MediaTek
+Andreessen Horowitz|https://en.wikipedia.org/wiki/Andreessen_Horowitz
+Grupo Protege|https://en.wikipedia.org/wiki/Grupo_Protege
+OpenText|https://en.wikipedia.org/wiki/OpenText
+Thrive Global|https://en.wikipedia.org/wiki/Thrive_Global
+Tdg plc|https://en.wikipedia.org/wiki/Tdg_plc
+CRU archive|https://en.wikipedia.org/wiki/CRU_archive
+Telecom Egypt|https://en.wikipedia.org/wiki/Telecom_Egypt
+Artnet|https://en.wikipedia.org/wiki/Artnet
+Tenneco|https://en.wikipedia.org/wiki/Tenneco
+URS Corporation|https://en.wikipedia.org/wiki/URS_Corporation
+Amarissa Kiara Tóth|https://en.wikipedia.org/wiki/Amarissa_Kiara_T%C3%B3th
+Elle (magazine)|https://en.wikipedia.org/wiki/Elle_(magazine)
+Portal 1|https://en.wikipedia.org/wiki/Portal_1
+FMC Technologies|https://en.wikipedia.org/wiki/FMC_Technologies
+Rackspace Technology|https://en.wikipedia.org/wiki/Rackspace_Technology
+Canon USA|https://en.wikipedia.org/wiki/Canon_USA
+KLA Corporation|https://en.wikipedia.org/wiki/KLA_Corporation
+Barron's|https://en.wikipedia.org/wiki/Barron%27s
+Fera (band)|https://en.wikipedia.org/wiki/Fera_(band)
+Qlik|https://en.wikipedia.org/wiki/Qlik
+FHI 360|https://en.wikipedia.org/wiki/FHI_360
+Emerson Network Power|https://en.wikipedia.org/wiki/Emerson_Network_Power
+Alghanim Industries|https://en.wikipedia.org/wiki/Alghanim_Industries
+Veterans' Employment and Training Service|https://en.wikipedia.org/wiki/Veterans%27_Employment_and_Training_Service
+COFCO Group|https://en.wikipedia.org/wiki/COFCO_Group
+TransUnion|https://en.wikipedia.org/wiki/TransUnion
+Aptiv|https://en.wikipedia.org/wiki/Aptiv
+Logitech|https://en.wikipedia.org/wiki/Logitech
+Wildlife Conservation Society|https://en.wikipedia.org/wiki/Wildlife_Conservation_Society
+Yum! Brands|https://en.wikipedia.org/wiki/Yum!_Brands
+KFSHRC|https://en.wikipedia.org/wiki/KFSHRC
+Ross Stores|https://en.wikipedia.org/wiki/Ross_Stores
+Amcor|https://en.wikipedia.org/wiki/Amcor
+Covestro|https://en.wikipedia.org/wiki/Covestro
+JA Group|https://en.wikipedia.org/wiki/JA_Group
+Edwards Lifesciences|https://en.wikipedia.org/wiki/Edwards_Lifesciences
+CPP Investment Board|https://en.wikipedia.org/wiki/CPP_Investment_Board
+Nomachi Station|https://en.wikipedia.org/wiki/Nomachi_Station
+Argyll, Scotland|https://en.wikipedia.org/wiki/Argyll,_Scotland
+Golder|https://en.wikipedia.org/wiki/Golder
+Glg|https://en.wikipedia.org/wiki/Glg
+IHeartMedia|https://en.wikipedia.org/wiki/IHeartMedia
+Cyient|https://en.wikipedia.org/wiki/Cyient
+TietoEVRY|https://en.wikipedia.org/wiki/TietoEVRY
+Dollar General|https://en.wikipedia.org/wiki/Dollar_General
+Alentejo Blue|https://en.wikipedia.org/wiki/Alentejo_Blue
+Algérie Télécom|https://en.wikipedia.org/wiki/Alg%C3%A9rie_T%C3%A9l%C3%A9com
+Solenis|https://en.wikipedia.org/wiki/Solenis
+American Cancer Society|https://en.wikipedia.org/wiki/American_Cancer_Society
+Zalando|https://en.wikipedia.org/wiki/Zalando
+GKN Aerospace|https://en.wikipedia.org/wiki/GKN_Aerospace
+Homart Development Company|https://en.wikipedia.org/wiki/Homart_Development_Company
+Confluence|https://en.wikipedia.org/wiki/Confluence
+Check Point Software Technologies|https://en.wikipedia.org/wiki/Check_Point_Software_Technologies
+Samarco|https://en.wikipedia.org/wiki/Samarco
+MSCI Inc|https://en.wikipedia.org/wiki/MSCI_Inc
+Vertex Pharmaceuticals|https://en.wikipedia.org/wiki/Vertex_Pharmaceuticals
+Tetra Tech|https://en.wikipedia.org/wiki/Tetra_Tech
+The Body Shop|https://en.wikipedia.org/wiki/The_Body_Shop
+Ternium|https://en.wikipedia.org/wiki/Ternium
+Lam Research|https://en.wikipedia.org/wiki/Lam_Research
+Essity|https://en.wikipedia.org/wiki/Essity
+Csis|https://en.wikipedia.org/wiki/Csis
+Steelcase|https://en.wikipedia.org/wiki/Steelcase
+Eneva|https://en.wikipedia.org/wiki/Eneva
+Oman Air|https://en.wikipedia.org/wiki/Oman_Air
+Columbia Sportswear|https://en.wikipedia.org/wiki/Columbia_Sportswear
+BSI Group|https://en.wikipedia.org/wiki/BSI_Group
+Trafigura|https://en.wikipedia.org/wiki/Trafigura
+NTPC Limited|https://en.wikipedia.org/wiki/NTPC_Limited
+JetBlue|https://en.wikipedia.org/wiki/JetBlue
+MarketWatch|https://en.wikipedia.org/wiki/MarketWatch
+Westin Hotels & Resorts|https://en.wikipedia.org/wiki/Westin_Hotels_%26_Resorts
+Mitchell Mariners|https://en.wikipedia.org/wiki/Mitchell_Mariners
+Ingersoll Rand|https://en.wikipedia.org/wiki/Ingersoll_Rand
+Conagra Brands|https://en.wikipedia.org/wiki/Conagra_Brands
+Guess Who's Coming to Dinner|https://en.wikipedia.org/wiki/Guess_Who%27s_Coming_to_Dinner
+The Link (retailer)|https://en.wikipedia.org/wiki/The_Link_(retailer)
+Fresenius Medical Care|https://en.wikipedia.org/wiki/Fresenius_Medical_Care
+Nyse|https://en.wikipedia.org/wiki/Nyse
+Trend Micro|https://en.wikipedia.org/wiki/Trend_Micro
+Rumo Logística|https://en.wikipedia.org/wiki/Rumo_Log%C3%ADstica
+Russell Reynolds Associates|https://en.wikipedia.org/wiki/Russell_Reynolds_Associates
+Bridgewater Associates|https://en.wikipedia.org/wiki/Bridgewater_Associates
+Trina Solar|https://en.wikipedia.org/wiki/Trina_Solar
+Staples|https://en.wikipedia.org/wiki/Staples
+Lab126|https://en.wikipedia.org/wiki/Lab126
+XTO Energy|https://en.wikipedia.org/wiki/XTO_Energy
+Arista Networks Inc|https://en.wikipedia.org/wiki/Arista_Networks_Inc
+Eurasia Group|https://en.wikipedia.org/wiki/Eurasia_Group
+MuleSoft|https://en.wikipedia.org/wiki/MuleSoft
+Ripple Labs|https://en.wikipedia.org/wiki/Ripple_Labs
+Fitch Ratings|https://en.wikipedia.org/wiki/Fitch_Ratings
+Vocero de Puerto Rico|https://en.wikipedia.org/wiki/Vocero_de_Puerto_Rico
+UCB Pharmaceuticals|https://en.wikipedia.org/wiki/UCB_Pharmaceuticals
+Solar Turbines|https://en.wikipedia.org/wiki/Solar_Turbines
+Amway|https://en.wikipedia.org/wiki/Amway
+Lanxess|https://en.wikipedia.org/wiki/Lanxess
+Getty Images|https://en.wikipedia.org/wiki/Getty_Images
+Glassdoor|https://en.wikipedia.org/wiki/Glassdoor
+Oktaine|https://en.wikipedia.org/wiki/Oktaine
+American Bar Association|https://en.wikipedia.org/wiki/American_Bar_Association
+Swatch Group|https://en.wikipedia.org/wiki/Swatch_Group
+Perficient|https://en.wikipedia.org/wiki/Perficient
+Razer|https://en.wikipedia.org/wiki/Razer
+Camargo Correa Desenvolvimento Imobiliario|https://en.wikipedia.org/wiki/Camargo_Correa_Desenvolvimento_Imobiliario
+CVC|https://en.wikipedia.org/wiki/CVC
+V-Ships|https://en.wikipedia.org/wiki/V-Ships
+Van Cleef & Arpels|https://en.wikipedia.org/wiki/Van_Cleef_%26_Arpels
+DST Global|https://en.wikipedia.org/wiki/DST_Global
+Ball|https://en.wikipedia.org/wiki/Ball
+Publix Super Markets|https://en.wikipedia.org/wiki/Publix_Super_Markets
+HDR|https://en.wikipedia.org/wiki/HDR
+EC-Council|https://en.wikipedia.org/wiki/EC-Council
+Catalent Pharma Solutions|https://en.wikipedia.org/wiki/Catalent_Pharma_Solutions
+BCD Travel|https://en.wikipedia.org/wiki/BCD_Travel
+Mentor Graphics|https://en.wikipedia.org/wiki/Mentor_Graphics
+Siemensdamm (Berlin U-Bahn)|https://en.wikipedia.org/wiki/Siemensdamm_(Berlin_U-Bahn)
+BM&FBOVESPA|https://en.wikipedia.org/wiki/BM%26FBOVESPA
+SIAC Construction Ltd v The County Council of the County of Mayo|https://en.wikipedia.org/wiki/SIAC_Construction_Ltd_v_The_County_Council_of_the_County_of_Mayo
+Univar Solutions|https://en.wikipedia.org/wiki/Univar_Solutions
+Anthropologie|https://en.wikipedia.org/wiki/Anthropologie
+Christie's|https://en.wikipedia.org/wiki/Christie%27s
+ISC2|https://en.wikipedia.org/wiki/ISC2
+Farmers Insurance Group|https://en.wikipedia.org/wiki/Farmers_Insurance_Group
+BAE Systems Inc.|https://en.wikipedia.org/wiki/BAE_Systems_Inc.
+Harvey Nash|https://en.wikipedia.org/wiki/Harvey_Nash
+Success (magazine)|https://en.wikipedia.org/wiki/Success_(magazine)
+Reserva|https://en.wikipedia.org/wiki/Reserva
+Toksook Bay, Alaska|https://en.wikipedia.org/wiki/Toksook_Bay,_Alaska
+InMobi|https://en.wikipedia.org/wiki/InMobi
+Irs|https://en.wikipedia.org/wiki/Irs
+HarperCollins|https://en.wikipedia.org/wiki/HarperCollins
+Trane|https://en.wikipedia.org/wiki/Trane
+Teach For America|https://en.wikipedia.org/wiki/Teach_For_America
+Progen|https://en.wikipedia.org/wiki/Progen
+Keep On Truckin' (The Conners)|https://en.wikipedia.org/wiki/Keep_On_Truckin%27_(The_Conners)
+Robinhood|https://en.wikipedia.org/wiki/Robinhood
+O Boticário|https://en.wikipedia.org/wiki/O_Botic%C3%A1rio
+NIIT Limited|https://en.wikipedia.org/wiki/NIIT_Limited
+Semrush|https://en.wikipedia.org/wiki/Semrush
+Bentley Systems|https://en.wikipedia.org/wiki/Bentley_Systems
+AgriBank|https://en.wikipedia.org/wiki/AgriBank
+AOL|https://en.wikipedia.org/wiki/AOL
+Oxiteno|https://en.wikipedia.org/wiki/Oxiteno
+Pandora|https://en.wikipedia.org/wiki/Pandora
+Oakley|https://en.wikipedia.org/wiki/Oakley
+Capco|https://en.wikipedia.org/wiki/Capco
+Genesys|https://en.wikipedia.org/wiki/Genesys
+NEC|https://en.wikipedia.org/wiki/NEC
+DaVita Inc.|https://en.wikipedia.org/wiki/DaVita_Inc.
+CMPC (company)|https://en.wikipedia.org/wiki/CMPC_(company)
+Elanco|https://en.wikipedia.org/wiki/Elanco
+Andela|https://en.wikipedia.org/wiki/Andela
+Morning Star|https://en.wikipedia.org/wiki/Morning_Star
+Zain Saidin|https://en.wikipedia.org/wiki/Zain_Saidin
+Vietnam Workers' Party|https://en.wikipedia.org/wiki/Vietnam_Workers%27_Party
+Donaldson|https://en.wikipedia.org/wiki/Donaldson
+Safeway|https://en.wikipedia.org/wiki/Safeway
+Ansys Inc|https://en.wikipedia.org/wiki/Ansys_Inc
+Lorien|https://en.wikipedia.org/wiki/Lorien
+Aiga|https://en.wikipedia.org/wiki/Aiga
+American Eagle Outfitters|https://en.wikipedia.org/wiki/American_Eagle_Outfitters
+Criteo|https://en.wikipedia.org/wiki/Criteo
+The Linux Foundation|https://en.wikipedia.org/wiki/The_Linux_Foundation
+Mammoet|https://en.wikipedia.org/wiki/Mammoet
+Greystar Real Estate Partners|https://en.wikipedia.org/wiki/Greystar_Real_Estate_Partners
+Refinitiv|https://en.wikipedia.org/wiki/Refinitiv
+UNRWA|https://en.wikipedia.org/wiki/UNRWA
+Ultragaz|https://en.wikipedia.org/wiki/Ultragaz
+The Puratos Sourdough Library|https://en.wikipedia.org/wiki/The_Puratos_Sourdough_Library
+Chesapeake Energy|https://en.wikipedia.org/wiki/Chesapeake_Energy
+Chemonics International|https://en.wikipedia.org/wiki/Chemonics_International
+Here|https://en.wikipedia.org/wiki/Here
+Zynga|https://en.wikipedia.org/wiki/Zynga
+H&R Block|https://en.wikipedia.org/wiki/H%26R_Block
+Alphabet Inc.|https://en.wikipedia.org/wiki/Alphabet_Inc.
+Garena|https://en.wikipedia.org/wiki/Garena
+PhD in management|https://en.wikipedia.org/wiki/PhD_in_management
+Autism Speaks|https://en.wikipedia.org/wiki/Autism_Speaks
+Siemens PLM Software|https://en.wikipedia.org/wiki/Siemens_PLM_Software
+Swissport|https://en.wikipedia.org/wiki/Swissport
+RealPage|https://en.wikipedia.org/wiki/RealPage
+Yelp.com|https://en.wikipedia.org/wiki/Yelp.com
+Infobip|https://en.wikipedia.org/wiki/Infobip
+Ms. International|https://en.wikipedia.org/wiki/Ms._International
+Cisco Meraki|https://en.wikipedia.org/wiki/Cisco_Meraki
+The Phillips 66 Company|https://en.wikipedia.org/wiki/The_Phillips_66_Company
+Bupa Arabia|https://en.wikipedia.org/wiki/Bupa_Arabia
+Rede Bandeirantes de Televisão|https://en.wikipedia.org/wiki/Rede_Bandeirantes_de_Televis%C3%A3o
+RTI International|https://en.wikipedia.org/wiki/RTI_International
+Tadawul|https://en.wikipedia.org/wiki/Tadawul
+BearingPoint|https://en.wikipedia.org/wiki/BearingPoint
+Apotex Inc v Sanofi-Synthelabo Canada Inc|https://en.wikipedia.org/wiki/Apotex_Inc_v_Sanofi-Synthelabo_Canada_Inc
+Hogan Lovells|https://en.wikipedia.org/wiki/Hogan_Lovells
+Santander Bank, N. A.|https://en.wikipedia.org/wiki/Santander_Bank,_N._A.
+A Cloud Guru|https://en.wikipedia.org/wiki/A_Cloud_Guru
+Ethereum|https://en.wikipedia.org/wiki/Ethereum
+Atacadão|https://en.wikipedia.org/wiki/Atacad%C3%A3o
+N26|https://en.wikipedia.org/wiki/N26
+Vitra|https://en.wikipedia.org/wiki/Vitra
+Garmin|https://en.wikipedia.org/wiki/Garmin
+Etsy|https://en.wikipedia.org/wiki/Etsy
+Monster|https://en.wikipedia.org/wiki/Monster
+Bitcoin|https://en.wikipedia.org/wiki/Bitcoin
+Ouro Verde (TV series)|https://en.wikipedia.org/wiki/Ouro_Verde_(TV_series)
+Sulzer|https://en.wikipedia.org/wiki/Sulzer
+Rede Record|https://en.wikipedia.org/wiki/Rede_Record
+Alteryx|https://en.wikipedia.org/wiki/Alteryx
+McGraw Hill Education|https://en.wikipedia.org/wiki/McGraw_Hill_Education
+Noble Energy|https://en.wikipedia.org/wiki/Noble_Energy
+Moving Picture Company|https://en.wikipedia.org/wiki/Moving_Picture_Company
+Murphy Oil|https://en.wikipedia.org/wiki/Murphy_Oil
+TTEC|https://en.wikipedia.org/wiki/TTEC
+Reuters|https://en.wikipedia.org/wiki/Reuters
+Alaska Airlines Flight 261|https://en.wikipedia.org/wiki/Alaska_Airlines_Flight_261
+Tekfen Construction and Installation|https://en.wikipedia.org/wiki/Tekfen_Construction_and_Installation
+Klarna|https://en.wikipedia.org/wiki/Klarna
+Rotary International|https://en.wikipedia.org/wiki/Rotary_International
+Qualtrics|https://en.wikipedia.org/wiki/Qualtrics
