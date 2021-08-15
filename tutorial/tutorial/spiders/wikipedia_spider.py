@@ -13,19 +13,15 @@ class WikipediaSpider(scrapy.Spider):
 
     def readUrls(self):
         root_dir = Path(__file__).parent.parent.parent.parent
-        file_path = os.path.join(root_dir, 'files/c1.txt')
+        file_path = os.path.join(root_dir, 'files/companies.txt')
         file = open(file_path, "r")
         companies = file.readlines()
         for company in companies:
             self.start_urls.append("https://en.wikipedia.org/w/api.php?action=opensearch&format=json&formatversion=2&search="+ company +"&namespace=0&limit=10")
 
     def start_requests(self):
-        count = 0
         self.readUrls()
         for url in self.start_urls:
-            if count > 200:
-                break
-            count += 1
             request = scrapy.Request(url=url, callback=self.parse)
             request.meta['proxy'] = 'http://127.0.0.1:8118'
             print(" *********************************************")
