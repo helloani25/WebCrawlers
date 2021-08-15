@@ -1,9 +1,7 @@
 Google|https://en.wikipedia.org/wiki/Google
-Amazon|https://en.wikipedia.org/wiki/Amazon
 LinkedIn|https://en.wikipedia.org/wiki/LinkedIn
 Unilever|https://en.wikipedia.org/wiki/Unilever
 Microsoft|https://en.wikipedia.org/wiki/Microsoft
-Apple|https://en.wikipedia.org/wiki/Apple
 Harvard Business Review|https://en.wikipedia.org/wiki/Harvard_Business_Review
 Nestlé|https://en.wikipedia.org/wiki/Nestl%C3%A9
 IBM|https://en.wikipedia.org/wiki/IBM
@@ -1221,7 +1219,6 @@ Samarco|https://en.wikipedia.org/wiki/Samarco
 MSCI Inc|https://en.wikipedia.org/wiki/MSCI_Inc
 Vertex Pharmaceuticals|https://en.wikipedia.org/wiki/Vertex_Pharmaceuticals
 Tetra Tech|https://en.wikipedia.org/wiki/Tetra_Tech
-The Body Shop|https://en.wikipedia.org/wiki/The_Body_Shop
 Ternium|https://en.wikipedia.org/wiki/Ternium
 Lam Research|https://en.wikipedia.org/wiki/Lam_Research
 Essity|https://en.wikipedia.org/wiki/Essity
@@ -1371,3 +1368,338 @@ Tekfen Construction and Installation|https://en.wikipedia.org/wiki/Tekfen_Constr
 Klarna|https://en.wikipedia.org/wiki/Klarna
 Rotary International|https://en.wikipedia.org/wiki/Rotary_International
 Qualtrics|https://en.wikipedia.org/wiki/Qualtrics
+Amazon|https://en.wikipedia.org/wiki/Amazon
+Apple|https://en.wikipedia.org/wiki/Apple
+Accenture|https://en.wikipedia.org/wiki/Accenture
+Amazon Web Services|https://en.wikipedia.org/wiki/Amazon_Web_Services
+Adecco|https://en.wikipedia.org/wiki/Adecco
+Adobe|https://en.wikipedia.org/wiki/Adobe
+Ambev|https://en.wikipedia.org/wiki/Ambev
+Adidas|https://en.wikipedia.org/wiki/Adidas
+Abbott Laboratories|https://en.wikipedia.org/wiki/Abbott_Laboratories
+Airbnb|https://en.wikipedia.org/wiki/Airbnb
+American Express|https://en.wikipedia.org/wiki/American_Express
+Att|https://en.wikipedia.org/wiki/Att
+Adweek|https://en.wikipedia.org/wiki/Adweek
+AECOM|https://en.wikipedia.org/wiki/AECOM
+Ad Age|https://en.wikipedia.org/wiki/Ad_Age
+Atos|https://en.wikipedia.org/wiki/Atos
+Accor|https://en.wikipedia.org/wiki/Accor
+Adp|https://en.wikipedia.org/wiki/Adp
+Amgen|https://en.wikipedia.org/wiki/Amgen
+Aon|https://en.wikipedia.org/wiki/Aon
+Accounting Today|https://en.wikipedia.org/wiki/Accounting_Today
+AbbVie|https://en.wikipedia.org/wiki/AbbVie
+Aig|https://en.wikipedia.org/wiki/Aig
+American Airlines|https://en.wikipedia.org/wiki/American_Airlines
+APEX system|https://en.wikipedia.org/wiki/APEX_system
+Amd|https://en.wikipedia.org/wiki/Amd
+Azul Airlines|https://en.wikipedia.org/wiki/Azul_Airlines
+Almarai|https://en.wikipedia.org/wiki/Almarai
+Allergan|https://en.wikipedia.org/wiki/Allergan
+Atkins|https://en.wikipedia.org/wiki/Atkins
+Atlas Copco|https://en.wikipedia.org/wiki/Atlas_Copco
+AkzoNobel|https://en.wikipedia.org/wiki/AkzoNobel
+Arup|https://en.wikipedia.org/wiki/Arup
+Air Liquide|https://en.wikipedia.org/wiki/Air_Liquide
+Adani Group|https://en.wikipedia.org/wiki/Adani_Group
+Amdocs|https://en.wikipedia.org/wiki/Amdocs
+Autodesk|https://en.wikipedia.org/wiki/Autodesk
+Arcadis|https://en.wikipedia.org/wiki/Arcadis
+Alibaba.com|https://en.wikipedia.org/wiki/Alibaba.com
+AB InBev|https://en.wikipedia.org/wiki/AB_InBev
+Automotive News|https://en.wikipedia.org/wiki/Automotive_News
+Aerotek|https://en.wikipedia.org/wiki/Aerotek
+ASOS.com|https://en.wikipedia.org/wiki/ASOS.com
+Andrade Gutierrez|https://en.wikipedia.org/wiki/Andrade_Gutierrez
+ABA Journal|https://en.wikipedia.org/wiki/ABA_Journal
+Agilent Technologies|https://en.wikipedia.org/wiki/Agilent_Technologies
+Atlassian|https://en.wikipedia.org/wiki/Atlassian
+Ajilon Prime|https://en.wikipedia.org/wiki/Ajilon_Prime
+Amec Foster Wheeler|https://en.wikipedia.org/wiki/Amec_Foster_Wheeler
+Alcon|https://en.wikipedia.org/wiki/Alcon
+Asus|https://en.wikipedia.org/wiki/Asus
+Aquent|https://en.wikipedia.org/wiki/Aquent
+Alpargatas|https://en.wikipedia.org/wiki/Alpargatas
+Aetna|https://en.wikipedia.org/wiki/Aetna
+Aurora (singer)|https://en.wikipedia.org/wiki/Aurora_(singer)
+Avaya|https://en.wikipedia.org/wiki/Avaya
+Aramex|https://en.wikipedia.org/wiki/Aramex
+AirSWIFT|https://en.wikipedia.org/wiki/AirSWIFT
+Appen|https://en.wikipedia.org/wiki/Appen
+Adm|https://en.wikipedia.org/wiki/Adm
+Activision|https://en.wikipedia.org/wiki/Activision
+Avanade|https://en.wikipedia.org/wiki/Avanade
+Alcoa|https://en.wikipedia.org/wiki/Alcoa
+Animal|https://en.wikipedia.org/wiki/Animal
+Arm|https://en.wikipedia.org/wiki/Arm
+Arezzo Cathedral|https://en.wikipedia.org/wiki/Arezzo_Cathedral
+Allstate|https://en.wikipedia.org/wiki/Allstate
+ASML Holding|https://en.wikipedia.org/wiki/ASML_Holding
+Agoda|https://en.wikipedia.org/wiki/Agoda
+Avery Dennison|https://en.wikipedia.org/wiki/Avery_Dennison
+AngloGold Ashanti|https://en.wikipedia.org/wiki/AngloGold_Ashanti
+Applied Materials|https://en.wikipedia.org/wiki/Applied_Materials
+Anheuser-Busch brands|https://en.wikipedia.org/wiki/Anheuser-Busch_brands
+Asian Paints|https://en.wikipedia.org/wiki/Asian_Paints
+Airbus Helicopters H175|https://en.wikipedia.org/wiki/Airbus_Helicopters_H175
+AGCO Corporation|https://en.wikipedia.org/wiki/AGCO_Corporation
+Amil|https://en.wikipedia.org/wiki/Amil
+Agility|https://en.wikipedia.org/wiki/Agility
+Aurecon|https://en.wikipedia.org/wiki/Aurecon
+Anthem Inc. (album)|https://en.wikipedia.org/wiki/Anthem_Inc._(album)
+Apple One (service)|https://en.wikipedia.org/wiki/Apple_One_(service)
+American Honda Motor Company|"https://en.wikipedia.org/wiki/American_Honda_Motor_Company,_Inc."
+Atento|https://en.wikipedia.org/wiki/Atento
+Arla Foods|https://en.wikipedia.org/wiki/Arla_Foods
+Abril|https://en.wikipedia.org/wiki/Abril
+Abercrombie & Fitch|https://en.wikipedia.org/wiki/Abercrombie_%26_Fitch
+Aramark|https://en.wikipedia.org/wiki/Aramark
+Air Products & Chemicals|https://en.wikipedia.org/wiki/Air_Products_%26_Chemicals
+Apache Corporation|https://en.wikipedia.org/wiki/Apache_Corporation
+AFRY|https://en.wikipedia.org/wiki/AFRY
+Alfa Laval|https://en.wikipedia.org/wiki/Alfa_Laval
+Astellas Pharma US|https://en.wikipedia.org/wiki/Astellas_Pharma_US
+Apsenth|https://en.wikipedia.org/wiki/Apsenth
+Analog Devices|https://en.wikipedia.org/wiki/Analog_Devices
+Algar Telecom|https://en.wikipedia.org/wiki/Algar_Telecom
+Alexion Pharmaceuticals|https://en.wikipedia.org/wiki/Alexion_Pharmaceuticals
+Algarve Churro|https://en.wikipedia.org/wiki/Algarve_Churro
+Akamai Technologies|https://en.wikipedia.org/wiki/Akamai_Technologies
+Automation Anywhere|https://en.wikipedia.org/wiki/Automation_Anywhere
+Allen & Overy|https://en.wikipedia.org/wiki/Allen_%26_Overy
+Arrow Electronics|https://en.wikipedia.org/wiki/Arrow_Electronics
+Atlas Professionals|https://en.wikipedia.org/wiki/Atlas_Professionals
+Artnet|https://en.wikipedia.org/wiki/Artnet
+Amarissa Kiara Tóth|https://en.wikipedia.org/wiki/Amarissa_Kiara_T%C3%B3th
+Alghanim Industries|https://en.wikipedia.org/wiki/Alghanim_Industries
+Aptiv|https://en.wikipedia.org/wiki/Aptiv
+Amcor|https://en.wikipedia.org/wiki/Amcor
+Alentejo Blue|https://en.wikipedia.org/wiki/Alentejo_Blue
+Algérie Télécom|https://en.wikipedia.org/wiki/Alg%C3%A9rie_T%C3%A9l%C3%A9com
+Lab126|https://en.wikipedia.org/wiki/Lab126
+Arista Networks Inc|https://en.wikipedia.org/wiki/Arista_Networks_Inc
+Amway|https://en.wikipedia.org/wiki/Amway
+Anthropologie|https://en.wikipedia.org/wiki/Anthropologie
+AgriBank|https://en.wikipedia.org/wiki/AgriBank
+AOL|https://en.wikipedia.org/wiki/AOL
+Andela|https://en.wikipedia.org/wiki/Andela
+Ansys Inc|https://en.wikipedia.org/wiki/Ansys_Inc
+Aiga|https://en.wikipedia.org/wiki/Aiga
+American Eagle Outfitters|https://en.wikipedia.org/wiki/American_Eagle_Outfitters
+Alphabet Inc.|https://en.wikipedia.org/wiki/Alphabet_Inc.
+A Cloud Guru|https://en.wikipedia.org/wiki/A_Cloud_Guru
+Atacadão|https://en.wikipedia.org/wiki/Atacad%C3%A3o
+Alteryx|https://en.wikipedia.org/wiki/Alteryx
+Asmara|https://en.wikipedia.org/wiki/Asmara
+Anaplan|https://en.wikipedia.org/wiki/Anaplan
+Asteraceae|https://en.wikipedia.org/wiki/Asteraceae
+Ashoka|https://en.wikipedia.org/wiki/Ashoka
+AKQA|https://en.wikipedia.org/wiki/AKQA
+Asurion|https://en.wikipedia.org/wiki/Asurion
+Accel (company)|https://en.wikipedia.org/wiki/Accel_(company)
+Acer|https://en.wikipedia.org/wiki/Acer
+Allied Universal|https://en.wikipedia.org/wiki/Allied_Universal
+American Express Global Business Travel|https://en.wikipedia.org/wiki/American_Express_Global_Business_Travel
+Allegis Group|https://en.wikipedia.org/wiki/Allegis_Group
+ANVISA|https://en.wikipedia.org/wiki/ANVISA
+Aricent|https://en.wikipedia.org/wiki/Aricent
+Amelia Earhart|https://en.wikipedia.org/wiki/Amelia_Earhart
+Avid Technology|https://en.wikipedia.org/wiki/Avid_Technology
+Aflac|https://en.wikipedia.org/wiki/Aflac
+Ascension Oratorio|https://en.wikipedia.org/wiki/Ascension_Oratorio
+Alexander McQueen|https://en.wikipedia.org/wiki/Alexander_McQueen
+Arkema|https://en.wikipedia.org/wiki/Arkema
+Access Bank plc|https://en.wikipedia.org/wiki/Access_Bank_plc
+Airbus Helicopters, Inc.|https://en.wikipedia.org/wiki/Airbus_Helicopters
+Apl|https://en.wikipedia.org/wiki/Apl
+Ashton Carter|https://en.wikipedia.org/wiki/Ashton_Carter
+Asc.org|https://en.wikipedia.org/wiki/Asc.org
+Arthrexin|https://en.wikipedia.org/wiki/Arthrexin
+Align Technology|https://en.wikipedia.org/wiki/Align_Technology
+Axis Communications|https://en.wikipedia.org/wiki/Axis_Communications
+ABC News|https://en.wikipedia.org/wiki/ABC_News
+Amorica|https://en.wikipedia.org/wiki/Amorica
+Asana|https://en.wikipedia.org/wiki/Asana
+Adyen|https://en.wikipedia.org/wiki/Adyen
+Activision Blizzard|https://en.wikipedia.org/wiki/Activision_Blizzard
+Alvarez & Marsal|https://en.wikipedia.org/wiki/Alvarez_%26_Marsal
+Atmosphere of Earth|https://en.wikipedia.org/wiki/Atmosphere_of_Earth
+Allscripts|https://en.wikipedia.org/wiki/Allscripts
+AGCO Allis|https://en.wikipedia.org/wiki/AGCO_Allis
+Ann Inc.|https://en.wikipedia.org/wiki/Ann_Inc.
+Aegean Sea|https://en.wikipedia.org/wiki/Aegean_Sea
+ASIS International|https://en.wikipedia.org/wiki/ASIS_International
+The Atlantic Group|https://en.wikipedia.org/wiki/The_Atlantic_Group
+AdventHealth University|https://en.wikipedia.org/wiki/AdventHealth_University
+Atlantic Records|https://en.wikipedia.org/wiki/Atlantic_Records
+Actual Radio|https://en.wikipedia.org/wiki/Actual_Radio
+AutoZone|https://en.wikipedia.org/wiki/AutoZone
+Aesop|https://en.wikipedia.org/wiki/Aesop
+ACI Worldwide|https://en.wikipedia.org/wiki/ACI_Worldwide
+Aghires|https://en.wikipedia.org/wiki/Aghires
+ASCAP Vanguard Award|https://en.wikipedia.org/wiki/ASCAP_Vanguard_Award
+Aberdeen Standard Investments Scottish Open|https://en.wikipedia.org/wiki/Aberdeen_Standard_Investments_Scottish_Open
+Apptio|https://en.wikipedia.org/wiki/Apptio
+Arasco|https://en.wikipedia.org/wiki/Arasco
+Alnylam Pharmaceuticals|https://en.wikipedia.org/wiki/Alnylam_Pharmaceuticals
+As Brasileiras|https://en.wikipedia.org/wiki/As_Brasileiras
+Australian Trade Commission|https://en.wikipedia.org/wiki/Australian_Trade_Commission
+Arduino|https://en.wikipedia.org/wiki/Arduino
+Assa Abloy|https://en.wikipedia.org/wiki/Assa_Abloy
+Anixter|https://en.wikipedia.org/wiki/Anixter
+Aasphota|https://en.wikipedia.org/wiki/Aasphota
+Amaala|https://en.wikipedia.org/wiki/Amaala
+Athenahealth|https://en.wikipedia.org/wiki/Athenahealth
+Allianz Global Investors|https://en.wikipedia.org/wiki/Allianz_Global_Investors
+ASHRAE|https://en.wikipedia.org/wiki/ASHRAE
+Austin Fraser|https://en.wikipedia.org/wiki/Austin_Fraser
+AVMAV|https://en.wikipedia.org/wiki/AVMAV
+Algérie Poste|https://en.wikipedia.org/wiki/Alg%C3%A9rie_Poste
+Aspen Technology|https://en.wikipedia.org/wiki/Aspen_Technology
+American Tower|https://en.wikipedia.org/wiki/American_Tower
+Amaggi Group|https://en.wikipedia.org/wiki/Amaggi_Group
+Air Charter Service|https://en.wikipedia.org/wiki/Air_Charter_Service
+The Art Institute of Chicago|https://en.wikipedia.org/wiki/The_Art_Institute_of_Chicago
+Ausenco|https://en.wikipedia.org/wiki/Ausenco
+Advanced Electronics Company Limited|https://en.wikipedia.org/wiki/Advanced_Electronics_Company_Limited
+APICS|https://en.wikipedia.org/wiki/APICS
+Aneel|https://en.wikipedia.org/wiki/Aneel
+Avis Budget Group|https://en.wikipedia.org/wiki/Avis_Budget_Group
+Advanced Resource Connector|https://en.wikipedia.org/wiki/Advanced_Resource_Connector
+AMC Networks|https://en.wikipedia.org/wiki/AMC_Networks
+Amaro|https://en.wikipedia.org/wiki/Amaro
+Asics|https://en.wikipedia.org/wiki/Asics
+Avnet|https://en.wikipedia.org/wiki/Avnet
+Ally|https://en.wikipedia.org/wiki/Ally
+Amana Contracting and Steel Buildings|https://en.wikipedia.org/wiki/Amana_Contracting_and_Steel_Buildings
+Aldisa cooperi|https://en.wikipedia.org/wiki/Aldisa_cooperi
+AeroSuperBatics|https://en.wikipedia.org/wiki/AeroSuperBatics
+Adient|https://en.wikipedia.org/wiki/Adient
+ACAMS|https://en.wikipedia.org/wiki/ACAMS
+American Axle|https://en.wikipedia.org/wiki/American_Axle
+Arrival (film)|https://en.wikipedia.org/wiki/Arrival_(film)
+Asq|https://en.wikipedia.org/wiki/Asq
+Aclu|https://en.wikipedia.org/wiki/Aclu
+AmerisourceBergen|https://en.wikipedia.org/wiki/AmerisourceBergen
+Associated Builders and Contractors|https://en.wikipedia.org/wiki/Associated_Builders_and_Contractors
+Avl|https://en.wikipedia.org/wiki/Avl
+Albertsons|https://en.wikipedia.org/wiki/Albertsons
+Ansaldo STS|https://en.wikipedia.org/wiki/Ansaldo_STS
+Amtrak|https://en.wikipedia.org/wiki/Amtrak
+Atrium Health Union|https://en.wikipedia.org/wiki/Atrium_Health_Union
+Airalgerie.dz|https://en.wikipedia.org/wiki/Airalgerie.dz
+Altair Engineering|https://en.wikipedia.org/wiki/Altair_Engineering
+Advisory board|https://en.wikipedia.org/wiki/Advisory_board
+ADT|https://en.wikipedia.org/wiki/ADT
+Arrival|https://en.wikipedia.org/wiki/Arrival
+Acronis|https://en.wikipedia.org/wiki/Acronis
+Aerojet Rocketdyne|https://en.wikipedia.org/wiki/Aerojet_Rocketdyne
+American Electric Power|https://en.wikipedia.org/wiki/American_Electric_Power
+Acfer 086|https://en.wikipedia.org/wiki/Acfer_086
+Advance Auto Parts|https://en.wikipedia.org/wiki/Advance_Auto_Parts
+Artisan|https://en.wikipedia.org/wiki/Artisan
+Atos Syntel|https://en.wikipedia.org/wiki/Atos_Syntel
+AppDynamics|https://en.wikipedia.org/wiki/AppDynamics
+Ashland Inc|https://en.wikipedia.org/wiki/Ashland_Inc
+Airbus Group, Inc.|https://en.wikipedia.org/wiki/Airbus_Group,_Inc.
+Axa XL|https://en.wikipedia.org/wiki/Axa_XL
+Actavis Inc|https://en.wikipedia.org/wiki/Actavis_Inc
+Academic work|https://en.wikipedia.org/wiki/Academic_work
+Athleta|https://en.wikipedia.org/wiki/Athleta
+Allseas|https://en.wikipedia.org/wiki/Allseas
+Aegean Airlines|https://en.wikipedia.org/wiki/Aegean_Airlines
+Aedas|https://en.wikipedia.org/wiki/Aedas
+Arcos Dorados Holdings|https://en.wikipedia.org/wiki/Arcos_Dorados_Holdings
+ABM Industries|https://en.wikipedia.org/wiki/ABM_Industries
+Kiva Systems|https://en.wikipedia.org/wiki/Kiva_Systems
+Applebee's|https://en.wikipedia.org/wiki/Applebee%27s
+Alpha Bank|https://en.wikipedia.org/wiki/Alpha_Bank
+AmeriCorps|https://en.wikipedia.org/wiki/AmeriCorps
+Allegion|https://en.wikipedia.org/wiki/Allegion
+Ashurst|https://en.wikipedia.org/wiki/Ashurst
+AARP|https://en.wikipedia.org/wiki/AARP
+Aegon|https://en.wikipedia.org/wiki/Aegon
+A Global Threat|https://en.wikipedia.org/wiki/A_Global_Threat
+Acquia|https://en.wikipedia.org/wiki/Acquia
+Aristocrat|https://en.wikipedia.org/wiki/Aristocrat
+Anthem|https://en.wikipedia.org/wiki/Anthem
+APL Logistics|https://en.wikipedia.org/wiki/APL_Logistics
+Acosta|https://en.wikipedia.org/wiki/Acosta
+Avigilon|https://en.wikipedia.org/wiki/Avigilon
+Altimeter|https://en.wikipedia.org/wiki/Altimeter
+Alltech|https://en.wikipedia.org/wiki/Alltech
+ACM Digital Library|https://en.wikipedia.org/wiki/ACM_Digital_Library
+AREVA T&D|https://en.wikipedia.org/wiki/AREVA_T%26D
+Aljona Savchenko|https://en.wikipedia.org/wiki/Aljona_Savchenko
+Amneal Pharmaceuticals|https://en.wikipedia.org/wiki/Amneal_Pharmaceuticals
+AFI Global Policy Forum|https://en.wikipedia.org/wiki/AFI_Global_Policy_Forum
+Affirm|https://en.wikipedia.org/wiki/Affirm
+Audible|https://en.wikipedia.org/wiki/Audible
+AAPC|https://en.wikipedia.org/wiki/AAPC
+AAA|https://en.wikipedia.org/wiki/AAA
+A24|https://en.wikipedia.org/wiki/A24
+Amscot Financial|https://en.wikipedia.org/wiki/Amscot_Financial
+Aramis|https://en.wikipedia.org/wiki/Aramis
+Avient Corporation|https://en.wikipedia.org/wiki/Avient_Corporation
+Axalta|https://en.wikipedia.org/wiki/Axalta
+Assurant|https://en.wikipedia.org/wiki/Assurant
+Anonymous|https://en.wikipedia.org/wiki/Anonymous
+AQR Capital Management|https://en.wikipedia.org/wiki/AQR_Capital_Management
+Ata|https://en.wikipedia.org/wiki/Ata
+Audi of America|https://en.wikipedia.org/wiki/Audi_of_America
+Alight Solutions|https://en.wikipedia.org/wiki/Alight_Solutions
+Applus+ IDIADA|https://en.wikipedia.org/wiki/Applus%2B_IDIADA
+Aspect Software|https://en.wikipedia.org/wiki/Aspect_Software
+Anem|https://en.wikipedia.org/wiki/Anem
+AlixPartners|https://en.wikipedia.org/wiki/AlixPartners
+Ableton|https://en.wikipedia.org/wiki/Ableton
+Aiquile Municipality|https://en.wikipedia.org/wiki/Aiquile_Municipality
+Arianespace, Inc.|https://en.wikipedia.org/wiki/Arianespace,_Inc.
+Alice + Olivia|https://en.wikipedia.org/wiki/Alice_%2B_Olivia
+AngelList|https://en.wikipedia.org/wiki/AngelList
+Acumen Fund|https://en.wikipedia.org/wiki/Acumen_Fund
+Amazon Logistics|https://en.wikipedia.org/wiki/Amazon_Logistics
+ISFnet|https://en.wikipedia.org/wiki/ISFnet
+Albemarle|https://en.wikipedia.org/wiki/Albemarle
+Adelaide|https://en.wikipedia.org/wiki/Adelaide
+Accel Animation Studios|https://en.wikipedia.org/wiki/Accel_Animation_Studios
+Advent International|https://en.wikipedia.org/wiki/Advent_International
+ACE Hardware Corp.|https://en.wikipedia.org/wiki/ACE_Hardware_Corp.
+ACI Limited|https://en.wikipedia.org/wiki/ACI_Limited
+Amer Sports|https://en.wikipedia.org/wiki/Amer_Sports
+AlmapBBDO|https://en.wikipedia.org/wiki/AlmapBBDO
+Ams AG|https://en.wikipedia.org/wiki/Ams_AG
+Arbonne|https://en.wikipedia.org/wiki/Arbonne
+Apex, North Carolina|https://en.wikipedia.org/wiki/Apex,_North_Carolina
+Ameren|https://en.wikipedia.org/wiki/Ameren
+Ares Management|https://en.wikipedia.org/wiki/Ares_Management
+Affordable Art Fair|https://en.wikipedia.org/wiki/Affordable_Art_Fair
+ATP International Series Gold|https://en.wikipedia.org/wiki/ATP_International_Series_Gold
+Axway Software|https://en.wikipedia.org/wiki/Axway_Software
+Arcesius|https://en.wikipedia.org/wiki/Arcesius
+American Family Insurance|https://en.wikipedia.org/wiki/American_Family_Insurance
+Ametek|https://en.wikipedia.org/wiki/Ametek
+Ayinger Brewery|https://en.wikipedia.org/wiki/Ayinger_Brewery
+Amro Tarek|https://en.wikipedia.org/wiki/Amro_Tarek
+AMIDEAST|https://en.wikipedia.org/wiki/AMIDEAST
+Artemide|https://en.wikipedia.org/wiki/Artemide
+Axarus|https://en.wikipedia.org/wiki/Axarus
+Als|https://en.wikipedia.org/wiki/Als
+Alere Inc|https://en.wikipedia.org/wiki/Alere_Inc
+APCO Worldwide|https://en.wikipedia.org/wiki/APCO_Worldwide
+Argo AI|https://en.wikipedia.org/wiki/Argo_AI
+Ashley Furniture Industries|https://en.wikipedia.org/wiki/Ashley_Furniture_Industries
+Amorepacific Corporation|https://en.wikipedia.org/wiki/Amorepacific_Corporation
+Atout France|https://en.wikipedia.org/wiki/Atout_France
+AAC Technologies|https://en.wikipedia.org/wiki/AAC_Technologies
+Artisoft LANtastic|https://en.wikipedia.org/wiki/Artisoft_LANtastic
+AutoNation|https://en.wikipedia.org/wiki/AutoNation
+Argonne National Laboratory|https://en.wikipedia.org/wiki/Argonne_National_Laboratory
+Arris|https://en.wikipedia.org/wiki/Arris
+Aimbridge Hospitality|https://en.wikipedia.org/wiki/Aimbridge_Hospitality
+Anomaly|https://en.wikipedia.org/wiki/Anomaly
+Angeloni|https://en.wikipedia.org/wiki/Angeloni
+Appirio|https://en.wikipedia.org/wiki/Appirio
+Atmel Corporation|https://en.wikipedia.org/wiki/Atmel_Corporation
+Anytime Fitness|https://en.wikipedia.org/wiki/Anytime_Fitness
