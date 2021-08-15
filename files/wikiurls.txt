@@ -672,7 +672,6 @@ Dimension Data|https://en.wikipedia.org/wiki/Dimension_Data
 SBM Offshore|https://en.wikipedia.org/wiki/SBM_Offshore
 Nutanix|https://en.wikipedia.org/wiki/Nutanix
 Sherwin-Williams|https://en.wikipedia.org/wiki/Sherwin-Williams
-Strategy and tactics of guerrilla warfare|https://en.wikipedia.org/wiki/Strategy_and_tactics_of_guerrilla_warfare
 Fircroft|https://en.wikipedia.org/wiki/Fircroft
 Loggi|https://en.wikipedia.org/wiki/Loggi
 Bank of America Merrill Lynch|https://en.wikipedia.org/wiki/Bank_of_America_Merrill_Lynch
