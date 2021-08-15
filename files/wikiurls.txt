@@ -45,7 +45,6 @@ Loréal|https://en.wikipedia.org/wiki/Lor%C3%A9al
 Insider Inc.|https://en.wikipedia.org/wiki/Insider_Inc.
 Pwc|https://en.wikipedia.org/wiki/Pwc
 Walmart|https://en.wikipedia.org/wiki/Walmart
-Nubank|https://en.wikipedia.org/wiki/Nubank
 Capgemini|https://en.wikipedia.org/wiki/Capgemini
 Hewlett Packard Enterprise|https://en.wikipedia.org/wiki/Hewlett_Packard_Enterprise
 Chevron|https://en.wikipedia.org/wiki/Chevron
@@ -135,7 +134,6 @@ VMware|https://en.wikipedia.org/wiki/VMware
 McDonald’s Corporation|https://en.wikipedia.org/wiki/McDonald%E2%80%99s_Corporation
 TikTok|https://en.wikipedia.org/wiki/TikTok
 Bradesco|https://en.wikipedia.org/wiki/Bradesco
-Warner Bros. Entertainment Inc. v. RDR Books|https://en.wikipedia.org/wiki/Warner_Bros._Entertainment_Inc._v._RDR_Books
 Deutsche Bank|https://en.wikipedia.org/wiki/Deutsche_Bank
 American Express|https://en.wikipedia.org/wiki/American_Express
 Att|https://en.wikipedia.org/wiki/Att
@@ -540,7 +538,6 @@ Kantar|https://en.wikipedia.org/wiki/Kantar
 Intumescent|https://en.wikipedia.org/wiki/Intumescent
 Dasa|https://en.wikipedia.org/wiki/Dasa
 Faa|https://en.wikipedia.org/wiki/Faa
-Costco Wholesale Corp. v. Omega, S. A.|https://en.wikipedia.org/wiki/Costco_Wholesale_Corp._v._Omega,_S._A.
 Stellantis|https://en.wikipedia.org/wiki/Stellantis
 Tata Technologies|https://en.wikipedia.org/wiki/Tata_Technologies
 Pearson|https://en.wikipedia.org/wiki/Pearson
@@ -568,7 +565,6 @@ Fiserv|https://en.wikipedia.org/wiki/Fiserv
 The We Company|https://en.wikipedia.org/wiki/The_We_Company
 Fis|https://en.wikipedia.org/wiki/Fis
 Pantone|https://en.wikipedia.org/wiki/Pantone
-Shiseido|https://en.wikipedia.org/wiki/Shiseido
 Gap Inc.|https://en.wikipedia.org/wiki/Gap_Inc.
 Ecolab|https://en.wikipedia.org/wiki/Ecolab
 Alpargatas|https://en.wikipedia.org/wiki/Alpargatas
@@ -625,9 +621,7 @@ TE Connectivity|https://en.wikipedia.org/wiki/TE_Connectivity
 Perfetti Van Melle|https://en.wikipedia.org/wiki/Perfetti_Van_Melle
 Clarins|https://en.wikipedia.org/wiki/Clarins
 Women's Wear Daily|https://en.wikipedia.org/wiki/Women%27s_Wear_Daily
-Egy-Tech Engineering|https://en.wikipedia.org/wiki/Egy-Tech_Engineering
 Blue Lives Matter|https://en.wikipedia.org/wiki/Blue_Lives_Matter
-Sequoiadendron giganteum|https://en.wikipedia.org/wiki/Sequoiadendron_giganteum
 Elm|https://en.wikipedia.org/wiki/Elm
 Care|https://en.wikipedia.org/wiki/Care
 Sprint|https://en.wikipedia.org/wiki/Sprint
@@ -676,7 +670,6 @@ Fircroft|https://en.wikipedia.org/wiki/Fircroft
 Loggi|https://en.wikipedia.org/wiki/Loggi
 Bank of America Merrill Lynch|https://en.wikipedia.org/wiki/Bank_of_America_Merrill_Lynch
 Edper Investments|https://en.wikipedia.org/wiki/Edper_Investments
-Médecins Sans Frontières (MSF)|https://en.wikipedia.org/wiki/M%C3%A9decins_Sans_Fronti%C3%A8res_(MSF)
 Groupon|https://en.wikipedia.org/wiki/Groupon
 Hootsuite|https://en.wikipedia.org/wiki/Hootsuite
 Aramex|https://en.wikipedia.org/wiki/Aramex
@@ -725,7 +718,6 @@ Kempinski Hotels|https://en.wikipedia.org/wiki/Kempinski_Hotels
 Delphi|https://en.wikipedia.org/wiki/Delphi
 Nomura|https://en.wikipedia.org/wiki/Nomura
 Experian|https://en.wikipedia.org/wiki/Experian
-Ti mene nosis|https://en.wikipedia.org/wiki/Ti_mene_nosis
 MRS Logística|https://en.wikipedia.org/wiki/MRS_Log%C3%ADstica
 Tivit|https://en.wikipedia.org/wiki/Tivit
 Cameron|https://en.wikipedia.org/wiki/Cameron
@@ -752,7 +744,6 @@ Serco|https://en.wikipedia.org/wiki/Serco
 Delhivery|https://en.wikipedia.org/wiki/Delhivery
 Avanade|https://en.wikipedia.org/wiki/Avanade
 Alcoa|https://en.wikipedia.org/wiki/Alcoa
-Revlon, Inc. v. MacAndrews & Forbes Holdings, Inc.|https://en.wikipedia.org/wiki/Revlon,_Inc._v._MacAndrews_%26_Forbes_Holdings,_Inc.
 Parexel|https://en.wikipedia.org/wiki/Parexel
 Western Digital|https://en.wikipedia.org/wiki/Western_Digital
 Pandora (astronomy)|https://en.wikipedia.org/wiki/Pandora_(astronomy)
@@ -793,7 +784,6 @@ Twitch TV|https://en.wikipedia.org/wiki/Twitch_TV
 Philips Lighting|https://en.wikipedia.org/wiki/Philips_Lighting
 Turner Broadcasting System|https://en.wikipedia.org/wiki/Turner_Broadcasting_System
 Coach|https://en.wikipedia.org/wiki/Coach
-Companhia Siderúrgica Nacional|https://en.wikipedia.org/wiki/Companhia_Sider%C3%BArgica_Nacional
 CompTIA|https://en.wikipedia.org/wiki/CompTIA
 Regeneron Pharmaceuticals|https://en.wikipedia.org/wiki/Regeneron_Pharmaceuticals
 Arezzo Cathedral|https://en.wikipedia.org/wiki/Arezzo_Cathedral
@@ -904,7 +894,6 @@ Prysmian Group|https://en.wikipedia.org/wiki/Prysmian_Group
 Kaspersky Lab|https://en.wikipedia.org/wiki/Kaspersky_Lab
 Mediacom|https://en.wikipedia.org/wiki/Mediacom
 Apple One (service)|https://en.wikipedia.org/wiki/Apple_One_(service)
-Gulfstream Aerospace|https://en.wikipedia.org/wiki/Gulfstream_Aerospace
 Hasbro|https://en.wikipedia.org/wiki/Hasbro
 Northern Trust|https://en.wikipedia.org/wiki/Northern_Trust
 Databricks|https://en.wikipedia.org/wiki/Databricks
@@ -932,25 +921,20 @@ International SOS|https://en.wikipedia.org/wiki/International_SOS
 Nielsenichthys pullus|https://en.wikipedia.org/wiki/Nielsenichthys_pullus
 Wieden+Kennedy|https://en.wikipedia.org/wiki/Wieden%2BKennedy
 Club Med|https://en.wikipedia.org/wiki/Club_Med
-General Dynamics F-16 Fighting Falcon|https://en.wikipedia.org/wiki/General_Dynamics_F-16_Fighting_Falcon
 Devon Energy|https://en.wikipedia.org/wiki/Devon_Energy
 Harnham|https://en.wikipedia.org/wiki/Harnham
 Borg Bryggerier|https://en.wikipedia.org/wiki/Borg_Bryggerier
 Interior design magazine|https://en.wikipedia.org/wiki/Interior_design_magazine
-World Wildlife Fund|https://en.wikipedia.org/wiki/World_Wildlife_Fund
 CCA Global Partners|https://en.wikipedia.org/wiki/CCA_Global_Partners
 Elsewedy Electric|https://en.wikipedia.org/wiki/Elsewedy_Electric
 Newmont|https://en.wikipedia.org/wiki/Newmont
 Swarovski|https://en.wikipedia.org/wiki/Swarovski
 Binance|https://en.wikipedia.org/wiki/Binance
 Chep|https://en.wikipedia.org/wiki/Chep
-Hassan Allam Holding|https://en.wikipedia.org/wiki/Hassan_Allam_Holding
 Ulysses S. Grant|https://en.wikipedia.org/wiki/Ulysses_S._Grant
 Bridgestone|https://en.wikipedia.org/wiki/Bridgestone
 Brookfield Asset Management|https://en.wikipedia.org/wiki/Brookfield_Asset_Management
-Arab Bank|https://en.wikipedia.org/wiki/Arab_Bank
 Zendesk|https://en.wikipedia.org/wiki/Zendesk
-Riyad Bank|https://en.wikipedia.org/wiki/Riyad_Bank
 Danish Refugee Council|https://en.wikipedia.org/wiki/Danish_Refugee_Council
 TJX Companies|https://en.wikipedia.org/wiki/TJX_Companies
 DocuSign|https://en.wikipedia.org/wiki/DocuSign
@@ -978,7 +962,6 @@ Johns Hopkins Medicine International|https://en.wikipedia.org/wiki/Johns_Hopkins
 Technicolor|https://en.wikipedia.org/wiki/Technicolor
 GFK|https://en.wikipedia.org/wiki/GFK
 Otis elevators|https://en.wikipedia.org/wiki/Otis_elevators
-World Wide Technology|https://en.wikipedia.org/wiki/World_Wide_Technology
 RDX Technology|https://en.wikipedia.org/wiki/RDX_Technology
 Abercrombie & Fitch|https://en.wikipedia.org/wiki/Abercrombie_%26_Fitch
 JCPenney|https://en.wikipedia.org/wiki/JCPenney
@@ -1008,7 +991,6 @@ RGP (duo)|https://en.wikipedia.org/wiki/RGP_(duo)
 Tegra Incorporadora|https://en.wikipedia.org/wiki/Tegra_Incorporadora
 Credit Agricole CIB|https://en.wikipedia.org/wiki/Credit_Agricole_CIB
 Rei|https://en.wikipedia.org/wiki/Rei
-Pentagram|https://en.wikipedia.org/wiki/Pentagram
 Nagarhole National Park|https://en.wikipedia.org/wiki/Nagarhole_National_Park
 Zanca-Sant'Andrea|https://en.wikipedia.org/wiki/Zanca-Sant%27Andrea
 HelloFresh|https://en.wikipedia.org/wiki/HelloFresh
@@ -1031,7 +1013,6 @@ Apache Corporation|https://en.wikipedia.org/wiki/Apache_Corporation
 AFRY|https://en.wikipedia.org/wiki/AFRY
 HC Oranje-Rood|https://en.wikipedia.org/wiki/HC_Oranje-Rood
 BorgWarner|https://en.wikipedia.org/wiki/BorgWarner
-MUFG Bank|https://en.wikipedia.org/wiki/MUFG_Bank
 Sears|https://en.wikipedia.org/wiki/Sears
 Alfa Laval|https://en.wikipedia.org/wiki/Alfa_Laval
 Iff|https://en.wikipedia.org/wiki/Iff
@@ -1041,7 +1022,6 @@ Insight|https://en.wikipedia.org/wiki/Insight
 Huda Beauty|https://en.wikipedia.org/wiki/Huda_Beauty
 Blue Origin|https://en.wikipedia.org/wiki/Blue_Origin
 Launch capsule|https://en.wikipedia.org/wiki/Launch_capsule
-Modern attempts to revive the Sanhedrin|https://en.wikipedia.org/wiki/Modern_attempts_to_revive_the_Sanhedrin
 Wayfair|https://en.wikipedia.org/wiki/Wayfair
 Nestlé Waters|https://en.wikipedia.org/wiki/Nestl%C3%A9_Waters
 BMC Software|https://en.wikipedia.org/wiki/BMC_Software
@@ -1100,7 +1080,6 @@ First Data Corporation|https://en.wikipedia.org/wiki/First_Data_Corporation
 Munich Residenz|https://en.wikipedia.org/wiki/Munich_Residenz
 Limited Brands|https://en.wikipedia.org/wiki/Limited_Brands
 Eataly|https://en.wikipedia.org/wiki/Eataly
-Council on Foreign Relations|https://en.wikipedia.org/wiki/Council_on_Foreign_Relations
 Xero|https://en.wikipedia.org/wiki/Xero
 Minerva Sanders|https://en.wikipedia.org/wiki/Minerva_Sanders
 Peloton Interactive|https://en.wikipedia.org/wiki/Peloton_Interactive
@@ -1131,7 +1110,6 @@ The Neiman Marcus Group|https://en.wikipedia.org/wiki/The_Neiman_Marcus_Group
 Domino's Pizza|https://en.wikipedia.org/wiki/Domino%27s_Pizza
 Fugro|https://en.wikipedia.org/wiki/Fugro
 Informatica|https://en.wikipedia.org/wiki/Informatica
-Administradoras de Fondos para el Retiro|https://en.wikipedia.org/wiki/Administradoras_de_Fondos_para_el_Retiro
 Spectrum|https://en.wikipedia.org/wiki/Spectrum
 Seagate Technology|https://en.wikipedia.org/wiki/Seagate_Technology
 Cloudera|https://en.wikipedia.org/wiki/Cloudera
@@ -1151,7 +1129,6 @@ S&P Global Ratings|https://en.wikipedia.org/wiki/S%26P_Global_Ratings
 Draeger|https://en.wikipedia.org/wiki/Draeger
 Yokogawa Electric|https://en.wikipedia.org/wiki/Yokogawa_Electric
 Mycosis|https://en.wikipedia.org/wiki/Mycosis
-The World Bank Group|https://en.wikipedia.org/wiki/The_World_Bank_Group
 Toastmasters International|https://en.wikipedia.org/wiki/Toastmasters_International
 S&P Global Market Intelligence|https://en.wikipedia.org/wiki/S%26P_Global_Market_Intelligence
 Canon Emani Sambayya|https://en.wikipedia.org/wiki/Canon_Emani_Sambayya
@@ -1168,7 +1145,6 @@ Energia (corporation)|https://en.wikipedia.org/wiki/Energia_(corporation)
 Canva|https://en.wikipedia.org/wiki/Canva
 Bic|https://en.wikipedia.org/wiki/Bic
 NPK (group)|https://en.wikipedia.org/wiki/NPK_(group)
-Wounded Warrior Project|https://en.wikipedia.org/wiki/Wounded_Warrior_Project
 Bupa|https://en.wikipedia.org/wiki/Bupa
 Varian Medical Systems|https://en.wikipedia.org/wiki/Varian_Medical_Systems
 Edward Jones Investments|https://en.wikipedia.org/wiki/Edward_Jones_Investments
@@ -1177,7 +1153,6 @@ Mercy Corps|https://en.wikipedia.org/wiki/Mercy_Corps
 TheWrap.com|https://en.wikipedia.org/wiki/TheWrap.com
 Marc Jacobs|https://en.wikipedia.org/wiki/Marc_Jacobs
 Beam Suntory|https://en.wikipedia.org/wiki/Beam_Suntory
-American Psychiatric Association|https://en.wikipedia.org/wiki/American_Psychiatric_Association
 ONSemi|https://en.wikipedia.org/wiki/ONSemi
 Hiring|https://en.wikipedia.org/wiki/Hiring
 NB Global|https://en.wikipedia.org/wiki/NB_Global
@@ -1222,7 +1197,6 @@ Fera (band)|https://en.wikipedia.org/wiki/Fera_(band)
 Qlik|https://en.wikipedia.org/wiki/Qlik
 FHI 360|https://en.wikipedia.org/wiki/FHI_360
 Emerson Network Power|https://en.wikipedia.org/wiki/Emerson_Network_Power
-Alghanim Industries|https://en.wikipedia.org/wiki/Alghanim_Industries
 COFCO Group|https://en.wikipedia.org/wiki/COFCO_Group
 TransUnion|https://en.wikipedia.org/wiki/TransUnion
 Aptiv|https://en.wikipedia.org/wiki/Aptiv
@@ -1246,7 +1220,6 @@ Dollar General|https://en.wikipedia.org/wiki/Dollar_General
 Alentejo Blue|https://en.wikipedia.org/wiki/Alentejo_Blue
 Algérie Télécom|https://en.wikipedia.org/wiki/Alg%C3%A9rie_T%C3%A9l%C3%A9com
 Solenis|https://en.wikipedia.org/wiki/Solenis
-American Cancer Society|https://en.wikipedia.org/wiki/American_Cancer_Society
 Zalando|https://en.wikipedia.org/wiki/Zalando
 GKN Aerospace|https://en.wikipedia.org/wiki/GKN_Aerospace
 Homart Development Company|https://en.wikipedia.org/wiki/Homart_Development_Company
@@ -1298,7 +1271,6 @@ Lanxess|https://en.wikipedia.org/wiki/Lanxess
 Getty Images|https://en.wikipedia.org/wiki/Getty_Images
 Glassdoor|https://en.wikipedia.org/wiki/Glassdoor
 Oktaine|https://en.wikipedia.org/wiki/Oktaine
-American Bar Association|https://en.wikipedia.org/wiki/American_Bar_Association
 Swatch Group|https://en.wikipedia.org/wiki/Swatch_Group
 Perficient|https://en.wikipedia.org/wiki/Perficient
 Razer|https://en.wikipedia.org/wiki/Razer
@@ -1352,8 +1324,6 @@ CMPC (company)|https://en.wikipedia.org/wiki/CMPC_(company)
 Elanco|https://en.wikipedia.org/wiki/Elanco
 Andela|https://en.wikipedia.org/wiki/Andela
 Morning Star|https://en.wikipedia.org/wiki/Morning_Star
-Zain Saidin|https://en.wikipedia.org/wiki/Zain_Saidin
-Vietnam Workers' Party|https://en.wikipedia.org/wiki/Vietnam_Workers%27_Party
 Donaldson|https://en.wikipedia.org/wiki/Donaldson
 Safeway|https://en.wikipedia.org/wiki/Safeway
 Ansys Inc|https://en.wikipedia.org/wiki/Ansys_Inc
@@ -1367,7 +1337,6 @@ Greystar Real Estate Partners|https://en.wikipedia.org/wiki/Greystar_Real_Estate
 Refinitiv|https://en.wikipedia.org/wiki/Refinitiv
 UNRWA|https://en.wikipedia.org/wiki/UNRWA
 Ultragaz|https://en.wikipedia.org/wiki/Ultragaz
-The Puratos Sourdough Library|https://en.wikipedia.org/wiki/The_Puratos_Sourdough_Library
 Chesapeake Energy|https://en.wikipedia.org/wiki/Chesapeake_Energy
 Chemonics International|https://en.wikipedia.org/wiki/Chemonics_International
 Here|https://en.wikipedia.org/wiki/Here
@@ -1385,8 +1354,6 @@ Infobip|https://en.wikipedia.org/wiki/Infobip
 Ms. International|https://en.wikipedia.org/wiki/Ms._International
 Cisco Meraki|https://en.wikipedia.org/wiki/Cisco_Meraki
 The Phillips 66 Company|https://en.wikipedia.org/wiki/The_Phillips_66_Company
-Bupa Arabia|https://en.wikipedia.org/wiki/Bupa_Arabia
-Rede Bandeirantes de Televisão|https://en.wikipedia.org/wiki/Rede_Bandeirantes_de_Televis%C3%A3o
 RTI International|https://en.wikipedia.org/wiki/RTI_International
 Tadawul|https://en.wikipedia.org/wiki/Tadawul
 BearingPoint|https://en.wikipedia.org/wiki/BearingPoint
