@@ -516,7 +516,6 @@ ScienceDaily|https://en.wikipedia.org/wiki/ScienceDaily
 UST Global|https://en.wikipedia.org/wiki/UST_Global
 PRA Health Sciences|https://en.wikipedia.org/wiki/PRA_Health_Sciences
 HRDetect|https://en.wikipedia.org/wiki/HRDetect
-Nhs|https://en.wikipedia.org/wiki/Nhs
 Viacom|https://en.wikipedia.org/wiki/Viacom
 Sandvik|https://en.wikipedia.org/wiki/Sandvik
 Symantec|https://en.wikipedia.org/wiki/Symantec
