@@ -757,7 +757,6 @@ Revlon, Inc. v. MacAndrews & Forbes Holdings, Inc.|https://en.wikipedia.org/wiki
 Parexel|https://en.wikipedia.org/wiki/Parexel
 Western Digital|https://en.wikipedia.org/wiki/Western_Digital
 Pandora (astronomy)|https://en.wikipedia.org/wiki/Pandora_(astronomy)
-Animal|https://en.wikipedia.org/wiki/Animal
 Geodis|https://en.wikipedia.org/wiki/Geodis
 Toyota North America|https://en.wikipedia.org/wiki/Toyota_North_America
 Kerry|https://en.wikipedia.org/wiki/Kerry
@@ -1225,12 +1224,10 @@ Qlik|https://en.wikipedia.org/wiki/Qlik
 FHI 360|https://en.wikipedia.org/wiki/FHI_360
 Emerson Network Power|https://en.wikipedia.org/wiki/Emerson_Network_Power
 Alghanim Industries|https://en.wikipedia.org/wiki/Alghanim_Industries
-Veterans' Employment and Training Service|https://en.wikipedia.org/wiki/Veterans%27_Employment_and_Training_Service
 COFCO Group|https://en.wikipedia.org/wiki/COFCO_Group
 TransUnion|https://en.wikipedia.org/wiki/TransUnion
 Aptiv|https://en.wikipedia.org/wiki/Aptiv
 Logitech|https://en.wikipedia.org/wiki/Logitech
-Wildlife Conservation Society|https://en.wikipedia.org/wiki/Wildlife_Conservation_Society
 Yum! Brands|https://en.wikipedia.org/wiki/Yum!_Brands
 KFSHRC|https://en.wikipedia.org/wiki/KFSHRC
 Ross Stores|https://en.wikipedia.org/wiki/Ross_Stores
