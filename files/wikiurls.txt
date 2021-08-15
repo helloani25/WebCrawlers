@@ -460,7 +460,6 @@ Warner Music Group|https://en.wikipedia.org/wiki/Warner_Music_Group
 EBay|https://en.wikipedia.org/wiki/EBay
 Barrick Gold Corporation|https://en.wikipedia.org/wiki/Barrick_Gold_Corporation
 Cielo|https://en.wikipedia.org/wiki/Cielo
-Engineering|https://en.wikipedia.org/wiki/Engineering
 Orange Business Services|https://en.wikipedia.org/wiki/Orange_Business_Services
 EPAM Systems|https://en.wikipedia.org/wiki/EPAM_Systems
 The Blackstone Group|https://en.wikipedia.org/wiki/The_Blackstone_Group
@@ -519,7 +518,6 @@ PRA Health Sciences|https://en.wikipedia.org/wiki/PRA_Health_Sciences
 HRDetect|https://en.wikipedia.org/wiki/HRDetect
 Nhs|https://en.wikipedia.org/wiki/Nhs
 Viacom|https://en.wikipedia.org/wiki/Viacom
-Civil engineering|https://en.wikipedia.org/wiki/Civil_engineering
 Sandvik|https://en.wikipedia.org/wiki/Sandvik
 Symantec|https://en.wikipedia.org/wiki/Symantec
 CallApp|https://en.wikipedia.org/wiki/CallApp
