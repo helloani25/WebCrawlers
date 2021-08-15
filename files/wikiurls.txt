@@ -1114,7 +1114,6 @@ The Carlyle Group|https://en.wikipedia.org/wiki/The_Carlyle_Group
 Covidien Group|https://en.wikipedia.org/wiki/Covidien_Group
 Automation Anywhere|https://en.wikipedia.org/wiki/Automation_Anywhere
 Sabre Corporation|https://en.wikipedia.org/wiki/Sabre_Corporation
-DirecTV Latin America|https://en.wikipedia.org/wiki/DirecTV_Latin_America
 ITC Hotels|https://en.wikipedia.org/wiki/ITC_Hotels
 The Motley Fool|https://en.wikipedia.org/wiki/The_Motley_Fool
 The Clorox Company|https://en.wikipedia.org/wiki/The_Clorox_Company
@@ -1363,7 +1362,6 @@ Garmin|https://en.wikipedia.org/wiki/Garmin
 Etsy|https://en.wikipedia.org/wiki/Etsy
 Monster|https://en.wikipedia.org/wiki/Monster
 Bitcoin|https://en.wikipedia.org/wiki/Bitcoin
-Ouro Verde (TV series)|https://en.wikipedia.org/wiki/Ouro_Verde_(TV_series)
 Sulzer|https://en.wikipedia.org/wiki/Sulzer
 Rede Record|https://en.wikipedia.org/wiki/Rede_Record
 Alteryx|https://en.wikipedia.org/wiki/Alteryx
