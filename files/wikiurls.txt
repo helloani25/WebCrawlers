@@ -929,7 +929,6 @@ Bio-Rad Laboratories|https://en.wikipedia.org/wiki/Bio-Rad_Laboratories
 Oupa Gqozo|https://en.wikipedia.org/wiki/Oupa_Gqozo
 Joe (coffee)|https://en.wikipedia.org/wiki/Joe_(coffee)
 Abril|https://en.wikipedia.org/wiki/Abril
-Orange Egypt|https://en.wikipedia.org/wiki/Orange_Egypt
 Careem|https://en.wikipedia.org/wiki/Careem
 International SOS|https://en.wikipedia.org/wiki/International_SOS
 Nielsenichthys pullus|https://en.wikipedia.org/wiki/Nielsenichthys_pullus
@@ -1210,7 +1209,6 @@ OpenText|https://en.wikipedia.org/wiki/OpenText
 Thrive Global|https://en.wikipedia.org/wiki/Thrive_Global
 Tdg plc|https://en.wikipedia.org/wiki/Tdg_plc
 CRU archive|https://en.wikipedia.org/wiki/CRU_archive
-Telecom Egypt|https://en.wikipedia.org/wiki/Telecom_Egypt
 Artnet|https://en.wikipedia.org/wiki/Artnet
 Tenneco|https://en.wikipedia.org/wiki/Tenneco
 URS Corporation|https://en.wikipedia.org/wiki/URS_Corporation
@@ -1269,7 +1267,6 @@ Essity|https://en.wikipedia.org/wiki/Essity
 Csis|https://en.wikipedia.org/wiki/Csis
 Steelcase|https://en.wikipedia.org/wiki/Steelcase
 Eneva|https://en.wikipedia.org/wiki/Eneva
-Oman Air|https://en.wikipedia.org/wiki/Oman_Air
 Columbia Sportswear|https://en.wikipedia.org/wiki/Columbia_Sportswear
 BSI Group|https://en.wikipedia.org/wiki/BSI_Group
 Trafigura|https://en.wikipedia.org/wiki/Trafigura
