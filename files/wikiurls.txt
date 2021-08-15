@@ -956,7 +956,6 @@ Technicolor|https://en.wikipedia.org/wiki/Technicolor
 GFK|https://en.wikipedia.org/wiki/GFK
 Otis elevators|https://en.wikipedia.org/wiki/Otis_elevators
 RDX Technology|https://en.wikipedia.org/wiki/RDX_Technology
-Abercrombie & Fitch|https://en.wikipedia.org/wiki/Abercrombie_%26_Fitch
 JCPenney|https://en.wikipedia.org/wiki/JCPenney
 GE Digital|https://en.wikipedia.org/wiki/GE_Digital
 Young & Rubicam|https://en.wikipedia.org/wiki/Young_%26_Rubicam
@@ -1542,8 +1541,6 @@ Aberdeen Standard Investments Scottish Open|https://en.wikipedia.org/wiki/Aberde
 Apptio|https://en.wikipedia.org/wiki/Apptio
 Arasco|https://en.wikipedia.org/wiki/Arasco
 Alnylam Pharmaceuticals|https://en.wikipedia.org/wiki/Alnylam_Pharmaceuticals
-As Brasileiras|https://en.wikipedia.org/wiki/As_Brasileiras
-Australian Trade Commission|https://en.wikipedia.org/wiki/Australian_Trade_Commission
 Arduino|https://en.wikipedia.org/wiki/Arduino
 Assa Abloy|https://en.wikipedia.org/wiki/Assa_Abloy
 Anixter|https://en.wikipedia.org/wiki/Anixter
@@ -1785,7 +1782,6 @@ Amplifying host|https://en.wikipedia.org/wiki/Amplifying_host
 AeroVironment|https://en.wikipedia.org/wiki/AeroVironment
 Abrus precatorius|https://en.wikipedia.org/wiki/Abrus_precatorius
 Addleshaw Goddard|https://en.wikipedia.org/wiki/Addleshaw_Goddard
-Americans for the Arts|https://en.wikipedia.org/wiki/Americans_for_the_Arts
 Abcam|https://en.wikipedia.org/wiki/Abcam
 Automattic|https://en.wikipedia.org/wiki/Automattic
 Architectural Record|https://en.wikipedia.org/wiki/Architectural_Record
@@ -1890,5 +1886,78 @@ APO Group,https://en.wikipedia.org/wiki/APO_Group
 Air Astana,https://en.wikipedia.org/wiki/Air_Astana
 Aurigny,https://en.wikipedia.org/wiki/Aurigny
 Alation,https://en.wikipedia.org/wiki/Alation
-AllMusic,https://en.wikipedia.org/wiki/AllMusic
-
+AFS Intercultural Programs|https://en.wikipedia.org/wiki/AFS_Intercultural_Programs
+Acatech|https://en.wikipedia.org/wiki/Acatech
+Atlanta Falcons|https://en.wikipedia.org/wiki/Atlanta_Falcons
+Avanos Medical|https://en.wikipedia.org/wiki/Avanos_Medical
+Advanced Bionics|https://en.wikipedia.org/wiki/Advanced_Bionics
+Adimai Penn|https://en.wikipedia.org/wiki/Adimai_Penn
+Amphenol|https://en.wikipedia.org/wiki/Amphenol
+Atypon|https://en.wikipedia.org/wiki/Atypon
+Abercrombie & Kent|https://en.wikipedia.org/wiki/Abercrombie_%26_Kent
+Ana Bebić|https://en.wikipedia.org/wiki/Ana_Bebi%C4%87
+Atwood Oceanics|https://en.wikipedia.org/wiki/Atwood_Oceanics
+Aloft Hotels|https://en.wikipedia.org/wiki/Aloft_Hotels
+Anphabe.com|https://en.wikipedia.org/wiki/Anphabe.com
+Asi|https://en.wikipedia.org/wiki/Asi
+Thea Vidale|https://en.wikipedia.org/wiki/Thea_Vidale
+Ache Records|https://en.wikipedia.org/wiki/Ache_Records
+Atotech|https://en.wikipedia.org/wiki/Atotech
+American Cruise Lines|https://en.wikipedia.org/wiki/American_Cruise_Lines
+Asteelflash Group|https://en.wikipedia.org/wiki/Asteelflash_Group
+ASRC Federal|https://en.wikipedia.org/wiki/ASRC_Federal
+Aircom International|https://en.wikipedia.org/wiki/Aircom_International
+Analysis Group|https://en.wikipedia.org/wiki/Analysis_Group
+Accion|https://en.wikipedia.org/wiki/Accion
+Alliage|https://en.wikipedia.org/wiki/Alliage
+AArch64|https://en.wikipedia.org/wiki/AArch64
+AllMusic|https://en.wikipedia.org/wiki/AllMusic
+Apicomplexa|https://en.wikipedia.org/wiki/Apicomplexa
+American Enterprise Institute|https://en.wikipedia.org/wiki/American_Enterprise_Institute
+Agile Alliance|https://en.wikipedia.org/wiki/Agile_Alliance
+Aacute|https://en.wikipedia.org/wiki/Aacute
+AORN Journal|https://en.wikipedia.org/wiki/AORN_Journal
+Arepa|https://en.wikipedia.org/wiki/Arepa
+Altec|https://en.wikipedia.org/wiki/Altec
+Allogene Therapeutics|https://en.wikipedia.org/wiki/Allogene_Therapeutics
+AerCap|https://en.wikipedia.org/wiki/AerCap
+Arkane Studios|https://en.wikipedia.org/wiki/Arkane_Studios
+AKDN|https://en.wikipedia.org/wiki/AKDN
+Avesta|https://en.wikipedia.org/wiki/Avesta
+Elemental Technologies|https://en.wikipedia.org/wiki/Elemental_Technologies
+ADS Group|https://en.wikipedia.org/wiki/ADS_Group
+Amicus Therapeutics|https://en.wikipedia.org/wiki/Amicus_Therapeutics
+Acatech|https://en.wikipedia.org/wiki/Acatech
+Avanos Medical|https://en.wikipedia.org/wiki/Avanos_Medical
+Advanced Bionics|https://en.wikipedia.org/wiki/Advanced_Bionics
+Adimai Penn|https://en.wikipedia.org/wiki/Adimai_Penn
+Amphenol|https://en.wikipedia.org/wiki/Amphenol
+Atypon|https://en.wikipedia.org/wiki/Atypon
+APSPACE|https://en.wikipedia.org/wiki/APSPACE
+Aerogen|https://en.wikipedia.org/wiki/Aerogen
+AOPA|https://en.wikipedia.org/wiki/AOPA
+ACOG sight|https://en.wikipedia.org/wiki/ACOG_sight
+Adone Zoli|https://en.wikipedia.org/wiki/Adone_Zoli
+Aloft Hotels|https://en.wikipedia.org/wiki/Aloft_Hotels
+Anphabe.com|https://en.wikipedia.org/wiki/Anphabe.com
+Atwood Oceanics|https://en.wikipedia.org/wiki/Atwood_Oceanics
+Anphabe.com|https://en.wikipedia.org/wiki/Anphabe.com
+Asi|https://en.wikipedia.org/wiki/Asi
+Advanced energy economy|https://en.wikipedia.org/wiki/Advanced_energy_economy
+Thea Vidale|https://en.wikipedia.org/wiki/Thea_Vidale
+ATK Reserves And Academy|https://en.wikipedia.org/wiki/ATK_Reserves_And_Academy
+Aventri|https://en.wikipedia.org/wiki/Aventri
+Act|https://en.wikipedia.org/wiki/Act
+Alplistock|https://en.wikipedia.org/wiki/Alplistock
+American Airlines Cargo,https://en.wikipedia.org/wiki/American_Airlines_Cargo
+The Ancines Woods,https://en.wikipedia.org/wiki/The_Ancines_Woods
+ACCO Brands,https://en.wikipedia.org/wiki/ACCO_Brands
+Annie's Homegrown,https://en.wikipedia.org/wiki/Annie%27s_Homegrown
+Artemisia,https://en.wikipedia.org/wiki/Artemisia
+Algolia,https://en.wikipedia.org/wiki/Algolia
+Aditi Technologies,https://en.wikipedia.org/wiki/Aditi_Technologies
+Aviat Networks,https://en.wikipedia.org/wiki/Aviat_Networks
+Advanced Accelerator Applications,https://en.wikipedia.org/wiki/Advanced_Accelerator_Applications
+Antero Resources,https://en.wikipedia.org/wiki/Antero_Resources
+Apeel Sciences,https://en.wikipedia.org/wiki/Apeel_Sciences
+Amy's Kitchen,https://en.wikipedia.org/wiki/Amy%27s_Kitchen
