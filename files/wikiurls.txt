@@ -2126,7 +2126,6 @@ Bechtel Corporation|https://en.wikipedia.org/wiki/Bechtel_Corporation
 Blizzard Entertainment|https://en.wikipedia.org/wiki/Blizzard_Entertainment
 Boston Scientific|https://en.wikipedia.org/wiki/Boston_Scientific
 British Council|https://en.wikipedia.org/wiki/British_Council
-Bulgari|https://en.wikipedia.org/wiki/Bulgari
 Biogen|https://en.wikipedia.org/wiki/Biogen
 Bradesco Seguros|https://en.wikipedia.org/wiki/Bradesco_Seguros
 BD|https://en.wikipedia.org/wiki/BD
@@ -2171,10 +2170,8 @@ Bio-Rad Laboratories|https://en.wikipedia.org/wiki/Bio-Rad_Laboratories
 Binance|https://en.wikipedia.org/wiki/Binance
 Bridgestone Americas Holding|https://en.wikipedia.org/wiki/Bridgestone_Americas_Holding
 Brookfield Asset Management|https://en.wikipedia.org/wiki/Brookfield_Asset_Management
-Bestseller|https://en.wikipedia.org/wiki/Bestseller
 Bolloré Logistics|https://en.wikipedia.org/wiki/Bollor%C3%A9_Logistics
 Bayut.com|https://en.wikipedia.org/wiki/Bayut.com
-Banglalink|https://en.wikipedia.org/wiki/Banglalink
 Black|https://en.wikipedia.org/wiki/Black
 BorgWarner Inc.|https://en.wikipedia.org/wiki/BorgWarner_Inc.
 Blue Origin|https://en.wikipedia.org/wiki/Blue_Origin
@@ -2196,8 +2193,6 @@ BAE Systems Inc.|https://en.wikipedia.org/wiki/BAE_Systems_Inc.
 Bentley Systems|https://en.wikipedia.org/wiki/Bentley_Systems
 BearingPoint|https://en.wikipedia.org/wiki/BearingPoint
 Bitcoin|https://en.wikipedia.org/wiki/Bitcoin
-Brasil Sem Homophobia|https://en.wikipedia.org/wiki/Brasil_Sem_Homophobia
-Brasil Kirin|https://en.wikipedia.org/wiki/Brasil_Kirin
 Broadridge Financial Solutions|https://en.wikipedia.org/wiki/Broadridge_Financial_Solutions
 Bell Flight|https://en.wikipedia.org/wiki/Bell_Flight
 Boyden|https://en.wikipedia.org/wiki/Boyden
@@ -2231,7 +2226,6 @@ BNDES|https://en.wikipedia.org/wiki/BNDES
 BDO International Grand Prix Series|https://en.wikipedia.org/wiki/BDO_International_Grand_Prix_Series
 BIP|https://en.wikipedia.org/wiki/BIP
 B/E Aerospace|https://en.wikipedia.org/wiki/B/E_Aerospace
-Bloomberg Government|https://en.wikipedia.org/wiki/Bloomberg_Government
 Beyond Meat|https://en.wikipedia.org/wiki/Beyond_Meat
 B9|https://en.wikipedia.org/wiki/B9
 Bancomext|https://en.wikipedia.org/wiki/Bancomext
@@ -2288,7 +2282,6 @@ Bleacher Report|https://en.wikipedia.org/wiki/Bleacher_Report
 BIAT|https://en.wikipedia.org/wiki/BIAT
 Burton Snowboards|https://en.wikipedia.org/wiki/Burton_Snowboards
 Berkshire Hathaway|https://en.wikipedia.org/wiki/Berkshire_Hathaway
-Believe|https://en.wikipedia.org/wiki/Believe
 Birchbox|https://en.wikipedia.org/wiki/Birchbox
 Buffalo Wild Wings|https://en.wikipedia.org/wiki/Buffalo_Wild_Wings
 Baptist Health South Florida|https://en.wikipedia.org/wiki/Baptist_Health_South_Florida
@@ -2328,4 +2321,24 @@ BW Group|https://en.wikipedia.org/wiki/BW_Group
 Beaumont Health|https://en.wikipedia.org/wiki/Beaumont_Health
 Blue Apron|https://en.wikipedia.org/wiki/Blue_Apron
 BetterUp|https://en.wikipedia.org/wiki/BetterUp
-Bostik|https://en.wikipedia.org/wiki/Bostik
+Bright Horizons|https://en.wikipedia.org/wiki/Bright_Horizons
+BMB Group|https://en.wikipedia.org/wiki/BMB_Group
+Brooks Running|https://en.wikipedia.org/wiki/Brooks_Running
+Business Wire|https://en.wikipedia.org/wiki/Business_Wire
+Berkadia|https://en.wikipedia.org/wiki/Berkadia
+Bitcoin Magazine|https://en.wikipedia.org/wiki/Bitcoin_Magazine
+Blackbaud|https://en.wikipedia.org/wiki/Blackbaud
+Banco Bilbao Vizcaya Argentaria|https://en.wikipedia.org/wiki/Banco_Bilbao_Vizcaya_Argentaria
+BSC Hubertuself Berlin|https://en.wikipedia.org/wiki/BSC_Hubertuself_Berlin
+Blue Cross Blue Shield of Michigan|https://en.wikipedia.org/wiki/Blue_Cross_Blue_Shield_of_Michigan
+Bloomberg Industry Group|https://en.wikipedia.org/wiki/Bloomberg_Industry_Group
+Broad Reach|https://en.wikipedia.org/wiki/Broad_Reach
+Bullhorn|https://en.wikipedia.org/wiki/Bullhorn
+Boy Scouts of America|https://en.wikipedia.org/wiki/Boy_Scouts_of_America
+Beth Israel Deaconess Medical Center|https://en.wikipedia.org/wiki/Beth_Israel_Deaconess_Medical_Center
+Bobcat Company|https://en.wikipedia.org/wiki/Bobcat_Company
+Banque Populaire|https://en.wikipedia.org/wiki/Banque_Populaire
+Berlin Packaging|https://en.wikipedia.org/wiki/Berlin_Packaging
+Black Rifle Coffee Company|https://en.wikipedia.org/wiki/Black_Rifle_Coffee_Company
+Broad Institute of MIT and Harvard University|https://en.wikipedia.org/wiki/Broad_Institute_of_MIT_and_Harvard_University
+Brex|https://en.wikipedia.org/wiki/Brex
