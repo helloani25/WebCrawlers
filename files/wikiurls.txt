@@ -2104,7 +2104,6 @@ Amica Mutual Insurance Company|https://en.wikipedia.org/wiki/Amica_Mutual_Insura
 Ableton Live|https://en.wikipedia.org/wiki/Ableton_Live
 Business Insider|https://en.wikipedia.org/wiki/Business_Insider
 Bayer|https://en.wikipedia.org/wiki/Bayer
-Bloomberg News|https://en.wikipedia.org/wiki/Bloomberg_News
 BP|https://en.wikipedia.org/wiki/BP
 Banco Itaú|https://en.wikipedia.org/wiki/Banco_Ita%C3%BA
 Boeing|https://en.wikipedia.org/wiki/Boeing
@@ -2205,7 +2204,6 @@ Boyden|https://en.wikipedia.org/wiki/Boyden
 BNP Paribas Asset Management|https://en.wikipedia.org/wiki/BNP_Paribas_Asset_Management
 Brookfield Properties|https://en.wikipedia.org/wiki/Brookfield_Properties
 Billboard|https://en.wikipedia.org/wiki/Billboard
-Bharat Heavy Electricals Limited|https://en.wikipedia.org/wiki/Bharat_Heavy_Electricals_Limited
 Bausch & Lomb|https://en.wikipedia.org/wiki/Bausch_%26_Lomb
 Birlasoft|https://en.wikipedia.org/wiki/Birlasoft
 Bethesda Softworks|https://en.wikipedia.org/wiki/Bethesda_Softworks
@@ -2223,9 +2221,7 @@ BNP Paribas Real Estate|https://en.wikipedia.org/wiki/BNP_Paribas_Real_Estate
 BTS World: Original Soundtrack|https://en.wikipedia.org/wiki/BTS_World:_Original_Soundtrack
 Banana Republic|https://en.wikipedia.org/wiki/Banana_Republic
 Burns|https://en.wikipedia.org/wiki/Burns
-Bahrain Petroleum Company|https://en.wikipedia.org/wiki/Bahrain_Petroleum_Company
 BB|https://en.wikipedia.org/wiki/BB
-Black Enterprise Magazine|https://en.wikipedia.org/wiki/Black_Enterprise_Magazine
 Box|https://en.wikipedia.org/wiki/Box
 Bracell Limited|https://en.wikipedia.org/wiki/Bracell_Limited
 Bed Bath & Beyond|https://en.wikipedia.org/wiki/Bed_Bath_%26_Beyond
@@ -2238,7 +2234,6 @@ B/E Aerospace|https://en.wikipedia.org/wiki/B/E_Aerospace
 Bloomberg Government|https://en.wikipedia.org/wiki/Bloomberg_Government
 Beyond Meat|https://en.wikipedia.org/wiki/Beyond_Meat
 B9|https://en.wikipedia.org/wiki/B9
-Bank of Egypt|https://en.wikipedia.org/wiki/Bank_of_Egypt
 Bancomext|https://en.wikipedia.org/wiki/Bancomext
 Brocade|https://en.wikipedia.org/wiki/Brocade
 Baylor Scott & White Medical Center – Temple|https://en.wikipedia.org/wiki/Baylor_Scott_%26_White_Medical_Center_%E2%80%93_Temple
@@ -2282,3 +2277,55 @@ Banca d’Italia|https://en.wikipedia.org/wiki/Banca_d%E2%80%99Italia
 Brink’s, Incorporated|https://en.wikipedia.org/wiki/Brink%E2%80%99s,_Incorporated
 Bank of Canada|https://en.wikipedia.org/wiki/Bank_of_Canada
 Bolt|https://en.wikipedia.org/wiki/Bolt
+Blue ground dove|https://en.wikipedia.org/wiki/Blue_ground_dove
+Banque Atlantique|https://en.wikipedia.org/wiki/Banque_Atlantique
+Burlington Stores, Inc.|https://en.wikipedia.org/wiki/Burlington_Stores,_Inc.
+Brigham and Women's Hospital|https://en.wikipedia.org/wiki/Brigham_and_Women%27s_Hospital
+BNP Paribas Securities Services|https://en.wikipedia.org/wiki/BNP_Paribas_Securities_Services
+Billabong|https://en.wikipedia.org/wiki/Billabong
+Best Western Hotels|https://en.wikipedia.org/wiki/Best_Western_Hotels
+Bleacher Report|https://en.wikipedia.org/wiki/Bleacher_Report
+BIAT|https://en.wikipedia.org/wiki/BIAT
+Burton Snowboards|https://en.wikipedia.org/wiki/Burton_Snowboards
+Berkshire Hathaway|https://en.wikipedia.org/wiki/Berkshire_Hathaway
+Believe|https://en.wikipedia.org/wiki/Believe
+Birchbox|https://en.wikipedia.org/wiki/Birchbox
+Buffalo Wild Wings|https://en.wikipedia.org/wiki/Buffalo_Wild_Wings
+Baptist Health South Florida|https://en.wikipedia.org/wiki/Baptist_Health_South_Florida
+Boom Supersonic|https://en.wikipedia.org/wiki/Boom_Supersonic
+Behance|https://en.wikipedia.org/wiki/Behance
+Banco Alfa|https://en.wikipedia.org/wiki/Banco_Alfa
+Bessemer Venture Partners|https://en.wikipedia.org/wiki/Bessemer_Venture_Partners
+Bloomsbury Publishing plc|https://en.wikipedia.org/wiki/Bloomsbury_Publishing_plc
+Bonduelle|https://en.wikipedia.org/wiki/Bonduelle
+Barnes|https://en.wikipedia.org/wiki/Barnes
+BMO Capital Markets|https://en.wikipedia.org/wiki/BMO_Capital_Markets
+BIAL|https://en.wikipedia.org/wiki/BIAL
+Byton (company)|https://en.wikipedia.org/wiki/Byton_(company)
+Blackboard|https://en.wikipedia.org/wiki/Blackboard
+Bluebird bio|https://en.wikipedia.org/wiki/Bluebird_bio
+Bet365|https://en.wikipedia.org/wiki/Bet365
+Bass Pro Shops|https://en.wikipedia.org/wiki/Bass_Pro_Shops
+BGC Partners|https://en.wikipedia.org/wiki/BGC_Partners
+Brookdale|https://en.wikipedia.org/wiki/Brookdale
+Black Box|https://en.wikipedia.org/wiki/Black_Box
+Business|https://en.wikipedia.org/wiki/Business
+Blackline (software company)|https://en.wikipedia.org/wiki/Blackline_(software_company)
+Bureau of Land Management|https://en.wikipedia.org/wiki/Bureau_of_Land_Management
+BRP|https://en.wikipedia.org/wiki/BRP
+Birdeye speedwell|https://en.wikipedia.org/wiki/Birdeye_speedwell
+Brunello Cucinelli|https://en.wikipedia.org/wiki/Brunello_Cucinelli
+Bemol|https://en.wikipedia.org/wiki/Bemol
+Belk|https://en.wikipedia.org/wiki/Belk
+Bird|https://en.wikipedia.org/wiki/Bird
+Brookfield Renewable Partners|https://en.wikipedia.org/wiki/Brookfield_Renewable_Partners
+Barclaycard|https://en.wikipedia.org/wiki/Barclaycard
+Ball Aerospace & Technologies|https://en.wikipedia.org/wiki/Ball_Aerospace_%26_Technologies
+Brasfield|https://en.wikipedia.org/wiki/Brasfield
+BambooHR|https://en.wikipedia.org/wiki/BambooHR
+Bank of the West|https://en.wikipedia.org/wiki/Bank_of_the_West
+BW Group|https://en.wikipedia.org/wiki/BW_Group
+Beaumont Health|https://en.wikipedia.org/wiki/Beaumont_Health
+Blue Apron|https://en.wikipedia.org/wiki/Blue_Apron
+BetterUp|https://en.wikipedia.org/wiki/BetterUp
+Bostik|https://en.wikipedia.org/wiki/Bostik
