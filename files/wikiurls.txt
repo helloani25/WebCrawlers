@@ -2,7 +2,6 @@ Google|https://en.wikipedia.org/wiki/Google
 LinkedIn|https://en.wikipedia.org/wiki/LinkedIn
 Unilever|https://en.wikipedia.org/wiki/Unilever
 Microsoft|https://en.wikipedia.org/wiki/Microsoft
-Harvard Business Review|https://en.wikipedia.org/wiki/Harvard_Business_Review
 Nestlé|https://en.wikipedia.org/wiki/Nestl%C3%A9
 IBM|https://en.wikipedia.org/wiki/IBM
 Business Insider|https://en.wikipedia.org/wiki/Business_Insider
@@ -22,7 +21,6 @@ Amazon Web Services|https://en.wikipedia.org/wiki/Amazon_Web_Services
 PepsiCo|https://en.wikipedia.org/wiki/PepsiCo
 Shell|https://en.wikipedia.org/wiki/Shell
 Hays|https://en.wikipedia.org/wiki/Hays
-Vågåsommeren|https://en.wikipedia.org/wiki/V%C3%A5g%C3%A5sommeren
 Hp|https://en.wikipedia.org/wiki/Hp
 Siemens|https://en.wikipedia.org/wiki/Siemens
 Nike|https://en.wikipedia.org/wiki/Nike
@@ -70,7 +68,6 @@ Sebrae|https://en.wikipedia.org/wiki/Sebrae
 Goldman Sachs|https://en.wikipedia.org/wiki/Goldman_Sachs
 CNBC|https://en.wikipedia.org/wiki/CNBC
 HSBC|https://en.wikipedia.org/wiki/HSBC
-General Motors LS-based small-block engine|https://en.wikipedia.org/wiki/General_Motors_LS-based_small-block_engine
 Michael Page|https://en.wikipedia.org/wiki/Michael_Page
 JPMorgan Chase|https://en.wikipedia.org/wiki/JPMorgan_Chase
 Exame.com|https://en.wikipedia.org/wiki/Exame.com
@@ -111,7 +108,6 @@ Halliburton|https://en.wikipedia.org/wiki/Halliburton
 The Atlantic|https://en.wikipedia.org/wiki/The_Atlantic
 Ericsson|https://en.wikipedia.org/wiki/Ericsson
 Airbnb|https://en.wikipedia.org/wiki/Airbnb
-GE Healthcare|https://en.wikipedia.org/wiki/GE_Healthcare
 DHL|https://en.wikipedia.org/wiki/DHL
 Chanel|https://en.wikipedia.org/wiki/Chanel
 Colgate-Palmolive|https://en.wikipedia.org/wiki/Colgate-Palmolive
@@ -138,10 +134,8 @@ Hilton|https://en.wikipedia.org/wiki/Hilton
 Heineken|https://en.wikipedia.org/wiki/Heineken
 Robert Half International|https://en.wikipedia.org/wiki/Robert_Half_International
 Gol|https://en.wikipedia.org/wiki/Gol
-Banco Santander|https://en.wikipedia.org/wiki/Banco_Santander
 Bloomberg L.P.|https://en.wikipedia.org/wiki/Bloomberg_L.P.
 Fast Company|https://en.wikipedia.org/wiki/Fast_Company
-Banco Intercontinental|https://en.wikipedia.org/wiki/Banco_Intercontinental
 Target|https://en.wikipedia.org/wiki/Target
 Genpact|https://en.wikipedia.org/wiki/Genpact
 Sephora|https://en.wikipedia.org/wiki/Sephora
@@ -194,13 +188,10 @@ Johnson Controls|https://en.wikipedia.org/wiki/Johnson_Controls
 Computerworld|https://en.wikipedia.org/wiki/Computerworld
 Credit Suisse|https://en.wikipedia.org/wiki/Credit_Suisse
 ConocoPhillips|https://en.wikipedia.org/wiki/ConocoPhillips
-Four Seasons Hotels and Resorts|https://en.wikipedia.org/wiki/Four_Seasons_Hotels_and_Resorts
 Continental|https://en.wikipedia.org/wiki/Continental
-Stone Cold Steve Austin|https://en.wikipedia.org/wiki/Stone_Cold_Steve_Austin
 Coursera|https://en.wikipedia.org/wiki/Coursera
 Atos|https://en.wikipedia.org/wiki/Atos
 Rolls-royce|https://en.wikipedia.org/wiki/Rolls-royce
-Korn Ferry Tour|https://en.wikipedia.org/wiki/Korn_Ferry_Tour
 DHL Supply Chain|https://en.wikipedia.org/wiki/DHL_Supply_Chain
 CNET|https://en.wikipedia.org/wiki/CNET
 MIT Technology Review|https://en.wikipedia.org/wiki/MIT_Technology_Review
@@ -225,7 +216,6 @@ Inside Pixar|https://en.wikipedia.org/wiki/Inside_Pixar
 HackerRank|https://en.wikipedia.org/wiki/HackerRank
 Henkel|https://en.wikipedia.org/wiki/Henkel
 Hyatt|https://en.wikipedia.org/wiki/Hyatt
-Modern Healthcare|https://en.wikipedia.org/wiki/Modern_Healthcare
 Takeda Pharmaceuticals|https://en.wikipedia.org/wiki/Takeda_Pharmaceuticals
 Dupont|https://en.wikipedia.org/wiki/Dupont
 PayPal|https://en.wikipedia.org/wiki/PayPal
@@ -278,7 +268,6 @@ Stack Overflow|https://en.wikipedia.org/wiki/Stack_Overflow
 Red Bull Racing|https://en.wikipedia.org/wiki/Red_Bull_Racing
 Ralph Lauren|https://en.wikipedia.org/wiki/Ralph_Lauren
 The New Yorker|https://en.wikipedia.org/wiki/The_New_Yorker
-Hospital Albert Einstein|https://en.wikipedia.org/wiki/Hospital_Albert_Einstein
 Sas|https://en.wikipedia.org/wiki/Sas
 Klabin|https://en.wikipedia.org/wiki/Klabin
 Mindtree Ltd.|https://en.wikipedia.org/wiki/Mindtree_Ltd.
@@ -312,7 +301,6 @@ Yahoo!|https://en.wikipedia.org/wiki/Yahoo!
 Siemens Healthineers|https://en.wikipedia.org/wiki/Siemens_Healthineers
 Porto Seguro|https://en.wikipedia.org/wiki/Porto_Seguro
 Blizzard Entertainment|https://en.wikipedia.org/wiki/Blizzard_Entertainment
-UN Women|https://en.wikipedia.org/wiki/UN_Women
 Eurofarma RC|https://en.wikipedia.org/wiki/Eurofarma_RC
 Under Armour|https://en.wikipedia.org/wiki/Under_Armour
 Tableau Software|https://en.wikipedia.org/wiki/Tableau_Software
@@ -364,7 +352,6 @@ ESPN|https://en.wikipedia.org/wiki/ESPN
 STCW Convention|https://en.wikipedia.org/wiki/STCW_Convention
 AkzoNobel|https://en.wikipedia.org/wiki/AkzoNobel
 Palo Alto Networks|https://en.wikipedia.org/wiki/Palo_Alto_Networks
-Bulgari|https://en.wikipedia.org/wiki/Bulgari
 NetApp|https://en.wikipedia.org/wiki/NetApp
 Arup|https://en.wikipedia.org/wiki/Arup
 Worldvision|https://en.wikipedia.org/wiki/Worldvision
@@ -391,7 +378,6 @@ Arcadis|https://en.wikipedia.org/wiki/Arcadis
 Pixar Animation Studios|https://en.wikipedia.org/wiki/Pixar_Animation_Studios
 Texas Instruments|https://en.wikipedia.org/wiki/Texas_Instruments
 Alibaba.com|https://en.wikipedia.org/wiki/Alibaba.com
-Jet Propulsion Laboratory|https://en.wikipedia.org/wiki/Jet_Propulsion_Laboratory
 Willis Towers Watson|https://en.wikipedia.org/wiki/Willis_Towers_Watson
 Discovery, Inc.|https://en.wikipedia.org/wiki/Discovery,_Inc.
 AB InBev|https://en.wikipedia.org/wiki/AB_InBev
@@ -412,7 +398,6 @@ Vice Media|https://en.wikipedia.org/wiki/Vice_Media
 Grab (application)|https://en.wikipedia.org/wiki/Grab_(application)
 Suzano|https://en.wikipedia.org/wiki/Suzano
 MRV Engenharia|https://en.wikipedia.org/wiki/MRV_Engenharia
-GitLab Community Edition|https://en.wikipedia.org/wiki/GitLab_Community_Edition
 CVS Health|https://en.wikipedia.org/wiki/CVS_Health
 Michelin|https://en.wikipedia.org/wiki/Michelin
 Chubb|https://en.wikipedia.org/wiki/Chubb
@@ -511,7 +496,6 @@ Tam|https://en.wikipedia.org/wiki/Tam
 Localiza|https://en.wikipedia.org/wiki/Localiza
 ScienceDaily|https://en.wikipedia.org/wiki/ScienceDaily
 UST Global|https://en.wikipedia.org/wiki/UST_Global
-PRA Health Sciences|https://en.wikipedia.org/wiki/PRA_Health_Sciences
 HRDetect|https://en.wikipedia.org/wiki/HRDetect
 Viacom|https://en.wikipedia.org/wiki/Viacom
 Sandvik|https://en.wikipedia.org/wiki/Sandvik
@@ -597,7 +581,6 @@ Hill International|https://en.wikipedia.org/wiki/Hill_International
 Intuit|https://en.wikipedia.org/wiki/Intuit
 Coca-Cola HBC|https://en.wikipedia.org/wiki/Coca-Cola_HBC
 Aetna|https://en.wikipedia.org/wiki/Aetna
-Lucasfilm|https://en.wikipedia.org/wiki/Lucasfilm
 The North Face|https://en.wikipedia.org/wiki/The_North_Face
 Versace|https://en.wikipedia.org/wiki/Versace
 Rockstar Games|https://en.wikipedia.org/wiki/Rockstar_Games
@@ -630,7 +613,6 @@ VentureBeat|https://en.wikipedia.org/wiki/VentureBeat
 Seadrill|https://en.wikipedia.org/wiki/Seadrill
 Micron Technology|https://en.wikipedia.org/wiki/Micron_Technology
 Hugo Boss|https://en.wikipedia.org/wiki/Hugo_Boss
-Banco Pan|https://en.wikipedia.org/wiki/Banco_Pan
 Dropbox|https://en.wikipedia.org/wiki/Dropbox
 Envy (group)|https://en.wikipedia.org/wiki/Envy_(group)
 Epsilon|https://en.wikipedia.org/wiki/Epsilon
@@ -826,11 +808,9 @@ Orsted|https://en.wikipedia.org/wiki/Orsted
 Applied Materials|https://en.wikipedia.org/wiki/Applied_Materials
 Anheuser-Busch brands|https://en.wikipedia.org/wiki/Anheuser-Busch_brands
 Teradata|https://en.wikipedia.org/wiki/Teradata
-Progressive recruitment|https://en.wikipedia.org/wiki/Progressive_recruitment
 YouGov|https://en.wikipedia.org/wiki/YouGov
 Hydrogen group|https://en.wikipedia.org/wiki/Hydrogen_group
 Investec|https://en.wikipedia.org/wiki/Investec
-Asian Paints|https://en.wikipedia.org/wiki/Asian_Paints
 Dyson|https://en.wikipedia.org/wiki/Dyson
 B. Braun Group|https://en.wikipedia.org/wiki/B._Braun_Group
 J Crew|https://en.wikipedia.org/wiki/J_Crew
@@ -841,14 +821,10 @@ Cerner Corporation|https://en.wikipedia.org/wiki/Cerner_Corporation
 Danfoss|https://en.wikipedia.org/wiki/Danfoss
 Marsh McLennan|https://en.wikipedia.org/wiki/Marsh_McLennan
 Veeam Software|https://en.wikipedia.org/wiki/Veeam_Software
-Carnival Cruise Line|https://en.wikipedia.org/wiki/Carnival_Cruise_Line
-Kopenhagen|https://en.wikipedia.org/wiki/Kopenhagen
 MediaMonks|https://en.wikipedia.org/wiki/MediaMonks
-Rizoneide Vanderlei|https://en.wikipedia.org/wiki/Rizoneide_Vanderlei
 Herbalife Nutrition|https://en.wikipedia.org/wiki/Herbalife_Nutrition
 Northwestern Mutual|https://en.wikipedia.org/wiki/Northwestern_Mutual
 Sogeti|https://en.wikipedia.org/wiki/Sogeti
-Etisalat misr|https://en.wikipedia.org/wiki/Etisalat_misr
 Zoetis|https://en.wikipedia.org/wiki/Zoetis
 Prudential Financial|https://en.wikipedia.org/wiki/Prudential_Financial
 Vanguard|https://en.wikipedia.org/wiki/Vanguard
@@ -866,10 +842,7 @@ CPFL Energia|https://en.wikipedia.org/wiki/CPFL_Energia
 Petz|https://en.wikipedia.org/wiki/Petz
 PIMCO|https://en.wikipedia.org/wiki/PIMCO
 F5|https://en.wikipedia.org/wiki/F5
-Smurfit Kappa Group|https://en.wikipedia.org/wiki/Smurfit_Kappa_Group
 Lyft|https://en.wikipedia.org/wiki/Lyft
-Simple learning design 2.0|https://en.wikipedia.org/wiki/Simple_learning_design_2.0
-Jimmy Choo|https://en.wikipedia.org/wiki/Jimmy_Choo
 Agility|https://en.wikipedia.org/wiki/Agility
 Calzedonia|https://en.wikipedia.org/wiki/Calzedonia
 Aurecon|https://en.wikipedia.org/wiki/Aurecon
@@ -878,7 +851,6 @@ Regus|https://en.wikipedia.org/wiki/Regus
 United Technologies|https://en.wikipedia.org/wiki/United_Technologies
 Toptal|https://en.wikipedia.org/wiki/Toptal
 TSMC|https://en.wikipedia.org/wiki/TSMC
-Norwegian Cruise Line Holdings|https://en.wikipedia.org/wiki/Norwegian_Cruise_Line_Holdings
 Esri|https://en.wikipedia.org/wiki/Esri
 GHD|https://en.wikipedia.org/wiki/GHD
 Duke Energy Corporation|https://en.wikipedia.org/wiki/Duke_Energy_Corporation
@@ -891,7 +863,6 @@ Hasbro|https://en.wikipedia.org/wiki/Hasbro
 Northern Trust|https://en.wikipedia.org/wiki/Northern_Trust
 Databricks|https://en.wikipedia.org/wiki/Databricks
 Volt|https://en.wikipedia.org/wiki/Volt
-Syneos Health|https://en.wikipedia.org/wiki/Syneos_Health
 Chloe|https://en.wikipedia.org/wiki/Chloe
 Sprinklr|https://en.wikipedia.org/wiki/Sprinklr
 US Foods|https://en.wikipedia.org/wiki/US_Foods
@@ -959,7 +930,6 @@ JCPenney|https://en.wikipedia.org/wiki/JCPenney
 GE Digital|https://en.wikipedia.org/wiki/GE_Digital
 Young & Rubicam|https://en.wikipedia.org/wiki/Young_%26_Rubicam
 Euromonitor International|https://en.wikipedia.org/wiki/Euromonitor_International
-MSC Cruises|https://en.wikipedia.org/wiki/MSC_Cruises
 Weber Shandwick|https://en.wikipedia.org/wiki/Weber_Shandwick
 Centurylink|https://en.wikipedia.org/wiki/Centurylink
 IHS Markit|https://en.wikipedia.org/wiki/IHS_Markit
@@ -975,7 +945,6 @@ Guerlain|https://en.wikipedia.org/wiki/Guerlain
 Danaher|https://en.wikipedia.org/wiki/Danaher
 Rivian|https://en.wikipedia.org/wiki/Rivian
 Metso|https://en.wikipedia.org/wiki/Metso
-Banglalink|https://en.wikipedia.org/wiki/Banglalink
 RGP (duo)|https://en.wikipedia.org/wiki/RGP_(duo)
 Tegra Incorporadora|https://en.wikipedia.org/wiki/Tegra_Incorporadora
 Credit Agricole CIB|https://en.wikipedia.org/wiki/Credit_Agricole_CIB
@@ -994,7 +963,6 @@ Zain|https://en.wikipedia.org/wiki/Zain
 Associated Press|https://en.wikipedia.org/wiki/Associated_Press
 CrowdStrike|https://en.wikipedia.org/wiki/CrowdStrike
 Publicis|https://en.wikipedia.org/wiki/Publicis
-K Force (Bangladesh)|https://en.wikipedia.org/wiki/K_Force_(Bangladesh)
 Quest Diagnostics|https://en.wikipedia.org/wiki/Quest_Diagnostics
 Protiviti|https://en.wikipedia.org/wiki/Protiviti
 Apache Corporation|https://en.wikipedia.org/wiki/Apache_Corporation
@@ -1018,7 +986,6 @@ MAC Cosmetics|https://en.wikipedia.org/wiki/MAC_Cosmetics
 Mccormick|https://en.wikipedia.org/wiki/Mccormick
 Charles Schwab Corporation|https://en.wikipedia.org/wiki/Charles_Schwab_Corporation
 LexisNexis|https://en.wikipedia.org/wiki/LexisNexis
-Banco BMG|https://en.wikipedia.org/wiki/Banco_BMG
 Astellas Pharma US|https://en.wikipedia.org/wiki/Astellas_Pharma_US
 Spencer Stuart|https://en.wikipedia.org/wiki/Spencer_Stuart
 Converse|https://en.wikipedia.org/wiki/Converse
@@ -1026,7 +993,6 @@ Tiroler Tageszeitung|https://en.wikipedia.org/wiki/Tiroler_Tageszeitung
 Enterprise Rent-A-Car|https://en.wikipedia.org/wiki/Enterprise_Rent-A-Car
 Img|https://en.wikipedia.org/wiki/Img
 Apsenth|https://en.wikipedia.org/wiki/Apsenth
-Health Protection Agency|https://en.wikipedia.org/wiki/Health_Protection_Agency
 Convergys|https://en.wikipedia.org/wiki/Convergys
 Flowserve|https://en.wikipedia.org/wiki/Flowserve
 Grupo DPSP|https://en.wikipedia.org/wiki/Grupo_DPSP
@@ -1144,7 +1110,6 @@ Defense Intelligence Agency|https://en.wikipedia.org/wiki/Defense_Intelligence_A
 Nordea|https://en.wikipedia.org/wiki/Nordea
 Atlas Professionals|https://en.wikipedia.org/wiki/Atlas_Professionals
 JCB (company)|https://en.wikipedia.org/wiki/JCB_(company)
-Disney Cruise Line|https://en.wikipedia.org/wiki/Disney_Cruise_Line
 Marvell|https://en.wikipedia.org/wiki/Marvell
 Sam's Club|https://en.wikipedia.org/wiki/Sam%27s_Club
 Pentair|https://en.wikipedia.org/wiki/Pentair
@@ -1398,7 +1363,6 @@ AB InBev|https://en.wikipedia.org/wiki/AB_InBev
 Automotive News|https://en.wikipedia.org/wiki/Automotive_News
 Aerotek|https://en.wikipedia.org/wiki/Aerotek
 ASOS.com|https://en.wikipedia.org/wiki/ASOS.com
-Andrade Gutierrez|https://en.wikipedia.org/wiki/Andrade_Gutierrez
 ABA Journal|https://en.wikipedia.org/wiki/ABA_Journal
 Agilent Technologies|https://en.wikipedia.org/wiki/Agilent_Technologies
 Atlassian|https://en.wikipedia.org/wiki/Atlassian
@@ -1432,7 +1396,6 @@ AGCO Corporation|https://en.wikipedia.org/wiki/AGCO_Corporation
 Amil|https://en.wikipedia.org/wiki/Amil
 Agility|https://en.wikipedia.org/wiki/Agility
 Aurecon|https://en.wikipedia.org/wiki/Aurecon
-Anthem Inc. (album)|https://en.wikipedia.org/wiki/Anthem_Inc._(album)
 American Honda Motor Company|"https://en.wikipedia.org/wiki/American_Honda_Motor_Company,_Inc."
 Atento|https://en.wikipedia.org/wiki/Atento
 Arla Foods|https://en.wikipedia.org/wiki/Arla_Foods
@@ -1508,7 +1471,6 @@ Ann Inc.|https://en.wikipedia.org/wiki/Ann_Inc.
 Aegean Sea|https://en.wikipedia.org/wiki/Aegean_Sea
 ASIS International|https://en.wikipedia.org/wiki/ASIS_International
 The Atlantic Group|https://en.wikipedia.org/wiki/The_Atlantic_Group
-AdventHealth University|https://en.wikipedia.org/wiki/AdventHealth_University
 Atlantic Records|https://en.wikipedia.org/wiki/Atlantic_Records
 Actual Radio|https://en.wikipedia.org/wiki/Actual_Radio
 AutoZone|https://en.wikipedia.org/wiki/AutoZone
@@ -1525,7 +1487,6 @@ Assa Abloy|https://en.wikipedia.org/wiki/Assa_Abloy
 Anixter|https://en.wikipedia.org/wiki/Anixter
 Aasphota|https://en.wikipedia.org/wiki/Aasphota
 Amaala|https://en.wikipedia.org/wiki/Amaala
-Athenahealth|https://en.wikipedia.org/wiki/Athenahealth
 Allianz Global Investors|https://en.wikipedia.org/wiki/Allianz_Global_Investors
 ASHRAE|https://en.wikipedia.org/wiki/ASHRAE
 AVMAV|https://en.wikipedia.org/wiki/AVMAV
@@ -1554,20 +1515,15 @@ American Axle|https://en.wikipedia.org/wiki/American_Axle
 Asq|https://en.wikipedia.org/wiki/Asq
 Aclu|https://en.wikipedia.org/wiki/Aclu
 AmerisourceBergen|https://en.wikipedia.org/wiki/AmerisourceBergen
-Associated Builders and Contractors|https://en.wikipedia.org/wiki/Associated_Builders_and_Contractors
 Avl|https://en.wikipedia.org/wiki/Avl
 Albertsons|https://en.wikipedia.org/wiki/Albertsons
 Ansaldo STS|https://en.wikipedia.org/wiki/Ansaldo_STS
 Amtrak|https://en.wikipedia.org/wiki/Amtrak
-Atrium Health Union|https://en.wikipedia.org/wiki/Atrium_Health_Union
-Altair Engineering|https://en.wikipedia.org/wiki/Altair_Engineering
 ADT|https://en.wikipedia.org/wiki/ADT
 Arrival|https://en.wikipedia.org/wiki/Arrival
 Acronis|https://en.wikipedia.org/wiki/Acronis
-Aerojet Rocketdyne|https://en.wikipedia.org/wiki/Aerojet_Rocketdyne
 American Electric Power|https://en.wikipedia.org/wiki/American_Electric_Power
 Acfer 086|https://en.wikipedia.org/wiki/Acfer_086
-Advance Auto Parts|https://en.wikipedia.org/wiki/Advance_Auto_Parts
 Artisan|https://en.wikipedia.org/wiki/Artisan
 Atos Syntel|https://en.wikipedia.org/wiki/Atos_Syntel
 AppDynamics|https://en.wikipedia.org/wiki/AppDynamics
@@ -1685,7 +1641,6 @@ ABA Banking Journal|https://en.wikipedia.org/wiki/ABA_Banking_Journal
 Accuity|https://en.wikipedia.org/wiki/Accuity
 Athena Innovative Solutions|https://en.wikipedia.org/wiki/Athena_Innovative_Solutions
 Gruppo Bertone|https://en.wikipedia.org/wiki/Gruppo_Bertone
-Atria Senior Living|https://en.wikipedia.org/wiki/Atria_Senior_Living
 Altice USA|https://en.wikipedia.org/wiki/Altice_USA
 Aero A.100|https://en.wikipedia.org/wiki/Aero_A.100
 Arcserve|https://en.wikipedia.org/wiki/Arcserve
@@ -1712,7 +1667,6 @@ Armando Testa|https://en.wikipedia.org/wiki/Armando_Testa
 ABF Freight System|https://en.wikipedia.org/wiki/ABF_Freight_System
 AWHONN|https://en.wikipedia.org/wiki/AWHONN
 Alupar|https://en.wikipedia.org/wiki/Alupar
-Atlantic Health System|https://en.wikipedia.org/wiki/Atlantic_Health_System
 Axenstar|https://en.wikipedia.org/wiki/Axenstar
 Amkor Technology|https://en.wikipedia.org/wiki/Amkor_Technology
 Aviogenex|https://en.wikipedia.org/wiki/Aviogenex
@@ -1724,7 +1678,6 @@ ATS Automation Tooling Systems|https://en.wikipedia.org/wiki/ATS_Automation_Tool
 Air Transat|https://en.wikipedia.org/wiki/Air_Transat
 Academi|https://en.wikipedia.org/wiki/Academi
 A Place for Mom|https://en.wikipedia.org/wiki/A_Place_for_Mom
-Advocate Aurora Health|https://en.wikipedia.org/wiki/Advocate_Aurora_Health
 Alliantgroup|https://en.wikipedia.org/wiki/Alliantgroup
 Avangrid|https://en.wikipedia.org/wiki/Avangrid
 Angel groups|https://en.wikipedia.org/wiki/Angel_groups
@@ -1738,9 +1691,7 @@ AMG International|https://en.wikipedia.org/wiki/AMG_International
 Armstrong World Industries|https://en.wikipedia.org/wiki/Armstrong_World_Industries
 ASRT|https://en.wikipedia.org/wiki/ASRT
 Accolade, Inc.|https://en.wikipedia.org/wiki/Accolade,_Inc.
-Amplifying host|https://en.wikipedia.org/wiki/Amplifying_host
 AeroVironment|https://en.wikipedia.org/wiki/AeroVironment
-Abrus precatorius|https://en.wikipedia.org/wiki/Abrus_precatorius
 Addleshaw Goddard|https://en.wikipedia.org/wiki/Addleshaw_Goddard
 Abcam|https://en.wikipedia.org/wiki/Abcam
 Automattic|https://en.wikipedia.org/wiki/Automattic
@@ -1756,12 +1707,10 @@ Acadia Pharmaceuticals|https://en.wikipedia.org/wiki/Acadia_Pharmaceuticals
 Alliance Data|https://en.wikipedia.org/wiki/Alliance_Data
 Affine|https://en.wikipedia.org/wiki/Affine
 Acushnet Company|https://en.wikipedia.org/wiki/Acushnet_Company
-AMITA Health St. Mary's Hospital|https://en.wikipedia.org/wiki/AMITA_Health_St._Mary%27s_Hospital
 Aotal|https://en.wikipedia.org/wiki/Aotal
 Atl Hawks|https://en.wikipedia.org/wiki/Atl_Hawks
 AAOS|https://en.wikipedia.org/wiki/AAOS
 AK Steel Holding|https://en.wikipedia.org/wiki/AK_Steel_Holding
-Air Caraïbes|https://en.wikipedia.org/wiki/Air_Cara%C3%AFbes
 AEG Live|https://en.wikipedia.org/wiki/AEG_Live
 Aspire Academy|https://en.wikipedia.org/wiki/Aspire_Academy
 Army Group Centre|https://en.wikipedia.org/wiki/Army_Group_Centre
@@ -1815,7 +1764,6 @@ Auden Group|https://en.wikipedia.org/wiki/Auden_Group
 AIR Worldwide|https://en.wikipedia.org/wiki/AIR_Worldwide
 Aitken Spence|https://en.wikipedia.org/wiki/Aitken_Spence
 Acceleration|https://en.wikipedia.org/wiki/Acceleration
-Ardent Health Services|https://en.wikipedia.org/wiki/Ardent_Health_Services
 AvalonBay Communities|https://en.wikipedia.org/wiki/AvalonBay_Communities
 Agrium|https://en.wikipedia.org/wiki/Agrium
 Acceleration|https://en.wikipedia.org/wiki/Acceleration
@@ -1848,7 +1796,6 @@ Asi|https://en.wikipedia.org/wiki/Asi
 Thea Vidale|https://en.wikipedia.org/wiki/Thea_Vidale
 Ache Records|https://en.wikipedia.org/wiki/Ache_Records
 Atotech|https://en.wikipedia.org/wiki/Atotech
-American Cruise Lines|https://en.wikipedia.org/wiki/American_Cruise_Lines
 Asteelflash Group|https://en.wikipedia.org/wiki/Asteelflash_Group
 ASRC Federal|https://en.wikipedia.org/wiki/ASRC_Federal
 Aircom International|https://en.wikipedia.org/wiki/Aircom_International
@@ -1910,9 +1857,7 @@ Antero Resources|https://en.wikipedia.org/wiki/Antero_Resources
 Apeel Sciences|https://en.wikipedia.org/wiki/Apeel_Sciences
 Amy's Kitchen|https://en.wikipedia.org/wiki/Amy%27s_Kitchen
 Ache Records|https://en.wikipedia.org/wiki/Ache_Records
-American Water Works|https://en.wikipedia.org/wiki/American_Water_Works
 Atotech|https://en.wikipedia.org/wiki/Atotech
-American Cruise Lines|https://en.wikipedia.org/wiki/American_Cruise_Lines
 Asteelflash Group|https://en.wikipedia.org/wiki/Asteelflash_Group
 Air Mauritius|https://en.wikipedia.org/wiki/Air_Mauritius
 ASRC Federal|https://en.wikipedia.org/wiki/ASRC_Federal
@@ -1925,15 +1870,10 @@ AArch64|https://en.wikipedia.org/wiki/AArch64
 AIAA|https://en.wikipedia.org/wiki/AIAA
 Ambatovy mine|https://en.wikipedia.org/wiki/Ambatovy_mine
 Arpeggio of Blue Steel|https://en.wikipedia.org/wiki/Arpeggio_of_Blue_Steel
-AISDALSLove|https://en.wikipedia.org/wiki/AISDALSLove
-Automation|https://en.wikipedia.org/wiki/Automation
 Avature|https://en.wikipedia.org/wiki/Avature
-Acadia Healthcare|https://en.wikipedia.org/wiki/Acadia_Healthcare
 Acreage Holdings|https://en.wikipedia.org/wiki/Acreage_Holdings
 Alibaba Group|https://en.wikipedia.org/wiki/Alibaba_Group
-Akin Gump Strauss Hauer & Feld, LLP|https://en.wikipedia.org/wiki/Akin_Gump_Strauss_Hauer_%26_Feld,_LLP
 AMERIGROUP Corporation|https://en.wikipedia.org/wiki/AMERIGROUP_Corporation
-American Mathematical Society|https://en.wikipedia.org/wiki/American_Mathematical_Society
 AAMCO Transmissions|https://en.wikipedia.org/wiki/AAMCO_Transmissions
 Aerohive Networks|https://en.wikipedia.org/wiki/Aerohive_Networks
 Axiom Space|https://en.wikipedia.org/wiki/Axiom_Space
@@ -1944,7 +1884,6 @@ ADK Enterprises|https://en.wikipedia.org/wiki/ADK_Enterprises
 Airspan Networks|https://en.wikipedia.org/wiki/Airspan_Networks
 Aegis Global Academy|https://en.wikipedia.org/wiki/Aegis_Global_Academy
 Altus Air Force Base|https://en.wikipedia.org/wiki/Altus_Air_Force_Base
-Auris Health|https://en.wikipedia.org/wiki/Auris_Health
 AFP agency|https://en.wikipedia.org/wiki/AFP_agency
 Appnovation|https://en.wikipedia.org/wiki/Appnovation
 Apelles|https://en.wikipedia.org/wiki/Apelles
@@ -1952,7 +1891,6 @@ Ala-Kintaus|https://en.wikipedia.org/wiki/Ala-Kintaus
 Affinity chromatography|https://en.wikipedia.org/wiki/Affinity_chromatography
 Alliance Assurance Company|https://en.wikipedia.org/wiki/Alliance_Assurance_Company
 Alliant Energy Center|https://en.wikipedia.org/wiki/Alliant_Energy_Center
-Aubuchon Hardware|https://en.wikipedia.org/wiki/Aubuchon_Hardware
 Avalanche Studios Group|https://en.wikipedia.org/wiki/Avalanche_Studios_Group
 Applied Industrial Technologies|https://en.wikipedia.org/wiki/Applied_Industrial_Technologies
 Aiha|https://en.wikipedia.org/wiki/Aiha
@@ -1975,9 +1913,7 @@ Aesgaard|https://en.wikipedia.org/wiki/Aesgaard
 ASTELCO|https://en.wikipedia.org/wiki/ASTELCO
 Aimco|https://en.wikipedia.org/wiki/Aimco
 AssuredPartners NL|https://en.wikipedia.org/wiki/AssuredPartners_NL
-Agro's Cartoon Connection|https://en.wikipedia.org/wiki/Agro%27s_Cartoon_Connection
 Atcitty|https://en.wikipedia.org/wiki/Atcitty
-A T Still University|https://en.wikipedia.org/wiki/A_T_Still_University
 Antitail|https://en.wikipedia.org/wiki/Antitail
 Axiom Space|https://en.wikipedia.org/wiki/Axiom_Space
 Armacell|https://en.wikipedia.org/wiki/Armacell
@@ -1993,14 +1929,11 @@ ACT Digital|https://en.wikipedia.org/wiki/ACT_Digital
 Arctic wolf|https://en.wikipedia.org/wiki/Arctic_wolf
 Aleris|https://en.wikipedia.org/wiki/Aleris
 Abear|https://en.wikipedia.org/wiki/Abear
-Avoidant personality disorder|https://en.wikipedia.org/wiki/Avoidant_personality_disorder
-Alexander Dennis Enviro500|https://en.wikipedia.org/wiki/Alexander_Dennis_Enviro500
 AEL Sistemas|https://en.wikipedia.org/wiki/AEL_Sistemas
 Anglo Platinum|https://en.wikipedia.org/wiki/Anglo_Platinum
 Ackermans|https://en.wikipedia.org/wiki/Ackermans
 Asbury Automotive Group|https://en.wikipedia.org/wiki/Asbury_Automotive_Group
 Altec Lansing|https://en.wikipedia.org/wiki/Altec_Lansing
-Art E. Bartlett|https://en.wikipedia.org/wiki/Art_E._Bartlett
 Aera Energy LLC|https://en.wikipedia.org/wiki/Aera_Energy_LLC
 Abigroup|https://en.wikipedia.org/wiki/Abigroup
 ADVA Optical Networking|https://en.wikipedia.org/wiki/ADVA_Optical_Networking
@@ -2024,14 +1957,12 @@ AACSB(International)|https://en.wikipedia.org/wiki/AACSB(International)
 AIAG|https://en.wikipedia.org/wiki/AIAG
 Advance Services Corp|https://en.wikipedia.org/wiki/Advance_Services_Corp
 Audley Travel|https://en.wikipedia.org/wiki/Audley_Travel
-AdventHealth Celebration|https://en.wikipedia.org/wiki/AdventHealth_Celebration
 AMAG Pharmaceuticals|https://en.wikipedia.org/wiki/AMAG_Pharmaceuticals
 Avolon|https://en.wikipedia.org/wiki/Avolon
 Amre Taza|https://en.wikipedia.org/wiki/Amre_Taza
 ANSR Consulting|https://en.wikipedia.org/wiki/ANSR_Consulting
 Allegro Development Corporation|https://en.wikipedia.org/wiki/Allegro_Development_Corporation
 Avira GmbH|https://en.wikipedia.org/wiki/Avira_GmbH
-Adistemia watsoni|https://en.wikipedia.org/wiki/Adistemia_watsoni
 Ashley Furniture HomeStores|https://en.wikipedia.org/wiki/Ashley_Furniture_HomeStores
 Astra Space|https://en.wikipedia.org/wiki/Astra_Space
 Arcuate fasciculus|https://en.wikipedia.org/wiki/Arcuate_fasciculus
@@ -2059,15 +1990,11 @@ Arturia|https://en.wikipedia.org/wiki/Arturia
 Abrocksbach|https://en.wikipedia.org/wiki/Abrocksbach
 Arena Pharmaceuticals|https://en.wikipedia.org/wiki/Arena_Pharmaceuticals
 Aberystwyth|https://en.wikipedia.org/wiki/Aberystwyth
-Annapurna Pictures|https://en.wikipedia.org/wiki/Annapurna_Pictures
 Aura Minerals Inc.|https://en.wikipedia.org/wiki/Aura_Minerals_Inc.
 AVX Corporation|https://en.wikipedia.org/wiki/AVX_Corporation
-Aquaculture Stewardship Council|https://en.wikipedia.org/wiki/Aquaculture_Stewardship_Council
 Averitt Express|https://en.wikipedia.org/wiki/Averitt_Express
-A1 Bulgaria|https://en.wikipedia.org/wiki/A1_Bulgaria
 Arvest Bank|https://en.wikipedia.org/wiki/Arvest_Bank
 Adzuna|https://en.wikipedia.org/wiki/Adzuna
-Ambassador Theatre Group|https://en.wikipedia.org/wiki/Ambassador_Theatre_Group
 Angi|https://en.wikipedia.org/wiki/Angi
 Arcano|https://en.wikipedia.org/wiki/Arcano
 Antenna (radio)|https://en.wikipedia.org/wiki/Antenna_(radio)
@@ -2091,7 +2018,6 @@ Aarkirkeby Municipality|https://en.wikipedia.org/wiki/Aarkirkeby_Municipality
 Nyaleya|https://en.wikipedia.org/wiki/Nyaleya
 Afilias|https://en.wikipedia.org/wiki/Afilias
 Avengan|https://en.wikipedia.org/wiki/Avengan
-Adventist HealthCare Shady Grove Medical Center|https://en.wikipedia.org/wiki/Adventist_HealthCare_Shady_Grove_Medical_Center
 Afton Chemical|https://en.wikipedia.org/wiki/Afton_Chemical
 Art Van Furniture|https://en.wikipedia.org/wiki/Art_Van_Furniture
 Affymetrix|https://en.wikipedia.org/wiki/Affymetrix
@@ -2105,13 +2031,11 @@ Ableton Live|https://en.wikipedia.org/wiki/Ableton_Live
 Business Insider|https://en.wikipedia.org/wiki/Business_Insider
 Bayer|https://en.wikipedia.org/wiki/Bayer
 BP|https://en.wikipedia.org/wiki/BP
-Banco Itaú|https://en.wikipedia.org/wiki/Banco_Ita%C3%BA
 Boeing|https://en.wikipedia.org/wiki/Boeing
 Bank of America|https://en.wikipedia.org/wiki/Bank_of_America
 BRF|https://en.wikipedia.org/wiki/BRF
 BASF|https://en.wikipedia.org/wiki/BASF
 Baker Hughes|https://en.wikipedia.org/wiki/Baker_Hughes
-Banco Bradesco|https://en.wikipedia.org/wiki/Banco_Bradesco
 Bloomberg L.P.|https://en.wikipedia.org/wiki/Bloomberg_L.P.
 Boehringer Ingelheim|https://en.wikipedia.org/wiki/Boehringer_Ingelheim
 Bain|https://en.wikipedia.org/wiki/Bain
@@ -2150,18 +2074,15 @@ BelCompany|https://en.wikipedia.org/wiki/BelCompany
 BRMalls|https://en.wikipedia.org/wiki/BRMalls
 Bath|https://en.wikipedia.org/wiki/Bath
 Burger King|https://en.wikipedia.org/wiki/Burger_King
-Banco Pan|https://en.wikipedia.org/wiki/Banco_Pan
 BTG Pactual|https://en.wikipedia.org/wiki/BTG_Pactual
 Bank of America Merrill Lynch|https://en.wikipedia.org/wiki/Bank_of_America_Merrill_Lynch
 BuzzFeed|https://en.wikipedia.org/wiki/BuzzFeed
 Boschusacea|https://en.wikipedia.org/wiki/Boschusacea
 Baker McKenzie|https://en.wikipedia.org/wiki/Baker_McKenzie
-Banco Central do Brasil|https://en.wikipedia.org/wiki/Banco_Central_do_Brasil
 BBDO Worldwide|https://en.wikipedia.org/wiki/BBDO_Worldwide
 Bose Corporation|https://en.wikipedia.org/wiki/Bose_Corporation
 BRAC|https://en.wikipedia.org/wiki/BRAC
 Broadcom Inc.|https://en.wikipedia.org/wiki/Broadcom_Inc.
-Banco Bilbao Vizcaya Argentaria|https://en.wikipedia.org/wiki/Banco_Bilbao_Vizcaya_Argentaria
 Boston Dynamics|https://en.wikipedia.org/wiki/Boston_Dynamics
 B. Braun Group|https://en.wikipedia.org/wiki/B._Braun_Group
 Banque Misr|https://en.wikipedia.org/wiki/Banque_Misr
@@ -2176,8 +2097,6 @@ Black|https://en.wikipedia.org/wiki/Black
 BorgWarner Inc.|https://en.wikipedia.org/wiki/BorgWarner_Inc.
 Blue Origin|https://en.wikipedia.org/wiki/Blue_Origin
 BMC Software|https://en.wikipedia.org/wiki/BMC_Software
-Banco BMG|https://en.wikipedia.org/wiki/Banco_BMG
-BioMérieux|https://en.wikipedia.org/wiki/BioM%C3%A9rieux
 BIC|https://en.wikipedia.org/wiki/BIC
 Bupa|https://en.wikipedia.org/wiki/Bupa
 Brown Forman|https://en.wikipedia.org/wiki/Brown_Forman
@@ -2202,9 +2121,7 @@ Billboard|https://en.wikipedia.org/wiki/Billboard
 Bausch & Lomb|https://en.wikipedia.org/wiki/Bausch_%26_Lomb
 Birlasoft|https://en.wikipedia.org/wiki/Birlasoft
 Bethesda Softworks|https://en.wikipedia.org/wiki/Bethesda_Softworks
-Black Rifle Coffee Company|https://en.wikipedia.org/wiki/Black_Rifle_Coffee_Company
 Brillio|https://en.wikipedia.org/wiki/Brillio
-Banque du Caire|https://en.wikipedia.org/wiki/Banque_du_Caire
 Bimbo Bakeries USA|https://en.wikipedia.org/wiki/Bimbo_Bakeries_USA
 Bombril|https://en.wikipedia.org/wiki/Bombril
 Bloomingdale's|https://en.wikipedia.org/wiki/Bloomingdale%27s
@@ -2221,14 +2138,11 @@ Box|https://en.wikipedia.org/wiki/Box
 Bracell Limited|https://en.wikipedia.org/wiki/Bracell_Limited
 Bed Bath & Beyond|https://en.wikipedia.org/wiki/Bed_Bath_%26_Beyond
 BioNTech SE|https://en.wikipedia.org/wiki/BioNTech_SE
-BrewDog|https://en.wikipedia.org/wiki/BrewDog
 BNDES|https://en.wikipedia.org/wiki/BNDES
-BDO International Grand Prix Series|https://en.wikipedia.org/wiki/BDO_International_Grand_Prix_Series
 BIP|https://en.wikipedia.org/wiki/BIP
 B/E Aerospace|https://en.wikipedia.org/wiki/B/E_Aerospace
 Beyond Meat|https://en.wikipedia.org/wiki/Beyond_Meat
 B9|https://en.wikipedia.org/wiki/B9
-Bancomext|https://en.wikipedia.org/wiki/Bancomext
 Brocade|https://en.wikipedia.org/wiki/Brocade
 Baylor Scott & White Medical Center – Temple|https://en.wikipedia.org/wiki/Baylor_Scott_%26_White_Medical_Center_%E2%80%93_Temple
 Bira 91|https://en.wikipedia.org/wiki/Bira_91
@@ -2244,16 +2158,13 @@ Bom Futuro National Forest|https://en.wikipedia.org/wiki/Bom_Futuro_National_For
 BeIN Media Group|https://en.wikipedia.org/wiki/BeIN_Media_Group
 Biotronik|https://en.wikipedia.org/wiki/Biotronik
 Boston Children's Hospital|https://en.wikipedia.org/wiki/Boston_Children%27s_Hospital
-Banner Health|https://en.wikipedia.org/wiki/Banner_Health
 Belcan|https://en.wikipedia.org/wiki/Belcan
 Barstool Sports|https://en.wikipedia.org/wiki/Barstool_Sports
 BDO USA, LLP|https://en.wikipedia.org/wiki/BDO_USA,_LLP
 Brightstar Corporation|https://en.wikipedia.org/wiki/Brightstar_Corporation
 Balmain|https://en.wikipedia.org/wiki/Balmain
 Barco|https://en.wikipedia.org/wiki/Barco
-Beck Institute for Cognitive Behavior Therapy|https://en.wikipedia.org/wiki/Beck_Institute_for_Cognitive_Behavior_Therapy
 Blue Cross Blue Shield Association|https://en.wikipedia.org/wiki/Blue_Cross_Blue_Shield_Association
-Banco Pinto & Sotto Mayor|https://en.wikipedia.org/wiki/Banco_Pinto_%26_Sotto_Mayor
 Berry Global, Inc.|https://en.wikipedia.org/wiki/Berry_Global,_Inc.
 BRAC Bank Limited|https://en.wikipedia.org/wiki/BRAC_Bank_Limited
 Boa Vista|https://en.wikipedia.org/wiki/Boa_Vista
@@ -2265,7 +2176,6 @@ Burson Marsteller|https://en.wikipedia.org/wiki/Burson_Marsteller
 BioWare|https://en.wikipedia.org/wiki/BioWare
 Brado Logistics|https://en.wikipedia.org/wiki/Brado_Logistics
 Blue Prism|https://en.wikipedia.org/wiki/Blue_Prism
-Bausch Health Companies Inc.|https://en.wikipedia.org/wiki/Bausch_Health_Companies_Inc.
 Bobbi Brown Cosmetics|https://en.wikipedia.org/wiki/Bobbi_Brown_Cosmetics
 Banca d’Italia|https://en.wikipedia.org/wiki/Banca_d%E2%80%99Italia
 Brink’s, Incorporated|https://en.wikipedia.org/wiki/Brink%E2%80%99s,_Incorporated
@@ -2284,10 +2194,8 @@ Burton Snowboards|https://en.wikipedia.org/wiki/Burton_Snowboards
 Berkshire Hathaway|https://en.wikipedia.org/wiki/Berkshire_Hathaway
 Birchbox|https://en.wikipedia.org/wiki/Birchbox
 Buffalo Wild Wings|https://en.wikipedia.org/wiki/Buffalo_Wild_Wings
-Baptist Health South Florida|https://en.wikipedia.org/wiki/Baptist_Health_South_Florida
 Boom Supersonic|https://en.wikipedia.org/wiki/Boom_Supersonic
 Behance|https://en.wikipedia.org/wiki/Behance
-Banco Alfa|https://en.wikipedia.org/wiki/Banco_Alfa
 Bessemer Venture Partners|https://en.wikipedia.org/wiki/Bessemer_Venture_Partners
 Bloomsbury Publishing plc|https://en.wikipedia.org/wiki/Bloomsbury_Publishing_plc
 Bonduelle|https://en.wikipedia.org/wiki/Bonduelle
@@ -2304,7 +2212,6 @@ Brookdale|https://en.wikipedia.org/wiki/Brookdale
 Black Box|https://en.wikipedia.org/wiki/Black_Box
 Business|https://en.wikipedia.org/wiki/Business
 Blackline (software company)|https://en.wikipedia.org/wiki/Blackline_(software_company)
-Bureau of Land Management|https://en.wikipedia.org/wiki/Bureau_of_Land_Management
 BRP|https://en.wikipedia.org/wiki/BRP
 Birdeye speedwell|https://en.wikipedia.org/wiki/Birdeye_speedwell
 Brunello Cucinelli|https://en.wikipedia.org/wiki/Brunello_Cucinelli
@@ -2318,7 +2225,6 @@ Brasfield|https://en.wikipedia.org/wiki/Brasfield
 BambooHR|https://en.wikipedia.org/wiki/BambooHR
 Bank of the West|https://en.wikipedia.org/wiki/Bank_of_the_West
 BW Group|https://en.wikipedia.org/wiki/BW_Group
-Beaumont Health|https://en.wikipedia.org/wiki/Beaumont_Health
 Blue Apron|https://en.wikipedia.org/wiki/Blue_Apron
 BetterUp|https://en.wikipedia.org/wiki/BetterUp
 Bright Horizons|https://en.wikipedia.org/wiki/Bright_Horizons
@@ -2328,17 +2234,656 @@ Business Wire|https://en.wikipedia.org/wiki/Business_Wire
 Berkadia|https://en.wikipedia.org/wiki/Berkadia
 Bitcoin Magazine|https://en.wikipedia.org/wiki/Bitcoin_Magazine
 Blackbaud|https://en.wikipedia.org/wiki/Blackbaud
-Banco Bilbao Vizcaya Argentaria|https://en.wikipedia.org/wiki/Banco_Bilbao_Vizcaya_Argentaria
-BSC Hubertuself Berlin|https://en.wikipedia.org/wiki/BSC_Hubertuself_Berlin
 Blue Cross Blue Shield of Michigan|https://en.wikipedia.org/wiki/Blue_Cross_Blue_Shield_of_Michigan
 Bloomberg Industry Group|https://en.wikipedia.org/wiki/Bloomberg_Industry_Group
 Broad Reach|https://en.wikipedia.org/wiki/Broad_Reach
 Bullhorn|https://en.wikipedia.org/wiki/Bullhorn
-Boy Scouts of America|https://en.wikipedia.org/wiki/Boy_Scouts_of_America
 Beth Israel Deaconess Medical Center|https://en.wikipedia.org/wiki/Beth_Israel_Deaconess_Medical_Center
 Bobcat Company|https://en.wikipedia.org/wiki/Bobcat_Company
-Banque Populaire|https://en.wikipedia.org/wiki/Banque_Populaire
 Berlin Packaging|https://en.wikipedia.org/wiki/Berlin_Packaging
 Black Rifle Coffee Company|https://en.wikipedia.org/wiki/Black_Rifle_Coffee_Company
-Broad Institute of MIT and Harvard University|https://en.wikipedia.org/wiki/Broad_Institute_of_MIT_and_Harvard_University
 Brex|https://en.wikipedia.org/wiki/Brex
+BMO Harris Bank|https://en.wikipedia.org/wiki/BMO_Harris_Bank
+Bungie|https://en.wikipedia.org/wiki/Bungie
+Biomet|https://en.wikipedia.org/wiki/Biomet
+BMJ|https://en.wikipedia.org/wiki/BMJ
+Bayfest (Mobile)|https://en.wikipedia.org/wiki/Bayfest_(Mobile)
+Banfield Pet Hospital|https://en.wikipedia.org/wiki/Banfield_Pet_Hospital
+Bankers Life|https://en.wikipedia.org/wiki/Bankers_Life
+Benchmark|https://en.wikipedia.org/wiki/Benchmark
+BeiGene|https://en.wikipedia.org/wiki/BeiGene
+Brown Brothers Harriman & Co.|https://en.wikipedia.org/wiki/Brown_Brothers_Harriman_%26_Co.
+Boart Longyear|https://en.wikipedia.org/wiki/Boart_Longyear
+Blur Studio|https://en.wikipedia.org/wiki/Blur_Studio
+Blue Shield of California|https://en.wikipedia.org/wiki/Blue_Shield_of_California
+BUTEC|https://en.wikipedia.org/wiki/BUTEC
+Biotechnology Innovation Organization|https://en.wikipedia.org/wiki/Biotechnology_Innovation_Organization
+Bloomberg BNA|https://en.wikipedia.org/wiki/Bloomberg_BNA
+Bashundhara Group|https://en.wikipedia.org/wiki/Bashundhara_Group
+Bruker|https://en.wikipedia.org/wiki/Bruker
+Belkin International|https://en.wikipedia.org/wiki/Belkin_International
+Board International|https://en.wikipedia.org/wiki/Board_International
+Beat|https://en.wikipedia.org/wiki/Beat
+Bloom Energy|https://en.wikipedia.org/wiki/Bloom_Energy
+Bank Muscat|https://en.wikipedia.org/wiki/Bank_Muscat
+Buckman|https://en.wikipedia.org/wiki/Buckman
+Berkeley Lab|https://en.wikipedia.org/wiki/Berkeley_Lab
+Blaverism|https://en.wikipedia.org/wiki/Blaverism
+Beximco Pharmaceuticals Ltd|https://en.wikipedia.org/wiki/Beximco_Pharmaceuticals_Ltd
+The Beauty of Independence|https://en.wikipedia.org/wiki/The_Beauty_of_Independence
+Black Diamond Equipment|https://en.wikipedia.org/wiki/Black_Diamond_Equipment
+BlueScope|https://en.wikipedia.org/wiki/BlueScope
+Bugcrowd|https://en.wikipedia.org/wiki/Bugcrowd
+Babcock|https://en.wikipedia.org/wiki/Babcock
+Bodycote|https://en.wikipedia.org/wiki/Bodycote
+Baker Tilly US, LLP|https://en.wikipedia.org/wiki/Baker_Tilly_US,_LLP
+Bergdorf Goodman|https://en.wikipedia.org/wiki/Bergdorf_Goodman
+Bank of Ceylon|https://en.wikipedia.org/wiki/Bank_of_Ceylon
+Beautycounter|https://en.wikipedia.org/wiki/Beautycounter
+Betsolan|https://en.wikipedia.org/wiki/Betsolan
+BJ's Wholesale Club|https://en.wikipedia.org/wiki/BJ%27s_Wholesale_Club
+Batelco|https://en.wikipedia.org/wiki/Batelco
+Barn|https://en.wikipedia.org/wiki/Barn
+BMMI|https://en.wikipedia.org/wiki/BMMI
+Baird|https://en.wikipedia.org/wiki/Baird
+Belden Inc.|https://en.wikipedia.org/wiki/Belden_Inc.
+BTS|https://en.wikipedia.org/wiki/BTS
+Bloomberg Philanthropies|https://en.wikipedia.org/wiki/Bloomberg_Philanthropies
+Brooks Brothers|https://en.wikipedia.org/wiki/Brooks_Brothers
+Brady Corporation|https://en.wikipedia.org/wiki/Brady_Corporation
+Backcountry|https://en.wikipedia.org/wiki/Backcountry
+BSRM|https://en.wikipedia.org/wiki/BSRM
+BigCommerce|https://en.wikipedia.org/wiki/BigCommerce
+Bird|https://en.wikipedia.org/wiki/Bird
+Bank of Jordan|https://en.wikipedia.org/wiki/Bank_of_Jordan
+BrainPop|https://en.wikipedia.org/wiki/BrainPop
+BIT Group Global|https://en.wikipedia.org/wiki/BIT_Group_Global
+Brinker International|https://en.wikipedia.org/wiki/Brinker_International
+Benner|https://en.wikipedia.org/wiki/Benner
+Boral|https://en.wikipedia.org/wiki/Boral
+Breakthrough Energy|https://en.wikipedia.org/wiki/Breakthrough_Energy
+Bloomberg CityLab|https://en.wikipedia.org/wiki/Bloomberg_CityLab
+Bristlecone pine|https://en.wikipedia.org/wiki/Bristlecone_pine
+Buffer|https://en.wikipedia.org/wiki/Buffer
+Bonhams|https://en.wikipedia.org/wiki/Bonhams
+Beximco Group|https://en.wikipedia.org/wiki/Beximco_Group
+Blockster|https://en.wikipedia.org/wiki/Blockster
+Beumer Group|https://en.wikipedia.org/wiki/Beumer_Group
+Ben|https://en.wikipedia.org/wiki/Ben
+Bethesda Game Studios|https://en.wikipedia.org/wiki/Bethesda_Game_Studios
+Blackhawk Network Holdings|https://en.wikipedia.org/wiki/Blackhawk_Network_Holdings
+Beat|https://en.wikipedia.org/wiki/Beat
+Bazaarvoice|https://en.wikipedia.org/wiki/Bazaarvoice
+Boston Red Sox|https://en.wikipedia.org/wiki/Boston_Red_Sox
+BigID|https://en.wikipedia.org/wiki/BigID
+Biosense Webster|https://en.wikipedia.org/wiki/Biosense_Webster
+Braintree|https://en.wikipedia.org/wiki/Braintree
+BELIMO Holding AG|https://en.wikipedia.org/wiki/BELIMO_Holding_AG
+BK Forward|https://en.wikipedia.org/wiki/BK_Forward
+Brown bear|https://en.wikipedia.org/wiki/Brown_bear
+Boden|https://en.wikipedia.org/wiki/Boden
+Brand Union|https://en.wikipedia.org/wiki/Brand_Union
+Bozzuto Group|https://en.wikipedia.org/wiki/Bozzuto_Group
+Bio-Nexus Device|https://en.wikipedia.org/wiki/Bio-Nexus_Device
+B2B Marketing|https://en.wikipedia.org/wiki/B2B_Marketing
+Bluepharma|https://en.wikipedia.org/wiki/Bluepharma
+Brilliant Pebbles|https://en.wikipedia.org/wiki/Brilliant_Pebbles
+Bloomin' Brands, Inc.|https://en.wikipedia.org/wiki/Bloomin%27_Brands,_Inc.
+Bowlero Corporation|https://en.wikipedia.org/wiki/Bowlero_Corporation
+Baxalta|https://en.wikipedia.org/wiki/Baxalta
+Black market|https://en.wikipedia.org/wiki/Black_market
+Boyd Gaming|https://en.wikipedia.org/wiki/Boyd_Gaming
+Barracuda|https://en.wikipedia.org/wiki/Barracuda
+Bon Appétit|https://en.wikipedia.org/wiki/Bon_App%C3%A9tit
+Boston Celtics|https://en.wikipedia.org/wiki/Boston_Celtics
+Bristow Group|https://en.wikipedia.org/wiki/Bristow_Group
+Barabanki district|https://en.wikipedia.org/wiki/Barabanki_district
+Bank Leumi USA|https://en.wikipedia.org/wiki/Bank_Leumi_USA
+Bizagi|https://en.wikipedia.org/wiki/Bizagi
+Berlitz Corporation|https://en.wikipedia.org/wiki/Berlitz_Corporation
+Brightlingsea|https://en.wikipedia.org/wiki/Brightlingsea
+Berkshire Hathaway HomeServices|https://en.wikipedia.org/wiki/Berkshire_Hathaway_HomeServices
+Bei genomics institute|https://en.wikipedia.org/wiki/Bei_genomics_institute
+Bodybuilding.com|https://en.wikipedia.org/wiki/Bodybuilding.com
+BeyondTrust|https://en.wikipedia.org/wiki/BeyondTrust
+Blue Fountain Media|https://en.wikipedia.org/wiki/Blue_Fountain_Media
+Biopharmaceutical|https://en.wikipedia.org/wiki/Biopharmaceutical
+BARK|https://en.wikipedia.org/wiki/BARK
+Brookfield Residential|https://en.wikipedia.org/wiki/Brookfield_Residential
+BHS|https://en.wikipedia.org/wiki/BHS
+Brother USA|https://en.wikipedia.org/wiki/Brother_USA
+Bon Appétit Management Company|https://en.wikipedia.org/wiki/Bon_App%C3%A9tit_Management_Company
+Beacon Building Products|https://en.wikipedia.org/wiki/Beacon_Building_Products
+BNY Mellon Wealth Management Hockey Humanitarian Award|https://en.wikipedia.org/wiki/BNY_Mellon_Wealth_Management_Hockey_Humanitarian_Award
+Betfair|https://en.wikipedia.org/wiki/Betfair
+Bohan|https://en.wikipedia.org/wiki/Bohan
+Bhx airport|https://en.wikipedia.org/wiki/Bhx_airport
+Beta Gamma Sigma|https://en.wikipedia.org/wiki/Beta_Gamma_Sigma
+Be Blues!|https://en.wikipedia.org/wiki/Be_Blues!
+Bitzer's Mill Covered Bridge|https://en.wikipedia.org/wiki/Bitzer%27s_Mill_Covered_Bridge
+Boston Globe Media|https://en.wikipedia.org/wiki/Boston_Globe_Media
+Bioprase AL 15|https://en.wikipedia.org/wiki/Bioprase_AL_15
+B. Wongar|https://en.wikipedia.org/wiki/B._Wongar
+Basecamp|https://en.wikipedia.org/wiki/Basecamp
+Balfin Group|https://en.wikipedia.org/wiki/Balfin_Group
+Boise Cascade Company|https://en.wikipedia.org/wiki/Boise_Cascade_Company
+Bank of America Merchant Services|https://en.wikipedia.org/wiki/Bank_of_America_Merchant_Services
+Blumhouse Productions|https://en.wikipedia.org/wiki/Blumhouse_Productions
+Bruker Daltonics|https://en.wikipedia.org/wiki/Bruker_Daltonics
+Blueshift|https://en.wikipedia.org/wiki/Blueshift
+Blue Cross Centre|https://en.wikipedia.org/wiki/Blue_Cross_Centre
+Bumble and bumble|https://en.wikipedia.org/wiki/Bumble_and_bumble
+BJ’s Restaurants, Inc.|https://en.wikipedia.org/wiki/BJ%E2%80%99s_Restaurants,_Inc.
+Brunswick Corporation|https://en.wikipedia.org/wiki/Brunswick_Corporation
+Bluetooth sig|https://en.wikipedia.org/wiki/Bluetooth_sig
+Bauer Hockey|https://en.wikipedia.org/wiki/Bauer_Hockey
+Black Knight|https://en.wikipedia.org/wiki/Black_Knight
+Blur Group|https://en.wikipedia.org/wiki/Blur_Group
+Boom Labrusca|https://en.wikipedia.org/wiki/Boom_Labrusca
+Basware|https://en.wikipedia.org/wiki/Basware
+Baillie Gifford|https://en.wikipedia.org/wiki/Baillie_Gifford
+BrandSafway|https://en.wikipedia.org/wiki/BrandSafway
+BD Medical|https://en.wikipedia.org/wiki/BD_Medical
+Blockfield|https://en.wikipedia.org/wiki/Blockfield
+BlueVine|https://en.wikipedia.org/wiki/BlueVine
+Beechcraft|https://en.wikipedia.org/wiki/Beechcraft
+Battery Ventures|https://en.wikipedia.org/wiki/Battery_Ventures
+BKT Tires|https://en.wikipedia.org/wiki/BKT_Tires
+Burgan Bank|https://en.wikipedia.org/wiki/Burgan_Bank
+Bank of America Private Bank|https://en.wikipedia.org/wiki/Bank_of_America_Private_Bank
+B-Tight|https://en.wikipedia.org/wiki/B-Tight
+BMT|https://en.wikipedia.org/wiki/BMT
+Beazley|https://en.wikipedia.org/wiki/Beazley
+Brandwatch|https://en.wikipedia.org/wiki/Brandwatch
+Bikroy.com|https://en.wikipedia.org/wiki/Bikroy.com
+Beyond Software|https://en.wikipedia.org/wiki/Beyond_Software
+Biomineralization|https://en.wikipedia.org/wiki/Biomineralization
+Browning|https://en.wikipedia.org/wiki/Browning
+Biosolarization|https://en.wikipedia.org/wiki/Biosolarization
+Beazer Homes USA|https://en.wikipedia.org/wiki/Beazer_Homes_USA
+BTG|https://en.wikipedia.org/wiki/BTG
+Betterment|https://en.wikipedia.org/wiki/Betterment
+Beatport|https://en.wikipedia.org/wiki/Beatport
+BizBash Media|https://en.wikipedia.org/wiki/BizBash_Media
+Blooom|https://en.wikipedia.org/wiki/Blooom
+BORN Group|https://en.wikipedia.org/wiki/BORN_Group
+Braze|https://en.wikipedia.org/wiki/Braze
+Boubyan Bank|https://en.wikipedia.org/wiki/Boubyan_Bank
+Bluemercury|https://en.wikipedia.org/wiki/Bluemercury
+Bundesliga|https://en.wikipedia.org/wiki/Bundesliga
+Barings LLC|https://en.wikipedia.org/wiki/Barings_LLC
+Bizarro|https://en.wikipedia.org/wiki/Bizarro
+Bwin|https://en.wikipedia.org/wiki/Bwin
+BGRSO|https://en.wikipedia.org/wiki/BGRSO
+Boyd Cordner|https://en.wikipedia.org/wiki/Boyd_Cordner
+Blend|https://en.wikipedia.org/wiki/Blend
+BCA Research|https://en.wikipedia.org/wiki/BCA_Research
+Brewin Dolphin|https://en.wikipedia.org/wiki/Brewin_Dolphin
+BBC Chartering|https://en.wikipedia.org/wiki/BBC_Chartering
+BF International Village|https://en.wikipedia.org/wiki/BF_International_Village
+B.E. Smythies|https://en.wikipedia.org/wiki/B.E._Smythies
+Bally Technologies|https://en.wikipedia.org/wiki/Bally_Technologies
+Barnes & Noble|https://en.wikipedia.org/wiki/Barnes_%26_Noble
+BZH New York|https://en.wikipedia.org/wiki/BZH_New_York
+Briggs|https://en.wikipedia.org/wiki/Briggs
+BPL Group|https://en.wikipedia.org/wiki/BPL_Group
+Bill.com|https://en.wikipedia.org/wiki/Bill.com
+BDG|https://en.wikipedia.org/wiki/BDG
+BroadSoft|https://en.wikipedia.org/wiki/BroadSoft
+Black Hills Energy|https://en.wikipedia.org/wiki/Black_Hills_Energy
+Bioradiolocation|https://en.wikipedia.org/wiki/Bioradiolocation
+Big Congo|https://en.wikipedia.org/wiki/Big_Congo
+BC Augsburg|https://en.wikipedia.org/wiki/BC_Augsburg
+Backstage|https://en.wikipedia.org/wiki/Backstage
+Buckethead|https://en.wikipedia.org/wiki/Buckethead
+Builders FirstSource|https://en.wikipedia.org/wiki/Builders_FirstSource
+Bradford|https://en.wikipedia.org/wiki/Bradford
+Buc-ee's Ltd.|https://en.wikipedia.org/wiki/Buc-ee%27s_Ltd.
+Battery industry|https://en.wikipedia.org/wiki/Battery_industry
+Bmi group|https://en.wikipedia.org/wiki/Bmi_group
+Bell's Brewery|https://en.wikipedia.org/wiki/Bell%27s_Brewery
+Bern incident|https://en.wikipedia.org/wiki/Bern_incident
+Bavarian Nordic|https://en.wikipedia.org/wiki/Bavarian_Nordic
+Bank of Beirut|https://en.wikipedia.org/wiki/Bank_of_Beirut
+Bestway Group|https://en.wikipedia.org/wiki/Bestway_Group
+Brilliant Earth|https://en.wikipedia.org/wiki/Brilliant_Earth
+Bank Hapoalim|https://en.wikipedia.org/wiki/Bank_Hapoalim
+Bisnode|https://en.wikipedia.org/wiki/Bisnode
+Beta Technologies|https://en.wikipedia.org/wiki/Beta_Technologies
+Beirut Digital District|https://en.wikipedia.org/wiki/Beirut_Digital_District
+Barco Group|https://en.wikipedia.org/wiki/Barco_Group
+Burt's Bees|https://en.wikipedia.org/wiki/Burt%27s_Bees
+Biz2credit|https://en.wikipedia.org/wiki/Biz2credit
+BC Partners|https://en.wikipedia.org/wiki/BC_Partners
+Bank of Georgia|https://en.wikipedia.org/wiki/Bank_of_Georgia
+Bank Windhoek|https://en.wikipedia.org/wiki/Bank_Windhoek
+Bisnow Media|https://en.wikipedia.org/wiki/Bisnow_Media
+BJSS|https://en.wikipedia.org/wiki/BJSS
+Blue Matter|https://en.wikipedia.org/wiki/Blue_Matter
+Baja|https://en.wikipedia.org/wiki/Baja
+BPL Group|https://en.wikipedia.org/wiki/BPL_Group
+Be The Match|https://en.wikipedia.org/wiki/Be_The_Match
+Baruel Mansion|https://en.wikipedia.org/wiki/Baruel_Mansion
+Byredo|https://en.wikipedia.org/wiki/Byredo
+Blue Cross Blue Shield of Massachusetts|https://en.wikipedia.org/wiki/Blue_Cross_Blue_Shield_of_Massachusetts
+Baumer|https://en.wikipedia.org/wiki/Baumer
+Branch|https://en.wikipedia.org/wiki/Branch
+Bigfoot Biomedical|https://en.wikipedia.org/wiki/Bigfoot_Biomedical
+BYD Electronic (International) Company Limited|https://en.wikipedia.org/wiki/BYD_Electronic_(International)_Company_Limited
+BlueCross BlueShield of South Carolina|https://en.wikipedia.org/wiki/BlueCross_BlueShield_of_South_Carolina
+Bloomberg Law|https://en.wikipedia.org/wiki/Bloomberg_Law
+Brightcove|https://en.wikipedia.org/wiki/Brightcove
+BCMP network|https://en.wikipedia.org/wiki/BCMP_network
+Brooks Automation|https://en.wikipedia.org/wiki/Brooks_Automation
+Birmingham Business Journal|https://en.wikipedia.org/wiki/Birmingham_Business_Journal
+Bandiera Rossa|https://en.wikipedia.org/wiki/Bandiera_Rossa
+BlueCrest Capital Management|https://en.wikipedia.org/wiki/BlueCrest_Capital_Management
+Babich|https://en.wikipedia.org/wiki/Babich
+Botifarra|https://en.wikipedia.org/wiki/Botifarra
+Bebe Stores|https://en.wikipedia.org/wiki/Bebe_Stores
+Bavarian Auto Group|https://en.wikipedia.org/wiki/Bavarian_Auto_Group
+BlueGrace Logistics|https://en.wikipedia.org/wiki/BlueGrace_Logistics
+Blurb|https://en.wikipedia.org/wiki/Blurb
+Boston Properties|https://en.wikipedia.org/wiki/Boston_Properties
+Babolat|https://en.wikipedia.org/wiki/Babolat
+Bluetooth|https://en.wikipedia.org/wiki/Bluetooth
+Bi-amping and tri-amping|https://en.wikipedia.org/wiki/Bi-amping_and_tri-amping
+Berenberg family|https://en.wikipedia.org/wiki/Berenberg_family
+Bowman, William|https://en.wikipedia.org/wiki/Bowman,_William
+Big Ass Fans|https://en.wikipedia.org/wiki/Big_Ass_Fans
+Bank of Cyprus|https://en.wikipedia.org/wiki/Bank_of_Cyprus
+Blinks|https://en.wikipedia.org/wiki/Blinks
+Birštonas|https://en.wikipedia.org/wiki/Bir%C5%A1tonas
+Bonava|https://en.wikipedia.org/wiki/Bonava
+Benco Dental|https://en.wikipedia.org/wiki/Benco_Dental
+Bowers|https://en.wikipedia.org/wiki/Bowers
+Bowery Farming|https://en.wikipedia.org/wiki/Bowery_Farming
+Bluegreen Vacations Duel|https://en.wikipedia.org/wiki/Bluegreen_Vacations_Duel
+BeMobile Premier league|https://en.wikipedia.org/wiki/BeMobile_Premier_league
+Bandar Abbas|https://en.wikipedia.org/wiki/Bandar_Abbas
+Badoo|https://en.wikipedia.org/wiki/Badoo
+Berkeley Research Group, LLC|https://en.wikipedia.org/wiki/Berkeley_Research_Group,_LLC
+Baltimore Ravens|https://en.wikipedia.org/wiki/Baltimore_Ravens
+Bain|https://en.wikipedia.org/wiki/Bain
+Bonobo|https://en.wikipedia.org/wiki/Bonobo
+Big Think|https://en.wikipedia.org/wiki/Big_Think
+Barry-Wehmiller|https://en.wikipedia.org/wiki/Barry-Wehmiller
+Barkley|https://en.wikipedia.org/wiki/Barkley
+Burns|https://en.wikipedia.org/wiki/Burns
+B|https://en.wikipedia.org/wiki/B
+Boeckella|https://en.wikipedia.org/wiki/Boeckella
+Buss (Rico Nasty song)|https://en.wikipedia.org/wiki/Buss_(Rico_Nasty_song)
+BMB|https://en.wikipedia.org/wiki/BMB
+Benjamin Moore|https://en.wikipedia.org/wiki/Benjamin_Moore
+Brasaljce|https://en.wikipedia.org/wiki/Brasaljce
+BI|https://en.wikipedia.org/wiki/BI
+Bell|https://en.wikipedia.org/wiki/Bell
+Bayard Presse|https://en.wikipedia.org/wiki/Bayard_Presse
+BICS|https://en.wikipedia.org/wiki/BICS
+Brainworks Learning Systems|https://en.wikipedia.org/wiki/Brainworks_Learning_Systems
+Boston Bruins|https://en.wikipedia.org/wiki/Boston_Bruins
+BevMo!|https://en.wikipedia.org/wiki/BevMo!
+BMG|https://en.wikipedia.org/wiki/BMG
+Buffalo Bills|https://en.wikipedia.org/wiki/Buffalo_Bills
+Brain|https://en.wikipedia.org/wiki/Brain
+BOK Financial Corporation|https://en.wikipedia.org/wiki/BOK_Financial_Corporation
+BARE International|https://en.wikipedia.org/wiki/BARE_International
+BC Social Credit Party|https://en.wikipedia.org/wiki/BC_Social_Credit_Party
+Buck|https://en.wikipedia.org/wiki/Buck
+Bessarabia|https://en.wikipedia.org/wiki/Bessarabia
+Bob Evans Farms, Inc.|https://en.wikipedia.org/wiki/Bob_Evans_Farms,_Inc.
+Borden|https://en.wikipedia.org/wiki/Borden
+BE|https://en.wikipedia.org/wiki/BE
+Bellagio|https://en.wikipedia.org/wiki/Bellagio
+Brasselsberg (Habichtswald)|https://en.wikipedia.org/wiki/Brasselsberg_(Habichtswald)
+Barona|https://en.wikipedia.org/wiki/Barona
+Brain trust|https://en.wikipedia.org/wiki/Brain_trust
+Big Fish Games|https://en.wikipedia.org/wiki/Big_Fish_Games
+Bauer Group|https://en.wikipedia.org/wiki/Bauer_Group
+Blaze Media|https://en.wikipedia.org/wiki/Blaze_Media
+Bizliner|https://en.wikipedia.org/wiki/Bizliner
+Buffalo Business First|https://en.wikipedia.org/wiki/Buffalo_Business_First
+Banrisul|https://en.wikipedia.org/wiki/Banrisul
+BlueCross BlueShield of Tennessee|https://en.wikipedia.org/wiki/BlueCross_BlueShield_of_Tennessee
+Bravida Arena|https://en.wikipedia.org/wiki/Bravida_Arena
+Bliss|https://en.wikipedia.org/wiki/Bliss
+Bio-Techne|https://en.wikipedia.org/wiki/Bio-Techne
+Brevard Community College|https://en.wikipedia.org/wiki/Brevard_Community_College
+Binbit|https://en.wikipedia.org/wiki/Binbit
+Better Business Bureau|https://en.wikipedia.org/wiki/Better_Business_Bureau
+BART|https://en.wikipedia.org/wiki/BART
+Bolthouse Farms|https://en.wikipedia.org/wiki/Bolthouse_Farms
+Business.com|https://en.wikipedia.org/wiki/Business.com
+Bell Flavors & Fragrances|https://en.wikipedia.org/wiki/Bell_Flavors_%26_Fragrances
+BrightTALK|https://en.wikipedia.org/wiki/BrightTALK
+Bob's Discount Furniture|https://en.wikipedia.org/wiki/Bob%27s_Discount_Furniture
+Banca Intesa Beograd|https://en.wikipedia.org/wiki/Banca_Intesa_Beograd
+Breeze Airways|https://en.wikipedia.org/wiki/Breeze_Airways
+Becker Professional Education|https://en.wikipedia.org/wiki/Becker_Professional_Education
+Bojangles' Restaurants Inc|https://en.wikipedia.org/wiki/Bojangles%27_Restaurants_Inc
+Beats Music|https://en.wikipedia.org/wiki/Beats_Music
+Brainshark|https://en.wikipedia.org/wiki/Brainshark
+BSA Global|https://en.wikipedia.org/wiki/BSA_Global
+Blast Radius|https://en.wikipedia.org/wiki/Blast_Radius
+Block group|https://en.wikipedia.org/wiki/Block_group
+Beam Therapeutics|https://en.wikipedia.org/wiki/Beam_Therapeutics
+Bosal|https://en.wikipedia.org/wiki/Bosal
+Book of Sydrac|https://en.wikipedia.org/wiki/Book_of_Sydrac
+Brave Software|https://en.wikipedia.org/wiki/Brave_Software
+Biosensor|https://en.wikipedia.org/wiki/Biosensor
+Bloomberg Businessweek|https://en.wikipedia.org/wiki/Bloomberg_Businessweek
+Black v Chrétien|https://en.wikipedia.org/wiki/Black_v_Chr%C3%A9tien
+Bibliotheca|https://en.wikipedia.org/wiki/Bibliotheca
+Burgess|https://en.wikipedia.org/wiki/Burgess
+Brand loyalty|https://en.wikipedia.org/wiki/Brand_loyalty
+BICSI|https://en.wikipedia.org/wiki/BICSI
+Bakkt|https://en.wikipedia.org/wiki/Bakkt
+Barry's|https://en.wikipedia.org/wiki/Barry%27s
+Beauty Brands|https://en.wikipedia.org/wiki/Beauty_Brands
+BIO-Genex Laboratories|https://en.wikipedia.org/wiki/BIO-Genex_Laboratories
+Brothers Past|https://en.wikipedia.org/wiki/Brothers_Past
+Bakcell Arena|https://en.wikipedia.org/wiki/Bakcell_Arena
+Beyond|https://en.wikipedia.org/wiki/Beyond
+Brookstone|https://en.wikipedia.org/wiki/Brookstone
+Bombas|https://en.wikipedia.org/wiki/Bombas
+Biolinguistics|https://en.wikipedia.org/wiki/Biolinguistics
+BetVictor|https://en.wikipedia.org/wiki/BetVictor
+Buckeye Partners|https://en.wikipedia.org/wiki/Buckeye_Partners
+Boston Business Journal|https://en.wikipedia.org/wiki/Boston_Business_Journal
+Bunim/Murray Productions|https://en.wikipedia.org/wiki/Bunim/Murray_Productions
+Boob|https://en.wikipedia.org/wiki/Boob
+Bryan Cave Leighton Paisner LLP|https://en.wikipedia.org/wiki/Bryan_Cave_Leighton_Paisner_LLP
+BJ the Chicago Kid|https://en.wikipedia.org/wiki/BJ_the_Chicago_Kid
+BYK Additives & Instruments|https://en.wikipedia.org/wiki/BYK_Additives_%26_Instruments
+Bonnier Corporation|https://en.wikipedia.org/wiki/Bonnier_Corporation
+BoardSource|https://en.wikipedia.org/wiki/BoardSource
+BDK|https://en.wikipedia.org/wiki/BDK
+Big Heart Pet Brands|https://en.wikipedia.org/wiki/Big_Heart_Pet_Brands
+Borrego|https://en.wikipedia.org/wiki/Borrego
+Baker Botts|https://en.wikipedia.org/wiki/Baker_Botts
+BitPay|https://en.wikipedia.org/wiki/BitPay
+Brit Insurance|https://en.wikipedia.org/wiki/Brit_Insurance
+Blockstream|https://en.wikipedia.org/wiki/Blockstream
+Better Homes and Gardens Real Estate|https://en.wikipedia.org/wiki/Better_Homes_and_Gardens_Real_Estate
+Bossance|https://en.wikipedia.org/wiki/Bossance
+Big Machine Label Group|https://en.wikipedia.org/wiki/Big_Machine_Label_Group
+Brooklyn Museum|https://en.wikipedia.org/wiki/Brooklyn_Museum
+BenQ Corporation|https://en.wikipedia.org/wiki/BenQ_Corporation
+BECU|https://en.wikipedia.org/wiki/BECU
+BDF|https://en.wikipedia.org/wiki/BDF
+B-Reel|https://en.wikipedia.org/wiki/B-Reel
+Brighthouse Financial|https://en.wikipedia.org/wiki/Brighthouse_Financial
+Bongo|https://en.wikipedia.org/wiki/Bongo
+Blue Diamond Growers|https://en.wikipedia.org/wiki/Blue_Diamond_Growers
+Breidis Prescott|https://en.wikipedia.org/wiki/Breidis_Prescott
+Bollinger Motors|https://en.wikipedia.org/wiki/Bollinger_Motors
+BLC Bank|https://en.wikipedia.org/wiki/BLC_Bank
+Bastion Collective|https://en.wikipedia.org/wiki/Bastion_Collective
+Boost Mobile|https://en.wikipedia.org/wiki/Boost_Mobile
+Bi-energy|https://en.wikipedia.org/wiki/Bi-energy
+Boot baronets|https://en.wikipedia.org/wiki/Boot_baronets
+Bounce|https://en.wikipedia.org/wiki/Bounce
+Boys Town|https://en.wikipedia.org/wiki/Boys_Town
+BNY Mellon Investment Management|https://en.wikipedia.org/wiki/BNY_Mellon_Investment_Management
+Busscar|https://en.wikipedia.org/wiki/Busscar
+Bank Asia Limited|https://en.wikipedia.org/wiki/Bank_Asia_Limited
+Bassett Furniture Industries, Incorporated|https://en.wikipedia.org/wiki/Bassett_Furniture_Industries,_Incorporated
+Buxton|https://en.wikipedia.org/wiki/Buxton
+Bernhoeft, Charles|https://en.wikipedia.org/wiki/Bernhoeft,_Charles
+BT Wholesale and Ventures|https://en.wikipedia.org/wiki/BT_Wholesale_and_Ventures
+Brooklyn Nets|https://en.wikipedia.org/wiki/Brooklyn_Nets
+Beamer, Benz, or Bentley|https://en.wikipedia.org/wiki/Beamer,_Benz,_or_Bentley
+Blank Rome LLP|https://en.wikipedia.org/wiki/Blank_Rome_LLP
+BSNL Sports Quiz|https://en.wikipedia.org/wiki/BSNL_Sports_Quiz
+Bank Pasargad|https://en.wikipedia.org/wiki/Bank_Pasargad
+Beall's, Inc.|https://en.wikipedia.org/wiki/Beall%27s,_Inc.
+Business in the Community|https://en.wikipedia.org/wiki/Business_in_the_Community
+BTG plc|https://en.wikipedia.org/wiki/BTG_plc
+Brevan Howard|https://en.wikipedia.org/wiki/Brevan_Howard
+Best Buddies International|https://en.wikipedia.org/wiki/Best_Buddies_International
+Bridgepoint Education|https://en.wikipedia.org/wiki/Bridgepoint_Education
+Bettanin & Venturi|https://en.wikipedia.org/wiki/Bettanin_%26_Venturi
+Bank OZK|https://en.wikipedia.org/wiki/Bank_OZK
+Building|https://en.wikipedia.org/wiki/Building
+Bright House Networks|https://en.wikipedia.org/wiki/Bright_House_Networks
+Baltimore Business Journal|https://en.wikipedia.org/wiki/Baltimore_Business_Journal
+Bitly|https://en.wikipedia.org/wiki/Bitly
+BDO Corporate Center|https://en.wikipedia.org/wiki/BDO_Corporate_Center
+Biltmore|https://en.wikipedia.org/wiki/Biltmore
+Beauty Boarding|https://en.wikipedia.org/wiki/Beauty_Boarding
+Bookmark Content and Communications|https://en.wikipedia.org/wiki/Bookmark_Content_and_Communications
+Bee line|https://en.wikipedia.org/wiki/Bee_line
+BIOVIA|https://en.wikipedia.org/wiki/BIOVIA
+Base Design|https://en.wikipedia.org/wiki/Base_Design
+Build-A-Bear Workshop|https://en.wikipedia.org/wiki/Build-A-Bear_Workshop
+BankUnited|https://en.wikipedia.org/wiki/BankUnited
+BlueLine Rental|https://en.wikipedia.org/wiki/BlueLine_Rental
+BlogHer|https://en.wikipedia.org/wiki/BlogHer
+Boston Fire Department|https://en.wikipedia.org/wiki/Boston_Fire_Department
+Bulletproof|https://en.wikipedia.org/wiki/Bulletproof
+Bohler|https://en.wikipedia.org/wiki/Bohler
+Beasley Media Group|https://en.wikipedia.org/wiki/Beasley_Media_Group
+Brunswick Boat Group|https://en.wikipedia.org/wiki/Brunswick_Boat_Group
+Bad Boy Entertainment|https://en.wikipedia.org/wiki/Bad_Boy_Entertainment
+Bael (Dungeons & Dragons)|https://en.wikipedia.org/wiki/Bael_(Dungeons_%26_Dragons)
+Business Roundtable|https://en.wikipedia.org/wiki/Business_Roundtable
+BrightRoll|https://en.wikipedia.org/wiki/BrightRoll
+Bambi|https://en.wikipedia.org/wiki/Bambi
+Blue Cross and Blue Shield of Alabama|https://en.wikipedia.org/wiki/Blue_Cross_and_Blue_Shield_of_Alabama
+Baume|https://en.wikipedia.org/wiki/Baume
+Bucyrus International|https://en.wikipedia.org/wiki/Bucyrus_International
+Brinks Home Security|https://en.wikipedia.org/wiki/Brinks_Home_Security
+Big data|https://en.wikipedia.org/wiki/Big_data
+BitSight|https://en.wikipedia.org/wiki/BitSight
+Brand Institute|https://en.wikipedia.org/wiki/Brand_Institute
+Bayer Technology Services|https://en.wikipedia.org/wiki/Bayer_Technology_Services
+BGSF|https://en.wikipedia.org/wiki/BGSF
+Benchmade|https://en.wikipedia.org/wiki/Benchmade
+Bauer Media Group|https://en.wikipedia.org/wiki/Bauer_Media_Group
+Baird|https://en.wikipedia.org/wiki/Baird
+Bamboo Airways|https://en.wikipedia.org/wiki/Bamboo_Airways
+Bron Studios|https://en.wikipedia.org/wiki/Bron_Studios
+Brown Advisory & Merriebelle Stable Plate Handicap Chase|https://en.wikipedia.org/wiki/Brown_Advisory_%26_Merriebelle_Stable_Plate_Handicap_Chase
+Bleem!|https://en.wikipedia.org/wiki/Bleem!
+Blue State|https://en.wikipedia.org/wiki/Blue_State
+BakerHostetler|https://en.wikipedia.org/wiki/BakerHostetler
+Bank of Hawaii|https://en.wikipedia.org/wiki/Bank_of_Hawaii
+Bala Group|https://en.wikipedia.org/wiki/Bala_Group
+Biometrics|https://en.wikipedia.org/wiki/Biometrics
+BES|https://en.wikipedia.org/wiki/BES
+Bloomberg Opinion|https://en.wikipedia.org/wiki/Bloomberg_Opinion
+Barnes|https://en.wikipedia.org/wiki/Barnes
+Briggs Equipment|https://en.wikipedia.org/wiki/Briggs_Equipment
+Boardface|https://en.wikipedia.org/wiki/Boardface
+BancABC|https://en.wikipedia.org/wiki/BancABC
+Brivo|https://en.wikipedia.org/wiki/Brivo
+Bruce Mau Design|https://en.wikipedia.org/wiki/Bruce_Mau_Design
+Bollinger Shipyards|https://en.wikipedia.org/wiki/Bollinger_Shipyards
+Bagasse|https://en.wikipedia.org/wiki/Bagasse
+Bubble|https://en.wikipedia.org/wiki/Bubble
+Bently Nevada|https://en.wikipedia.org/wiki/Bently_Nevada
+Block.one|https://en.wikipedia.org/wiki/Block.one
+Blick Art Materials|https://en.wikipedia.org/wiki/Blick_Art_Materials
+BD Medical|https://en.wikipedia.org/wiki/BD_Medical
+BSA (The Software Alliance)|https://en.wikipedia.org/wiki/BSA_(The_Software_Alliance)
+B Young|https://en.wikipedia.org/wiki/B_Young
+Baltimore Orioles|https://en.wikipedia.org/wiki/Baltimore_Orioles
+Benelli USA|https://en.wikipedia.org/wiki/Benelli_USA
+Beaulieu International Group|https://en.wikipedia.org/wiki/Beaulieu_International_Group
+Business owner|https://en.wikipedia.org/wiki/Business_owner
+Bubu|https://en.wikipedia.org/wiki/Bubu
+Blucora|https://en.wikipedia.org/wiki/Blucora
+BrightStar Care|https://en.wikipedia.org/wiki/BrightStar_Care
+Bitfinex|https://en.wikipedia.org/wiki/Bitfinex
+BVA|https://en.wikipedia.org/wiki/BVA
+Benching|https://en.wikipedia.org/wiki/Benching
+Baumschlager-Eberle|https://en.wikipedia.org/wiki/Baumschlager-Eberle
+Boku|https://en.wikipedia.org/wiki/Boku
+Badger|https://en.wikipedia.org/wiki/Badger
+Benihana|https://en.wikipedia.org/wiki/Benihana
+Blink fitness|https://en.wikipedia.org/wiki/Blink_fitness
+Blue Cross and Blue Shield of Kansas City|https://en.wikipedia.org/wiki/Blue_Cross_and_Blue_Shield_of_Kansas_City
+Bebe Stores|https://en.wikipedia.org/wiki/Bebe_Stores
+Bravo (TV channel)|https://en.wikipedia.org/wiki/Bravo_(TV_channel)
+Barbarian|https://en.wikipedia.org/wiki/Barbarian
+Biomimicry Institute|https://en.wikipedia.org/wiki/Biomimicry_Institute
+Biotage|https://en.wikipedia.org/wiki/Biotage
+Bearbind|https://en.wikipedia.org/wiki/Bearbind
+Brighton Collectibles|https://en.wikipedia.org/wiki/Brighton_Collectibles
+Bourjois|https://en.wikipedia.org/wiki/Bourjois
+BakerRipley|https://en.wikipedia.org/wiki/BakerRipley
+Balyogeshwar|https://en.wikipedia.org/wiki/Balyogeshwar
+BGI Group|https://en.wikipedia.org/wiki/BGI_Group
+BrightFarms|https://en.wikipedia.org/wiki/BrightFarms
+Blue Star Infotech|https://en.wikipedia.org/wiki/Blue_Star_Infotech
+Bits Corporation|https://en.wikipedia.org/wiki/Bits_Corporation
+Bernhard|https://en.wikipedia.org/wiki/Bernhard
+Boingo Wireless|https://en.wikipedia.org/wiki/Boingo_Wireless
+Bird|https://en.wikipedia.org/wiki/Bird
+Belaying|https://en.wikipedia.org/wiki/Belaying
+BSO|https://en.wikipedia.org/wiki/BSO
+Brixmor Property Group|https://en.wikipedia.org/wiki/Brixmor_Property_Group
+Balboa Capital Corporation|https://en.wikipedia.org/wiki/Balboa_Capital_Corporation
+Bizerba|https://en.wikipedia.org/wiki/Bizerba
+Bio-research|https://en.wikipedia.org/wiki/Bio-research
+Blippar|https://en.wikipedia.org/wiki/Blippar
+Bright Machines|https://en.wikipedia.org/wiki/Bright_Machines
+Bibi Osterwald|https://en.wikipedia.org/wiki/Bibi_Osterwald
+Border states|https://en.wikipedia.org/wiki/Border_states
+BioLegend|https://en.wikipedia.org/wiki/BioLegend
+BUF Compagnie|https://en.wikipedia.org/wiki/BUF_Compagnie
+Band (software)|https://en.wikipedia.org/wiki/Band_(software)
+Bitrex|https://en.wikipedia.org/wiki/Bitrex
+BPO|https://en.wikipedia.org/wiki/BPO
+Beyerdynamic|https://en.wikipedia.org/wiki/Beyerdynamic
+Breg|https://en.wikipedia.org/wiki/Breg
+BCER|https://en.wikipedia.org/wiki/BCER
+Butler, Shine, Stern & Partners|https://en.wikipedia.org/wiki/Butler,_Shine,_Stern_%26_Partners
+BitGo|https://en.wikipedia.org/wiki/BitGo
+Bottomless|https://en.wikipedia.org/wiki/Bottomless
+BX Swiss|https://en.wikipedia.org/wiki/BX_Swiss
+B1 paper|https://en.wikipedia.org/wiki/B1_paper
+Bank of Oklahoma|https://en.wikipedia.org/wiki/Bank_of_Oklahoma
+Big Ten Network|https://en.wikipedia.org/wiki/Big_Ten_Network
+Bob's Red Mill|https://en.wikipedia.org/wiki/Bob%27s_Red_Mill
+Bizarro|https://en.wikipedia.org/wiki/Bizarro
+Bachem Holding|https://en.wikipedia.org/wiki/Bachem_Holding
+Brownstein|https://en.wikipedia.org/wiki/Brownstein
+Blu|https://en.wikipedia.org/wiki/Blu
+BCE Inc.|https://en.wikipedia.org/wiki/BCE_Inc.
+Banner Bank|https://en.wikipedia.org/wiki/Banner_Bank
+Books-A-Million|https://en.wikipedia.org/wiki/Books-A-Million
+BOLD|https://en.wikipedia.org/wiki/BOLD
+Blockbuster|https://en.wikipedia.org/wiki/Blockbuster
+Bell|https://en.wikipedia.org/wiki/Bell
+Brixton|https://en.wikipedia.org/wiki/Brixton
+Betfred|https://en.wikipedia.org/wiki/Betfred
+Boston Market|https://en.wikipedia.org/wiki/Boston_Market
+Bolt|https://en.wikipedia.org/wiki/Bolt
+Bittium|https://en.wikipedia.org/wiki/Bittium
+Bandcamp|https://en.wikipedia.org/wiki/Bandcamp
+Blockwork|https://en.wikipedia.org/wiki/Blockwork
+Business overhead|https://en.wikipedia.org/wiki/Business_overhead
+Bayformers|https://en.wikipedia.org/wiki/Bayformers
+Bond No. 9|https://en.wikipedia.org/wiki/Bond_No._9
+Berkshire|https://en.wikipedia.org/wiki/Berkshire
+Brightwood College|https://en.wikipedia.org/wiki/Brightwood_College
+Brookshire Grocery Company|https://en.wikipedia.org/wiki/Brookshire_Grocery_Company
+Bluesnarfing|https://en.wikipedia.org/wiki/Bluesnarfing
+Belgrade Waterfront|https://en.wikipedia.org/wiki/Belgrade_Waterfront
+Boards.ie|https://en.wikipedia.org/wiki/Boards.ie
+Buzz|https://en.wikipedia.org/wiki/Buzz
+Bread|https://en.wikipedia.org/wiki/Bread
+Barbie|https://en.wikipedia.org/wiki/Barbie
+Bibliotheca Alexandrina|https://en.wikipedia.org/wiki/Bibliotheca_Alexandrina
+Bellator MMA|https://en.wikipedia.org/wiki/Bellator_MMA
+BUNN|https://en.wikipedia.org/wiki/BUNN
+B2B e-commerce|https://en.wikipedia.org/wiki/B2B_e-commerce
+Brainly|https://en.wikipedia.org/wiki/Brainly
+Bar Louie Restaurants|https://en.wikipedia.org/wiki/Bar_Louie_Restaurants
+Bright Green Field|https://en.wikipedia.org/wiki/Bright_Green_Field
+Bare Necessities|https://en.wikipedia.org/wiki/Bare_Necessities
+Brooks International|https://en.wikipedia.org/wiki/Brooks_International
+Brand networking|https://en.wikipedia.org/wiki/Brand_networking
+Brainlab|https://en.wikipedia.org/wiki/Brainlab
+Bissell Homecare, Inc|https://en.wikipedia.org/wiki/Bissell_Homecare,_Inc
+Baked by Melissa|https://en.wikipedia.org/wiki/Baked_by_Melissa
+Backroad|https://en.wikipedia.org/wiki/Backroad
+Bertechramnus|https://en.wikipedia.org/wiki/Bertechramnus
+BitTorrent Inc.|https://en.wikipedia.org/wiki/BitTorrent_Inc.
+Bradken|https://en.wikipedia.org/wiki/Bradken
+Brit Cops|https://en.wikipedia.org/wiki/Brit_Cops
+Bitmain|https://en.wikipedia.org/wiki/Bitmain
+Bainbridge|https://en.wikipedia.org/wiki/Bainbridge
+Blueprint|https://en.wikipedia.org/wiki/Blueprint
+Blue Selection|https://en.wikipedia.org/wiki/Blue_Selection
+Buildium|https://en.wikipedia.org/wiki/Buildium
+Bile discography|https://en.wikipedia.org/wiki/Bile_discography
+Butler Manufacturing|https://en.wikipedia.org/wiki/Butler_Manufacturing
+Budapest Airport|https://en.wikipedia.org/wiki/Budapest_Airport
+Bechtel Jacobs|https://en.wikipedia.org/wiki/Bechtel_Jacobs
+Batteries Plus Bulbs|https://en.wikipedia.org/wiki/Batteries_Plus_Bulbs
+Bank of Greece|https://en.wikipedia.org/wiki/Bank_of_Greece
+Big 5 Sporting Goods|https://en.wikipedia.org/wiki/Big_5_Sporting_Goods
+Backlink|https://en.wikipedia.org/wiki/Backlink
+Birch Communications|https://en.wikipedia.org/wiki/Birch_Communications
+Barefoot Networks|https://en.wikipedia.org/wiki/Barefoot_Networks
+Brandy Melville|https://en.wikipedia.org/wiki/Brandy_Melville
+Barnes Group, Inc.|https://en.wikipedia.org/wiki/Barnes_Group,_Inc.
+BurgerFi|https://en.wikipedia.org/wiki/BurgerFi
+Bowlmor AMF|https://en.wikipedia.org/wiki/Bowlmor_AMF
+Betthausen, Peter|https://en.wikipedia.org/wiki/Betthausen,_Peter
+Bessemer Trust|https://en.wikipedia.org/wiki/Bessemer_Trust
+Bobo|https://en.wikipedia.org/wiki/Bobo
+Burkina 24|https://en.wikipedia.org/wiki/Burkina_24
+Bridgestone Golf|https://en.wikipedia.org/wiki/Bridgestone_Golf
+Blind|https://en.wikipedia.org/wiki/Blind
+Birddog|https://en.wikipedia.org/wiki/Birddog
+Blakfish|https://en.wikipedia.org/wiki/Blakfish
+Backstage Capitol Theatre|https://en.wikipedia.org/wiki/Backstage_Capitol_Theatre
+Bioluminance|https://en.wikipedia.org/wiki/Bioluminance
+BeRider|https://en.wikipedia.org/wiki/BeRider
+BPP|https://en.wikipedia.org/wiki/BPP
+BAI|https://en.wikipedia.org/wiki/BAI
+Bayer Corporation|https://en.wikipedia.org/wiki/Bayer_Corporation
+Business Science|https://en.wikipedia.org/wiki/Business_Science
+Biomarker|https://en.wikipedia.org/wiki/Biomarker
+BRB Internacional|https://en.wikipedia.org/wiki/BRB_Internacional
+Baku Shipyard LLC|https://en.wikipedia.org/wiki/Baku_Shipyard_LLC
+Brookline, New Hampshire|https://en.wikipedia.org/wiki/Brookline,_New_Hampshire
+Batesville|https://en.wikipedia.org/wiki/Batesville
+Buffalo Sabres|https://en.wikipedia.org/wiki/Buffalo_Sabres
+Biomedical Advanced Research and Development Authority|https://en.wikipedia.org/wiki/Biomedical_Advanced_Research_and_Development_Authority
+Blue Cross|https://en.wikipedia.org/wiki/Blue_Cross
+Baillie Gifford US Growth Trust|https://en.wikipedia.org/wiki/Baillie_Gifford_US_Growth_Trust
+Business consultant|https://en.wikipedia.org/wiki/Business_consultant
+BetterCloud|https://en.wikipedia.org/wiki/BetterCloud
+Brooklyn Brewery|https://en.wikipedia.org/wiki/Brooklyn_Brewery
+BRG Sports|https://en.wikipedia.org/wiki/BRG_Sports
+Buzzwole|https://en.wikipedia.org/wiki/Buzzwole
+Brown Harris Stevens|https://en.wikipedia.org/wiki/Brown_Harris_Stevens
+Bonefish Grill|https://en.wikipedia.org/wiki/Bonefish_Grill
+BigPanda|https://en.wikipedia.org/wiki/BigPanda
+BI Studios|https://en.wikipedia.org/wiki/BI_Studios
+Brown bear|https://en.wikipedia.org/wiki/Brown_bear
+Bluescape|https://en.wikipedia.org/wiki/Bluescape
+Black Sea trade and economy|https://en.wikipedia.org/wiki/Black_Sea_trade_and_economy
+Baire space|https://en.wikipedia.org/wiki/Baire_space
+Brainsway|https://en.wikipedia.org/wiki/Brainsway
+Blue Air|https://en.wikipedia.org/wiki/Blue_Air
+Big Hit Entertainment|https://en.wikipedia.org/wiki/Big_Hit_Entertainment
+Banc of California|https://en.wikipedia.org/wiki/Banc_of_California
+Better|https://en.wikipedia.org/wiki/Better
+Blacktip grouper|https://en.wikipedia.org/wiki/Blacktip_grouper
+Beauty dish|https://en.wikipedia.org/wiki/Beauty_dish
+Beto Carrero World|https://en.wikipedia.org/wiki/Beto_Carrero_World
+Blue Nile|https://en.wikipedia.org/wiki/Blue_Nile
+Bimeda|https://en.wikipedia.org/wiki/Bimeda
+Blog|https://en.wikipedia.org/wiki/Blog
+Broadway.com|https://en.wikipedia.org/wiki/Broadway.com
+Bigelow Aerospace|https://en.wikipedia.org/wiki/Bigelow_Aerospace
+BOND|https://en.wikipedia.org/wiki/BOND
+Burh|https://en.wikipedia.org/wiki/Burh
+Bigelow Tea Company|https://en.wikipedia.org/wiki/Bigelow_Tea_Company
+B Lab|https://en.wikipedia.org/wiki/B_Lab
+Becht|https://en.wikipedia.org/wiki/Becht
