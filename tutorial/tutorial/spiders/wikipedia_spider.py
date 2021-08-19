@@ -20,7 +20,7 @@ class WikipediaSpider(scrapy.Spider):
 
     def readUrls(self):
         root_dir = Path(__file__).parent.parent.parent.parent
-        file_path = os.path.join(root_dir, 'files/b2.txt')
+        file_path = os.path.join(root_dir, 'files/companies.txt')
         file = open(file_path, "r")
         companies = file.readlines()
         for company in companies:
