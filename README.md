@@ -276,26 +276,11 @@ scrapy crawl wikipedia
 scrapy crawl wikipedia -o wikiurls.csv
 ```
 
-
-```markdown
-  pip install scrapy-user-agents
-  pip install scrapy_proxies
-  pip uninstall scrapy_proxies
-```
-
 ```markdown
 
  scrapy parse --spider=wikipedia -d 3 https://en.wikipedia.org/wiki/google
  scrapy parse --spider=wikipedia -c parse_item -d 2 https://en.wikipedia.org/w/api.php?action=opensearch&format=json&formatversion=2&search=apple&namespace=0&limit=10
-
-  412  pip3 install chromedriver-binary
-  413  pip3 uninstall chromedriver-binary
-  414  pip3 install chromedriver-binary-auto
-  422  pip3 install scrapy_proxies
-  424  pip3 uninstall scrapy_proxies
-
-```
-
+ ```
 
 ## Scraping from LinkedIn
 
