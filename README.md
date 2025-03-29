@@ -1,4 +1,13 @@
+## Scraping using Selenium
+```commandline
 pip3 install chromedriver-binary-auto
+pip install -U selenium
+```
+
+## Install Scrapy
+```commandline
+  pip install Scrapy
+```
 
 ## Install Beautifulsoup
 ```commandline
@@ -7,37 +16,32 @@ pip3 install beautifulsoup4
 
 https://pypi.org/project/scrapy-user-agents/
 
-####Configuring User-Agent type
+##  Configuring User-Agent type
 There’s a configuration parameter RANDOM_UA_TYPE in format <device_type>.<browser_type>, default is desktop.chrome. For device_type part, only desktop, mobile, tablet are supported. For browser_type part, only chrome, firefox, safari, ie, safari are supported. If you don’t want to fix to only one browser type, you can use random to choose from all browser types.
 
 You can set RANDOM_UA_SAME_OS_FAMILY to True to just use user agents that belong to the same os family, such as windows, mac os, linux, or android, ios, etc. Default value is True.
 
+### UserAgent Faker
+
+PYPI: https://pypi.org/project/scrapy-fake-useragent/ or Github : https://github.com/alecxe/scrapy-fake-useragent/tree/master
+
+<p> Random User-Agent middleware for Scrapy scraping framework based on fake-useragent, which picks up User-Agent strings based on usage statistics from a real world database, but also has the option to configure a generator of fake UA strings, as a backup, powered by Faker. </p>
+https://faker.readthedocs.io/en/master/providers/faker.providers.user_agent.html
+
+```commandline
+ pip install scrapy-fake-useragent
+ 
 DOWNLOADER_MIDDLEWARES = {
     'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware': None,
-    'scrapy_user_agents.middlewares.RandomUserAgentMiddleware': 400,
+    'scrapy.contrib.downloadermiddleware.retry.RetryMiddleware': None,
+    'scrapy_fake_useragent.middleware.RandomUserAgentMiddleware': 400,
+    'scrapy_fake_useragent.middleware.RetryUserAgentMiddleware': 401,
 }
-
-
-#### Scraping from LinkedIn
-
 ```
-href_array = $("#seo-dir").querySelectorAll("li.content a")
-href_array.forEach (element => console.log(element.href));
-
-cat >> ~/junk/a1.txt
-
-cut -d" " -f2 ~/junk/a1.txt > ~/junk/b1.txt
-
-sed -e 's/https\:\/\/www.linkedin.com\/company\///g'  -e 's/\?trk=companies_directory//g' ~/junk/b.txt  > ~/junk/c1.txt 
-
-href_array = $("#seo-dir").querySelectorAll("li.content a")
-href_array.forEach (element => console.log(element.text));
-
-sed -e 's/VM[0-9]\{3,\}\:[0-9]\{1,\}//g' ~/junk/a2.txt > ~/junk/b2.txt
 
 
+TODO:
 scrapy-user-agents -> browser list
-```
 
 ## TOR
 ### INSTALL TOR
@@ -130,7 +134,28 @@ forward-socks5t   /               127.0.0.1:9050 .
 brew services tor start
 brew services  restart privoxy
 ```
+#### Test 
+```markdown
+curl  www.google.com -e use_proxy=yes -e http_proxy=127.0.0.1:8118
+```
+#### Update the settings.py
+* https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
+* https://stackoverflow.com/questions/43584784/how-to-use-privoxy-and-tor-for-a-scrapy-project
+```markdown
+import os
+os.environ['http_proxy'] = "http://localhost:8118"
+os.environ['https_proxy'] = "http://localhost:8118"
 
+DOWNLOADER_MIDDLEWARES = {
+    'scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware': 1,
+}
+```
+#### Using Middleware
+```markdown
+class ProxyMiddleware(object):
+    def process_request(self, request, spider):
+        request.meta['proxy'] = 'http://127.0.0.1:8118'
+```
 ## NYX
 Nyx is designed for command-line usage and provides a way to monitor the health and performance of a Tor relay.
 Functionality:
@@ -189,7 +214,7 @@ Implemented in the middlewares.py as ProxyMiddleWare.
 
 There is also a python module someone implemented which is a bit complicated. But nice guide https://pypi.org/project/scrapy-tor-proxy-rotation/
 ```
-
+https://stackoverflow.com/questions/45009940/scrapy-with-privoxy-and-tor-how-to-renew-ip
 ```commandline
     from toripchanger import TorIpChanger
 
@@ -205,15 +230,7 @@ There is also a python module someone implemented which is a bit complicated. Bu
     tor_ip_changer_5 = TorIpChanger(tor_address="localhost", reuse_threshold=5)
     current_ip = tor_ip_changer_5.get_new_ip()
 ```
-### UserAgent Faker
-PYPI: https://pypi.org/project/scrapy-fake-useragent/ or Github : https://github.com/alecxe/scrapy-fake-useragent/tree/master 
 
-<p> Random User-Agent middleware for Scrapy scraping framework based on fake-useragent, which picks up User-Agent strings based on usage statistics from a real world database, but also has the option to configure a generator of fake UA strings, as a backup, powered by Faker. </p>
-https://faker.readthedocs.io/en/master/providers/faker.providers.user_agent.html
-
-```commandline
-pip install scrapy-fake-useragent
-```
 
 #### Running mysql
 ```markdown
@@ -224,56 +241,77 @@ docker run -d -it  -e MYSQL_ROOT_PASSWORD=pa55w0rd -e MYSQL_DATABASE=db_example 
   docker exec -it mysql_test_db /bin/bash
 ```
 
-#### Scraping example
- scrapy crawl wikipedia -o wikiurls.csv 
-
-```markdown
+TODO: Starting redis
+```commandline
   redis-server
-  pip install Scrapy
+```
+
+## Scraping
+### Tutorial Project
+```markdown
   scrapy startproject tutorial
   scrapy crawl quotes
+```
+Running spider without a project as a single file
+```markdown
   scrapy runspider quotes
   scrapy runspider spiders/quotes_spider
+```
+### Scraping Wikipedia
+#### Syntax
+For the CSV delimiter, you can set in settings.py or when you execute the spider in CLI In settings.py
+
+CSV_DELIMITER = "\t" # For tab
+
+Untested Not working https://gist.github.com/oussama-ht/451b51dce2b208ae6276e955bb9e2528
+```markdown
+scrapy crawl spidername --set FEED_URI=output.csv --set FEED_FORMAT=csv --set CSV_DELIMITER=';'
+scrapy crawl my_spider -o output.csv -t csv -a CSV_DELIMITER="|"
+scrapy crawl wikipedia -o wikiurls.csv --set CSV_DELIMITER="|"
+```
+
+Wikipedia crawling commands
+```markdown
+scrapy crawl wikipedia
+scrapy crawl wikipedia -o wikiurls.csv
+```
+
+
+```markdown
   pip install scrapy-user-agents
   pip install scrapy_proxies
-  scrapy crawl quotes
   pip uninstall scrapy_proxies
 ```
 
 ```markdown
-  scrapy crawl wikipedia
-  401  scrapy parse --spider=myspider -d 3 https://en.wikipedia.org/wiki/google
-  402  scrapy parse --spider=wikipedia -d 3 https://en.wikipedia.org/wiki/google
-  404  pip3 install beautifulsoup4
-  408   scrapy parse --spider=myspider -c parse_item -d 2 https://en.wikipedia.org/w/api.php?action=opensearch&format=json&formatversion=2&search=apple&namespace=0&limit=10
-  410   scrapy parse --spider=wikipedia -c parse_item -d 2 https://en.wikipedia.org/w/api.php?action=opensearch&format=json&formatversion=2&search=apple&namespace=0&limit=10
+
+ scrapy parse --spider=wikipedia -d 3 https://en.wikipedia.org/wiki/google
+ scrapy parse --spider=wikipedia -c parse_item -d 2 https://en.wikipedia.org/w/api.php?action=opensearch&format=json&formatversion=2&search=apple&namespace=0&limit=10
+
   412  pip3 install chromedriver-binary
   413  pip3 uninstall chromedriver-binary
   414  pip3 install chromedriver-binary-auto
-  416  pip install scrapy crawl quotes
-  419  scrapy crawl quotes
   422  pip3 install scrapy_proxies
-  423  scrapy crawl wikipedia
   424  pip3 uninstall scrapy_proxies
-  425  pip list
+
 ```
 
-```markdown
-  441  scrapy crawl wikipedia -t csv -o wikiurls.csv
-  442  scrapy crawl wikipedia -t csv -o wikiurls.csv -a CSV_DELIMITER="|"
-  443  scrapy crawl wikipedia  -o wikiurls.csv 
-  444  scrapy crawl wikipedia -t csv -o wikiurls.csv -a CSV_DELIMITER="|"
-  448  scrapy crawl wikipedia -o wikiurls.csv --set delimiter="|"
-  449  scrapy crawl spidername --set FEED_URI=output.csv --set FEED_FORMAT=csv --set CSV_DELIMITER=';'
-  451  scrapy crawl spidername -o wikiurls.csv  --set CSV_DELIMITER='|'
-  461  pip install toripchanger
-  471  pip list
-  472  pip uninstall scrapy-user-agents
-  473  pip install os-scrapy-random-useragent
-  474  pip uninstall os-scrapy-random-useragent
-  475  pip install scrapy-user-agents
-  479  pip uninstall scrapy-user-agents
-  480  pip install scrapy-fake-useragent
-  481  scrapy crawl wikipedia -o wikiurls.csv 
+
+## Scraping from LinkedIn
+
 ```
-  
+href_array = $("#seo-dir").querySelectorAll("li.content a")
+href_array.forEach (element => console.log(element.href));
+
+cat >> ~/junk/a1.txt
+
+cut -d" " -f2 ~/junk/a1.txt > ~/junk/b1.txt
+
+sed -e 's/https\:\/\/www.linkedin.com\/company\///g'  -e 's/\?trk=companies_directory//g' ~/junk/b.txt  > ~/junk/c1.txt 
+
+href_array = $("#seo-dir").querySelectorAll("li.content a")
+href_array.forEach (element => console.log(element.text));
+
+sed -e 's/VM[0-9]\{3,\}\:[0-9]\{1,\}//g' ~/junk/a2.txt > ~/junk/b2.txt
+
+```

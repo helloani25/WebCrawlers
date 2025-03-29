@@ -43,7 +43,7 @@ class WikipediaSpider(scrapy.Spider):
         page = response.url.split("/")[-2]
         #inspect_response(response, self)
         logger.debug('Assigned User-Agent %s', (response.request.headers['User-Agent']).decode('UTF-8'))
-
+        logger.debug('Assigned User-Agent %s', (response.request.headers['Referrer']).decode('UTF-8'))
         json_data = json.loads(response.text)
 
         if len(json_data) > 3:

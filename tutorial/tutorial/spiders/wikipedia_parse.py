@@ -4,7 +4,7 @@ from pathlib import Path
 from bs4 import BeautifulSoup
 
 root_dir = Path(__file__).parent
-files_path = os.path.join(root_dir, 'quotes-wiki.html')
+files_path = os.path.join(root_dir, '../../../files/quotes-wiki.html')
 with open(files_path, 'r') as f:
     contents = f.read()
     soup = BeautifulSoup(contents, 'lxml')
