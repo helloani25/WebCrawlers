@@ -3,6 +3,7 @@ import os
 from pathlib import Path
 
 from selenium import webdriver
+from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
 import chromedriver_binary  # Adds chromedriver binary to path
 from selenium.common.exceptions import StaleElementReferenceException
@@ -10,7 +11,7 @@ import time
 
 
 def waitForLoad(driver):
-    elem = driver.find_element_by_tag_name("html")
+    elem = driver.find_element(By.TAG_NAME, "html")
     count = 0
     while True:
         count += 1
@@ -19,7 +20,7 @@ def waitForLoad(driver):
             return
         time.sleep(.5)
         try:
-            elem == driver.find_element_by_tag_name("html")
+            elem == driver.find_element(By.TAG_NAME, "html")
         except StaleElementReferenceException:
             return
 
@@ -28,7 +29,7 @@ chrome_options.add_argument("--headless")
 proxy = '127.0.0.1:9050'
 chrome_options.add_argument('--proxy-server=socks5://' + proxy)
 driver = webdriver.Chrome(options=chrome_options)
-root_dir = Path(__file__).parent.parent.parent.parent
+root_dir = Path(__file__).parent.parent.parent
 file_path = os.path.join(root_dir, 'files/companies.txt')
 file = open(file_path, "r")
 companies = file.readlines()
@@ -38,7 +39,7 @@ file = open(files_path, "a+")
 for company in companies:
     driver.get("https://en.wikipedia.org/w/api.php?action=opensearch&format=json&formatversion=2&search=" + company + "&namespace=0&limit=10")
     waitForLoad(driver)
-    pre = driver.find_element_by_tag_name("pre").text
+    pre = driver.find_element(By.TAG_NAME, "pre").text
     data = json.loads(pre)
     print(data)
     if len(data) > 3:
