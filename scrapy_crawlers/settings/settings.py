@@ -1,4 +1,4 @@
-# Scrapy settings for tutorial project
+# Scrapy settings for proxies project
 #
 # For simplicity, this file contains only settings considered important or
 # commonly used. You can find more settings consulting the documentation:
@@ -8,44 +8,46 @@
 #     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 import os
 
-os.environ['http_proxy'] = "http://localhost:8118"
-os.environ['https_proxy'] = "http://localhost:8118"
+BOT_NAME = 'scrapy_crawlers'
 
-BOT_NAME = 'tutorial'
+SPIDER_MODULES = ['spiders']
+NEWSPIDER_MODULE = 'spiders'
 
-SPIDER_MODULES = ['tutorial.spiders']
-NEWSPIDER_MODULE = 'tutorial.spiders'
+# Replace Scrapy's default HTTP handler with curl_cffi for browser-grade TLS fingerprinting.
+DOWNLOAD_HANDLERS = {
+    "http": "middlewares.curl_handler.CurlCffiDownloadHandler",
+    "https": "middlewares.curl_handler.CurlCffiDownloadHandler",
+}
+
+# curl_cffi options (override per-spider via custom_settings if needed)
+CURL_IMPERSONATE = "chrome124"   # impersonation target
+CURL_VERIFY_SSL = True
+
+# DataImpulse Proxy Configuration
+# Format: http://username:password@gw.dataimpulse.com:823
+# CURL_PROXY = "http://YOUR_USERNAME:YOUR_PASSWORD@gw.dataimpulse.com:823"
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = 'tutorial (+http://www.yourdomain.com)'
+#USER_AGENT = 'proxies (+http://www.yourdomain.com)'
 
-RANDOM_UA_PER_PROXY = False
-
-FAKEUSERAGENT_PROVIDERS = [
-    'scrapy_fake_useragent.providers.FakeUserAgentProvider',  # this is the first provider we'll try
-    'scrapy_fake_useragent.providers.FakerProvider',  # if FakeUserAgentProvider fails, we'll use faker to generate a
-                                                      # user-agent string for us
-    'scrapy_fake_useragent.providers.FixedUserAgentProvider',  # fall back to USER_AGENT value
-]
+#RANDOM_UA_PER_PROXY = False
 
 #USER_AGENT = 'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1)'
 
-FAKEUSERAGENT_FALLBACK = 'Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.1; WOW64; Trident/7.0; SLCC2; .NET CLR 2.0.50727;' \
-                         ' .NET CLR 3.5.30729; .NET CLR 3.0.30729; InfoPath.2; .NET4.0C; .NET4.0E)'
-
 DOWNLOADER_MIDDLEWARES = {
-    'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware': None,
-    'scrapy.downloadermiddlewares.retry.RetryMiddleware': None,
-    'scrapy_fake_useragent.middleware.RandomUserAgentMiddleware': 400,
-    'scrapy_fake_useragent.middleware.RetryUserAgentMiddleware': 401,
-    'scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware': 410,
-    'tutorial.middlewares.ProxyMiddleware': 420
+    'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware': 400,
+    'scrapy.downloadermiddlewares.retry.RetryMiddleware': 405,
+    'scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware': None,
+    'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware': None,
 }
 
 SPIDER_MIDDLEWARES = {
-    'scrapy.spidermiddlewares.referer.RefererMiddleware': True,
+    'scrapy.spidermiddlewares.referer.RefererMiddleware': 700,
 }
+
+RETRY_TIMES = 3
+RETRY_HTTP_CODES = [429, 500, 502, 503, 504]
 
 REFERER_ENABLED = True
 REFERRER_POLICY = 'origin-when-cross-origin'
@@ -55,14 +57,15 @@ REFERRER_POLICY = 'origin-when-cross-origin'
 ROBOTSTXT_OBEY = False
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
-#CONCURRENT_REQUESTS = 32
+CONCURRENT_REQUESTS = 8
 
 # Configure a delay for requests for the same website (default: 0)
 # See https://docs.scrapy.org/en/latest/topics/settings.html#download-delay
 # See also autothrottle settings and docs
-DOWNLOAD_DELAY = 10
+DOWNLOAD_DELAY = 5
 # The download delay setting will honor only one of:
 CONCURRENT_REQUESTS_PER_DOMAIN = 4
+RANDOMIZE_DOWNLOAD_DELAY = True
 #CONCURRENT_REQUESTS_PER_IP = 16
 
 # Disable cookies (enabled by default)
@@ -83,13 +86,13 @@ DEFAULT_REQUEST_HEADERS = {
 # Enable or disable spider middlewares
 # See https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 #SPIDER_MIDDLEWARES = {
-#    'tutorial.middlewares.TutorialSpiderMiddleware': 543,
+#    'proxies.middlewares.TutorialSpiderMiddleware': 543,
 #}
 
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #DOWNLOADER_MIDDLEWARES = {
-#    'tutorial.middlewares.TutorialDownloaderMiddleware': 543,
+#    'proxies.middlewares.TutorialDownloaderMiddleware': 543,
 #}
 
 # Enable or disable extensions
@@ -100,20 +103,21 @@ DEFAULT_REQUEST_HEADERS = {
 
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    'tutorial.pipelines.TutorialPipeline': 300,
-#}
+ITEM_PIPELINES = {
+    "pipelines.pipelines.DriftArtifactJsonLinesPipeline": 200,
+    "pipelines.pipelines.MongoPipeline": 300,
+}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html
-#AUTOTHROTTLE_ENABLED = True
+AUTOTHROTTLE_ENABLED = True
 # The initial download delay
-#AUTOTHROTTLE_START_DELAY = 5
+AUTOTHROTTLE_START_DELAY = 5
 # The maximum download delay to be set in case of high latencies
 #AUTOTHROTTLE_MAX_DELAY = 60
 # The average number of requests Scrapy should be sending in parallel to
 # each remote server
-#AUTOTHROTTLE_TARGET_CONCURRENCY = 1.0
+AUTOTHROTTLE_TARGET_CONCURRENCY = 2.0
 # Enable showing throttling stats for every response received:
 #AUTOTHROTTLE_DEBUG = False
 

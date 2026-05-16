@@ -1,8 +1,3 @@
 /venv/
 .idea
-/files/quotes-wiki.html
-/files/b.txt
-/tutorial/tutorial/spiders/wikiurls.csv
-/files/c1.txt
-/files/quotes-wiki.html
-/files/wikiurls.txt
+/scrapy_crawlers/settings/.env
