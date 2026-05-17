@@ -2,6 +2,22 @@
 
 The NJMLS spider extracts active residential listings from the New Jersey Multiple Listing Service public search portal, crawling all 21 NJ counties.
 
+### TODO
+
+- Add optional community enrichment mode to NJMLS spider (`include_community_info=1`).
+- Queue properties for community extraction in SQLite (durable restartable queue): `pending -> in_progress -> done/failed`.
+- For each queued property, call community endpoint: `/communities/index.cfm?action=dsp.towninfo&townname=<TOWN>&view=facts&mlsnum=<MLS>&county=<COUNTY>`.
+- Amenities example link: `https://www.njmls.com/communities/index.cfm?action=dsp.towninfo&townname=SADDLE%20BROOK&view=amenities&mlsnum=26015947&county=BERGEN`.
+- Parse and normalize community fields: `community_demographics`, `community_schools`, `community_amenities`, `community_public_transit`.
+- For amenities, capture a nearby + popular mix for practical categories: banks, restaurants, gas stations, pharmacies, groceries, hospitals.
+- Enforce extraction limits for amenities (top 20 entities per category).
+- Later add property tax history and sale history extraction.
+- Exclude disclaimer and weather text from community output.
+
+### TODO
+I want to consolidate the naming convention for the properties across all the spiders - zillow, gsmls, redfin, realtor, bhgre, weichert, remax, njmls
+Need a way to use Items.py for all the property scraping spiders.
+
 ### How to Run
 
 ```commandline
@@ -194,8 +210,116 @@ Optional settings (`.env` or shell):
 
 ---
 
+## RE/MAX Spider
+
+The RE/MAX spider extracts for-sale listings from `www.remax.com` using the same Next.js RSC (`_rsc`) listing endpoint pattern captured in the HAR.
+
+### How to Run
+
+From `scrapy_crawlers`:
+
+```bash
+../.venv/bin/scrapy crawl remax -a state=nj -a max_pages=50 -a disable_proxy=1 -o remax_output.csv
+```
+
+Or from repo root:
+
+```bash
+export PYTHONPATH=$PYTHONPATH:$(pwd)
+scrapy crawl remax -a state=nj -a max_pages=50 -a disable_proxy=1 -o remax_output.csv
+```
+
+### Supported Spider Args
+
+- `state` (default: `nj`)  
+  State slug in URL path, e.g. `nj`, `pa`, `tx`.
+- `start_page` (default: `1`)  
+  First `pageNumber` to request.
+- `max_pages` (default: `500`)  
+  Hard cap on pagination.
+- `rsc_token` (default: `1`)  
+  `_rsc` query token. HAR captured `1t5u4`; both can work depending on session/build.
+- `disable_proxy` (`1|true|yes`)  
+  Disable configured proxy for local testing.
+
+### Environment Variables
+
+Optional (`.env` or shell):
+
+- `REMAX_STATE`
+- `REMAX_START_PAGE`
+- `REMAX_MAX_PAGES`
+- `REMAX_RSC_TOKEN`
+
+### Spider Flow
+
+1. Build RE/MAX listing URL:
+   - `/homes-for-sale/<state>?searchQuery=...&_rsc=<token>`
+2. Send RSC request headers:
+   - `rsc: 1`
+   - `next-router-state-tree: ...`
+   - browser-like `sec-ch-*`, `sec-fetch-*`, `user-agent`, etc.
+3. Parse listing payload from response:
+   - primary: `<script type="application/ld+json">` `CollectionPage`
+   - fallback: scan response text for `{"@context":"https://schema.org","@type":"CollectionPage"...}`
+4. Extract `mainEntity.itemListElement` listings.
+5. Normalize fields and dedupe globally by `mls_id` (fallback `detail_url`).
+6. Paginate `pageNumber + 1` until:
+   - no items,
+   - no new deduped listings on page, or
+   - `max_pages` reached.
+
+### Output Fields
+
+Each item includes:
+
+- `source` — always `"remax"`
+- `mls_id`
+- `detail_url`
+- `address`
+- `city`
+- `state`
+- `postal_code`
+- `county` (currently `None` from this endpoint)
+- `list_price`
+- `beds`
+- `baths`
+- `sqft`
+- `property_type` (schema.org type such as `SingleFamilyResidence`, `Apartment`)
+- `status` (`ACTIVE`/`SOLD` when available)
+- `page` (source page number)
+
+### HAR Notes (`~/Downloads/www.remax.com.har`)
+
+Useful verification commands:
+
+```bash
+jq -r '.log.entries[] | select(.request.url|contains("_rsc=")) | .request.url' \
+  ~/Downloads/www.remax.com.har
+```
+
+```bash
+jq -r '.log.entries[] | select(.request.url|contains("_rsc=")) | .request.headers[] | .name + ": " + .value' \
+  ~/Downloads/www.remax.com.har
+```
+
+Key findings used in spider implementation:
+
+- Listing navigation hits `GET /homes-for-sale/<state>?searchQuery=...&_rsc=...`.
+- Request includes `rsc: 1` and a `next-router-state-tree` header.
+- Response includes `CollectionPage` JSON-LD with listing cards under:
+  - `mainEntity.itemListElement[].item`
+
+### Notes / Troubleshooting
+
+- If pages return `202`, the spider retries that page automatically (up to 2 retries).
+- If listing extraction drops to zero, refresh `rsc_token` from a new HAR capture.
+- Keep concurrency conservative first; RE/MAX anti-bot controls can tighten with aggressive settings.
+
+---
+
 ## Redfin Spider
-The Redfin spider is designed to scrape real estate listings from Redfin, specifically targeting New Jersey counties. It uses advanced techniques to bypass sophisticated anti-bot protections.
+The Redfin spider extracts for-sale listings across all 21 New Jersey counties using Redfin's Stingray GIS API.
 
 ### How to Run
 To run the Redfin spider and save the output to a CSV file:
@@ -204,199 +328,75 @@ export PYTHONPATH=$PYTHONPATH:$(pwd)
 scrapy crawl redfin -o redfin_output.csv
 ```
 
-### Spider Structure
-1.  **Cookie Priming:** The spider starts by visiting the Redfin home page to establish a valid session and collect necessary cookies.
-2.  **Region Mapping:** Instead of using the heavily protected `query-location` search API, the spider uses pre-defined `region_id` mappings for major NJ counties (Bergen, Hudson, Essex, etc.).
-3.  **GIS API Integration:** It directly queries the Redfin GIS (Geographic Information System) API using the region IDs.
-4.  **Pagination:** The spider automatically handles pagination, fetching up to 350 homes per request until all listings for a region are collected.
+Useful spider args:
+- `disable_proxy=1` - run without configured proxy
+- `max_counties=<N>` - test with first N NJ counties
+- `max_pages_per_county=<N>` - cap pagination per county
 
-### Anti-Bot Measures
-Redfin employs strict anti-scraping technologies (like Cloudflare). This spider implements several layers of bypass:
-*   **TLS Fingerprinting (`curl_cffi`):** Uses the `CurlCffiDownloadHandler` to mimic a real Chrome browser's TLS handshake (JA3/JA4 fingerprints), making the traffic indistinguishable from a human user.
-*   **Browser Impersonation:** Injects modern browser headers including `sec-ch-ua`, `sec-fetch-dest`, and `sec-fetch-mode`.
-*   **Header Ordering:** `curl-cffi` maintains the correct header order expected by modern browsers.
-*   **Endpoint Bypassing:** Avoids the high-risk search endpoints in favor of direct API calls with hardcoded identifiers where possible.
-*   **Cookie Management:** Automatically handles session cookies and maintains state between the initial landing page and subsequent API calls.
-
-### Redfin HAR Analysis (www.redfin.com.har)
-This section documents a HAR-first workflow for maintaining `scrapy_crawlers/spiders/redfin_spider.py`, similar to the BHGRE process.
-
-### Development Process
-
-#### 1. Analyzing the HAR File
-The Redfin spider can be validated by inspecting `~/Downloads/www.redfin.com.har`.
-
+Example smoke run:
 ```bash
-ls -lh ~/Downloads/www.redfin.com.har
+cd scrapy_crawlers
+../.venv/bin/scrapy crawl redfin -a disable_proxy=1 -a max_counties=1 -a max_pages_per_county=2 -o redfin_test.csv
 ```
 
-#### 2. Extracting Stingray Endpoints with jq
-Identify all Redfin `stingray` endpoints captured in the HAR:
+### Spider Flow
+1. Warm up on `https://www.redfin.com/` for session/cookies.
+2. Iterate NJ counties using static county -> `region_id` mapping.
+3. Call:
+   - `GET https://www.redfin.com/stingray/api/gis`
+   - params: `region_type=5`, `rets=LIST_COUNT`, `num_homes=350`, `page_number=N`, filters
+4. Parse `payload.homes` and normalize listing fields.
+5. Continue paging while homes are returned (bounded by `max_pages_per_county`).
+6. Deduplicate globally by `listing_id` (fallback `mls_id`, then `detail_url`).
+
+### Property Detail Extraction
+For each Redfin listing URL, the spider extracts/normalizes:
+- Core identity: `listing_id`, `mls_id`, `detail_url`, `county`, `region_id`
+- Address: `address`, `city`, `state`, `postal_code`
+- Pricing/status/type: `list_price`, `status`, `property_type`
+- Size/layout: `beds`, `baths`, `build_area_sqft`, `lot_size_sqft`, `lot_size_acres`, `stories`
+- Structural/location: `year_built`, `latitude`, `longitude`
+- Additional: `description`
+
+Primary source is the GIS payload (`payload.homes[]`) with fallback enrichment from AVM when address fields are missing.
+
+### Address and Detail Fallbacks
+- Primary address source: GIS payload fields (`address.*`, `homeData.addressInfo.*`).
+- Fallback 1: derive `address/city/state/postal_code` from Redfin detail URL slug  
+  (example `/NJ/City/Street-Name-07652/home/123`).
+- Fallback 2: when GIS item still has missing address fields, request:
+  - `GET /stingray/api/home/details/avm?propertyId=...&listingId=...&accessLevel=1&pageType=1`
+  and merge address fields from AVM payload.
+- Fallback 3: if GIS is blocked/fails (`401/403/405/429` or non-200), fetch county HTML page and extract `/home/<id>` URLs from inline JS so listing URLs are still captured.
+
+### HAR Notes (www.redfin.com.har)
+Use HAR captures to validate current Redfin endpoint usage:
 
 ```bash
 jq -r '.log.entries[] | .request.url | select(contains("redfin.com/stingray"))' \
   ~/Downloads/www.redfin.com.har | sort -u
 ```
 
-Example output:
-```text
-https://www.redfin.com/stingray/do/query-location?al=1&location=Bergen+county+nj&ooa=true&v=2
-https://www.redfin.com/stingray/api/gis?al=1&region_id=1892&region_type=5&rets=LIST_COUNT&page_number=1&num_homes=350&sf=1,2,3,5,6,7&uipt=1,2,3,4,5,6,7,8&status=9
-```
-
-Key endpoints:
-- `https://www.redfin.com/stingray/do/query-location`
+The key listing endpoint for this spider is:
 - `https://www.redfin.com/stingray/api/gis`
 
-#### 3. Inspecting query-location Requests
-Inspect request metadata and response status:
+Address-enrichment endpoint:
+- `https://www.redfin.com/stingray/api/home/details/avm`
 
-```bash
-jq '.log.entries[]
-  | select(.request.url | contains("stingray/do/query-location"))
-  | {url: .request.url, method: .request.method, status: .response.status}' \
-  ~/Downloads/www.redfin.com.har
-```
+If a HAR capture is from a single listing-detail browsing session, it may contain mostly tracking + detail calls and very few `api/gis` records. In that case, capture a county search browsing session.
 
-Example output:
-```json
-{
-  "url": "https://www.redfin.com/stingray/do/query-location?al=1&location=Bergen+county+nj&ooa=true&v=2",
-  "method": "GET",
-  "status": 200
-}
-```
-
-Extract and decode a sample response body:
-
-```bash
-jq -r '.log.entries[]
-  | select(.request.url | contains("stingray/do/query-location"))
-  | .response.content.text
-  | sub("^\\{\\}&&"; "")
-  | fromjson
-  | {resultCode, payload}' \
-  ~/Downloads/www.redfin.com.har | head -n 40
-```
-
-Example output:
-```json
-{
-  "resultCode": 0,
-  "payload": [
-    {
-      "id": 1892,
-      "name": "Bergen County",
-      "type": 5
-    }
-  ]
-}
-```
-
-#### 4. Extracting County region_id Values
-From `query-location` responses, extract county-level IDs (`type == 5`):
-
-```bash
-jq -r '.log.entries[]
-  | select(.request.url | contains("stingray/do/query-location"))
-  | .response.content.text
-  | sub("^\\{\\}&&"; "")
-  | fromjson
-  | .payload[]?
-  | select(.type == 5)
-  | "\(.name),\(.id)"' \
-  ~/Downloads/www.redfin.com.har | sort -u
-```
-
-Example output:
-```text
-Bergen County,1892
-Essex County,1897
-Hudson County,1899
-Middlesex County,1902
-Monmouth County,1903
-```
-
-#### 5. Inspecting GIS Requests and Payload Shape
-Confirm the spider's listing endpoint and params:
-
-```bash
-jq '.log.entries[]
-  | select(.request.url | contains("stingray/api/gis"))
-  | {url: .request.url, method: .request.method, status: .response.status}' \
-  ~/Downloads/www.redfin.com.har
-```
-
-Example output:
-```json
-{
-  "url": "https://www.redfin.com/stingray/api/gis?al=1&region_id=1892&region_type=5&rets=LIST_COUNT&page_number=1&num_homes=350&sf=1,2,3,5,6,7&uipt=1,2,3,4,5,6,7,8&status=9",
-  "method": "GET",
-  "status": 200
-}
-```
-
-Inspect response schema used by the spider:
-
-```bash
-jq -r '.log.entries[]
-  | select(.request.url | contains("stingray/api/gis"))
-  | .response.content.text
-  | sub("^\\{\\}&&"; "")
-  | fromjson
-  | .payload
-  | keys' \
-  ~/Downloads/www.redfin.com.har
-```
-
-Example output:
-```json
-[
-  "homes",
-  "totalCount"
-]
-```
-
-Fetch one sample home object:
-
-```bash
-jq -r '.log.entries[]
-  | select(.request.url | contains("stingray/api/gis"))
-  | .response.content.text
-  | sub("^\\{\\}&&"; "")
-  | fromjson
-  | .payload.homes[0]' \
-  ~/Downloads/www.redfin.com.har | head -n 80
-```
-
-Example output:
-```json
-{
-  "url": "/NJ/Paramus/10-Example-Rd-07652/home/1234567",
-  "mlsId": { "value": "24012345" },
-  "listingStatus": "ACTIVE",
-  "price": { "value": 799000 },
-  "beds": 4,
-  "baths": 3,
-  "sqFt": { "value": 2450 },
-  "address": {
-    "streetLine": "10 Example Rd",
-    "city": "Paramus",
-    "state": "NJ",
-    "zip": "07652"
-  },
-  "latLong": {
-    "latitude": 40.955,
-    "longitude": -74.075
-  }
-}
-```
-
-#### 6. Aligning HAR Findings with redfin_spider.py
-Use the HAR results to verify:
-- `region_id` mappings used for NJ counties.
-- `region_type=5`, `num_homes=350`, and pagination query params.
-- Response fields consumed by the spider (`payload.homes`, `payload.totalCount`, `address`, `price`, `latLong`, `mlsId`).
+### Output Fields
+Each item includes:
+- `source` (`"redfin"`)
+- `county`, `region_id`
+- `listing_id`, `mls_id`, `detail_url`
+- `address`, `city`, `state`, `postal_code`
+- `list_price`, `status`, `property_type`
+- `beds`, `baths`, `build_area_sqft`, `lot_size_sqft`, `lot_size_acres`
+- `year_built`, `stories`
+- `latitude`, `longitude`
+- `description`
+- `page`
 
 ## Realtor Spider
 The Realtor spider extracts New Jersey for-sale listings from Realtor's GraphQL API using a HAR-derived request profile.
@@ -1093,9 +1093,9 @@ jq '.log.entries[] | select(.request.url | contains("api")) | .request.url' ~/Do
   "hasLand": false,
   "hasListings": false
 }
-(.venv) WebCrawlers % python3 -c "from scrapy_crawlers.spiders.bhre_spider import BhreSpider; print('✓ Spider imported successfully'); print(f'Spider name: {BhreSpider.name}'); print(f'NJ Place ID: {BhreSpider.NJ_PLACE_ID}')"
+(.venv) WebCrawlers % python3 -c "from scrapy_crawlers.spiders.bhgre_spider import BhgreSpider; print('✓ Spider imported successfully'); print(f'Spider name: {BhgreSpider.name}'); print(f'NJ Place ID: {BhgreSpider.NJ_PLACE_ID}')"
 ✓ Spider imported successfully
-Spider name: bhre
+Spider name: bhgre
 NJ Place ID: P02500000GAeUbeAzoJ1ps6gKlZmz08tVW67M95e
 
 ```
@@ -1170,7 +1170,7 @@ jq '.log.entries[] | select(.request.url | contains("api/listings")) | .response
 
 #### 6. Creating the BHGRE Spider
 
-Based on the HAR analysis, we created `scrapy_crawlers/spiders/bhre_spider.py` with the following features:
+Based on the HAR analysis, we created `scrapy_crawlers/spiders/bhgre_spider.py` with the following features:
 
 - **API Integration:** Makes POST requests to the listings API
 - **Pagination:** Automatically handles multiple pages of results
@@ -1206,17 +1206,17 @@ Based on the HAR analysis, we created `scrapy_crawlers/spiders/bhre_spider.py` w
 
 2. **Run the spider:**
    ```bash
-   scrapy crawl bhre
+   scrapy crawl bhgre
    ```
 
 3. **Save output to JSON:**
    ```bash
-   scrapy crawl bhre -o nj_properties.json
+   scrapy crawl bhgre -o nj_properties.json
    ```
 
 4. **Save output to CSV:**
    ```bash
-   scrapy crawl bhre -o nj_properties.csv
+   scrapy crawl bhgre -o nj_properties.csv
    ```
 
 #### Output Format
@@ -1278,7 +1278,7 @@ The spider uses the project's Scrapy settings including:
 - Invalid responses are skipped with error logging
 
 #### Files
-- `scrapy_crawlers/spiders/bhre_spider.py` - Main spider implementation
+- `scrapy_crawlers/spiders/bhgre_spider.py` - Main spider implementation
 - `scrapy_crawlers/settings/settings.py` - Scrapy configuration
 - `requirements.txt` - Python dependencies
 

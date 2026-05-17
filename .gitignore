@@ -1,3 +1,4 @@
 /venv/
 .idea
 /scrapy_crawlers/settings/.env
+/scrapy_crawlers/*.csv

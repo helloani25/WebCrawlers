@@ -68,6 +68,10 @@ CONCURRENT_REQUESTS_PER_DOMAIN = 4
 RANDOMIZE_DOWNLOAD_DELAY = True
 #CONCURRENT_REQUESTS_PER_IP = 16
 
+# Python 3.14 + Scrapy AST inspection can raise SyntaxError while checking
+# generator callbacks for non-None return values.
+WARN_ON_GENERATOR_RETURN_VALUE = False
+
 # Disable cookies (enabled by default)
 COOKIES_ENABLED = False
 
