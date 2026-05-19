@@ -11,6 +11,10 @@ FULL_BATHS_PATTERN = re.compile(r"(\d+)\s*full\s*bath", re.I)
 HALF_BATHS_PATTERN = re.compile(r"(\d+)\s*half\s*bath", re.I)
 NUMBER_PATTERN = re.compile(r"-?[\d,.]+")
 CITY_ID_PATTERN = re.compile(r"cityid=([0-9,]+)", re.I)
+DETAIL_IMAGE_PATTERN = re.compile(
+    r'(?:https?:)?//d36xftgacqn2p\.cloudfront\.net/[^"\']+\.(?:jpg|jpeg|png|webp)',
+    re.I,
+)
 
 
 class WeichertSpider(scrapy.Spider):
@@ -26,7 +30,7 @@ class WeichertSpider(scrapy.Spider):
 
     custom_settings = {
         "COOKIES_ENABLED": True,
-        "DOWNLOAD_DELAY": 0.5,
+        "DOWNLOAD_DELAY": 2,
         "RANDOMIZE_DOWNLOAD_DELAY": True,
         "CONCURRENT_REQUESTS_PER_DOMAIN": 4,
         "CURL_IMPERSONATE": "chrome110",
@@ -410,7 +414,16 @@ class WeichertSpider(scrapy.Spider):
                 continue
             self.seen_listing_ids.add(dedupe_id)
             yielded_count += 1
-            yield item
+            detail_url = item.get("detail_url")
+            if detail_url:
+                yield scrapy.Request(
+                    detail_url,
+                    callback=self.parse_detail_page,
+                    meta={"base_item": item, **self._proxy_meta()},
+                    dont_filter=True,
+                )
+            else:
+                yield item
 
         if listings and page < min(total_pages, self.max_pages_per_query):
             yield self.search_request(
@@ -454,6 +467,7 @@ class WeichertSpider(scrapy.Spider):
         build_area_sqft = self._to_int(listing.get("sqft"))
         beds = self._extract_beds(listing.get("beds"))
         baths = self._extract_total_baths(listing)
+        photo_links = self._extract_photo_links_from_listing(listing)
 
         return {
             "source": "weichert",
@@ -479,8 +493,110 @@ class WeichertSpider(scrapy.Spider):
             "latitude": self._to_float(listing.get("lat")),
             "longitude": self._to_float(listing.get("lng")),
             "description": self._clean_str(listing.get("description")),
+            "heating": None,
+            "cooling": None,
+            "appliances": None,
+            "flooring": None,
+            "photos_count": len(photo_links),
+            "first_photo_url": photo_links[0] if photo_links else None,
+            "photo_links": photo_links,
             "page": page,
         }
+
+    def parse_detail_page(self, response):
+        item = dict(response.meta.get("base_item") or {})
+        if response.status != 200:
+            yield item
+            return
+
+        text = self._safe_response_text(response)
+        if not text:
+            yield item
+            return
+
+        selector = scrapy.Selector(text=text)
+        heating = self._extract_feature_values(selector, "Heating")
+        cooling = self._extract_feature_values(selector, "Cooling")
+        appliances = self._extract_feature_values(selector, "Appliances")
+        flooring = self._extract_feature_values(selector, "Flooring")
+        if not item.get("photo_links"):
+            detail_links = self._extract_photo_links_from_detail_html(text)
+            if detail_links:
+                item["photo_links"] = detail_links
+                item["photos_count"] = len(detail_links)
+                item["first_photo_url"] = detail_links[0]
+
+        if heating:
+            item["heating"] = heating
+        if cooling:
+            item["cooling"] = cooling
+        if appliances:
+            item["appliances"] = appliances
+        if flooring:
+            item["flooring"] = flooring
+
+        yield item
+
+    def _extract_photo_links_from_listing(self, listing):
+        links = []
+        seen = set()
+
+        def add(value):
+            normalized = self._normalize_photo_url(value)
+            if not normalized or normalized in seen:
+                return
+            seen.add(normalized)
+            links.append(normalized)
+
+        images = listing.get("images")
+        if isinstance(images, list):
+            for value in images:
+                add(value)
+
+        add(listing.get("img"))
+        add(listing.get("thumb"))
+        return links
+
+    def _extract_photo_links_from_detail_html(self, html):
+        links = []
+        seen = set()
+        for match in DETAIL_IMAGE_PATTERN.findall(html or ""):
+            normalized = self._normalize_photo_url(match)
+            if not normalized or normalized in seen:
+                continue
+            seen.add(normalized)
+            links.append(normalized)
+        return links
+
+    @staticmethod
+    def _normalize_photo_url(value):
+        text = (str(value or "").strip())
+        if not text:
+            return None
+        if text.startswith("//"):
+            return f"https:{text}"
+        if text.startswith("http://") or text.startswith("https://"):
+            return text
+        if text.startswith("/"):
+            return urljoin("https://www.weichert.com", text)
+        return None
+
+    def _extract_feature_values(self, selector, feature_name):
+        values = []
+        nodes = selector.xpath(
+            '//div[contains(@class, "property-feature-listing")]'
+            '[.//span[contains(@class, "feature-subcateory-heading") and '
+            'normalize-space()=$feature]]'
+            '//span[contains(@class, "listing-feature-items")]/text()',
+            feature=feature_name,
+        ).getall()
+        for raw in nodes:
+            cleaned = self._clean_str(raw)
+            if cleaned and cleaned not in values:
+                values.append(cleaned)
+        if values:
+            return ", ".join(values)
+        return None
 
     @staticmethod
     def _normalize_search_query(query):

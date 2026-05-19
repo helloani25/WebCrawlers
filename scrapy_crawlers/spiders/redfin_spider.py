@@ -1,6 +1,6 @@
 import json
 import re
-from urllib.parse import urlparse
+from urllib.parse import unquote, urlparse
 
 import scrapy
 
@@ -47,6 +47,9 @@ NUMBER_PATTERN = re.compile(r"-?[\d,.]+")
 ZIP_SUFFIX_PATTERN = re.compile(r"^(?P<street>.+)-(?P<zip>\d{5}(?:-\d{4})?)$")
 TITLE_ADDRESS_PATTERN = re.compile(
     r"^\s*(.+?),\s*([^,]+),\s*([A-Z]{2})\s+(\d{5}(?:-\d{4})?)\b"
+)
+GENERIC_ADDRESS_PATTERN = re.compile(
+    r"^\s*(.+?),\s*([^,]+),\s*([A-Z]{2})\s+(\d{5}(?:-\d{4})?)\s*$"
 )
 YEAR_BUILT_TEXT_PATTERN = re.compile(r"\bYear Built\b\s*[:\-]?\s*((?:18|19|20)\d{2})\b", re.IGNORECASE)
 PROPERTY_TYPE_TEXT_PATTERN = re.compile(
@@ -288,7 +291,7 @@ class RedfinSpider(scrapy.Spider):
                 item.get("detail_url"),
             )
         if not text:
-            yield item
+            yield self._as_property_item(item)
             return
 
         selector = scrapy.Selector(text=text)
@@ -300,7 +303,11 @@ class RedfinSpider(scrapy.Spider):
             item["city"] = item.get("city") or self._clean_str(city)
             item["state"] = item.get("state") or self._clean_str(state)
             item["postal_code"] = item.get("postal_code") or self._clean_str(postal_code)
-        yield item
+        yield self._as_property_item(item)
+
+    @staticmethod
+    def _as_property_item(document):
+        return dict(document or {})
 
     def _blank_item(self, county, region_id, page, listing_id, detail_url):
         return {
@@ -357,6 +364,8 @@ class RedfinSpider(scrapy.Spider):
                     item["state"] = self._clean_str(address.get("addressRegion"))
                 if not item.get("postal_code"):
                     item["postal_code"] = self._clean_str(address.get("postalCode"))
+            elif isinstance(address, str):
+                self._apply_address_from_text(item, address)
 
             offers = obj.get("offers") if isinstance(obj, dict) else None
             offer_candidates = offers if isinstance(offers, list) else [offers]
@@ -497,14 +506,31 @@ class RedfinSpider(scrapy.Spider):
         street_address = payload.get("streetAddress")
         if isinstance(street_address, dict):
             assembled = street_address.get("assembledAddress")
-            if assembled and not item.get("address"):
-                item["address"] = self._clean_str(assembled)
-            if not item.get("city"):
-                item["city"] = self._clean_str(street_address.get("city"))
-            if not item.get("state"):
-                item["state"] = self._clean_str(street_address.get("state"))
-            if not item.get("postal_code"):
-                item["postal_code"] = self._clean_str(street_address.get("zip"))
+            self._apply_address_fields(
+                item,
+                street=self._clean_str(
+                    assembled
+                    or street_address.get("streetAddress")
+                    or street_address.get("address")
+                    or street_address.get("addressLine1")
+                ),
+                city=self._clean_str(street_address.get("city") or street_address.get("addressLocality")),
+                state=self._clean_str(street_address.get("state") or street_address.get("addressRegion")),
+                postal_code=self._clean_str(street_address.get("zip") or street_address.get("postalCode")),
+            )
+        elif isinstance(street_address, str):
+            self._apply_address_from_text(item, street_address)
+
+        if not item.get("address"):
+            self._apply_address_fields(
+                item,
+                street=self._clean_str(
+                    self._find_first_value(payload, {"addressLine1", "street", "streetName"})
+                ),
+                city=self._clean_str(self._find_first_value(payload, {"city", "addressLocality"})),
+                state=self._clean_str(self._find_first_value(payload, {"state", "addressRegion"})),
+                postal_code=self._clean_str(self._find_first_value(payload, {"zip", "postalCode"})),
+            )
 
     def _enrich_item_from_next_data(self, item, selector):
         raw = selector.xpath("string(//script[@id='__NEXT_DATA__'])").get()
@@ -564,6 +590,32 @@ class RedfinSpider(scrapy.Spider):
             item["latitude"] = self._to_float(self._find_first_value(payload, {"latitude", "lat"}))
         if item.get("longitude") is None:
             item["longitude"] = self._to_float(self._find_first_value(payload, {"longitude", "lng", "lon"}))
+        address_obj = self._find_first_value(payload, {"address", "streetAddress"})
+        if isinstance(address_obj, dict):
+            self._apply_address_fields(
+                item,
+                street=self._clean_str(
+                    address_obj.get("streetAddress")
+                    or address_obj.get("addressLine1")
+                    or address_obj.get("address")
+                    or address_obj.get("name")
+                ),
+                city=self._clean_str(address_obj.get("addressLocality") or address_obj.get("city")),
+                state=self._clean_str(address_obj.get("addressRegion") or address_obj.get("state")),
+                postal_code=self._clean_str(address_obj.get("postalCode") or address_obj.get("zip")),
+            )
+        elif isinstance(address_obj, str):
+            self._apply_address_from_text(item, address_obj)
+        else:
+            self._apply_address_fields(
+                item,
+                street=self._clean_str(
+                    self._find_first_value(payload, {"addressLine1", "street", "streetName"})
+                ),
+                city=self._clean_str(self._find_first_value(payload, {"city", "addressLocality"})),
+                state=self._clean_str(self._find_first_value(payload, {"state", "addressRegion"})),
+                postal_code=self._clean_str(self._find_first_value(payload, {"zip", "postalCode"})),
+            )
 
     def _enrich_item_from_text_fallbacks(self, item, response_text):
         text = response_text or ""
@@ -664,7 +716,7 @@ class RedfinSpider(scrapy.Spider):
             return None, None, None, None
 
         parsed = urlparse(value)
-        parts = [p for p in (parsed.path or "").split("/") if p]
+        parts = [unquote(p) for p in (parsed.path or "").split("/") if p]
         # Typical format:
         # /NJ/City/Street-Name-07652/home/123
         if len(parts) < 4:
@@ -697,6 +749,28 @@ class RedfinSpider(scrapy.Spider):
             street = fallback or None
 
         return street, city, state, postal_code
+
+    def _apply_address_fields(self, item, street=None, city=None, state=None, postal_code=None):
+        if street and not item.get("address"):
+            item["address"] = self._clean_str(street)
+        if city and not item.get("city"):
+            item["city"] = self._clean_str(city)
+        if state and not item.get("state"):
+            item["state"] = self._clean_str(state)
+        if postal_code and not item.get("postal_code"):
+            item["postal_code"] = self._clean_str(postal_code)
+
+    def _apply_address_from_text(self, item, text):
+        value = self._clean_str(text)
+        if not value:
+            return
+        m = GENERIC_ADDRESS_PATTERN.match(value)
+        if m:
+            street, city, state, postal_code = m.groups()
+            self._apply_address_fields(item, street=street, city=city, state=state, postal_code=postal_code)
+            return
+        if not item.get("address"):
+            item["address"] = value
 
     @staticmethod
     def _safe_response_text(response):

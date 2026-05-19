@@ -1,6 +1,6 @@
 import json
 import re
-from urllib.parse import quote
+from urllib.parse import quote, urlencode
 
 import scrapy
 
@@ -128,6 +128,29 @@ class RemaxSpider(scrapy.Spider):
             get_env("REMAX_MAX_PAGES", default="500"),
             fallback=500,
         )
+        self.scrapfly_api_key = (
+            kwargs.get("scrapfly_api_key")
+            or get_env("SCRAPFLY_API_KEY", "SCRAPFLY_KEY")
+            or ""
+        ).strip()
+        self.scrapfly_asp_enabled = self._is_truthy(
+            kwargs.get("scrapfly_asp_enabled"),
+            get_env("REMAX_SCRAPFLY_ASP_ENABLED", "SCRAPFLY_ASP_ENABLED", default="0"),
+        )
+        self.scrapfly_proxy_pool = (
+            kwargs.get("scrapfly_proxy_pool")
+            or get_env("SCRAPFLY_PROXY_POOL", default="public_residential_pool")
+            or "public_residential_pool"
+        ).strip()
+        self.scrapfly_country = (
+            kwargs.get("scrapfly_country")
+            or get_env("SCRAPFLY_COUNTRY", default="us")
+            or "us"
+        ).strip().lower()
+        self.scrapfly_render_js = self._is_truthy(
+            kwargs.get("scrapfly_render_js"),
+            get_env("SCRAPFLY_RENDER_JS", default="0"),
+        )
         self.seen_listing_ids = set()
 
     def _build_proxy_url(self):
@@ -162,6 +185,12 @@ class RemaxSpider(scrapy.Spider):
         except (TypeError, ValueError):
             return fallback
 
+    @staticmethod
+    def _is_truthy(value, fallback=False):
+        if value in (None, ""):
+            return bool(fallback)
+        return str(value).strip().lower() in {"1", "true", "yes", "on"}
+
     def _proxy_meta(self):
         if not self.proxy_url:
             return {}
@@ -172,6 +201,10 @@ class RemaxSpider(scrapy.Spider):
             self.logger.info("Using proxy for RE/MAX requests")
         else:
             self.logger.warning("No proxy configured; running RE/MAX spider without a proxy")
+        if self.scrapfly_asp_enabled and self.scrapfly_api_key:
+            self.logger.info("Scrapfly ASP fallback enabled for RE/MAX blocked detail responses")
+        elif self.scrapfly_asp_enabled:
+            self.logger.warning("Scrapfly ASP enabled but SCRAPFLY_API_KEY is missing; fallback disabled")
         yield self._results_request(page=self.start_page, retries=0)
 
     def _results_request(self, page, retries):
@@ -276,7 +309,7 @@ class RemaxSpider(scrapy.Spider):
             if isinstance(detail_request, scrapy.Request):
                 yield detail_request
             else:
-                yield detail_request
+                yield self._as_property_item(detail_request)
 
         self.logger.info(
             "RE/MAX state=%s page=%s raw_items=%s yielded_new=%s",
@@ -336,9 +369,31 @@ class RemaxSpider(scrapy.Spider):
             return
 
         if response.status == 202:
-            item["detail_http_status"] = 202
-            item["detail_parse_status"] = "blocked_202_after_retries"
-            yield item
+            fallback_request = self._scrapfly_detail_request(
+                item=item,
+                original_url=item.get("detail_url") or response.url,
+                blocked_status=202,
+            )
+            if isinstance(fallback_request, scrapy.Request):
+                yield fallback_request
+            else:
+                item["detail_http_status"] = 202
+                item["detail_parse_status"] = "blocked_202_after_retries"
+                yield self._as_property_item(item)
+            return
+
+        if response.status != 200:
+            fallback_request = self._scrapfly_detail_request(
+                item=item,
+                original_url=item.get("detail_url") or response.url,
+                blocked_status=response.status,
+            )
+            if isinstance(fallback_request, scrapy.Request):
+                yield fallback_request
+            else:
+                item["detail_http_status"] = response.status
+                item["detail_parse_status"] = f"non_200_{response.status}"
+                yield self._as_property_item(item)
             return
 
         item["detail_http_status"] = response.status
@@ -346,7 +401,7 @@ class RemaxSpider(scrapy.Spider):
         response_text = self._safe_response_text(response)
         if not response_text:
             item["detail_parse_status"] = "empty_body"
-            yield item
+            yield self._as_property_item(item)
             return
 
         selector = scrapy.Selector(text=response_text)
@@ -354,7 +409,88 @@ class RemaxSpider(scrapy.Spider):
         detail_fields.update(self._extract_detail_fields_from_serialized_text(response_text))
         detail_fields.update(self._extract_detail_text_fallbacks(selector))
         self._apply_detail_fields(item, detail_fields)
-        yield item
+        yield self._as_property_item(item)
+
+    def parse_detail_page_scrapfly(self, response):
+        item = dict(response.meta.get("base_item") or {})
+        blocked_status = response.meta.get("blocked_status")
+        upstream_status, upstream_text = self._extract_scrapfly_upstream_result(response)
+        if upstream_status is None:
+            upstream_status = blocked_status or response.status
+
+        item["detail_http_status"] = upstream_status
+        if upstream_status != 200:
+            item["detail_parse_status"] = f"scrapfly_non_200_{upstream_status}"
+            yield self._as_property_item(item)
+            return
+
+        if not upstream_text:
+            item["detail_parse_status"] = "scrapfly_empty_body"
+            yield self._as_property_item(item)
+            return
+
+        selector = scrapy.Selector(text=upstream_text)
+        detail_fields = self._extract_detail_fields(selector)
+        detail_fields.update(self._extract_detail_fields_from_serialized_text(upstream_text))
+        detail_fields.update(self._extract_detail_text_fallbacks(selector))
+        self._apply_detail_fields(item, detail_fields)
+        item["detail_parse_status"] = "scrapfly_ok"
+        yield self._as_property_item(item)
+
+    @staticmethod
+    def _as_property_item(document):
+        return dict(document or {})
+
+    def _scrapfly_detail_request(self, item, original_url, blocked_status):
+        if not (self.scrapfly_asp_enabled and self.scrapfly_api_key and original_url):
+            return item
+        params = {
+            "key": self.scrapfly_api_key,
+            "url": original_url,
+            "asp": "true",
+            "country": self.scrapfly_country,
+            "proxy_pool": self.scrapfly_proxy_pool,
+        }
+        if self.scrapfly_render_js:
+            params["render_js"] = "true"
+        scrapfly_url = f"https://api.scrapfly.io/scrape?{urlencode(params)}"
+        self.logger.info(
+            "RE/MAX detail blocked status=%s mls_id=%s; retrying via Scrapfly ASP",
+            blocked_status,
+            item.get("mls_id"),
+        )
+        self.logger.debug(
+            "RE/MAX detail retrying with Scrapfly ASP: status=%s mls_id=%s url=%s",
+            blocked_status,
+            item.get("mls_id"),
+            original_url,
+        )
+        return scrapy.Request(
+            scrapfly_url,
+            callback=self.parse_detail_page_scrapfly,
+            headers={"accept": "application/json"},
+            meta={
+                "base_item": dict(item or {}),
+                "blocked_status": blocked_status,
+            },
+            dont_filter=True,
+        )
+
+    @staticmethod
+    def _extract_scrapfly_upstream_result(response):
+        text = RemaxSpider._safe_response_text(response)
+        if not text:
+            return None, ""
+        try:
+            payload = json.loads(text)
+        except (TypeError, ValueError, json.JSONDecodeError):
+            return None, text
+        result = payload.get("result") or {}
+        status = result.get("status_code")
+        content = result.get("content")
+        if isinstance(content, str):
+            return status, content
+        return status, ""
 
     @staticmethod
     def _next_detail_retry_url(current_url, retry_count, original_url=None):
@@ -781,6 +917,11 @@ class RemaxSpider(scrapy.Spider):
             app_lower = item["appliances"].lower()
             if '\\"' in item["appliances"] or "property search" in app_lower or len(item["appliances"]) > 2000:
                 item["appliances"] = None
+        if isinstance(item.get("flooring"), str):
+            item["flooring"] = self._clean_multivalue_field(
+                item.get("flooring"),
+                drop_tokens={"see remarks", "other see remarks", "other-see remarks"},
+            )
         if item.get("county"):
             item["county"] = self._clean_county_text(item.get("county"))
 
@@ -1165,6 +1306,33 @@ class RemaxSpider(scrapy.Spider):
                 text = text[:idx].strip(" -:\t\r\n")
                 break
         return text or None
+
+    @staticmethod
+    def _clean_multivalue_field(value, drop_tokens=None):
+        text = str(value or "").strip()
+        if not text:
+            return None
+        tokens = {
+            re.sub(r"[^a-z]+", " ", str(t or "").lower()).strip()
+            for t in (drop_tokens or set())
+            if str(t or "").strip()
+        }
+        parts = re.split(r"[\n,;]+", text)
+        cleaned = []
+        for raw in parts:
+            part = str(raw or "").strip(" \t\r\n,;")
+            if not part:
+                continue
+            normalized = re.sub(r"[^a-z]+", " ", part.lower()).strip()
+            if normalized and normalized in tokens:
+                continue
+            cleaned.append(part)
+        if not cleaned:
+            return None
+        # Deduplicate while preserving order.
+        unique = list(dict.fromkeys(cleaned))
+        separator = "\n" if "\n" in text and "," not in text else ", "
+        return separator.join(unique)
 
     @staticmethod
     def _is_reasonable_living_area_sqft(value):

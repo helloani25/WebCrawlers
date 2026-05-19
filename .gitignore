@@ -2,3 +2,4 @@
 .idea
 /scrapy_crawlers/settings/.env
 /scrapy_crawlers/*.csv
+/scrapy_crawlers/settings/photo_credentials.json

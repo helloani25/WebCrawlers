@@ -1,6 +1,7 @@
 import json
 import re
 import time
+from urllib.parse import urlencode, urljoin
 
 import scrapy
 
@@ -76,12 +77,19 @@ HALF_BATHS_PATTERN = re.compile(r"(\d+)\s*half\s*bath", re.I)
 GARAGE_SPACES_PATTERN = re.compile(r"(\d+)\s*(?:car\s+)?garage", re.I)
 GARAGE_PARKING_PATTERN = re.compile(r"(\d+)\s+parking\s+spaces?\s+in\s+the\s+garage", re.I)
 YEAR_BUILT_PATTERN = re.compile(r"\b(1[89]\d{2}|20\d{2})(?:'s|s)?\b")
+TAX_YEAR_PATTERN = re.compile(r"\b(19\d{2}|20\d{2})\b")
+DAYS_ON_MARKET_PATTERN = re.compile(
+    r"\b(?:days?\s+on\s+(?:the\s+)?market|dom)\b[^0-9]{0,12}(\d{1,4})\b",
+    re.I,
+)
 MLS_IN_URL_PATTERN = re.compile(r"mlsnum=(\d{8})", re.I)
 EMAIL_PATTERN = re.compile(r"\b[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[A-Za-z]{2,}\b")
 PHONE_PATTERN = re.compile(
     r"(?:\+?1[\s.\-\u2010-\u2015]?)?(?:\(?\d{3}\)?[\s.\-\u2010-\u2015]?)\d{3}[\s.\-\u2010-\u2015]?\d{4}(?:\s*(?:x|ext\.?|extension)\s*\d+)?",
     re.I,
 )
+PHOTO_URL_PATTERN = re.compile(r'https?://[^"\']+\.(?:jpg|jpeg|png|webp)(?:\?[^"\']*)?', re.I)
+STYLE_URL_PATTERN = re.compile(r"url\((['\"]?)([^)\"']+)\\1\)", re.I)
 UPPERCASE = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 LOWERCASE = "abcdefghijklmnopqrstuvwxyz"
 
@@ -120,6 +128,29 @@ class NjmlsSpider(scrapy.Spider):
         super().__init__(*args, **kwargs)
         disable_proxy = str(kwargs.get("disable_proxy", "")).strip().lower() in {"1", "true", "yes"}
         self.proxy_url = None if disable_proxy else build_proxy_url()
+        self.scrapfly_api_key = (
+            kwargs.get("scrapfly_api_key")
+            or get_env("SCRAPFLY_API_KEY", "SCRAPFLY_KEY")
+            or ""
+        ).strip()
+        self.scrapfly_asp_enabled = self._is_truthy(
+            kwargs.get("scrapfly_asp_enabled"),
+            get_env("NJMLS_SCRAPFLY_ASP_ENABLED", "SCRAPFLY_ASP_ENABLED", default="0"),
+        )
+        self.scrapfly_proxy_pool = (
+            kwargs.get("scrapfly_proxy_pool")
+            or get_env("SCRAPFLY_PROXY_POOL", default="public_residential_pool")
+            or "public_residential_pool"
+        ).strip()
+        self.scrapfly_country = (
+            kwargs.get("scrapfly_country")
+            or get_env("SCRAPFLY_COUNTRY", default="us")
+            or "us"
+        ).strip().lower()
+        self.scrapfly_render_js = self._is_truthy(
+            kwargs.get("scrapfly_render_js"),
+            get_env("SCRAPFLY_RENDER_JS", default="0"),
+        )
         self.seen_mls_ids = set()
         self.max_counties = self._safe_int(
             kwargs.get("max_counties"), get_env("NJMLS_MAX_COUNTIES")
@@ -133,6 +164,12 @@ class NjmlsSpider(scrapy.Spider):
         except (TypeError, ValueError):
             return None
 
+    @staticmethod
+    def _is_truthy(value, fallback=False):
+        if value in (None, ""):
+            return bool(fallback)
+        return str(value).strip().lower() in {"1", "true", "yes", "on"}
+
     def _proxy_meta(self):
         if not self.proxy_url:
             return {}
@@ -143,6 +180,10 @@ class NjmlsSpider(scrapy.Spider):
             self.logger.info("Using proxy for NJMLS requests")
         else:
             self.logger.warning("No proxy configured; running without a proxy")
+        if self.scrapfly_asp_enabled and self.scrapfly_api_key:
+            self.logger.info("Scrapfly ASP fallback enabled for NJMLS blocked detail responses")
+        elif self.scrapfly_asp_enabled:
+            self.logger.warning("Scrapfly ASP enabled but SCRAPFLY_API_KEY is missing; fallback disabled")
         yield scrapy.Request(
             HOMEPAGE_URL,
             callback=self.parse_homepage,
@@ -466,6 +507,7 @@ class NjmlsSpider(scrapy.Spider):
             )
 
         address = self._extract_address(node, text_lines)
+        address = self._normalize_card_address(address, mls_id)
         city, state, postal_code = self._extract_city_state_zip(text_lines)
         list_price = self._extract_price(node, text_lines)
         beds = self._extract_bedrooms(text_lines)
@@ -478,6 +520,7 @@ class NjmlsSpider(scrapy.Spider):
         prop_type = node.xpath(".//@data-proptype").get() or self._extract_prop_type(text_lines)
         garage = self._extract_garage(text_lines)
         garage_spaces = self._extract_int_pattern(text_lines, GARAGE_SPACES_PATTERN)
+        days_on_market = self._extract_days_on_market(text_lines)
 
         if not mls_id and not address:
             return None
@@ -513,24 +556,96 @@ class NjmlsSpider(scrapy.Spider):
             "year_built": None,
             "parking": None,
             "exterior": None,
+            "days_on_market": days_on_market,
+            "tax_annual_amount": None,
+            "tax_year": None,
             "status": "ACTIVE",
+            "photos_count": 0,
+            "first_photo_url": None,
+            "photo_links": [],
         }
+        card_photo_links = self._extract_photo_links_from_node(node, mls_id)
+        if card_photo_links:
+            listing["photo_links"] = card_photo_links
+            listing["photos_count"] = len(card_photo_links)
+            listing["first_photo_url"] = card_photo_links[0]
         self._sanitize_bed_bath_fields(listing, source="card")
         return listing
 
     def parse_listing_detail(self, response):
-        listing = response.meta.get("listing", {})
+        listing = dict(response.meta.get("listing") or {})
         if response.status != 200:
+            fallback_request = self._scrapfly_detail_request(
+                listing=listing,
+                original_url=listing.get("detail_url") or response.url,
+                blocked_status=response.status,
+            )
+            if isinstance(fallback_request, scrapy.Request):
+                yield fallback_request
+                return
             self.logger.warning(
                 "Detail request failed mls_id=%s status=%s",
                 listing.get("mls_id"),
                 response.status,
             )
-            return listing
+            listing["detail_http_status"] = response.status
+            listing["detail_parse_status"] = f"non_200_{response.status}"
+            yield listing
+            return
 
         text = self._safe_response_text(response)
         if not text:
-            return listing
+            fallback_request = self._scrapfly_detail_request(
+                listing=listing,
+                original_url=listing.get("detail_url") or response.url,
+                blocked_status=response.status,
+            )
+            if isinstance(fallback_request, scrapy.Request):
+                yield fallback_request
+                return
+            listing["detail_http_status"] = response.status
+            listing["detail_parse_status"] = "empty_body"
+            yield listing
+            return
+        parsed = self._parse_listing_detail_payload(
+            listing=listing,
+            text=text,
+            response_url=response.url,
+            status_code=response.status,
+            parse_status="ok",
+        )
+        yield parsed
+
+    def parse_listing_detail_scrapfly(self, response):
+        listing = dict(response.meta.get("listing") or {})
+        blocked_status = response.meta.get("blocked_status")
+        upstream_status, upstream_text = self._extract_scrapfly_upstream_result(response)
+        if upstream_status is None:
+            upstream_status = blocked_status or response.status
+
+        if upstream_status != 200:
+            listing["detail_http_status"] = upstream_status
+            listing["detail_parse_status"] = f"scrapfly_non_200_{upstream_status}"
+            yield listing
+            return
+        if not upstream_text:
+            listing["detail_http_status"] = upstream_status
+            listing["detail_parse_status"] = "scrapfly_empty_body"
+            yield listing
+            return
+
+        parsed = self._parse_listing_detail_payload(
+            listing=listing,
+            text=upstream_text,
+            response_url=listing.get("detail_url") or response.url,
+            status_code=upstream_status,
+            parse_status="scrapfly_ok",
+        )
+        yield parsed
+
+    def _parse_listing_detail_payload(self, listing, text, response_url, status_code, parse_status):
+        listing["detail_http_status"] = status_code
+        listing["detail_parse_status"] = parse_status
         detail_sel = scrapy.Selector(text=text)
         detail_lines = self._extract_clean_lines(detail_sel)
         detail_address, detail_city, detail_state, detail_postal_code = self._extract_detail_location(
@@ -578,6 +693,30 @@ class NjmlsSpider(scrapy.Spider):
         exterior = self._extract_labeled_value_xpath(detail_sel,"exterior")
         if exterior is None:
             exterior = self._extract_labeled_value(detail_lines, "exterior")
+        days_on_market = self._extract_labeled_int_xpath(detail_sel, "days on market")
+        if days_on_market is None:
+            days_on_market = self._extract_labeled_int(detail_lines, "days on market")
+        if days_on_market is None:
+            days_on_market = self._extract_labeled_int_xpath(detail_sel, "dom")
+        if days_on_market is None:
+            days_on_market = self._extract_labeled_int(detail_lines, "dom")
+        if days_on_market is None:
+            days_on_market = self._extract_int_pattern(detail_lines, DAYS_ON_MARKET_PATTERN)
+
+        tax_amount_raw = self._extract_labeled_value_xpath(detail_sel, "taxes")
+        if tax_amount_raw is None:
+            tax_amount_raw = self._extract_labeled_value(detail_lines, "taxes")
+        if tax_amount_raw is None:
+            tax_amount_raw = self._extract_labeled_value_xpath(detail_sel, "tax amount")
+        if tax_amount_raw is None:
+            tax_amount_raw = self._extract_labeled_value(detail_lines, "tax amount")
+        tax_annual_amount = self._parse_price(tax_amount_raw)
+
+        tax_year = self._extract_labeled_int_xpath(detail_sel, "tax year")
+        if tax_year is None:
+            tax_year = self._extract_labeled_int(detail_lines, "tax year")
+        if tax_year is None:
+            tax_year = self._extract_int_pattern(detail_lines, TAX_YEAR_PATTERN)
 
         detail_style = self._extract_labeled_value_xpath(detail_sel, "style")
         if detail_style is None:
@@ -618,6 +757,12 @@ class NjmlsSpider(scrapy.Spider):
             listing["parking"] = parking
         if exterior is not None:
             listing["exterior"] = exterior
+        if days_on_market is not None:
+            listing["days_on_market"] = days_on_market
+        if tax_annual_amount is not None:
+            listing["tax_annual_amount"] = tax_annual_amount
+        if tax_year is not None:
+            listing["tax_year"] = tax_year
         if not listing.get("property_type"):
             detail_prop_type = self._coerce_property_type(detail_style, detail_category)
             if detail_prop_type:
@@ -636,6 +781,21 @@ class NjmlsSpider(scrapy.Spider):
         property_remarks = self._extract_property_remarks(detail_sel, detail_lines)
         if property_remarks is not None:
             listing["property_remarks"] = property_remarks
+
+        detail_photo_links = self._extract_photo_links_from_detail_page(
+            detail_sel,
+            text,
+            listing.get("mls_id"),
+            response_url,
+        )
+        existing_links = listing.get("photo_links") or []
+        if detail_photo_links and len(detail_photo_links) >= len(existing_links):
+            listing["photo_links"] = detail_photo_links
+            listing["photos_count"] = len(detail_photo_links)
+            listing["first_photo_url"] = detail_photo_links[0]
+        elif existing_links:
+            listing["photos_count"] = len(existing_links)
+            listing["first_photo_url"] = existing_links[0]
 
         listing_agent = self._extract_listing_agent(detail_sel, detail_lines)
         if listing_agent is not None:
@@ -758,6 +918,15 @@ class NjmlsSpider(scrapy.Spider):
             return str(spaces)
         return None
 
+    def _extract_days_on_market(self, text_lines):
+        labeled = self._extract_labeled_int(text_lines, "days on market")
+        if labeled is not None:
+            return labeled
+        labeled_dom = self._extract_labeled_int(text_lines, "dom")
+        if labeled_dom is not None:
+            return labeled_dom
+        return self._extract_int_pattern(text_lines, DAYS_ON_MARKET_PATTERN)
+
     @staticmethod
     def _compose_total_baths(full_baths, half_baths):
         if full_baths is None and half_baths is None:
@@ -814,6 +983,15 @@ class NjmlsSpider(scrapy.Spider):
             )
             baths = None
 
+        if beds is not None and (beds <= 0 or beds >= 20):
+            self.logger.debug(
+                "Discarding outlier beds=%s mls_id=%s source=%s",
+                beds,
+                listing.get("mls_id"),
+                source,
+            )
+            beds = None
+
         if (
             beds is not None
             and baths_for_validation is not None
@@ -868,11 +1046,11 @@ class NjmlsSpider(scrapy.Spider):
 
     def _extract_address(self, node, text_lines):
         candidates = [
-            './/a[contains(@href, "dsp.info")]//text()',
             './/span[contains(@class, "address")]//text()',
             './/div[contains(@class, "address")]//text()',
             './/h3//text()',
             './/h4//text()',
+            './/a[contains(@href, "dsp.info")]//text()',
         ]
         for xpath in candidates:
             parts = node.xpath(xpath).getall()
@@ -891,6 +1069,27 @@ class NjmlsSpider(scrapy.Spider):
             if re.search(r"\d", line) and len(line) > 5:
                 return line
         return None
+
+    @staticmethod
+    def _normalize_card_address(address, mls_id):
+        value = NjmlsSpider._clean_str(address)
+        if not value:
+            return None
+        collapsed = re.sub(r"\s+", " ", value).strip()
+        lowered = collapsed.lower()
+        if "mls number" in lowered:
+            return None
+
+        digits_only = re.sub(r"\D", "", collapsed)
+        if digits_only and digits_only == str(mls_id or ""):
+            return None
+        # Guard against numeric-only artifacts (for example MLS ID from link text).
+        if digits_only and len(digits_only) == len(collapsed):
+            return None
+        # A plausible street address should include at least one alphabetic character.
+        if not re.search(r"[A-Za-z]", collapsed):
+            return None
+        return collapsed
 
     def _extract_city_state_zip(self, text_lines):
         for line in text_lines:
@@ -1087,6 +1286,164 @@ class NjmlsSpider(scrapy.Spider):
                 return response.body.decode("utf-8", errors="replace")
             except Exception:
                 return ""
+
+    def _scrapfly_detail_request(self, listing, original_url, blocked_status):
+        if not (self.scrapfly_asp_enabled and self.scrapfly_api_key and original_url):
+            return listing
+        params = {
+            "key": self.scrapfly_api_key,
+            "url": original_url,
+            "asp": "true",
+            "country": self.scrapfly_country,
+            "proxy_pool": self.scrapfly_proxy_pool,
+        }
+        if self.scrapfly_render_js:
+            params["render_js"] = "true"
+        scrapfly_url = f"https://api.scrapfly.io/scrape?{urlencode(params)}"
+        self.logger.info(
+            "NJMLS detail blocked status=%s mls_id=%s; retrying via Scrapfly ASP",
+            blocked_status,
+            listing.get("mls_id"),
+        )
+        self.logger.debug(
+            "NJMLS detail retrying with Scrapfly ASP: status=%s mls_id=%s url=%s",
+            blocked_status,
+            listing.get("mls_id"),
+            original_url,
+        )
+        return scrapy.Request(
+            scrapfly_url,
+            callback=self.parse_listing_detail_scrapfly,
+            headers={"accept": "application/json"},
+            meta={
+                "listing": dict(listing or {}),
+                "blocked_status": blocked_status,
+            },
+            dont_filter=True,
+        )
+
+    @staticmethod
+    def _extract_scrapfly_upstream_result(response):
+        text = NjmlsSpider._safe_response_text(response)
+        if not text:
+            return None, ""
+        try:
+            payload = json.loads(text)
+        except (TypeError, ValueError, json.JSONDecodeError):
+            return None, text
+        result = payload.get("result") or {}
+        status = result.get("status_code")
+        content = result.get("content")
+        if isinstance(content, str):
+            return status, content
+        return status, ""
+
+    def _extract_photo_links_from_node(self, node, mls_id):
+        candidates = []
+        attr_xpaths = [
+            ".//img/@src",
+            ".//img/@data-src",
+            ".//img/@data-original",
+            ".//img/@data-lazy",
+            ".//*[@style]/@style",
+        ]
+        for xpath in attr_xpaths:
+            candidates.extend(node.xpath(xpath).getall())
+        node_html = node.get() or ""
+        candidates.extend(PHOTO_URL_PATTERN.findall(node_html))
+        return self._normalize_and_filter_photo_links(
+            raw_values=candidates,
+            mls_id=mls_id,
+            base_url="https://www.njmls.com/",
+        )
+
+    def _extract_photo_links_from_detail_page(self, selector, page_text, mls_id, page_url):
+        candidates = []
+        attr_xpaths = [
+            "//img/@src",
+            "//img/@data-src",
+            "//img/@data-original",
+            "//img/@data-lazy",
+            "//*[@style]/@style",
+        ]
+        for xpath in attr_xpaths:
+            candidates.extend(selector.xpath(xpath).getall())
+        candidates.extend(PHOTO_URL_PATTERN.findall(page_text or ""))
+        return self._normalize_and_filter_photo_links(
+            raw_values=candidates,
+            mls_id=mls_id,
+            base_url=page_url,
+        )
+
+    def _normalize_and_filter_photo_links(self, raw_values, mls_id, base_url):
+        links = []
+        seen = set()
+        for raw in raw_values or []:
+            for candidate in self._expand_image_candidates(raw, base_url):
+                if not self._is_property_photo_url(candidate, mls_id):
+                    continue
+                if candidate in seen:
+                    continue
+                seen.add(candidate)
+                links.append(candidate)
+        return links
+
+    @staticmethod
+    def _expand_image_candidates(raw_value, base_url):
+        value = (raw_value or "").strip()
+        if not value:
+            return []
+        candidates = []
+        matches = STYLE_URL_PATTERN.findall(value)
+        if matches:
+            candidates.extend(m[1] for m in matches if m and m[1])
+        else:
+            candidates.append(value)
+
+        normalized = []
+        for candidate in candidates:
+            c = candidate.strip().strip('"').strip("'")
+            if not c:
+                continue
+            if c.startswith("//"):
+                c = f"https:{c}"
+            elif c.startswith("http://") or c.startswith("https://"):
+                pass
+            else:
+                c = urljoin(base_url, c)
+            normalized.append(c)
+        return normalized
+
+    @staticmethod
+    def _is_property_photo_url(url, mls_id):
+        lowered = (url or "").lower()
+        if not lowered:
+            return False
+        if "njmls.com/assets/" in lowered:
+            return False
+        if not re.search(r"\.(?:jpg|jpeg|png|webp)(?:\?|$)", lowered):
+            return False
+        blocked_tokens = (
+            "logo",
+            "icon",
+            "favicon",
+            "equalhousing",
+            "facebook",
+            "instagram",
+            "twitter",
+            "linkedin",
+            "youtube",
+            "avatar",
+            "sprite",
+            "banner",
+            "pixel",
+        )
+        if any(token in lowered for token in blocked_tokens):
+            return False
+        if mls_id and str(mls_id) in lowered:
+            return True
+        preferred_tokens = ("listing", "listings", "property", "photo", "photos", "mls", "media")
+        return any(token in lowered for token in preferred_tokens)
 
     def _extract_property_remarks(self, selector, text_lines):
         # New NJMLS detail layout: section heading + following paragraph.

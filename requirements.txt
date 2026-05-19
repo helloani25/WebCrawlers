@@ -1,5 +1,6 @@
 beautifulsoup4==4.14.3
 curl_cffi==0.15.0
+google-cloud-storage==2.19.0
 lxml==6.1.0
 pymongo==4.15.3
 Scrapy==2.15.2

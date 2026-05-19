@@ -2,6 +2,24 @@
 
 The NJMLS spider extracts active residential listings from the New Jersey Multiple Listing Service public search portal, crawling all 21 NJ counties.
 
+### Current State (2026-05-18)
+
+- Crawl breadth: all NJ counties, city-level sharding from `xhr.multiple_town_select_new`.
+- Detail enrichment: follows `dsp.info` per listing and merges detail fields.
+- Key extracted fields now include:
+  - `property_remarks`
+  - `tax_annual_amount`, `tax_year`
+  - `days_on_market`
+  - `photo_links`, `photos_count`, `first_photo_url`
+  - listing agent/office contact fields (`listing_agent*`, `listing_office*`)
+- Parser behavior: detail values backfill missing card values for `property_type`, `sqft`, remarks, and photos.
+
+Smoke test:
+
+```bash
+scrapy crawl njmls -a max_counties=1 -s ITEM_PIPELINES={} -s TELNETCONSOLE_ENABLED=False
+```
+
 ### TODO
 
 - Add optional community enrichment mode to NJMLS spider (`include_community_info=1`).
@@ -23,6 +41,255 @@ Need a way to use Items.py for all the property scraping spiders.
 ```commandline
 export PYTHONPATH=$PYTHONPATH:$(pwd)
 scrapy crawl njmls -o njmls_output.csv
+```
+
+### Canonical Schema Backfill (MongoDB)
+
+Backfill historical documents with canonical property fields (`canonical_schema_version=6`):
+
+```bash
+python scrapy_crawlers/scripts/backfill_canonical_fields.py --dry-run
+python scrapy_crawlers/scripts/backfill_canonical_fields.py --collections redfin,remax,bhgre,gsmls,njmls,weichert,realtor,zillow
+```
+
+After schema updates (for example adding `full_baths`, `half_baths`, `living_area_sqft`,
+`days_on_market`, `tax_annual_amount`, `garage_spaces`, `heating`, `cooling`), run:
+
+```bash
+python scrapy_crawlers/scripts/backfill_canonical_fields.py --dry-run --force-all
+python scrapy_crawlers/scripts/backfill_canonical_fields.py --collections redfin,remax,bhgre,gsmls,njmls,weichert,realtor,zillow --force-all
+```
+
+### Current State Snapshot (2026-05-18)
+
+This is the current implementation status for the active NJ crawlers:
+
+- `njmls`: county + city sharding from town modal, detail-page follow-up enabled, photos/tax/DOM/remarks extraction enabled.
+- `zillow`: city-first search strategy, county fallback, then statewide bounding-box fallback; strategy counters logged at spider close.
+- `bhgre`: paginated listings API + per-listing detail enrichment; normalized flat `mls_id`, listing contact fields, multi-photo extraction.
+- `gsmls`: county/town flow with over-250 result splitting, detail-page enrichment, broader field extraction and style normalization.
+
+Recommended post-change backfill:
+
+```bash
+python scrapy_crawlers/scripts/backfill_canonical_fields.py --dry-run --collections zillow,gsmls,njmls,bhgre --force-all
+python scrapy_crawlers/scripts/backfill_canonical_fields.py --collections zillow,gsmls,njmls,bhgre --force-all
+```
+
+### Tiered Anti-Bot Strategy (DataImpulse + Scrapfly ASP)
+
+Current recommended control plane for blocked/detail-prone sources (especially `remax`, `njmls`):
+
+1. Primary path: run standard spider traffic through DataImpulse rotating residential proxy.
+2. Fallback path: only when detail response is blocked/non-200/empty, retry that detail URL through Scrapfly ASP.
+3. Emit item even when fallback fails, with parse-status markers for backfill/re-crawl targeting.
+
+Why this tiered approach is better than always-on ASP:
+
+- Lower cost: ASP is paid only on blocked pages, not on every request.
+- Better throughput: normal pages avoid browser-grade anti-bot overhead.
+- Better diagnostics: blocked vs recovered traffic is visible via `detail_parse_status`.
+- Cleaner recovery loops: rerun/backfill can target only `non_200_*`, `blocked_*`, `scrapfly_non_200_*` rows.
+
+Important:
+
+- Do not chain both providers on the same request path.
+- Use DataImpulse as primary proxy for spider requests.
+- Use Scrapfly ASP only as conditional fallback request.
+
+#### Setup
+
+DataImpulse (primary):
+
+```bash
+export PROXY_USERNAME='YOUR_DATAIMPULSE_USERNAME'
+export PROXY_PASSWORD='YOUR_DATAIMPULSE_PASSWORD'
+export PROXY_HOST='gw.dataimpulse.com'
+export PROXY_PORT='823'
+export PROXY_PARAMS='rotating=true'
+```
+
+Scrapfly ASP (fallback):
+
+```bash
+export SCRAPFLY_API_KEY='YOUR_SCRAPFLY_TEST_OR_PROD_KEY'
+export SCRAPFLY_ASP_ENABLED='1'
+export SCRAPFLY_PROXY_POOL='public_residential_pool'
+export SCRAPFLY_COUNTRY='us'
+export SCRAPFLY_RENDER_JS='0'
+```
+
+Per-spider override flags are also supported:
+
+- `REMAX_SCRAPFLY_ASP_ENABLED=1`
+- `NJMLS_SCRAPFLY_ASP_ENABLED=1`
+
+#### Smoke Tests
+
+RE/MAX:
+
+```bash
+scrapy crawl remax -a state=nj -a max_pages=1 -s ITEM_PIPELINES={} -s TELNETCONSOLE_ENABLED=False
+```
+
+NJMLS:
+
+```bash
+scrapy crawl njmls -a max_counties=1 -s ITEM_PIPELINES={} -s TELNETCONSOLE_ENABLED=False
+```
+
+Debug log checks for fallback:
+
+```bash
+grep -E "retrying with Scrapfly ASP|scrapfly_ok|scrapfly_non_200|blocked_202_after_retries|detail_parse_status" -n logs/*.log
+```
+
+#### Logging Details
+
+Capture DEBUG logs to file:
+
+```bash
+mkdir -p logs
+scrapy crawl remax -a state=nj -a max_pages=1 -s LOG_LEVEL=DEBUG -s LOG_FILE=logs/remax_debug.log -s ITEM_PIPELINES={} -s TELNETCONSOLE_ENABLED=False
+scrapy crawl njmls -a max_counties=1 -s LOG_LEVEL=DEBUG -s LOG_FILE=logs/njmls_debug.log -s ITEM_PIPELINES={} -s TELNETCONSOLE_ENABLED=False
+```
+
+Key fallback traces:
+
+- `RE/MAX detail retrying with Scrapfly ASP: status=... mls_id=... url=...`
+- `NJMLS detail retrying with Scrapfly ASP: status=... mls_id=... url=...`
+- `detail_parse_status=scrapfly_ok`
+- `detail_parse_status=scrapfly_non_200_*`
+
+Quick counters from logs:
+
+```bash
+grep -Eo "detail_parse_status['=: ]+[A-Za-z0-9_]+" logs/remax_debug.log logs/njmls_debug.log | sort | uniq -c
+grep -E "retrying with Scrapfly ASP" -n logs/remax_debug.log logs/njmls_debug.log | head -50
+```
+
+What to alert on:
+
+- no `retrying with Scrapfly ASP` lines when blocked statuses are present
+- high `scrapfly_non_200_*` rate
+- repeated `scrapfly_empty_body` on the same template URL pattern
+
+#### Runbook: Detail Parse Status
+
+| `detail_parse_status` pattern | Meaning | Action |
+|---|---|---|
+| `ok` | Detail parsed via primary path | No action |
+| `scrapfly_ok` | Primary blocked, ASP fallback recovered detail | Keep current settings; monitor fallback rate |
+| `non_200_403` / `non_200_429` | Primary blocked and no ASP recovery | Verify proxy health, enable ASP, lower concurrency/delay |
+| `non_200_202` / `blocked_202_after_retries` | Edge challenge persisted on detail page | Keep retries/session rotation enabled; ensure ASP fallback is on |
+| `scrapfly_non_200_*` | ASP request also blocked/failed upstream | Verify Scrapfly key/quota, switch pool/country, retry later |
+| `empty_body` / `scrapfly_empty_body` | Response succeeded but returned no parseable body | Re-run sample with debug logs; validate page template changed |
+
+Operational thresholds:
+
+- If `scrapfly_ok` is high but stable, keep tiered mode (primary + fallback).
+- If `scrapfly_non_200_*` exceeds ~10% of detail attempts, investigate ASP account/pool health immediately.
+- Re-crawl/backfill only failed rows using `detail_parse_status` filters instead of full recrawls.
+
+### GCS Image Sync (Deduplicated)
+
+Use `scrapy_crawlers/scripts/sync_listing_images_to_gcs.py` to pull listing images from Mongo and upload them to GCS with SHA-256 dedupe, chunked concurrent fetch workers, stage/progress logging, and SQLite resume support.
+
+Core behavior:
+
+- Source image inputs per listing:
+  - `photo_links`
+  - `first_photo_url` (canonical first-image field)
+  - `primary_photo_url` (legacy top-level fallback for older rows)
+  - `source_fields.first_photo_url` (backward-compatible fallback)
+  - `source_fields.primary_photo_url` (legacy fallback)
+- Dedupe model:
+  - content hash (`sha256`) is canonical duplicate key
+  - if hash exists in `image_assets`, upload is skipped and existing `gcs_uri` is reused
+- Canonical object path:
+  - `<GCS_IMAGE_PREFIX>/sha256/<first2>/<sha256>.<ext>`
+- Listing writes:
+  - `gcs_images[]` with `index`, `source_url`, `sha256`, `gcs_uri`
+  - `gcs_images_count`
+  - `gcs_images_synced_at`
+- Dedupe index collection:
+  - `image_assets` (`sha256` unique, `gcs_uri` unique sparse)
+
+Resume queue behavior (SQLite):
+
+- Queue DB stores listings by `(collection_name, doc_id)` with statuses:
+  - `pending -> in_progress -> done` or `failed`
+- On restart, all `in_progress` rows are automatically moved back to `pending`.
+- Queue is rebuilt from Mongo using `INSERT OR IGNORE` so already-queued/processed rows are preserved.
+- Optional controls:
+  - `--reset-queue`: clear queue for selected collections and rebuild
+  - `--retry-failed`: move failed rows back to pending
+  - recommended after transient network/provider issues to reprocess only failed queue entries
+
+Required env vars:
+
+- `GOOGLE_APPLICATION_CREDENTIALS` (relative path such as `photo_credentials.json` is resolved from repo root and `scrapy_crawlers/settings`)
+- `GCP_PROJECT_ID`
+- `GCS_IMAGE_BUCKET`
+
+Optional env vars:
+
+- `GCS_BUCKET_LOCATION` (default `US`)
+- `GCS_IMAGE_PREFIX` (default `property-images`)
+- `IMAGE_SYNC_COLLECTIONS` (default `njmls,remax,weichert,redfin,realtor,bhgre,gsmls,zillow`)
+- `IMAGE_SYNC_MAX_IMAGES_PER_LISTING` (default `30`)
+- `IMAGE_SYNC_WORKERS` (default `8`)
+- `IMAGE_SYNC_CHUNK_SIZE` (default `100`)
+- `IMAGE_SYNC_PROGRESS_EVERY_DOCS` (default `50`)
+- `IMAGE_SYNC_RESUME_DB` (default `scrapy_crawlers/scripts/image_sync_resume.sqlite3`)
+- `IMAGE_SYNC_QUEUE_BATCH_SIZE` (default `200`)
+
+CLI options:
+
+| Option | Description | Default |
+|---|---|---|
+| `--collections` | Comma-separated Mongo collections | `njmls,remax,weichert,redfin,realtor,bhgre,gsmls,zillow` |
+| `--limit-listings` | Max listings per collection (`0` = no limit) | `0` |
+| `--max-images-per-listing` | Max image URLs processed per listing | `30` |
+| `--create-bucket` | Create GCS bucket if missing | `false` |
+| `--dry-run` | Skip uploads and Mongo writes | `false` |
+| `--workers` | Concurrent threads for fetch + fingerprint | `8` |
+| `--chunk-size` | Photo URLs processed per worker chunk | `100` |
+| `--progress-every-docs` | Emit progress every N processed listings | `50` |
+| `--resume-db` | SQLite queue file path | `scrapy_crawlers/scripts/image_sync_resume.sqlite3` |
+| `--queue-batch-size` | Pending queue rows dequeued per batch | `200` |
+| `--reset-queue` | Clear queue rows for selected collections before rebuild | `false` |
+| `--retry-failed` | Move `failed` rows back to `pending` before run | `false` |
+
+Commands:
+
+```bash
+pip install -r requirements.txt
+```
+
+```bash
+# Preflight config + auth + queue build using one listing (no writes)
+python scrapy_crawlers/scripts/sync_listing_images_to_gcs.py --dry-run --limit-listings 1
+```
+
+```bash
+# Small smoke sync with controlled concurrency
+python scrapy_crawlers/scripts/sync_listing_images_to_gcs.py --create-bucket --limit-listings 20 --workers 8 --chunk-size 100
+```
+
+```bash
+# Full resumable sync (all configured collections)
+python scrapy_crawlers/scripts/sync_listing_images_to_gcs.py
+```
+
+```bash
+# Resume run and retry previously failed queue rows
+python scrapy_crawlers/scripts/sync_listing_images_to_gcs.py --retry-failed
+```
+
+```bash
+# Rebuild queue for selected collections from scratch
+python scrapy_crawlers/scripts/sync_listing_images_to_gcs.py --collections remax,njmls,bhgre --reset-queue --limit-listings 500
 ```
 
 Limit to a subset of counties for testing:
@@ -207,6 +474,33 @@ Since the XHR response itself is the server-generated HTML, plain Scrapy request
 Optional settings (`.env` or shell):
 
 - `NJMLS_MAX_COUNTIES` — limit counties crawled (useful for testing)
+- `NJMLS_SCRAPFLY_ASP_ENABLED` — enable ASP fallback for blocked detail pages (`1|true|yes`)
+- `SCRAPFLY_API_KEY` (or `SCRAPFLY_KEY`) — API key for ASP fallback
+- `SCRAPFLY_PROXY_POOL` (default `public_residential_pool`)
+- `SCRAPFLY_COUNTRY` (default `us`)
+- `SCRAPFLY_RENDER_JS` (default `0`)
+
+### Debugging (Spider-Relevant)
+
+Smoke test:
+
+```bash
+scrapy crawl njmls -a max_counties=1 -s ITEM_PIPELINES={} -s TELNETCONSOLE_ENABLED=False
+```
+
+What to verify:
+
+- town modal returns city values per county
+- each `(county, city)` shard returns cards and paginates until short page
+- detail follow-up fills `property_remarks`, `tax_annual_amount`, `tax_year`, `days_on_market`
+- photo fields (`photo_links`, `photos_count`, `first_photo_url`) are populated when images exist
+- blocked details trigger Scrapfly ASP fallback when enabled
+
+Fallback debug grep:
+
+```bash
+grep -E "NJMLS detail retrying with Scrapfly ASP|scrapfly_ok|scrapfly_non_200|detail_parse_status" -n logs/njmls*.log
+```
 
 ---
 
@@ -214,12 +508,24 @@ Optional settings (`.env` or shell):
 
 The RE/MAX spider extracts for-sale listings from `www.remax.com` using the same Next.js RSC (`_rsc`) listing endpoint pattern captured in the HAR.
 
+### Current State (2026-05-18)
+
+- Search breadth comes from paginated listing pages (`/homes-for-sale/<state>?searchQuery=...&_rsc=...`).
+- Every card listing is followed to its detail page for enrichment.
+- Detail extraction now includes many labeled fields when present (taxes, lot, parking, heating/cooling, agent/office, days on website, etc.).
+- Built-in anti-block handling:
+  - retries for listing pages returning `202`
+  - rotating proxy session after configured intervals and on `202`
+  - detail retry URL mutation (`/luxury/` and cache-busting query params) before final fallback
+  - conditional Scrapfly ASP retry on blocked/non-200 detail responses
+- Partial detail records are still emitted with `detail_parse_status=blocked_202_after_retries` so runs do not fail hard.
+
 ### How to Run
 
 From `scrapy_crawlers`:
 
 ```bash
-../.venv/bin/scrapy crawl remax -a state=nj -a max_pages=50 -a disable_proxy=1 -o remax_output.csv
+scrapy crawl remax -a state=nj -a max_pages=50 -a disable_proxy=1 -o remax_output.csv
 ```
 
 Or from repo root:
@@ -250,6 +556,11 @@ Optional (`.env` or shell):
 - `REMAX_START_PAGE`
 - `REMAX_MAX_PAGES`
 - `REMAX_RSC_TOKEN`
+- `REMAX_SCRAPFLY_ASP_ENABLED` — enable ASP fallback for blocked detail pages (`1|true|yes`)
+- `SCRAPFLY_API_KEY` (or `SCRAPFLY_KEY`) — API key for ASP fallback
+- `SCRAPFLY_PROXY_POOL` (default `public_residential_pool`)
+- `SCRAPFLY_COUNTRY` (default `us`)
+- `SCRAPFLY_RENDER_JS` (default `0`)
 
 ### Spider Flow
 
@@ -268,6 +579,15 @@ Optional (`.env` or shell):
    - no items,
    - no new deduped listings on page, or
    - `max_pages` reached.
+
+### Rendering Strategy — Mostly No Browser, But Edge Blocking Exists
+
+RE/MAX listing pages are delivered via Next.js RSC endpoints and include structured data the spider can parse without a browser renderer.
+
+- Listing discovery path: RSC response + embedded structured payload
+- Detail enrichment path: HTML/serialized data on property detail pages
+
+So extraction itself is non-browser. The challenge is not rendering; it is edge bot protection on detail requests (frequent `202` challenge responses).
 
 ### Output Fields
 
@@ -316,10 +636,50 @@ Key findings used in spider implementation:
 - If listing extraction drops to zero, refresh `rsc_token` from a new HAR capture.
 - Keep concurrency conservative first; RE/MAX anti-bot controls can tighten with aggressive settings.
 
+### Cloudflare/CloudFront Blocking and Mitigation
+
+In current runs, RE/MAX detail endpoints can return `202` challenge responses from edge protection (Cloudflare/CloudFront layer behavior). This causes many enriched fields to stay `None` unless mitigated.
+
+Mitigation steps:
+
+1. Use DataImpulse rotating residential proxy as primary path and keep request rate conservative.
+2. Keep retries enabled and rotate proxy session on `202`.
+3. Use Scrapfly ASP as fallback only when detail responses are blocked/non-200.
+4. Preserve browser-like request headers and periodically refresh HAR-derived request profile (`_rsc` token + router headers).
+5. Run periodic backfill/re-crawl passes for rows with blocked/fallback parse statuses.
+6. Monitor `detail_http_status` and `detail_parse_status` distribution per run.
+
+Debugging checks:
+
+```bash
+scrapy crawl remax -a state=nj -a max_pages=2 -s ITEM_PIPELINES={} -s TELNETCONSOLE_ENABLED=False
+```
+
+```bash
+grep -E "detail returned 202|detail_parse_status|RE/MAX page=" -n logs/remax*.log
+```
+
+Scrapfly fallback traces:
+
+```bash
+grep -E "RE/MAX detail retrying with Scrapfly ASP|scrapfly_ok|scrapfly_non_200" -n logs/remax*.log
+```
+
 ---
 
 ## Redfin Spider
-The Redfin spider extracts for-sale listings across all 21 New Jersey counties using Redfin's Stingray GIS API.
+The Redfin spider extracts for-sale listings across all 21 New Jersey counties using county HTML pagination plus API/detail enrichment.
+
+### Current State (2026-05-18)
+
+- Crawl breadth comes from county pages (`/county/<region_id>/NJ/<county-slug>` and `/page-N`).
+- Listing URLs are extracted from county page HTML, deduped globally, then enriched in two hops:
+  1. AVM API (`/stingray/api/home/details/avm`)
+  2. property detail page HTML
+- This mode intentionally does not depend on GIS list API availability.
+- Known blockers are handled by fallback behavior:
+  - if AVM is missing/unavailable, detail page parsing still runs
+  - if detail page is non-200, base record is still emitted
 
 ### How to Run
 To run the Redfin spider and save the output to a CSV file:
@@ -336,18 +696,28 @@ Useful spider args:
 Example smoke run:
 ```bash
 cd scrapy_crawlers
-../.venv/bin/scrapy crawl redfin -a disable_proxy=1 -a max_counties=1 -a max_pages_per_county=2 -o redfin_test.csv
+scrapy crawl redfin -a disable_proxy=1 -a max_counties=1 -a max_pages_per_county=2 -o redfin_test.csv
 ```
 
 ### Spider Flow
 1. Warm up on `https://www.redfin.com/` for session/cookies.
 2. Iterate NJ counties using static county -> `region_id` mapping.
-3. Call:
-   - `GET https://www.redfin.com/stingray/api/gis`
-   - params: `region_type=5`, `rets=LIST_COUNT`, `num_homes=350`, `page_number=N`, filters
-4. Parse `payload.homes` and normalize listing fields.
-5. Continue paging while homes are returned (bounded by `max_pages_per_county`).
-6. Deduplicate globally by `listing_id` (fallback `mls_id`, then `detail_url`).
+3. Fetch county HTML pages and extract `/home/<id>` listing URLs.
+4. Build base item from URL + county context.
+5. Enrich from AVM API when `listing_id` is available.
+6. Follow property detail page and merge HTML/text fallback fields.
+7. Continue paging while county has next page (bounded by `max_pages_per_county`).
+8. Deduplicate globally by detail URL / listing ID.
+
+### Rendering Strategy — No Browser Required
+
+Redfin in this spider uses:
+
+- server-rendered county HTML pages for listing discovery
+- JSON API response for AVM enrichment
+- server-rendered detail HTML for additional parsing
+
+No browser rendering is required for current extraction flow.
 
 ### Property Detail Extraction
 For each Redfin listing URL, the spider extracts/normalizes:
@@ -358,32 +728,47 @@ For each Redfin listing URL, the spider extracts/normalizes:
 - Structural/location: `year_built`, `latitude`, `longitude`
 - Additional: `description`
 
-Primary source is the GIS payload (`payload.homes[]`) with fallback enrichment from AVM when address fields are missing.
+Primary source is county/detail parsing, with AVM as an enrichment path.
 
 ### Address and Detail Fallbacks
-- Primary address source: GIS payload fields (`address.*`, `homeData.addressInfo.*`).
+- Primary address source: detail URL slug + AVM payload + detail HTML/title.
 - Fallback 1: derive `address/city/state/postal_code` from Redfin detail URL slug  
   (example `/NJ/City/Street-Name-07652/home/123`).
-- Fallback 2: when GIS item still has missing address fields, request:
+- Fallback 2: when base item still has missing address fields, request:
   - `GET /stingray/api/home/details/avm?propertyId=...&listingId=...&accessLevel=1&pageType=1`
   and merge address fields from AVM payload.
-- Fallback 3: if GIS is blocked/fails (`401/403/405/429` or non-200), fetch county HTML page and extract `/home/<id>` URLs from inline JS so listing URLs are still captured.
+- Fallback 3: parse detail page title/JSON/text and merge remaining missing fields.
 
 ### HAR Notes (www.redfin.com.har)
-Use HAR captures to validate current Redfin endpoint usage:
+Use HAR captures to validate current endpoint usage:
 
 ```bash
 jq -r '.log.entries[] | .request.url | select(contains("redfin.com/stingray"))' \
   ~/Downloads/www.redfin.com.har | sort -u
 ```
 
-The key listing endpoint for this spider is:
-- `https://www.redfin.com/stingray/api/gis`
-
-Address-enrichment endpoint:
+Key enrichment endpoint:
 - `https://www.redfin.com/stingray/api/home/details/avm`
 
-If a HAR capture is from a single listing-detail browsing session, it may contain mostly tracking + detail calls and very few `api/gis` records. In that case, capture a county search browsing session.
+Key discovery path:
+- `https://www.redfin.com/county/<region_id>/NJ/<county-slug>`
+
+If a HAR capture is from a single detail-page session, it may miss county pagination pages. Capture a county browsing session for discovery-path debugging.
+
+### Debugging (Spider-Relevant)
+
+Smoke test:
+
+```bash
+scrapy crawl redfin -a disable_proxy=1 -a max_counties=1 -a max_pages_per_county=2 -s ITEM_PIPELINES={} -s TELNETCONSOLE_ENABLED=False
+```
+
+What to verify:
+
+- county page extracts non-zero `/home/` URLs
+- AVM calls return parseable payload when available
+- detail requests run for each listing URL
+- final items include address fields even when AVM misses (URL/title fallback)
 
 ### Output Fields
 Each item includes:
@@ -400,6 +785,13 @@ Each item includes:
 
 ## Realtor Spider
 The Realtor spider extracts New Jersey for-sale listings from Realtor's GraphQL API using a HAR-derived request profile.
+
+### Current State (2026-05-18)
+
+- Uses county-sharded GraphQL search (`Atlantic County, NJ` ... `Warren County, NJ`) for breadth.
+- Paginates each shard with `limit/offset` until reported `total` is reached.
+- Uses strict header profile from HAR (`rdc-*`, `x-rdc-visitor-id`, `x-is-bot`) to avoid `400` request rejection.
+- Emits normalized listing/location/price/beds/baths/media fields from GraphQL payload and dedupes by property/listing identity.
 
 ### How to Run
 ```commandline
@@ -435,6 +827,45 @@ For New Jersey-scale result sets, the spider now shards search by county and ded
 
 This avoids relying on a single broad query path (for example `/New-Jersey/pg-206`) while still crawling to the end of each shard.
 
+### Spider Flow
+
+1. Warm up with search landing page to align cookies/session.
+2. Iterate county shards and submit `ConsumerSearchQuery` to GraphQL endpoint.
+3. Parse `home_search` result set and emit normalized records.
+4. Increase `offset` and continue until shard total is exhausted.
+5. Deduplicate globally across all shards.
+
+### Rendering Strategy — API-First, No Browser Required
+
+Realtor extraction is API-first:
+
+- Primary data source is GraphQL JSON (`/frontdoor/graphql`).
+- No DOM rendering is required for listing extraction in current implementation.
+
+### Debugging (Spider-Relevant)
+
+Smoke test:
+
+```bash
+scrapy crawl realtor -s ITEM_PIPELINES={} -s TELNETCONSOLE_ENABLED=False
+```
+
+HAR checks:
+
+```bash
+jq -r '.log.entries[]
+  | select(.request.url == "https://www.realtor.com/frontdoor/graphql")
+  | .request.postData.text
+  | fromjson
+  | .operationName' ~/Downloads/www.realtor.com.har | sort | uniq -c
+```
+
+What to verify:
+
+- GraphQL responses contain `home_search` data for each county shard
+- `offset` advances and stops at shard total
+- non-empty `property_id`/`listing_id` and canonical URL values
+
 ### Extracting Realtor GraphQL Calls from HAR
 ```bash
 jq -r '.log.entries[]
@@ -467,6 +898,22 @@ Each item includes:
 ## Zillow Spider
 The Zillow spider extracts New Jersey for-sale listings using Zillow's search state API captured from HAR.
 
+### Current State (2026-05-18)
+
+- Strategy order:
+  1. `city` shards discovered from county pages
+  2. `county` fallback when city discovery fails
+  3. statewide `bbox` fallback if county scheduling is unavailable
+- Oversized or blocked queries still split recursively by map bounds.
+- End-of-run logs now include strategy counters for `queries`, `result_pages`, `empty_pages`, and emitted `items`.
+- Zillow-specific enrichment includes:
+  - `living_area_sqft`
+  - `tax_assessed_value`
+  - `days_on_zillow`
+  - `is_preforeclosure_auction`
+  - `lot_area_value`, `lot_area_unit`
+  - `photo_links` built from `carouselPhotosComposable.baseUrl + photoData[].photoKey`
+
 ### How to Run
 ```commandline
 export PYTHONPATH=$PYTHONPATH:$(pwd)
@@ -483,10 +930,28 @@ Primary listing endpoint discovered in HAR:
 - paging path: `cat1.searchList.totalPages`
 
 ### Spider Flow (zillow_spider.py)
-1. Warm up on `https://www.zillow.com/nj/` to establish cookies/session state.
-2. Submit `PUT /async-create-search-page-state` with NJ `regionSelection`, NJ `regionBounds`, and `pagination.currentPage`.
-3. If a query hits Zillow's cap (`totalPages >= 20` with very high totals), split `mapBounds` into 4 quadrants and recurse.
-4. Parse each listing from `cat1.searchResults.listResults`, dedupe globally by `zpid`, and continue paginating each shard until `currentPage == totalPages`.
+1. Warm up on `https://www.zillow.com/nj/`.
+2. Discover county browse pages from `https://www.zillow.com/browse/homes/nj/`.
+3. Discover city labels from each county page and run `city` query shards.
+4. If city discovery fails for a county, run `county` query fallback.
+5. If county fallback cannot be scheduled, run statewide `bbox` fallback.
+6. Call `PUT /async-create-search-page-state` for each query and parse `cat1.searchResults.listResults`.
+7. Split oversized/blocked queries into child bounds and recurse.
+8. Dedupe globally by `zpid` and paginate until `currentPage == totalPages`.
+
+Smoke test:
+```bash
+scrapy crawl zillow -a max_counties=2 -a max_cities=20 -s ITEM_PIPELINES={} -s TELNETCONSOLE_ENABLED=False
+```
+
+### Rendering Strategy — Hybrid SSR Discovery + JSON Search API
+
+Zillow extraction in this spider is split across:
+
+- SSR/HTML browse pages for county/city discovery
+- JSON API (`/async-create-search-page-state`) for listing payloads
+
+No browser renderer is required in the current flow.
 
 ### Key Response Fields Parsed
 Each item includes:
@@ -512,6 +977,21 @@ jq -r '.log.entries[]
   | select(.request.url=="https://www.zillow.com/async-create-search-page-state")
   | .response.content.text' ~/Downloads/www.zillow.com.har \
   | jq '.cat1.searchList | {totalResultCount, resultsPerPage, totalPages, pagination}'
+```
+
+### Debugging (Spider-Relevant)
+
+What to verify during runs:
+
+- city shard discovery count per county
+- county fallback activation only when city discovery fails
+- bbox fallback activation only when county scheduling fails
+- end-of-run strategy summary counters (`queries`, `result_pages`, `empty_pages`, `items`)
+
+Quick log filter:
+
+```bash
+grep -E "strategy=|Using county fallback|bounding-box fallback|crawl summary" -n logs/zillow*.log
 ```
 
 ## Proxy Configuration
@@ -600,692 +1080,93 @@ scrapy crawl wikipedia -o wikiurls.csv
 
 ## BHGRE New Jersey Property Spider
 
-This section documents the development process for the BHGRE spider that extracts all property listings from Better Homes and Gardens Real Estate (BHGRE) for the state of New Jersey.
+This section documents the current BHGRE spider behavior for New Jersey statewide extraction.
 
-### Development Process
+### Current State (2026-05-19)
 
-#### 0. Preparation for the Spider - Processing the HAR File
-Before writing the spider, we analyzed a HAR file captured from the BHGRE website to understand
+- Spider: `scrapy_crawlers/spiders/bhgre_spider.py` (`name = bhgre`).
+- Crawl model: API-first with staged discovery and global dedupe.
+- Strategy:
+  1. ZIP shard discovery (`/api/neighborPlaces` with `placeType=postalCode`)
+  2. City shard discovery (`/api/neighborPlaces` with `placeType=city`)
+  3. State fallback shard (`/state/nj`)
+- Each discovered canonical URL is resolved via `/api/places?brand=BHG&canonicalUrl=...`, then crawled through `POST /api/listings`.
+- Every listing gets detail enrichment via `GET /api/listings/<id>?ctxCode=BHG&showMlsListings=true`.
+- Deduplication is global by listing `id` across ZIP/city/state shards.
 
-1. Let me parse the HAR file to understand the API endpoints:
- ```
-bash  python3 << 'EOF'
-import json
+### Why State Counts Differed Before
 
-with open('~/Downloads/www.bhgre.com.har', 'r') as f:
-    har = json.load(f)
+- For NJ state, forcing `viewBoundary` undercounted results (~32K observed).
+- Using state `placeMasterIds` without forced boundary matches the state page behavior (~42K observed).
+- Current spider only sends `viewBoundary` when a shard explicitly provides it.
 
-# Extract all unique URLs from the HAR file
-urls = set()
-for entry in har.get('log', {}).get('entries', []):
-    request = entry.get('request', {})
-    url = request.get('url', '')
-    if url:
-        urls.add(url)
+### New Strategy Flow
 
-# Print URLs that look like API calls
-for url in sorted(urls):
-    if 'api' in url.lower() or 'search' in url.lower():
-        print(url)
-EOF
+1. Warmup request (cookie/session priming): `https://www.bhgre.com/home/list/county/nj/bergen-county`
+2. Seed ZIP shards from NJ state place ID.
+3. Seed city shards from NJ state place ID.
+4. Resolve each canonical (`/zip/nj/...`, `/city/nj/...`) to `placeMasterId`.
+5. Crawl listing pages for each shard (`numPerPage=300`, `page=1..N`).
+6. Run one state fallback shard (`/state/nj`) to catch anything missed.
+7. Follow per-listing detail endpoint and merge base+detail fields.
 
-```
-2. Now let me extract the request and response details for the listings API:
-```bash
-python3 << 'EOF'
-import json
+### Options
 
-with open('~/Downloads/www.bhgre.com.har', 'r') as f:
-    har = json.load(f)
+Spider args:
 
-# Find listings API calls
-for entry in har.get('log', {}).get('entries', []):
-    request = entry.get('request', {})
-    url = request.get('url', '')
-    
-    if 'api/listings' in url and url.endswith('api/listings'):
-        print("=" * 80)
-        print("URL:", url)
-        print("METHOD:", request.get('method'))
-        print("\nRequest Headers:")
-        for header in request.get('headers', []):
-            print(f"  {header.get('name')}: {header.get('value')}")
-        
-        if request.get('postData'):
-            print("\nRequest Body:")
-            body = request.get('postData', {}).get('text', '')
-            try:
-                body_json = json.loads(body)
-                print(json.dumps(body_json, indent=2)[:1000])
-            except:
-                print(body[:1000])
-        
-        response = entry.get('response', {})
-        print("\nResponse Status:", response.get('status'))
-        
-        if response.get('content'):
-            content = response.get('content', {}).get('text', '')
-            try:
-                content_json = json.loads(content)
-                print("\nResponse Body (first part):")
-                print(json.dumps(content_json, indent=2)[:2000])
-            except:
-                print("\nResponse Body:")
-                print(content[:1000])
-        print()
-EOF
-```
-3. Let me try a simpler approach to extract the API details:
-```bash
-python3 << 'EOF'
-import json
+| Arg | Description | Default |
+|---|---|---|
+| `max_pages` | Max listings pages per shard (`0` = no cap) | `0` |
+| `place_num_per_page` | Page size for ZIP/city seed discovery | `200` |
+| `max_place_pages` | Max seed pages per stage (`0` = no cap) | `0` |
+| `enable_tiered_place_search` | Enable ZIP -> city -> state fallback strategy | `1` |
 
-with open('~/Downloads/www.bhgre.com.har', 'r') as f:
-    har = json.load(f)
+Environment overrides:
 
-# Find listings API calls
-for entry in har.get('log', {}).get('entries', []):
-    request = entry.get('request', {})
-    url = request.get('url', '')
-    
-    if 'api/listings' in url and url.endswith('api/listings'):
-        print("URL:", url)
-        print("METHOD:", request.get('method'))
-        
-        if request.get('postData'):
-            body = request.get('postData', {}).get('text', '')
-            try:
-                body_json = json.loads(body)
-                print("\nRequest Body:")
-                print(json.dumps(body_json, indent=2))
-            except:
-                print("\nRequest Body (raw):", body[:500])
-        
-        response = entry.get('response', {})
-        print("\nResponse Status:", response.get('status'))
-        print("\nResponse Content-Type:", response.get('content', {}).get('mimeType'))
-        
-        if response.get('content'):
-            content = response.get('content', {}).get('text', '')
-            try:
-                content_json = json.loads(content)
-                # Get a sample property
-                if 'listings' in content_json:
-                    print("\n# Sample listing:")
-                    print(json.dumps(content_json['listings'][0] if content_json['listings'] else {}, indent=2))
-                else:
-                    print("\nResponse keys:", list(content_json.keys()))
-                    print(json.dumps(content_json, indent=2)[:1500])
-            except Exception as e:
-                print(f"\nError parsing: {e}")
-        break
-EOF
-```
-4. Let me save the extraction to a file to avoid terminal issues:
-```bash
-python3 > /tmp/har_analysis.txt 2>&1 << 'EOF'
-import json
+- `BHGRE_MAX_PAGES`
+- `BHGRE_PLACE_NUM_PER_PAGE`
+- `BHGRE_MAX_PLACE_PAGES`
+- `BHGRE_ENABLE_TIERED_PLACE_SEARCH`
+- `BHGRE_API_KEY`
 
-with open('~/Downloads/www.bhgre.com.har', 'r') as f:
-    har = json.load(f)
+### Commands
 
-# Find listings API calls
-for entry in har.get('log', {}).get('entries', []):
-    request = entry.get('request', {})
-    url = request.get('url', '')
-    
-    if 'api/listings' in url and url.endswith('api/listings'):
-        print("URL:", url)
-        print("METHOD:", request.get('method'))
-        
-        if request.get('postData'):
-            body = request.get('postData', {}).get('text', '')
-            try:
-                body_json = json.loads(body)
-                print("\nRequest Body:")
-                print(json.dumps(body_json, indent=2)[:2000])
-            except:
-                print("\nRequest Body (raw):", body[:500])
-        
-        response = entry.get('response', {})
-        print("\nResponse Status:", response.get('status'))
-        
-        if response.get('content'):
-            content = response.get('content', {}).get('text', '')
-            try:
-                content_json = json.loads(content)
-                if 'listings' in content_json:
-                    print("\nNumber of listings:", len(content_json['listings']))
-                    if content_json['listings']:
-                        print("\nSample listing:")
-                        print(json.dumps(content_json['listings'][0], indent=2)[:3000])
-                else:
-                    print("\nResponse keys:", list(content_json.keys())[:10])
-            except Exception as e:
-                print(f"Error: {e}")
-        break
-EOF
-cat /tmp/har_analysis.txt
-```
-```commandline
- python3 << 'EOF'
-heredoc> import json
-heredoc> with open('~/Downloads/www.bhgre.com.har', 'r') as f:
-heredoc>     har = json.load(f)
-heredoc> # Extract all unique URLs from the HAR file
-heredoc> urls = set()
-heredoc> for entry in har.get('log', {}).get('entries', []):
-heredoc>     request = entry.get('request', {})
-heredoc>     url = request.get('url', '')
-heredoc>     if url:
-heredoc>         urls.add(url)
-heredoc> # Print URLs that look like API calls
-heredoc> for url in sorted(urls):
-heredoc>     if 'api' in url.lower() or 'search' in url.lower():
-heredoc>         print(url)
-heredoc> EOF
-https://maps.googleapis.com/$rpc/google.internal.maps.mapsjs.v1.MapsJsInternalService/GetViewportInfo
-https://maps.googleapis.com/maps/api/mapsjs/mapConfigs:batchGet?language=en-US&region=US&alt=protojson&major_version=63&minor_version=14d&map_ids=601103d70391a6d5&map_type=1
-https://www.bhgre.com/api/ai/content?brandCode=BHG&placeMasterId=P02500000GAeYCEazA8yNXYKU829IUlj7wpEXLY1&page_type=listing&content_type=faq
-https://www.bhgre.com/api/listings
-https://www.bhgre.com/api/neighborPlaces/P02500000GAeYCEazA8yNXYKU829IUlj7wpEXLY1?brand=BHG&placeType=city&applyListingsFilter=true&&&page=1&numPerPage=20
-https://www.bhgre.com/api/neighborPlaces/P02500000GAeYCEazA8yNXYKU829IUlj7wpEXLY1?brand=BHG&placeType=neighborhood&applyListingsFilter=true&&&page=1&numPerPage=20
-https://www.bhgre.com/api/neighborPlaces/P02500000GAeYCEazA8yNXYKU829IUlj7wpEXLY1?brand=BHG&placeType=postalCode&applyListingsFilter=true&&&page=1&numPerPage=20
-https://www.bhgre.com/api/places/search
-https://www.bhgre.com/api/places?brand=BHG&canonicalUrl=%2Fcounty%2Fnj%2Fbergen-county
-https://www.bhgre.com/api/searchsuggestions
-https://www.google-analytics.com/g/collect?v=2&tid=G-B8L3MV0KHE&gtm=45je64s1v9112769574z8889086970za20gzb889086970zd889086970&_p=1777532412716&gcs=G100&gcd=13q3q3q3q5l1&npa=1&dma_cps=-&dma=0&gdid=dNTIxZG&_eu=AAAAAGA&are=1&cid=2086974229.1777532413&frm=0&lps=1&pscdl=denied&rcb=0&sr=1728x1117&uaa=arm&uab=64&uafvl=Google%2520Chrome%3B147.0.7727.117%7CNot.A%252FBrand%3B8.0.0.0%7CChromium%3B147.0.7727.117&uam=&uamb=0&uap=macOS&uapv=15.7.3&uaw=0&ul=en-us&gaf=2&_s=10&tag_exp=0~115938466~115938469~117266400~117512543~118463261&dp=%2Fhome%2Flist%2Fcounty%2Fnj%2Fbergen-county&dl=https%3A%2F%2Fwww.bhgre.com%2Fhome%2Flist%2Fcounty%2Fnj%2Fbergen-county&dr=https%3A%2F%2Fwww.google.com%2F&dt=Bergen%20County%2C%20NJ%20Homes%20for%20Sale%20with%20Style%20%7C%20BHGRE&sid=1777532412&sct=1&seg=1&_tu=CA&en=page_view&ep.content_group=Property%20Search%20Results&_et=12009&tfd=142759
-https://www.google-analytics.com/g/collect?v=2&tid=G-B8L3MV0KHE&gtm=45je64s1v9112769574za20gzb889086970zd889086970&_p=1777532412716&gcs=G100&gcd=13q3q3q3q5l1&npa=1&dma_cps=-&dma=0&gdid=dNTIxZG&_eu=AEEAAGA&ae=a&are=1&cid=2086974229.1777532413&frm=0&lps=1&pscdl=denied&rcb=0&sr=1728x1117&uaa=arm&uab=64&uafvl=Google%2520Chrome%3B147.0.7727.117%7CNot.A%252FBrand%3B8.0.0.0%7CChromium%3B147.0.7727.117&uam=&uamb=0&uap=macOS&uapv=15.7.3&uaw=0&ul=en-us&gaf=2&_s=8&tag_exp=0~115938466~115938469~117266400~117512543~118463261&dp=%2F&dl=https%3A%2F%2Fwww.bhgre.com%2F&dr=https%3A%2F%2Fwww.google.com%2F&sid=1777532412&sct=1&seg=1&dt=Buy%20a%20Home%20That%20Fits%20Your%20Lifestyle%20%7C%20BHGRE&_tu=CA&en=form_start&ep.content_group=Ungrouped&ep.form_id=&ep.form_name=&ep.form_destination=https%3A%2F%2Fwww.bhgre.com%2Fhome%2Fbuy&epn.form_length=9&ep.first_field_id=locationSearch_id&ep.first_field_name=locationSearch&ep.first_field_type=text&epn.first_field_position=1&_et=45977&tfd=125734
-(.venv) WebCrawlers % python3 << 'EOF'
-heredoc> import json
-heredoc> with open('~/Downloads/www.bhgre.com.har', 'r') as f:
-heredoc>     har = json.load(f)
-heredoc> # Find listings API calls
-heredoc> for entry in har.get('log', {}).get('entries', []):
-heredoc>     request = entry.get('request', {})
-heredoc>     url = request.get('url', '')
-heredoc>     if 'api/listings' in url and url.endswith('api/listings'):
-heredoc>         print("=" * 80)
-heredoc>         print("URL:", url)
-heredoc>         print("METHOD:", request.get('method'))
-heredoc>         print("\nRequest Headers:")
-heredoc>         for header in request.get('headers', []):
-heredoc>             print(f"  {header.get('name')}: {header.get('value')}")
-heredoc>         if request.get('postData'):
-heredoc>             print("\nRequest Body:")
-heredoc>             body = request.get('postData', {}).get('text', '')
-heredoc>             try:
-heredoc>                 body_json = json.loads(body)
-heredoc>                 print(json.dumps(body_json, indent=2)[:1000])
-heredoc>             except:
-heredoc>                 print(body[:1000])
-heredoc>         response = entry.get('response', {})
-heredoc>         print("\nResponse Status:", response.get('status'))
-heredoc>         if response.get('content'):
-heredoc> with open(      har = json.load(f)
-heredoc> # Find listings API calls
-heredoc> for entry in har t# Find listings API confor entry in har.get('loon    request = entry.get('request', {})
-heredoc>     url = rt     url = request.get('url', '')
-heredoc>     um    if 'api/listings' in url an0]        print("=" * 80)
-heredoc>         print("URL:", url)
-heredoc>         pr")        print("URL:", (c        print("METHOD:", in        python3 << 'EOF'
-heredoc> import json
-heredoc> with open('~/Downloads/www.bhgre.com.har', 'r') as f:
-heredoc>     har = json.load(f)
-heredoc> # Find listings API calls
-heredoc> for entry in har.get('log', {}).get('entries', []):
-heredoc>     request = entry.get('request', {})
-heredoc>     url = request.get('url', '')
-heredoc>     if 'api/listings' in url and url.endswith('api/listings'):
-heredoc>         print("URL:", url)
-heredoc>         print("METHOD:", request.get('method'))
-heredoc>         if request.get('postData'):
-heredoc>             body = request.get('postData', {}).get('text', '')
-heredoc>             try:
-heredoc>                 body_json = json.loads(body)
-heredoc>                 print("\nRequest Body:")
-heredoc>                 print(json.dumps(body_json, indent=2))
-heredoc>             except:
-heredoc>                 print("\nRequest Body (raw):", body[:500])
-heredoc>         response = entry.get('response', {})
-heredoc>         print("\nResponse Status:", response.get('status'))
-heredoc>         print("\nResponse Content-Type:", response.get('content', {}).get('mimeType'))
-heredoc>         if response.get('content'):
-heredoc>             content = response.get('content', {}).get('text', '')
-heredoc>     with open(y:    har = json.load(f)
-heredoc> # Find listings API calls
-heredoc> t)
-heredoc>                # Find listings API crtfor entry in har.get('lostings' in content_json:
-heredoc>                     print("\n    url = request.get('url', '')
-heredoc>           if 'api/listings' in url an'l        print("URL:", url)
-heredoc>         print("METHOD:", request.g          print("METHOD:",           if request.get('postData'):
-heredoc>           nt            body = request.get('po              try:
-heredoc>                 body_json = json.loads(body)                 n                 print("\nRequest Body:")
-heredoc>   ng                print(jsonpython3 > /tmp/har_analysis.txt 2>&1 << 'EOF'
-heredoc> import json
-heredoc> with open('~/www.bhgre.com.har', 'r') as f:
-heredoc>     har = json.load(f)
-heredoc> # Find listings API calls
-heredoc> for entry in har.get('log', {}).get('entries', []):
-heredoc>     request = entry.get('request', {})
-heredoc>     url = request.get('url', '')
-heredoc>     if 'api/listings' in url and url.endswith('api/listings'):
-heredoc>         print("URL:", url)
-heredoc>         print("METHOD:", request.get('method'))
-heredoc>         if request.get('postData'):
-heredoc>             body = request.get('postData', {}).get('text', '')
-heredoc>             try:
-heredoc>                 body_json = json.loads(body)
-heredoc>                 print("\nRequest Body:")
-heredoc>                 print(json.dumps(body_json, indent=2)[:2000])
-heredoc>             except:
-heredoc>                 print("\nRequest Body (raw):", body[:500])
-heredoc>         response = entry.get('response', {})
-heredoc>         print("\nResponse Status:", response.get('status'))
-heredoc>         if response.get('content'):
-heredoc>             content = response.get('content', {}).get('text', '')
-heredoc>             try:
-heredoc>                 conteimport j= json.loads(content)
-heredoc>                 with open(gs    har = json.load(f)
-heredoc> # Find listings API calls
-heredoc> for entry in hars:# Find listings API clifor gs']))
-heredoc>                     if content_json['listings']:
-heredoc>                       url = request.get('url', '')
-heredoc>           if 'api/listings' in url anmp        print("URL:", url)
-heredoc>         print("METHOD:", request.g          print("METHOD:",           if request.get('postData'):
-heredoc>           ey            body = request.get('popt            try:
-heredoc>                 body_json = json.loads(body)EO               an           cd /tmp && python3 parse_har.py 2>&1 | head -100
-heredoc> 
-
-```
-
-#### 1. Analyzing the HAR File
-
-The spider was built by analyzing a HAR (HTTP Archive) file captured from the BHGRE website. The HAR file contains network requests made during browsing.
-
-**HAR File Location:** `~/Downloads/www.bhgre.com.har`
-
-#### 2. Extracting API Endpoints with jq
-
-First, we identified all API endpoints in the HAR file:
+Smoke:
 
 ```bash
-# Find all API-related URLs
-jq '.log.entries[] | select(.request.url | contains("api")) | .request.url' ~/Downloads/www.bhgre.com.har | sort | uniq
-
-
-(.venv)  % jq '.log.entries[] | select(.request.url | contains("api/listings")) | {url: .request.url, method: .request.method, status: .response.status}' ~/Downloads/www.bhgre.com.har
-{
-  "url": "https://www.bhgre.com/api/listings",
-  "method": "POST",
-  "status": 200
-}
-(.venv)  % jq '.log.entries[] | select(.request.url | contains("api/listings")) | .request.postData.text | fromjson' ~/Downloads/www.bhgre.com.har 2>&1
-{
-  "ctx": {
-    "brandCode": "BHG",
-    "language": "en-US"
-  },
-  "numPerPage": 300,
-  "status": "ACTIVE,PENDING,COMING_SOON",
-  "showMlsListings": true,
-  "minNumImages": 0,
-  "projectedFields": "projectedFields.UniversalPlatform",
-  "placeMasterIds": "P02500000GAeYCEazA8yNXYKU829IUlj7wpEXLY1",
-  "viewBoundary": {
-    "topRightMapPoint": [
-      -74.272226,
-      40.76159
-    ],
-    "bottomLeftMapPoint": [
-      -73.893628,
-      41.133714
-    ]
-  },
-  "propertyType": "SFR,MFR,MFD,CONDO,TOWNHOUSE,COOP,LAND,FARM",
-  "sortBy": "[{\"key\":\"newListingTimeStamp\",\"order\":\"DESC\"}]"
-}
-(.venv) WebCrawlers % jq '.log.entries[] | select(.request.url | contains("api/listings")) | .response.content.text | fromjson | keys' ~/Downloads/www.bhgre.com.har
-[
-  "apiVersion",
-  "data"
-]
-(.venv) WebCrawlers % jq '.log.entries[] | select(.request.url | contains("api/listings")) | .response.content.text | fromjson | .data | keys' ~/Downloads/www.bhgre.com.har
-[
-  "additionalInfo",
-  "pagination",
-  "results"
-]
-(.venv) WebCrawlers % jq '.log.entries[] | select(.request.url | contains("api/listings")) | .response.content.text | fromjson | .data.results[0]' ~/Downloads/www.bhgre.com.har | head -100
-{
-  "id": "P00800000HABAHtaBEZliPMeNEAE0iJCuzqXEFcQ",
-  "idxFeedAttributionCompany": "Better Homes and Gardens Real Estate Maturo",
-  "canonicalURL": "/nj/mahwah/30-n-bayard-ln/lid-P00800000HABAHtaBEZliPMeNEAE0iJCuzqXEFcQ",
-  "isInBrand": false,
-  "isLuxuryListing": false,
-  "brand": null,
-  "area": {
-    "listingArea": null,
-    "listingAreaUnits": "sq. ft.",
-    "lotSize": 0.09,
-    "lotSizeUnits": "Acres"
-  },
-  "attribution": {
-    "listingOfficeName": "TERRIE O'CONNOR REALTORS",
-    "agentName": "JOSEPH O CONNOR"
-  },
-  "chips": {
-    "mediaChips": [],
-    "statusChips": [
-      {
-        "label": "Open Sat, 12 to 3pm",
-        "ariaLabel": "Open house Saturday, 12 to 3pm",
-        "type": "TEXT"
-      },
-      {
-        "label": "New",
-        "type": "TEXT"
-      }
-    ]
-  },
-  "gis": {
-    "latitude": 41.08041,
-    "longitude": -74.134213
-  },
-  "location": {
-    "unparsedAddress": "30 N Bayard Ln",
-    "city": "Mahwah Twp.",
-    "stateCode": "NJ",
-    "postalCode": "07430"
-  },
-  "mls": {
-    "mlsNumber": "4024260",
-    "globalDisclaimer": {
-      "logoUrl": null,
-      "logoPosition": "beforeListings",
-      "textPosition": "beforeListings",
-      "text": "The data relating to real estate for sale on this website comes in part from the IDX Program of Garden State Multiple Listing Service, L.L.C. Real estate listings held by other brokerage firms are marked as IDX Listing. Information deemed reliable but not guaranteed. 2026 Garden State Multiple Listing Service, L.L.C. All rights reserved. Notice: The dissemination of listings on this website does not constitute the consent required by N.J.A.C. 11:5.6.1 (n) for the advertisement of listings exclusively for sale by another broker. Any such consent must be obtained in writing from the listing broker. This information is being provided for Consumers' personal, non-commercial use and may not be used for any purpose other than to identify prospective properties Consumers may be interested in purchasing. Date Last Updated April 30, 2026"
-    }
-  },
-  "openHouses": [
-    {
-      "startTime": "2026-05-02T12:00:00.000Z",
-      "endTime": "2026-05-02T15:00:00.000Z"
-    },
-    {
-      "startTime": "2026-05-03T12:00:00.000Z",
-      "endTime": "2026-05-03T15:00:00.000Z"
-    }
-  ],
-  "photos": {
-    "firstPhotoUrl": null,
-    "media": [],
-    "photosCount": 0
-  },
-  "price": 799999,
-  "property": {
-    "propertyType": "TOWNHOUSE",
-    "listingStatus": "ACTIVE",
-    "bedrooms": 2,
-    "bathrooms": 4
-  },
-  "rules": {
-    "hideMapPin": false,
-    "propCardDisplayFullBrokerageName": null,
-    "propCardDisplayLogo": true,
-    "propCardMapViewDisplayLogo": null,
-    "globalDisplayDisclaimerAndLogoFooter": null,
-    "displayLastListPrice": false
-  }
-}
-(.venv) WebCrawlers % jq '.log.entries[] | select(.request.url | contains("api/places")) | {url: .request.url, method: .request.method, status: .response.status}' ~/Downloads/www.bhgre.com.har
-{
-  "url": "https://www.bhgre.com/api/places/search",
-  "method": "POST",
-  "status": 200
-}
-{
-  "url": "https://www.bhgre.com/api/places?brand=BHG&canonicalUrl=%2Fcounty%2Fnj%2Fbergen-county",
-  "method": "GET",
-  "status": 200
-}
-(.venv) WebCrawlers % jq '.log.entries[] | select(.request.url == "https://www.bhgre.com/api/places/search") | .request.postData.text | fromjson' ~/Downloads/www.bhgre.com.har
-{
-  "brand": "BHG",
-  "placeType": "state",
-  "pageSortBy": {
-    "key": "placeName",
-    "order": "asc"
-  },
-  "sortBy": {
-    "key": "numberOfListings",
-    "order": "desc"
-  },
-  "numPerPage": 100,
-  "page": 1,
-  "projectedFields": "placeMasterId,placeName,displayName,canonicalUrl",
-  "startsWith": "",
-  "applyListingsFilter": false,
-  "applyOfficesFilter": false,
-  "applyAgentsFilter": false
-}
-(.venv) WebCrawlers % jq '.log.entries[] | select(.request.url == "https://www.bhgre.com/api/places/search") | .response.content.text | fromjson | .data.results[] | select(.displayName | contains("New Jersey"))' ~/Downloads/www.bhgre.com.har
-{
-  "_id": "P02500000GAeUbeAzoJ1ps6gKlZmz08tVW67M95e",
-  "dataSources": [
-    "attom"
-  ],
-  "placeMasterId": "P02500000GAeUbeAzoJ1ps6gKlZmz08tVW67M95e",
-  "placeName": "New Jersey",
-  "canonicalUrl": "/state/nj",
-  "displayName": "New Jersey",
-  "relatedPlaces": {},
-  "boundary": {},
-  "numberOfListings": 0,
-  "numberOfIdxListings": 0,
-  "hasOffices": false,
-  "hasAgents": false,
-  "hasAreasServedOffice": false,
-  "hasRentals": false,
-  "hasOpenHouse": false,
-  "hasCondoTownhouse": false,
-  "hasNewConstruction": false,
-  "hasLand": false,
-  "hasListings": false
-}
-(.venv) WebCrawlers % python3 -c "from scrapy_crawlers.spiders.bhgre_spider import BhgreSpider; print('✓ Spider imported successfully'); print(f'Spider name: {BhgreSpider.name}'); print(f'NJ Place ID: {BhgreSpider.NJ_PLACE_ID}')"
-✓ Spider imported successfully
-Spider name: bhgre
-NJ Place ID: P02500000GAeUbeAzoJ1ps6gKlZmz08tVW67M95e
-
+scrapy crawl bhgre -a max_pages=1 -a max_place_pages=1 -s ITEM_PIPELINES={} -s TELNETCONSOLE_ENABLED=False
 ```
 
-
-```
-
-Key endpoints discovered:
-- `https://www.bhgre.com/api/listings` - Main listings API (POST)
-- `https://www.bhgre.com/api/places/search` - Places search API (POST)
-- `https://www.bhgre.com/api/places` - Places info API (GET)
-
-#### 3. Analyzing the Listings API
-
-The main listings API uses POST requests with JSON payloads. We extracted the request structure:
+Full no-cap run:
 
 ```bash
-# Get listings API request details
-jq '.log.entries[] | select(.request.url | contains("api/listings")) | {url: .request.url, method: .request.method, status: .response.status}' ~/Downloads/www.bhgre.com.har
+scrapy crawl bhgre -a max_pages=0 -a max_place_pages=0
 ```
 
-**Request Body Structure:**
-```json
-{
-  "ctx": {
-    "brandCode": "BHG",
-    "language": "en-US"
-  },
-  "numPerPage": 300,
-  "page": 1,
-  "status": "ACTIVE,PENDING,COMING_SOON",
-  "showMlsListings": true,
-  "minNumImages": 0,
-  "projectedFields": "projectedFields.UniversalPlatform",
-  "placeMasterIds": "P02500000GAeUbeAzoJ1ps6gKlZmz08tVW67M95e",
-  "viewBoundary": {
-    "topRightMapPoint": [-73.89, 41.35],
-    "bottomLeftMapPoint": [-74.75, 38.93]
-  },
-  "propertyType": "SFR,MFR,MFD,CONDO,TOWNHOUSE,COOP,LAND,FARM",
-  "sortBy": "[{\"key\":\"newListingTimeStamp\",\"order\":\"DESC\"}]"
-}
-```
-
-#### 4. Finding New Jersey Place ID
-
-To target New Jersey specifically, we searched for the state in the places API:
+Disable staged ZIP/city and run only state shard:
 
 ```bash
-# Find New Jersey place ID
-jq '.log.entries[] | select(.request.url == "https://www.bhgre.com/api/places/search") | .response.content.text | fromjson | .data.results[] | select(.displayName | contains("New Jersey"))' ~/Downloads/www.bhgre.com.har
+scrapy crawl bhgre -a enable_tiered_place_search=0
 ```
 
-**New Jersey Place ID:** `P02500000GAeUbeAzoJ1ps6gKlZmz08tVW67M95e`
+### HAR Verification
 
-#### 5. Understanding Response Structure
+Useful HAR (example): `~/Downloads/www.bhgre.com5.har`
 
-We analyzed the API response to understand the data structure:
+Key endpoints to verify:
+
+- `GET /api/neighborPlaces/<NJ_PLACE_ID>?placeType=postalCode|city`
+- `GET /api/places?brand=BHG&canonicalUrl=...`
+- `POST /api/listings`
+- `GET /api/listings/<listing_id>?ctxCode=BHG&showMlsListings=true`
+
+Quick checks:
 
 ```bash
-# Get response structure
-jq '.log.entries[] | select(.request.url | contains("api/listings")) | .response.content.text | fromjson | .data | keys' ~/Downloads/www.bhgre.com.har
+jq -r '.log.entries[] | .request.url | select(contains("www.bhgre.com/api/"))' ~/Downloads/www.bhgre.com5.har | sort -u
 
-# Get sample listing
-jq '.log.entries[] | select(.request.url | contains("api/listings")) | .response.content.text | fromjson | .data.results[0]' ~/Downloads/www.bhgre.com.har | head -50
+jq -r '.log.entries[] | select(.request.url=="https://www.bhgre.com/api/listings") | .request.postData.text' ~/Downloads/www.bhgre.com5.har | head -5
 ```
-
-**Response Structure:**
-- `data.results[]` - Array of property listings
-- `data.pagination` - Pagination information
-- Each listing contains: id, location, property details, pricing, photos, etc.
-
-#### 6. Creating the BHGRE Spider
-
-Based on the HAR analysis, we created `scrapy_crawlers/spiders/bhgre_spider.py` with the following features:
-
-- **API Integration:** Makes POST requests to the listings API
-- **Pagination:** Automatically handles multiple pages of results
-- **Comprehensive Data Extraction:** Extracts all available property information
-- **New Jersey Focus:** Targets the entire state using the correct place ID and boundaries
-
-### Spider Features
-
-#### Data Extracted
-- **Basic Info:** Property ID, URL, price, type, status
-- **Location:** Address, city, state, postal code, coordinates
-- **Property Details:** Bedrooms, bathrooms, area, lot size
-- **MLS Information:** MLS number, listing office, agent
-- **Photos:** Photo count and URLs
-- **Open Houses:** Scheduled open house times
-- **Additional Flags:** Luxury status, image availability
-
-#### Configuration
-- **Place ID:** `P02500000GAeUbeAzoJ1ps6gKlZmz08tVW67M95e` (New Jersey)
-- **Boundaries:** Covers entire NJ state geographically
-- **Property Types:** All residential types (SFR, condo, townhouse, etc.)
-- **Status Types:** Active, pending, and coming soon listings
-- **Pagination:** 300 properties per page
-
-### Usage
-
-#### Running the Spider
-
-1. **Navigate to the project directory:**
-   ```bash
-   cd WebCrawlers
-   ```
-
-2. **Run the spider:**
-   ```bash
-   scrapy crawl bhgre
-   ```
-
-3. **Save output to JSON:**
-   ```bash
-   scrapy crawl bhgre -o nj_properties.json
-   ```
-
-4. **Save output to CSV:**
-   ```bash
-   scrapy crawl bhgre -o nj_properties.csv
-   ```
-
-#### Output Format
-
-The spider yields items with the following structure:
-
-```json
-{
-  "id": "P00800000HABAHtaBEZliPMeNEAE0iJCuzqXEFcQ",
-  "url": "/nj/mahwah/30-n-bayard-ln/lid-P00800000HABAHtaBEZliPMeNEAE0iJCuzqXEFcQ",
-  "price": 799999,
-  "property_type": "TOWNHOUSE",
-  "status": "ACTIVE",
-  "address": "30 N Bayard Ln",
-  "city": "Mahwah Twp.",
-  "state": "NJ",
-  "postal_code": "07430",
-  "latitude": 41.08041,
-  "longitude": -74.134213,
-  "bedrooms": 2,
-  "bathrooms": 4,
-  "listing_area": null,
-  "lot_size": 0.09,
-  "lot_size_units": "Acres",
-  "mls_number": "4024260",
-  "listing_office": "TERRIE O'CONNOR REALTORS",
-  "agent_name": "JOSEPH O CONNOR",
-  "photos_count": 0,
-  "first_photo_url": null,
-  "open_houses": [
-    {
-      "startTime": "2026-05-02T12:00:00.000Z",
-      "endTime": "2026-05-02T15:00:00.000Z"
-    }
-  ],
-  "is_luxury": false,
-  "has_images": false,
-  "raw_listing": {...}
-}
-```
-
-### Technical Details
-
-#### Dependencies
-- Scrapy 2.15.2
-- Python 3.11+
-- curl_cffi (for browser-grade TLS fingerprinting)
-
-#### Settings
-The spider uses the project's Scrapy settings including:
-- Custom curl_cffi download handler
-- User agent rotation
-- Retry middleware
-- Rate limiting (10 second delay, 4 concurrent requests per domain)
-
-#### Error Handling
-- JSON parsing errors are logged
-- Network failures are handled by Scrapy's retry middleware
-- Invalid responses are skipped with error logging
-
-#### Files
-- `scrapy_crawlers/spiders/bhgre_spider.py` - Main spider implementation
-- `scrapy_crawlers/settings/settings.py` - Scrapy configuration
-- `requirements.txt` - Python dependencies
-
-#### Notes
-- The spider respects BHGRE's robots.txt and implements appropriate delays
-- All data extraction is based on the public API responses
-- The spider is designed to be maintainable and can be easily adapted for other states or regions
 
 ---
 
@@ -1297,6 +1178,46 @@ The GSMLS spider is implemented at `scrapy_crawlers/spiders/gsmls_spider.py` and
 2. Town selection (`getcommsearch`)
 3. Criteria page (`getpropertysearch`)
 4. Results page (`getpropertydetails`)
+
+### Current State (2026-05-18)
+
+- Result-cap handling: auto price-range splitting when GSMLS returns over-250 result warning.
+- Detail enrichment: follows `moredetails.do` and merges detail fields onto card-level records.
+- Field coverage expanded to include:
+  - `property_remarks`, `style`
+  - `full_baths`, `half_baths`
+  - `garage_desc`, `heating`, `cooling`
+  - tax fields and other labeled detail fields when present
+- Style normalization now filters non-informative values such as `See Remarks`.
+- Deterministic extraction with fallback parsing remains primary; optional LLM repair is still last-resort.
+
+Smoke test:
+```bash
+scrapy crawl gsmls -a max_counties=1 -a max_towns=2 -s ITEM_PIPELINES={} -s TELNETCONSOLE_ENABLED=False
+```
+
+### Rendering Strategy — No Browser Required
+
+GSMLS listing/search workflow is server-rendered HTML across multi-step form endpoints (`getcountysearch`, `getcommsearch`, `getpropertysearch`, `getpropertydetails`, `moredetails`).
+
+- Primary extraction is deterministic selector parsing from server-rendered HTML.
+- Fallback parsing uses scoped text/regex for drift resistance.
+- Optional LLM repair is only for failed-card recovery, not primary rendering.
+
+### Debugging (Spider-Relevant)
+
+Key checks:
+
+- result-cap split triggers on over-250 responses
+- `moredetails` follow-up succeeds and merges fields
+- drift ratio warnings align with true parser misses (not transient transport failures)
+- normalized `style` excludes placeholder values like `See Remarks`
+
+Quick smoke:
+
+```bash
+scrapy crawl gsmls -a max_counties=1 -a max_towns=2 -a disable_proxy=1 -s ITEM_PIPELINES={} -s TELNETCONSOLE_ENABLED=False
+```
 
 ### How to Run
 

@@ -109,6 +109,9 @@ DEFAULT_REQUEST_HEADERS = {
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
     "pipelines.pipelines.DriftArtifactJsonLinesPipeline": 200,
+    "pipelines.pipelines.PropertyNormalizationPipeline": 250,
+    "pipelines.pipelines.PropertyValidationPipeline": 260,
+    "pipelines.pipelines.PropertyItemEnvelopePipeline": 270,
     "pipelines.pipelines.MongoPipeline": 300,
 }
 

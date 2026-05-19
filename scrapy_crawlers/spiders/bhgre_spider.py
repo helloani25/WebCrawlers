@@ -3,8 +3,9 @@ import json
 import uuid
 import math
 import copy
+import re
 from datetime import datetime, timezone
-from urllib.parse import urljoin
+from urllib.parse import urlencode, urljoin
 from scrapy.http import Request
 from spiders.env_config import build_proxy_url, get_env
 
@@ -41,6 +42,8 @@ class BhgreSpider(scrapy.Spider):
 
     # API endpoints
     LISTINGS_API = 'https://www.bhgre.com/api/listings'
+    PLACES_API = "https://www.bhgre.com/api/places"
+    NEIGHBOR_PLACES_API_TEMPLATE = "https://www.bhgre.com/api/neighborPlaces/{place_master_id}"
     LISTING_DETAIL_API_TEMPLATE = 'https://www.bhgre.com/api/listings/{listing_id}?ctxCode=BHG&showMlsListings=true'
     DEFAULT_API_KEY = "svbyT7C7Hw7d8D7GxJsi"
 
@@ -53,6 +56,14 @@ class BhgreSpider(scrapy.Spider):
         "topRightMapPoint": [-73.89, 41.35],
         "bottomLeftMapPoint": [-74.75, 38.93]
     }
+    STAGE_ZIP = "zip"
+    STAGE_CITY = "city"
+    STAGE_BBOX = "bbox"
+    PLACE_TYPES_BY_STAGE = {
+        STAGE_ZIP: "postalCode",
+        STAGE_CITY: "city",
+    }
+    PHOTO_INDEX_PATTERN = re.compile(r"^(?P<prefix>.*?_P)(?P<idx>\d{2})(?P<suffix>\.[A-Za-z0-9]+(?:\?.*)?)$")
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -63,6 +74,25 @@ class BhgreSpider(scrapy.Spider):
             get_env("BHGRE_MAX_PAGES", default="0"),
             fallback=0,
         )
+        self.place_num_per_page = self._safe_int(
+            kwargs.get("place_num_per_page"),
+            get_env("BHGRE_PLACE_NUM_PER_PAGE", default="200"),
+            fallback=200,
+        ) or 200
+        self.max_place_pages = self._safe_int(
+            kwargs.get("max_place_pages"),
+            get_env("BHGRE_MAX_PLACE_PAGES", default="0"),
+            fallback=0,
+        ) or 0
+        self.enable_tiered_place_search = str(
+            self._coalesce(
+                kwargs.get("enable_tiered_place_search"),
+                get_env("BHGRE_ENABLE_TIERED_PLACE_SEARCH", default="1"),
+            )
+        ).strip() not in {"0", "false", "False", "no", "No"}
+        self.seen_listing_ids = set()
+        self.seen_place_canonicals = set()
+        self.bbox_started = False
 
     def _proxy_meta(self):
         if not self.proxy_url:
@@ -95,10 +125,37 @@ class BhgreSpider(scrapy.Spider):
     def parse_warmup(self, response):
         """Prime session cookies and anti-bot state before hitting API."""
         self.logger.info("Warmup page status: %d", response.status)
-        yield self.listings_request(1)
+        if self.enable_tiered_place_search:
+            self.logger.info("BHGRE staged strategy enabled: ZIP -> city -> bbox fallback")
+            req = self.neighbor_places_request(stage=self.STAGE_ZIP, page=1)
+            if req is not None:
+                yield req
+            return
+        yield self.listings_request(page=1, shard=self._bbox_shard())
 
-    def listings_request(self, page):
-        """Create a request for listings API"""
+    def listings_request(self, page, shard):
+        """Create a request for listings API for a specific shard."""
+        payload = self._build_listings_payload(page=page, shard=shard)
+        referer = self._canonical_to_referer((shard or {}).get("canonical_url"))
+
+        return Request(
+            url=self.LISTINGS_API,
+            method='POST',
+            body=json.dumps(payload),
+            headers=self._api_headers(referer=referer),
+            callback=self.parse_listings,
+            errback=self.handle_listings_error,
+            meta={
+                'page': page,
+                'shard': shard,
+                **self._proxy_meta(),
+            }
+        )
+
+    def _build_listings_payload(self, page, shard):
+        shard = shard or {}
+        place_master_id = shard.get("place_master_id")
+        boundary = shard.get("boundary")
         payload = {
             "ctx": {
                 "brandCode": "BHG",
@@ -110,29 +167,75 @@ class BhgreSpider(scrapy.Spider):
             "showMlsListings": True,
             "minNumImages": 0,
             "projectedFields": "projectedFields.UniversalPlatform",
-            "placeMasterIds": self.NJ_PLACE_ID,
-            "viewBoundary": self.NJ_BOUNDARY,
+            "placeMasterIds": place_master_id or self.NJ_PLACE_ID,
             "propertyType": "SFR,MFR,MFD,CONDO,TOWNHOUSE,COOP,LAND,FARM",
             "sortBy": '[{"key":"newListingTimeStamp","order":"DESC"}]'
         }
+        # Let placeMasterIds define scope; boundary can undercount statewide results.
+        if boundary:
+            payload["viewBoundary"] = boundary
+        return payload
 
+    def neighbor_places_request(self, stage, page):
+        place_type = self.PLACE_TYPES_BY_STAGE.get(stage)
+        if not place_type:
+            return None
+        params = {
+            "brand": "BHG",
+            "placeType": place_type,
+            "applyListingsFilter": "true",
+            "page": page,
+            "numPerPage": self.place_num_per_page,
+        }
+        url = (
+            self.NEIGHBOR_PLACES_API_TEMPLATE.format(place_master_id=self.NJ_PLACE_ID)
+            + "?"
+            + urlencode(params)
+        )
         return Request(
-            url=self.LISTINGS_API,
-            method='POST',
-            body=json.dumps(payload),
-            headers=self._api_headers(),
-            callback=self.parse_listings,
-            errback=self.handle_listings_error,
-            meta={'page': page, **self._proxy_meta()}
+            url=url,
+            method="GET",
+            headers=self._api_headers(referer=self.WARMUP_URL),
+            callback=self.parse_neighbor_places,
+            errback=self.handle_neighbor_places_error,
+            meta={
+                "stage": stage,
+                "place_type": place_type,
+                "place_page": page,
+                **self._proxy_meta(),
+            },
+            dont_filter=True,
         )
 
-    def _api_headers(self):
+    def place_request_by_canonical(self, stage, canonical_url):
+        if not canonical_url:
+            return None
+        params = {
+            "brand": "BHG",
+            "canonicalUrl": canonical_url,
+        }
+        url = self.PLACES_API + "?" + urlencode(params)
+        return Request(
+            url=url,
+            method="GET",
+            headers=self._api_headers(referer=self._canonical_to_referer(canonical_url)),
+            callback=self.parse_place,
+            errback=self.handle_place_error,
+            meta={
+                "stage": stage,
+                "canonical_url": canonical_url,
+                **self._proxy_meta(),
+            },
+            dont_filter=True,
+        )
+
+    def _api_headers(self, referer=None):
         """Build required API headers for BHGRE listing requests."""
         return {
             "Accept": "application/json",
             "Content-Type": "application/json",
             "Origin": "https://www.bhgre.com",
-            "Referer": self.WARMUP_URL,
+            "Referer": referer or self.WARMUP_URL,
             "Cache-Control": "no-cache",
             "Pragma": "no-cache",
             "DNT": "1",
@@ -149,13 +252,105 @@ class BhgreSpider(scrapy.Spider):
         except AttributeError:
             return response.body.decode("utf-8", errors="replace")
 
+    def parse_neighbor_places(self, response):
+        stage = response.meta.get("stage")
+        place_page = self._safe_int(response.meta.get("place_page"), fallback=1) or 1
+        data = self._parse_json_response(response, context=f"neighbor_places_{stage}_p{place_page}")
+        if data is None:
+            self._advance_stage(stage)
+            return
+
+        payload = data.get("data") or {}
+        results = payload.get("results") or []
+        pagination = payload.get("pagination") or {}
+        seeded = 0
+        for row in results:
+            if not isinstance(row, dict):
+                continue
+            canonical_url = row.get("canonicalUrl")
+            if not self._is_nj_canonical(canonical_url):
+                continue
+            canonical_key = str(canonical_url).strip().lower()
+            if canonical_key in self.seen_place_canonicals:
+                continue
+            self.seen_place_canonicals.add(canonical_key)
+            req = self.place_request_by_canonical(stage=stage, canonical_url=canonical_url)
+            if req is not None:
+                seeded += 1
+                yield req
+
+        total_pages = self._derive_total_pages(
+            pagination=pagination,
+            additional_info={},
+            current_page=place_page,
+            current_results_count=len(results),
+            request_page_size=self.place_num_per_page,
+        )
+        if self.max_place_pages and self.max_place_pages > 0:
+            total_pages = min(total_pages, self.max_place_pages)
+
+        self.logger.info(
+            "BHGRE %s seed page=%s seeded=%s results=%s total_pages=%s",
+            stage,
+            place_page,
+            seeded,
+            len(results),
+            total_pages,
+        )
+
+        if place_page < total_pages:
+            next_req = self.neighbor_places_request(stage=stage, page=place_page + 1)
+            if next_req is not None:
+                yield next_req
+            return
+
+        self._advance_stage(stage)
+        if stage == self.STAGE_ZIP:
+            req = self.neighbor_places_request(stage=self.STAGE_CITY, page=1)
+            if req is not None:
+                yield req
+            return
+        if stage == self.STAGE_CITY:
+            yield from self.start_bbox_fallback_if_needed()
+
+    def parse_place(self, response):
+        stage = response.meta.get("stage")
+        canonical_url = response.meta.get("canonical_url")
+        data = self._parse_json_response(response, context=f"place_{stage}_{canonical_url}")
+        if data is None:
+            return
+        results = (data.get("data") or {}).get("results") or []
+        if not results:
+            return
+        place = results[0] if isinstance(results[0], dict) else {}
+        place_master_id = place.get("placeMasterId")
+        if not place_master_id:
+            return
+        shard = {
+            "stage": stage,
+            "shard_key": f"{stage}:{canonical_url}",
+            "canonical_url": canonical_url,
+            "display_name": place.get("displayName") or place.get("placeName") or canonical_url,
+            "place_master_id": place_master_id,
+            "boundary": self._extract_boundary_from_place(place),
+        }
+        yield self.listings_request(page=1, shard=shard)
+
+    def start_bbox_fallback_if_needed(self):
+        if self.bbox_started:
+            return
+        self.bbox_started = True
+        self.logger.info("BHGRE starting bbox fallback shard for NJ")
+        yield self.listings_request(page=1, shard=self._bbox_shard())
+
     def parse_listings(self, response):
         """Parse the listings API response"""
         response_text = self._safe_response_text(response)
         if response.status == 401:
             self.logger.error(
-                "Listings API returned 401 on page %s. Body preview: %s",
+                "Listings API returned 401 on page %s shard=%s. Body preview: %s",
                 response.meta.get("page"),
+                (response.meta.get("shard") or {}).get("shard_key"),
                 response_text[:500],
             )
             return
@@ -165,18 +360,27 @@ class BhgreSpider(scrapy.Spider):
             listings = data.get('data', {}).get('results', [])
             pagination = data.get('data', {}).get('pagination', {})
             additional_info = data.get('data', {}).get('additionalInfo', {})
+            shard = response.meta.get("shard") or {}
+            shard_key = shard.get("shard_key", self.STAGE_BBOX)
 
             # Yield each listing as an item
+            emitted = 0
             for listing in listings:
-                base_item = self.parse_listing_item(listing)
                 listing_id = listing.get("id")
+                if listing_id and listing_id in self.seen_listing_ids:
+                    continue
                 if listing_id:
+                    self.seen_listing_ids.add(listing_id)
+                base_item = self.parse_listing_item(listing)
+                if listing_id:
+                    emitted += 1
                     yield self.listing_detail_request(
                         listing_id=listing_id,
                         base_item=base_item,
                     )
                 else:
-                    yield base_item
+                    emitted += 1
+                    yield self._as_property_item(base_item)
 
             current_page = response.meta.get('page', 1)
             total_pages = self._derive_total_pages(
@@ -184,26 +388,37 @@ class BhgreSpider(scrapy.Spider):
                 additional_info=additional_info,
                 current_page=current_page,
                 current_results_count=len(listings),
+                request_page_size=300,
             )
             if self.max_pages and self.max_pages > 0:
                 total_pages = min(total_pages, self.max_pages)
 
             self.logger.info(
-                "BHGRE page=%s listings=%s total_pages=%s total_results=%s page_size=%s",
+                "BHGRE shard=%s page=%s listings=%s emitted_unique=%s total_pages=%s total_results=%s page_size=%s unique_seen=%s",
+                shard_key,
                 current_page,
                 len(listings),
+                emitted,
                 total_pages,
                 pagination.get("totalResults"),
                 pagination.get("pageSize"),
+                len(self.seen_listing_ids),
             )
 
             if current_page < total_pages:
-                yield self.listings_request(current_page + 1)
+                yield self.listings_request(page=current_page + 1, shard=shard)
 
         except Exception as e:
             self.logger.error(f"Error parsing listings: {e}")
 
-    def _derive_total_pages(self, pagination, additional_info, current_page, current_results_count):
+    def _derive_total_pages(
+        self,
+        pagination,
+        additional_info,
+        current_page,
+        current_results_count,
+        request_page_size,
+    ):
         """Infer total pages across observed BHGRE pagination schema variants."""
         # Known variants observed across listing APIs.
         for source in (pagination or {}, additional_info or {}):
@@ -218,14 +433,101 @@ class BhgreSpider(scrapy.Spider):
             return max(1, int(math.ceil(total_results / float(page_size))))
 
         # Fallback if totals are missing: continue while page appears full.
-        request_page_size = 300
         if current_results_count >= request_page_size:
             return current_page + 1
         return current_page
 
     def handle_listings_error(self, failure):
         request = getattr(failure, "request", None)
-        self.logger.error("Listings request failed for %s: %s", getattr(request, "url", "unknown"), failure.value)
+        shard_key = ((getattr(request, "meta", {}) or {}).get("shard") or {}).get("shard_key")
+        self.logger.error(
+            "Listings request failed for %s shard=%s: %s",
+            getattr(request, "url", "unknown"),
+            shard_key,
+            failure.value,
+        )
+
+    def handle_neighbor_places_error(self, failure):
+        request = getattr(failure, "request", None)
+        meta = getattr(request, "meta", {}) or {}
+        self.logger.error(
+            "Neighbor places request failed stage=%s page=%s url=%s err=%s",
+            meta.get("stage"),
+            meta.get("place_page"),
+            getattr(request, "url", "unknown"),
+            failure.value,
+        )
+
+    def handle_place_error(self, failure):
+        request = getattr(failure, "request", None)
+        meta = getattr(request, "meta", {}) or {}
+        self.logger.error(
+            "Place lookup failed stage=%s canonical=%s url=%s err=%s",
+            meta.get("stage"),
+            meta.get("canonical_url"),
+            getattr(request, "url", "unknown"),
+            failure.value,
+        )
+
+    def _advance_stage(self, stage):
+        if stage == self.STAGE_ZIP:
+            self.logger.info("BHGRE ZIP seed stage completed")
+        elif stage == self.STAGE_CITY:
+            self.logger.info("BHGRE city seed stage completed")
+
+    def _bbox_shard(self):
+        return {
+            "stage": self.STAGE_BBOX,
+            "shard_key": self.STAGE_BBOX,
+            "canonical_url": "/state/nj",
+            "display_name": "New Jersey (bbox fallback)",
+            "place_master_id": self.NJ_PLACE_ID,
+            "boundary": None,
+        }
+
+    @staticmethod
+    def _canonical_to_referer(canonical_url):
+        c = str(canonical_url or "").strip()
+        if not c:
+            return "https://www.bhgre.com/home/list/state/nj"
+        if c.startswith("http://") or c.startswith("https://"):
+            return c
+        return "https://www.bhgre.com/home/list" + c
+
+    @staticmethod
+    def _extract_boundary_from_place(place):
+        if not isinstance(place, dict):
+            return None
+        bottom_left = place.get("bottomLeftBoundingBox")
+        top_right = place.get("topRightBoundingBox")
+        if (
+            isinstance(bottom_left, list)
+            and len(bottom_left) == 2
+            and isinstance(top_right, list)
+            and len(top_right) == 2
+        ):
+            return {
+                "topRightMapPoint": [top_right[0], top_right[1]],
+                "bottomLeftMapPoint": [bottom_left[0], bottom_left[1]],
+            }
+        return None
+
+    @staticmethod
+    def _is_nj_canonical(canonical_url):
+        return "/nj/" in str(canonical_url or "").lower()
+
+    def _parse_json_response(self, response, context):
+        text = self._safe_response_text(response)
+        try:
+            return json.loads(text)
+        except (TypeError, ValueError, json.JSONDecodeError):
+            self.logger.error(
+                "BHGRE %s JSON parse failed status=%s body_preview=%s",
+                context,
+                response.status,
+                text[:500],
+            )
+            return None
 
     def listing_detail_request(self, listing_id, base_item):
         return Request(
@@ -247,24 +549,24 @@ class BhgreSpider(scrapy.Spider):
                 response.status,
                 base_item.get("id"),
             )
-            yield base_item
+            yield self._as_property_item(base_item)
             return
 
         try:
             data = json.loads(response_text)
             detail_listing = (data.get("data") or {}).get("result") or {}
             if not detail_listing:
-                yield base_item
+                yield self._as_property_item(base_item)
                 return
             detail_item = self.parse_listing_item(detail_listing)
-            yield self.merge_items(base_item, detail_item)
+            yield self._as_property_item(self.merge_items(base_item, detail_item))
         except Exception as exc:
             self.logger.error(
                 "Error parsing listing detail id=%s: %s",
                 base_item.get("id"),
                 exc,
             )
-            yield base_item
+            yield self._as_property_item(base_item)
 
     def handle_listing_detail_error(self, failure):
         request = getattr(failure, "request", None)
@@ -285,6 +587,10 @@ class BhgreSpider(scrapy.Spider):
             if value not in (None, "", [], {}):
                 merged[key] = value
         return merged
+
+    @staticmethod
+    def _as_property_item(document):
+        return dict(document or {})
 
     @staticmethod
     def _join_value(value):
@@ -427,7 +733,28 @@ class BhgreSpider(scrapy.Spider):
                     add_link(media.get("src"))
                 elif isinstance(media, str):
                     add_link(media)
+        # Fallback: some payloads provide only firstPhotoUrl + photosCount.
+        # Expand sequential URLs where possible so we do not lose gallery breadth.
+        first_photo = photos.get("firstPhotoUrl")
+        photos_count = BhgreSpider._safe_int(photos.get("photosCount"), default_value=None, fallback=None)
+        if first_photo and photos_count and photos_count > 1 and len(links) <= 1:
+            for url in BhgreSpider._expand_photo_sequence(first_photo, photos_count):
+                add_link(url)
         return links
+
+    @staticmethod
+    def _expand_photo_sequence(first_photo_url, photos_count):
+        if not isinstance(first_photo_url, str):
+            return []
+        match = BhgreSpider.PHOTO_INDEX_PATTERN.match(first_photo_url.strip())
+        if not match:
+            return [first_photo_url]
+        prefix = match.group("prefix")
+        suffix = match.group("suffix")
+        urls = []
+        for idx in range(max(1, int(photos_count))):
+            urls.append(f"{prefix}{idx:02d}{suffix}")
+        return urls
 
     def parse_listing_item(self, listing):
         """Extract property data from a single listing"""
@@ -542,5 +869,9 @@ class BhgreSpider(scrapy.Spider):
             # Raw data
             'raw_listing': self._sanitize_raw_listing(listing)
         }
+
+        # Keep count consistent when payload count is missing/inaccurate.
+        if (item.get("photos_count") in (None, 0)) and photo_links:
+            item["photos_count"] = len(photo_links)
 
         return item
