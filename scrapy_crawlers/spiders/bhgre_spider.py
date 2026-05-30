@@ -1,7 +1,7 @@
+import math
 import scrapy
 import json
 import uuid
-import math
 import copy
 import re
 from datetime import datetime, timezone
@@ -47,15 +47,19 @@ class BhgreSpider(scrapy.Spider):
     LISTING_DETAIL_API_TEMPLATE = 'https://www.bhgre.com/api/listings/{listing_id}?ctxCode=BHG&showMlsListings=true'
     DEFAULT_API_KEY = "svbyT7C7Hw7d8D7GxJsi"
 
-    # NJ Boundaries (approximate)
-    # Northernmost point: ~41.35
-    # Southernmost point: ~38.93
-    # Westernmost point: ~74.75
-    # Easternmost point: ~73.89
+    # Full NJ extent: [lon, lat] pairs — topRight = NE corner, bottomLeft = SW corner
     NJ_BOUNDARY = {
-        "topRightMapPoint": [-73.89, 41.35],
-        "bottomLeftMapPoint": [-74.75, 38.93]
+        "topRightMapPoint": [-73.88, 41.36],
+        "bottomLeftMapPoint": [-75.57, 38.78],
     }
+
+    # BHGRE caps results at 300 per request regardless of pagination params.
+    # When a query hits the cap, we split the viewBoundary into 4 quadrants
+    # and recurse. MAX_BBOX_DEPTH prevents infinite recursion in dense areas;
+    # at depth 14 each tile is ~100 m × ~100 m — finer than any property cluster.
+    LISTINGS_CAP = 300
+    MAX_BBOX_DEPTH = 14
+
     STAGE_ZIP = "zip"
     STAGE_CITY = "city"
     STAGE_BBOX = "bbox"
@@ -131,13 +135,12 @@ class BhgreSpider(scrapy.Spider):
             if req is not None:
                 yield req
             return
-        yield self.listings_request(page=1, shard=self._bbox_shard())
+        yield self.listings_request(shard=self._bbox_shard())
 
-    def listings_request(self, page, shard):
-        """Create a request for listings API for a specific shard."""
-        payload = self._build_listings_payload(page=page, shard=shard)
+    def listings_request(self, shard):
+        """Create a listings API request for a geographic shard."""
+        payload = self._build_listings_payload(shard=shard)
         referer = self._canonical_to_referer((shard or {}).get("canonical_url"))
-
         return Request(
             url=self.LISTINGS_API,
             method='POST',
@@ -146,35 +149,29 @@ class BhgreSpider(scrapy.Spider):
             callback=self.parse_listings,
             errback=self.handle_listings_error,
             meta={
-                'page': page,
                 'shard': shard,
                 **self._proxy_meta(),
-            }
+            },
         )
 
-    def _build_listings_payload(self, page, shard):
+    def _build_listings_payload(self, shard):
         shard = shard or {}
         place_master_id = shard.get("place_master_id")
-        boundary = shard.get("boundary")
-        payload = {
-            "ctx": {
-                "brandCode": "BHG",
-                "language": "en-US"
-            },
-            "numPerPage": 300,
-            "page": page,
+        # Always send a viewBoundary — it is the only way to paginate BHGRE.
+        # Fall back to full NJ extent when the shard has no specific boundary.
+        boundary = shard.get("boundary") or self.NJ_BOUNDARY
+        return {
+            "ctx": {"brandCode": "BHG", "language": "en-US"},
+            "numPerPage": self.LISTINGS_CAP,
             "status": "ACTIVE,PENDING,COMING_SOON",
             "showMlsListings": True,
             "minNumImages": 0,
             "projectedFields": "projectedFields.UniversalPlatform",
             "placeMasterIds": place_master_id or self.NJ_PLACE_ID,
+            "viewBoundary": boundary,
             "propertyType": "SFR,MFR,MFD,CONDO,TOWNHOUSE,COOP,LAND,FARM",
-            "sortBy": '[{"key":"newListingTimeStamp","order":"DESC"}]'
+            "sortBy": '[{"key":"newListingTimeStamp","order":"DESC"}]',
         }
-        # Let placeMasterIds define scope; boundary can undercount statewide results.
-        if boundary:
-            payload["viewBoundary"] = boundary
-        return payload
 
     def neighbor_places_request(self, stage, page):
         place_type = self.PLACE_TYPES_BY_STAGE.get(stage)
@@ -279,12 +276,11 @@ class BhgreSpider(scrapy.Spider):
                 seeded += 1
                 yield req
 
-        total_pages = self._derive_total_pages(
+        total_pages = self._infer_total_pages(
             pagination=pagination,
-            additional_info={},
             current_page=place_page,
             current_results_count=len(results),
-            request_page_size=self.place_num_per_page,
+            page_size=self.place_num_per_page,
         )
         if self.max_place_pages and self.max_place_pages > 0:
             total_pages = min(total_pages, self.max_place_pages)
@@ -333,109 +329,116 @@ class BhgreSpider(scrapy.Spider):
             "display_name": place.get("displayName") or place.get("placeName") or canonical_url,
             "place_master_id": place_master_id,
             "boundary": self._extract_boundary_from_place(place),
+            "bbox_depth": 0,
         }
-        yield self.listings_request(page=1, shard=shard)
+        yield self.listings_request(shard=shard)
 
     def start_bbox_fallback_if_needed(self):
         if self.bbox_started:
             return
         self.bbox_started = True
         self.logger.info("BHGRE starting bbox fallback shard for NJ")
-        yield self.listings_request(page=1, shard=self._bbox_shard())
+        yield self.listings_request(shard=self._bbox_shard())
 
     def parse_listings(self, response):
-        """Parse the listings API response"""
+        """Parse the listings API response and recurse via bbox subdivision if capped."""
         response_text = self._safe_response_text(response)
+        shard = response.meta.get("shard") or {}
+        shard_key = shard.get("shard_key", self.STAGE_BBOX)
+
         if response.status == 401:
             self.logger.error(
-                "Listings API returned 401 on page %s shard=%s. Body preview: %s",
-                response.meta.get("page"),
-                (response.meta.get("shard") or {}).get("shard_key"),
+                "Listings API 401 shard=%s body_preview=%s",
+                shard_key,
                 response_text[:500],
             )
             return
 
         try:
             data = json.loads(response_text)
-            listings = data.get('data', {}).get('results', [])
-            pagination = data.get('data', {}).get('pagination', {})
-            additional_info = data.get('data', {}).get('additionalInfo', {})
-            shard = response.meta.get("shard") or {}
-            shard_key = shard.get("shard_key", self.STAGE_BBOX)
-
-            # Yield each listing as an item
-            emitted = 0
-            for listing in listings:
-                listing_id = listing.get("id")
-                if listing_id and listing_id in self.seen_listing_ids:
-                    continue
-                if listing_id:
-                    self.seen_listing_ids.add(listing_id)
-                base_item = self.parse_listing_item(listing)
-                if listing_id:
-                    emitted += 1
-                    yield self.listing_detail_request(
-                        listing_id=listing_id,
-                        base_item=base_item,
-                    )
-                else:
-                    emitted += 1
-                    yield self._as_property_item(base_item)
-
-            current_page = response.meta.get('page', 1)
-            total_pages = self._derive_total_pages(
-                pagination=pagination,
-                additional_info=additional_info,
-                current_page=current_page,
-                current_results_count=len(listings),
-                request_page_size=300,
-            )
-            if self.max_pages and self.max_pages > 0:
-                total_pages = min(total_pages, self.max_pages)
-
-            self.logger.info(
-                "BHGRE shard=%s page=%s listings=%s emitted_unique=%s total_pages=%s total_results=%s page_size=%s unique_seen=%s",
+        except (TypeError, ValueError, json.JSONDecodeError):
+            self.logger.error(
+                "Listings JSON parse failed shard=%s status=%s body_preview=%s",
                 shard_key,
-                current_page,
-                len(listings),
-                emitted,
-                total_pages,
-                pagination.get("totalResults"),
-                pagination.get("pageSize"),
-                len(self.seen_listing_ids),
+                response.status,
+                response_text[:500],
             )
+            return
 
-            if current_page < total_pages:
-                yield self.listings_request(page=current_page + 1, shard=shard)
+        listings = (data.get("data") or {}).get("results") or []
+        pagination = (data.get("data") or {}).get("pagination") or {}
+        total_results = pagination.get("totalResults")
 
-        except Exception as e:
-            self.logger.error(f"Error parsing listings: {e}")
+        emitted = 0
+        for listing in listings:
+            listing_id = listing.get("id")
+            if listing_id and listing_id in self.seen_listing_ids:
+                continue
+            if listing_id:
+                self.seen_listing_ids.add(listing_id)
+            base_item = self.parse_listing_item(listing)
+            emitted += 1
+            if listing_id:
+                yield self.listing_detail_request(listing_id=listing_id, base_item=base_item)
+            else:
+                yield self._as_property_item(base_item)
 
-    def _derive_total_pages(
-        self,
-        pagination,
-        additional_info,
-        current_page,
-        current_results_count,
-        request_page_size,
-    ):
-        """Infer total pages across observed BHGRE pagination schema variants."""
-        # Known variants observed across listing APIs.
-        for source in (pagination or {}, additional_info or {}):
-            for key in ("numOfPages", "totalPages", "numPages", "pages"):
-                value = self._safe_int(source.get(key))
-                if value and value > 0:
-                    return value
+        bbox_depth = shard.get("bbox_depth") or 0
+        hit_cap = len(listings) >= self.LISTINGS_CAP
 
-        total_results = self._safe_int((pagination or {}).get("totalResults"))
-        page_size = self._safe_int((pagination or {}).get("pageSize"))
-        if total_results and page_size and page_size > 0:
-            return max(1, int(math.ceil(total_results / float(page_size))))
+        self.logger.info(
+            "BHGRE shard=%s depth=%s results=%s emitted=%s total_results=%s cap_hit=%s unique_seen=%s",
+            shard_key,
+            bbox_depth,
+            len(listings),
+            emitted,
+            total_results,
+            hit_cap,
+            len(self.seen_listing_ids),
+        )
 
-        # Fallback if totals are missing: continue while page appears full.
-        if current_results_count >= request_page_size:
-            return current_page + 1
-        return current_page
+        if not hit_cap:
+            return
+
+        if bbox_depth >= self.MAX_BBOX_DEPTH:
+            self.logger.warning(
+                "BHGRE shard=%s hit max bbox depth %d with %d results; cannot subdivide further",
+                shard_key,
+                bbox_depth,
+                len(listings),
+            )
+            return
+
+        # Split the current bounding box into 4 quadrants and re-query each.
+        boundary = shard.get("boundary") or self.NJ_BOUNDARY
+        for sub_boundary in self._split_bbox(boundary):
+            tr = sub_boundary["topRightMapPoint"]
+            sub_shard = {
+                **shard,
+                "boundary": sub_boundary,
+                "bbox_depth": bbox_depth + 1,
+                "shard_key": f"{shard_key}|d{bbox_depth+1}@{tr[0]:.4f},{tr[1]:.4f}",
+            }
+            yield self.listings_request(shard=sub_shard)
+
+    @staticmethod
+    def _split_bbox(boundary):
+        """Split a bounding box into 4 equal quadrants (NE, NW, SE, SW).
+
+        boundary uses [lon, lat] pairs:
+          topRightMapPoint  = NE corner = [east_lon, north_lat]
+          bottomLeftMapPoint = SW corner = [west_lon, south_lat]
+        """
+        tr_lon, tr_lat = boundary["topRightMapPoint"]
+        bl_lon, bl_lat = boundary["bottomLeftMapPoint"]
+        mid_lon = (tr_lon + bl_lon) / 2.0
+        mid_lat = (tr_lat + bl_lat) / 2.0
+        return [
+            {"topRightMapPoint": [tr_lon,  tr_lat],  "bottomLeftMapPoint": [mid_lon, mid_lat]},  # NE
+            {"topRightMapPoint": [mid_lon, tr_lat],  "bottomLeftMapPoint": [bl_lon,  mid_lat]},  # NW
+            {"topRightMapPoint": [tr_lon,  mid_lat], "bottomLeftMapPoint": [mid_lon, bl_lat]},   # SE
+            {"topRightMapPoint": [mid_lon, mid_lat], "bottomLeftMapPoint": [bl_lon,  bl_lat]},   # SW
+        ]
 
     def handle_listings_error(self, failure):
         request = getattr(failure, "request", None)
@@ -469,6 +472,20 @@ class BhgreSpider(scrapy.Spider):
             failure.value,
         )
 
+    @staticmethod
+    def _infer_total_pages(pagination, current_page, current_results_count, page_size):
+        """Infer total pages from the neighborPlaces pagination block."""
+        for key in ("numOfPages", "totalPages", "numPages", "pages"):
+            value = BhgreSpider._safe_int(pagination.get(key))
+            if value and value > 0:
+                return value
+        total_results = BhgreSpider._safe_int(pagination.get("totalResults"))
+        if total_results and page_size and page_size > 0:
+            return max(1, math.ceil(total_results / float(page_size)))
+        if current_results_count >= page_size:
+            return current_page + 1
+        return current_page
+
     def _advance_stage(self, stage):
         if stage == self.STAGE_ZIP:
             self.logger.info("BHGRE ZIP seed stage completed")
@@ -480,9 +497,10 @@ class BhgreSpider(scrapy.Spider):
             "stage": self.STAGE_BBOX,
             "shard_key": self.STAGE_BBOX,
             "canonical_url": "/state/nj",
-            "display_name": "New Jersey (bbox fallback)",
+            "display_name": "New Jersey (bbox)",
             "place_master_id": self.NJ_PLACE_ID,
-            "boundary": None,
+            "boundary": self.NJ_BOUNDARY,
+            "bbox_depth": 0,
         }
 
     @staticmethod
