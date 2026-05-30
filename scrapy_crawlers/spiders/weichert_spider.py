@@ -15,6 +15,21 @@ DETAIL_IMAGE_PATTERN = re.compile(
     r'(?:https?:)?//d36xftgacqn2p\.cloudfront\.net/[^"\']+\.(?:jpg|jpeg|png|webp)',
     re.I,
 )
+TAX_ANNUAL_AMOUNT_PATTERN = re.compile(
+    r"\b(?:Tax\s+Annual\s+Amount|Annual\s+Taxes?|Property\s+Taxes?|Taxes)\b\s*[:\-]?\s*\$?\s*([\d,]+(?:\.\d+)?)",
+    re.I,
+)
+TAX_ASSESSED_VALUE_PATTERN = re.compile(
+    r"\bTax\s+Assessed\s+Value\b\s*[:\-]?\s*\$?\s*([\d,]+(?:\.\d+)?)",
+    re.I,
+)
+TAX_YEAR_PATTERN = re.compile(
+    r"\bTax\s+Year\b\s*[:\-]?\s*((?:19|20)\d{2})\b",
+    re.I,
+)
+TAX_ANNUAL_AMOUNT_JSON_PATTERN = re.compile(r'"taxAnnualAmount"\s*:\s*"?([\d,]+(?:\.\d+)?)"?', re.I)
+TAX_ASSESSED_VALUE_JSON_PATTERN = re.compile(r'"taxAssessedValue"\s*:\s*"?([\d,]+(?:\.\d+)?)"?', re.I)
+TAX_YEAR_JSON_PATTERN = re.compile(r'"taxYear"\s*:\s*"?((?:19|20)\d{2})"?', re.I)
 
 
 class WeichertSpider(scrapy.Spider):
@@ -497,6 +512,9 @@ class WeichertSpider(scrapy.Spider):
             "cooling": None,
             "appliances": None,
             "flooring": None,
+            "tax_annual_amount": None,
+            "tax_assessed_value": None,
+            "tax_year": None,
             "photos_count": len(photo_links),
             "first_photo_url": photo_links[0] if photo_links else None,
             "photo_links": photo_links,
@@ -534,6 +552,25 @@ class WeichertSpider(scrapy.Spider):
             item["appliances"] = appliances
         if flooring:
             item["flooring"] = flooring
+        page_text = self._flatten_visible_text(selector)
+        tax_annual_amount = self._extract_first_int(page_text, TAX_ANNUAL_AMOUNT_PATTERN)
+        tax_assessed_value = self._extract_first_int(page_text, TAX_ASSESSED_VALUE_PATTERN)
+        tax_year = self._extract_first_int(page_text, TAX_YEAR_PATTERN)
+
+        # JSON fallback for detail pages that render facts into script payloads.
+        if tax_annual_amount is None:
+            tax_annual_amount = self._extract_first_int(text, TAX_ANNUAL_AMOUNT_JSON_PATTERN)
+        if tax_assessed_value is None:
+            tax_assessed_value = self._extract_first_int(text, TAX_ASSESSED_VALUE_JSON_PATTERN)
+        if tax_year is None:
+            tax_year = self._extract_first_int(text, TAX_YEAR_JSON_PATTERN)
+
+        if tax_annual_amount is not None:
+            item["tax_annual_amount"] = tax_annual_amount
+        if tax_assessed_value is not None:
+            item["tax_assessed_value"] = tax_assessed_value
+        if tax_year is not None:
+            item["tax_year"] = tax_year
 
         yield item
 
@@ -597,6 +634,18 @@ class WeichertSpider(scrapy.Spider):
         if values:
             return ", ".join(values)
         return None
+
+    @staticmethod
+    def _flatten_visible_text(selector):
+        lines = selector.xpath("//body//text()").getall()
+        merged = " ".join(part.strip() for part in lines if part and part.strip())
+        return re.sub(r"\s+", " ", merged).strip()
+
+    def _extract_first_int(self, text, pattern):
+        match = pattern.search(text or "")
+        if not match:
+            return None
+        return self._to_int(match.group(1))
 
     @staticmethod
     def _normalize_search_query(query):
