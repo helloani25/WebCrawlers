@@ -68,16 +68,21 @@ DETAIL_TITLE_ADDRESS_PATTERN = re.compile(
     r"-\s*([^,\n]+?),\s*([^,\n]+),\s*([A-Z]{2})(?:\s+(\d{5}(?:-\d{4})?))?\s*-\s*New Jersey Multiple Listing Service",
     re.I,
 )
-BEDS_PATTERN = re.compile(r"(\d+)\s*(?:bd|bed|BR|Bed)", re.I)
+BEDS_PATTERN = re.compile(r"\b(\d{1,2})\s*(?:bd|br|bed(?:room)?s?)\b", re.I)
 BATHS_PATTERN = re.compile(r"(\d+(?:\.\d+)?)\s*(?:ba|bath|BA|Bath)", re.I)
 SQFT_PATTERN = re.compile(r"([\d,]+)\s*(?:sq\.?\s*ft|sqft|SF)", re.I)
 DISPLAY_COUNT_PATTERN = re.compile(r"Showing\s+(?:1\s*-\s*)?(\d+)\s+(?:of\s+)?(\d+)", re.I)
+ZIP_CODE_PATTERN = re.compile(r"^\d{5}(?:-\d{4})?$")
 FULL_BATHS_PATTERN = re.compile(r"(\d+)\s*full\s*bath", re.I)
 HALF_BATHS_PATTERN = re.compile(r"(\d+)\s*half\s*bath", re.I)
 GARAGE_SPACES_PATTERN = re.compile(r"(\d+)\s*(?:car\s+)?garage", re.I)
 GARAGE_PARKING_PATTERN = re.compile(r"(\d+)\s+parking\s+spaces?\s+in\s+the\s+garage", re.I)
 YEAR_BUILT_PATTERN = re.compile(r"\b(1[89]\d{2}|20\d{2})(?:'s|s)?\b")
 TAX_YEAR_PATTERN = re.compile(r"\b(19\d{2}|20\d{2})\b")
+TAX_YEAR_CONTEXT_PATTERN = re.compile(
+    r"\btax(?:es)?(?:\s+year)?\b[^\d]{0,20}(19\d{2}|20\d{2})\b",
+    re.IGNORECASE,
+)
 DAYS_ON_MARKET_PATTERN = re.compile(
     r"\b(?:days?\s+on\s+(?:the\s+)?market|dom)\b[^0-9]{0,12}(\d{1,4})\b",
     re.I,
@@ -116,9 +121,9 @@ class NjmlsSpider(scrapy.Spider):
             "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
         },
         "COOKIES_ENABLED": True,
-        "DOWNLOAD_DELAY": 0.5,
+        "DOWNLOAD_DELAY": 0.8,
         "RANDOMIZE_DOWNLOAD_DELAY" : True,
-        "CONCURRENT_REQUESTS_PER_DOMAIN": 4,
+        "CONCURRENT_REQUESTS_PER_DOMAIN": 6,
         "CURL_IMPERSONATE": "chrome110",
     }
 
@@ -225,7 +230,7 @@ class NjmlsSpider(scrapy.Spider):
         )
 
     def parse_town_modal(self, response):
-        """Parse all counties/cities from iframe payload; fallback to county-wide shards."""
+        """Parse all counties/cities from iframe payload; stage requests as ZIP -> town -> county."""
         counties = response.meta.get("counties") or NJ_COUNTIES
         if response.status != 200:
             self.logger.warning(
@@ -233,30 +238,48 @@ class NjmlsSpider(scrapy.Spider):
                 response.status,
             )
             for county in counties:
-                yield from self._results_request(county=county, page=1, city="")
+                yield from self._results_request(county=county, page=1, city="", zipcode="", stage="county")
             return
 
         text = self._safe_response_text(response)
         if not text or not text.strip():
             self.logger.warning("Empty town modal payload; using county-wide fallback")
             for county in counties:
-                yield from self._results_request(county=county, page=1, city="")
+                yield from self._results_request(county=county, page=1, city="", zipcode="", stage="county")
             return
 
         selector = scrapy.Selector(text=text)
         for county in counties:
-            city_values = self._extract_city_values_for_county(selector, county)
-            if not city_values:
-                self.logger.info(
-                    "No town values found for county=%s; using county-wide search fallback",
-                    county,
-                )
-                yield from self._results_request(county=county, page=1, city="")
-                continue
+            zip_values = self._extract_zip_values_for_county(selector, county)
+            if zip_values:
+                self.logger.info("County=%s zip shards=%s", county, len(zip_values))
+                for zip_code in zip_values:
+                    yield from self._results_request(
+                        county=county,
+                        page=1,
+                        city="",
+                        zipcode=zip_code,
+                        stage="zip",
+                    )
+            else:
+                self.logger.info("No ZIP values found for county=%s", county)
 
-            self.logger.info("County=%s town shards=%s endpoint=new", county, len(city_values))
-            for city in city_values:
-                yield from self._results_request(county=county, page=1, city=city)
+            city_values = self._extract_city_values_for_county(selector, county)
+            if city_values:
+                self.logger.info("County=%s town shards=%s endpoint=new", county, len(city_values))
+                for city in city_values:
+                    yield from self._results_request(
+                        county=county,
+                        page=1,
+                        city=city,
+                        zipcode="",
+                        stage="town",
+                    )
+            else:
+                self.logger.info("No town values found for county=%s", county)
+
+            # Always run a final county-wide shard after zip/town stages.
+            yield from self._results_request(county=county, page=1, city="", zipcode="", stage="county")
 
     def _extract_city_values_for_county(self, selector, county):
         city_values = []
@@ -305,7 +328,40 @@ class NjmlsSpider(scrapy.Spider):
         seen = set()
         return [v for v in city_values if not (v in seen or seen.add(v))]
 
-    def _results_request(self, county, page, city=""):
+    def _extract_zip_values_for_county(self, selector, county):
+        zip_values = []
+        county_phrase = f"{county.lower()} county"
+
+        town_inputs = selector.xpath(
+            f'//h3[a[contains(translate(normalize-space(string(.)), "{UPPERCASE}", "{LOWERCASE}"), "{county_phrase}")]]'
+            f'/following-sibling::div[1]//input[@type="checkbox"]/@value'
+        ).getall()
+
+        for val in town_inputs:
+            parts = [p.strip() for p in (val or "").split(",")]
+            if len(parts) < 4:
+                continue
+            zip_code = parts[3]
+            if zip_code and ZIP_CODE_PATTERN.match(zip_code):
+                zip_values.append(zip_code)
+
+        if not zip_values:
+            county_norm = county.replace(" ", "").upper()
+            for val in selector.xpath('//input[@type="checkbox"]/@value').getall():
+                parts = [p.strip() for p in (val or "").split(",")]
+                if len(parts) < 4:
+                    continue
+                county_token = parts[2]
+                zip_code = parts[3]
+                if county_token.replace(" ", "").upper() != county_norm:
+                    continue
+                if zip_code and ZIP_CODE_PATTERN.match(zip_code):
+                    zip_values.append(zip_code)
+
+        seen = set()
+        return [v for v in zip_values if not (v in seen or seen.add(v))]
+
+    def _results_request(self, county, page, city="", zipcode="", stage="unknown"):
         ts = int(time.time() * 1000)
         params = [
             ("zoomlevel", "0"),
@@ -318,7 +374,7 @@ class NjmlsSpider(scrapy.Spider):
             ("city", city or ""),
             ("state", "NJ"),
             ("county", county),
-            ("zipcode", ""),
+            ("zipcode", zipcode or ""),
             ("radius", ""),
             ("proptype", ""),
             ("maxprice", ""),
@@ -372,6 +428,8 @@ class NjmlsSpider(scrapy.Spider):
             meta={
                 "county": county,
                 "city": city or "",
+                "zipcode": zipcode or "",
+                "stage": stage or "unknown",
                 "page": page,
                 **self._proxy_meta(),
             },
@@ -381,13 +439,17 @@ class NjmlsSpider(scrapy.Spider):
     def parse_results(self, response):
         county = response.meta["county"]
         city = response.meta.get("city", "")
+        zipcode = response.meta.get("zipcode", "")
+        stage = response.meta.get("stage", "unknown")
         page = response.meta["page"]
 
         if response.status != 200:
             self.logger.warning(
-                "Results failed county=%s city=%s page=%s status=%s",
+                "Results failed stage=%s county=%s city=%s zip=%s page=%s status=%s",
+                stage,
                 county,
                 city or "-",
+                zipcode or "-",
                 page,
                 response.status,
             )
@@ -395,7 +457,14 @@ class NjmlsSpider(scrapy.Spider):
 
         text = self._safe_response_text(response)
         if not text or not text.strip():
-            self.logger.warning("Empty response county=%s city=%s page=%s", county, city or "-", page)
+            self.logger.warning(
+                "Empty response stage=%s county=%s city=%s zip=%s page=%s",
+                stage,
+                county,
+                city or "-",
+                zipcode or "-",
+                page,
+            )
             return
 
         selector = scrapy.Selector(text=text)
@@ -426,9 +495,11 @@ class NjmlsSpider(scrapy.Spider):
                 yield listing
 
         self.logger.info(
-            "NJMLS county=%s city=%s page=%s nodes=%s new=%s",
+            "NJMLS stage=%s county=%s city=%s zip=%s page=%s nodes=%s new=%s",
+            stage,
             county,
             city or "-",
+            zipcode or "-",
             page,
             len(listing_nodes),
             new_count,
@@ -436,7 +507,13 @@ class NjmlsSpider(scrapy.Spider):
 
         # Paginate when a full page was returned
         if len(listing_nodes) >= self.DISPLAY_PER_PAGE:
-            yield from self._results_request(county=county, page=page + 1, city=city)
+            yield from self._results_request(
+                county=county,
+                page=page + 1,
+                city=city,
+                zipcode=zipcode,
+                stage=stage,
+            )
 
     def _get_listing_nodes(self, selector):
         """Find listing cards with XPath first, then regex fallback if needed."""
@@ -716,7 +793,7 @@ class NjmlsSpider(scrapy.Spider):
         if tax_year is None:
             tax_year = self._extract_labeled_int(detail_lines, "tax year")
         if tax_year is None:
-            tax_year = self._extract_int_pattern(detail_lines, TAX_YEAR_PATTERN)
+            tax_year = self._extract_int_pattern(detail_lines, TAX_YEAR_CONTEXT_PATTERN)
 
         detail_style = self._extract_labeled_value_xpath(detail_sel, "style")
         if detail_style is None:
